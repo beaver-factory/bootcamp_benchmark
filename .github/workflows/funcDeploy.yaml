@@ -32,7 +32,7 @@ jobs:
 
       - name: Deploy Azure Functions
         run: |
-          az functionapp deployment source config-zip -g bootcampBenchmarkResourceGroup -n helloworld12321 --src ./src.zip
+          az functionapp deployment source config-zip -g bootcampBenchmarkResourceGroup -n helloworld12321 --src .
 
       # - name: "Run Azure Functions action"
       #   uses: Azure/functions-action@v1
