@@ -30,7 +30,11 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy Azure Functions
+      - name: Deploy Azure Function1
+        run: |
+          az functionapp deployment source config-zip -g bootcampBenchmarkResourceGroup -n helloworld12321 --src ./TimerTrigger.zip
+
+      - name: Deploy Azure Function2
         run: |
           az functionapp deployment source config-zip -g bootcampBenchmarkResourceGroup -n helloworld12321 --src ./TimerTrigger2.zip
 
