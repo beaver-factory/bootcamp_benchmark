@@ -31,11 +31,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy Azure Functions
-        uses: azure/cli-action@v1
-        with:
-          azcliversion: "latest"
-          inlineScript: |
-            az functionapp deployment source config-zip -g bootcampBenchmarkResourceGroup -n helloworld12321 .
+        run: |
+          az functionapp deployment source config-zip -g bootcampBenchmarkResourceGroup -n helloworld12321 .
 
       # - name: "Run Azure Functions action"
       #   uses: Azure/functions-action@v1
