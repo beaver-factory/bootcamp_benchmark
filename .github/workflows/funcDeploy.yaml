@@ -2,7 +2,7 @@ name: Function Deployment
 
 on:
   push:
-    branches: main
+    branches: add_publish_profile_to_secrets
 
 jobs:
   FunctionDeployment:
@@ -29,6 +29,10 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Test publish profile retrieval
+        run: |
+          az functionapp deployment list-publishing-credentials --name helloworld12321   --resource-group bootcampBenchmarkResourceGroup | gh secret set AZURE_FUNCTIONAPP_PUBLISH_PROFILE -Rnorthcoders-dev/bootcamp_benchmark
 
       - name: "Run Azure Functions action"
         uses: Azure/functions-action@v1
