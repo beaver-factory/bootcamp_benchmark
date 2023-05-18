@@ -34,7 +34,7 @@ jobs:
         run: |
           az functionapp deployment list-publishing-credentials --name helloworld12321   --resource-group bootcampBenchmarkResourceGroup | gh secret set AZURE_FUNCTIONAPP_PUBLISH_PROFILE -Rnorthcoders-dev/bootcamp_benchmark
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Run Azure Functions action"
         uses: Azure/functions-action@v1
