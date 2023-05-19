@@ -36,7 +36,7 @@ jobs:
       - name: get function app publish profile
         id: profilevar
         run: |
-          publish_profile=$(az functionapp deployment list-publishing-profiles --name $FUNCTION_APP_NAME --resource-group bootcampBenchmarkResourceGroup --xml)
+          publish_profile=$(az functionapp deployment list-publishing-profiles --name helloworld12321 --resource-group bootcampBenchmarkResourceGroup --xml)
           echo "publish_profile=$publish_profile" >> $GITHUB_OUTPUT
 
       - name: run azure functions action
