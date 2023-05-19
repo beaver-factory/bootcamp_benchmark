@@ -2,7 +2,7 @@ name: Function Deployment
 
 on:
   push:
-    branches: add_publish_profile_to_secrets
+    branches: main
 
 jobs:
   FunctionDeployment:
@@ -30,16 +30,16 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Test publish profile retrieval
+      - name: get function app publish profile
         id: profilevar
         run: |
-          publish_profile=$(az functionapp deployment list-publishing-profiles --name helloworld12321   --resource-group bootcampBenchmarkResourceGroup --xml)
+          publish_profile=$(az functionapp deployment list-publishing-profiles --name helloworld12321 --resource-group bootcampBenchmarkResourceGroup --xml)
           echo "publish_profile=$publish_profile" >> $GITHUB_OUTPUT
 
-      - name: "Run Azure Functions action"
+      - name: run azure functions action
         uses: Azure/functions-action@v1
         with:
           app-name: helloworld12321
-          publish-profile: ${{steps.profilevar.outputs.publish_profile}}
+          publish-profile: ${{ steps.profilevar.outputs.publish_profile }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
