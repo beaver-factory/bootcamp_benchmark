@@ -3,6 +3,8 @@ import pandas as pd
 
 import azure.functions as func
 
+handler = logging.StreamHandler(stream=sys.stdout)
+logger.addHandler(handler)
 
 def main(pandastimertrigger: func.TimerRequest) -> None:
     dataframe = pd.DataFrame({'Yes': [50,21], 'No': [131,2]})
