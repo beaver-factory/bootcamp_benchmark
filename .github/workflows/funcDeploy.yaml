@@ -36,7 +36,7 @@ jobs:
       - name: get function app publish profile
         id: profilevar
         run: |
-          publish_profile=$(az functionapp deployment list-publishing-profiles --name $FUNCTION_APP_NAME --resource-group bootcampBenchmarkResourceGroup --xml)
+          publish_profile=$(az functionapp deployment list-publishing-profiles --name ${{ env.FUNCTION_APP_NAME }} --resource-group bootcampBenchmarkResourceGroup --xml)
           echo "publish_profile=$publish_profile" >> $GITHUB_OUTPUT
 
       - name: run azure functions action
@@ -44,5 +44,5 @@ jobs:
         with:
           app-name: ${{ env.FUNCTION_APP_NAME}}
           publish-profile: ${{ steps.profilevar.outputs.publish_profile }}
-          scm-do-build-during-deployment: true
+          # scm-do-build-during-deployment: true
           enable-oryx-build: true
