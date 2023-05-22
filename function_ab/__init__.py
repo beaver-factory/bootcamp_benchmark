@@ -14,5 +14,5 @@ def main(inBlob: func.InputStream, outBlob: func.Out[bytes]):
 
     mod_data = json.dumps(jsonData)
     
-    outBlob.set(mod_data.encode('utf-8'), name='ab')
+    outBlob.set(mod_data.encode('utf-8'))
     
