@@ -2,7 +2,11 @@ name: Function Deployment
 
 on:
   push:
-    branches: main
+    branches:
+      - main
+
+env:
+  FUNCTION_APP_NAME: helloworld12321
 
 jobs:
   FunctionDeployment:
@@ -25,23 +29,21 @@ jobs:
           pip install -r requirements.txt --target=".python_packages/lib/site-packages"
           popd
 
-      - name: Azure Login
+      - name: azure login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy Azure Function1
+      - name: get function app publish profile
+        id: profilevar
         run: |
-          az functionapp deployment source config-zip -g bootcampBenchmarkResourceGroup -n helloworld12321 --src ./TimerTrigger.zip
+          publish_profile=$(az functionapp deployment list-publishing-profiles --name ${{ env.FUNCTION_APP_NAME }} --resource-group bootcampBenchmarkResourceGroup --xml)
+          echo "publish_profile=$publish_profile" >> $GITHUB_OUTPUT
 
-      - name: Deploy Azure Function2
-        run: |
-          az functionapp deployment source config-zip -g bootcampBenchmarkResourceGroup -n helloworld12321 --src ./TimerTrigger2.zip
-
-      # - name: "Run Azure Functions action"
-      #   uses: Azure/functions-action@v1
-      #   with:
-      #     app-name: helloworld12321
-      #     publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-      #     scm-do-build-during-deployment: true
-      #     enable-oryx-build: true
+      - name: run azure functions action
+        uses: Azure/functions-action@v1
+        with:
+          app-name: ${{ env.FUNCTION_APP_NAME}}
+          publish-profile: ${{ steps.profilevar.outputs.publish_profile }}
+          scm-do-build-during-deployment: true
+          enable-oryx-build: false
