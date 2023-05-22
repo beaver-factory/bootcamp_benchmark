@@ -2,7 +2,9 @@ name: Function Deployment
 
 on:
   push:
-    branches: main
+    branches:
+      - main
+      - feat/blob-writer
 
 env:
   FUNCTION_APP_NAME: helloworld12321
