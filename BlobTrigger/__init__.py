@@ -1,9 +1,9 @@
 import azure.functions as func
 import logging
 
-def main(myblob: func.InputStream):
+def main(myBlob: func.InputStream):
     logging.info(f"Python blob trigger function processed blob \n"
-                 f"Name: {myblob.name}\n"
-                 f"Blob Size: {myblob.length} bytes")
+                 f"Name: {myBlob.name}\n"
+                 f"blob Size: {myBlob.length} bytes")
     
     # tetsetstsetsetsetsets
