@@ -6,4 +6,4 @@ def main(myBlob: func.InputStream):
                  f"Name: {myBlob.name}\n"
                  f"blob Size: {myBlob.length} bytes")
     
-    # tetsetstsetsetsetsets
+    
