@@ -4,5 +4,5 @@ import json
 
 
 def main(inBlob: func.InputStream, outBlob):
-    logging.info(inBlob['name'])
+    logging.info(inBlob.read())
     
