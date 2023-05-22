@@ -16,10 +16,11 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v3
 
-      - name: setup python
+      - name: setup python with pip dependency cache
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
+          cache: 'pip'
 
       - name: install python dependencies
         shell: bash
