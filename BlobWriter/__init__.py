@@ -9,6 +9,10 @@ def main(inBlob: func.InputStream, outBlob: func.Out[bytes]):
     jsonData= json.loads(inBlob.read())
 
     jsonData['value'] = 'ab'
+
+    logging.info(jsonData['value'])
+
+    mod_data = json.dumps(jsonData)
     
-    outBlob.set(str(jsonData))
+    outBlob.set(mod_data.encode('utf-8'))
     
