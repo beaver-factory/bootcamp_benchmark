@@ -1,4 +1,4 @@
-name: Function Deployment
+name: Staging Function Deployment
 
 on:
   push:
@@ -6,26 +6,27 @@ on:
       - main
 
 env:
-  FUNCTION_APP_NAME: helloworld12321
+  FUNCTION_APP_NAME: bootcampbfuncappstag
+  RESOURCE_GROUP_NAME: bootcampBenchmarkStaging
 
 jobs:
-  FunctionDeployment:
+  StagingFunctionDeployment:
     runs-on: ubuntu-latest
 
     steps:
       - name: checkout code
         uses: actions/checkout@v3
 
-      - name: setup python
+      - name: setup python with pip dependency cache
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
+          cache: "pip"
 
       - name: install python dependencies
         shell: bash
         run: |
           pushd './.'
-          python -m pip install --upgrade pip
           pip install -r requirements.txt --target=".python_packages/lib/site-packages"
           popd
 
@@ -37,7 +38,7 @@ jobs:
       - name: get function app publish profile
         id: profilevar
         run: |
-          publish_profile=$(az functionapp deployment list-publishing-profiles --name ${{ env.FUNCTION_APP_NAME }} --resource-group bootcampBenchmarkResourceGroup --xml)
+          publish_profile=$(az functionapp deployment list-publishing-profiles --name ${{ env.FUNCTION_APP_NAME }} --resource-group ${{ env.RESOURCE_GROUP_NAME }}  --xml)
           echo "publish_profile=$publish_profile" >> $GITHUB_OUTPUT
 
       - name: run azure functions action
