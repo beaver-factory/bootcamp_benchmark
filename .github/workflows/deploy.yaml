@@ -1,4 +1,4 @@
-name: Function Deployment
+name: Staging Function Deployment
 
 on:
   push:
@@ -6,10 +6,11 @@ on:
       - main
 
 env:
-  FUNCTION_APP_NAME: helloworld12321
+  FUNCTION_APP_NAME: bootcampbfuncappstag
+  RESOURCE_GROUP_NAME: bootcampBenchmarkStaging
 
 jobs:
-  FunctionDeployment:
+  StagingFunctionDeployment:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,7 +38,7 @@ jobs:
       - name: get function app publish profile
         id: profilevar
         run: |
-          publish_profile=$(az functionapp deployment list-publishing-profiles --name ${{ env.FUNCTION_APP_NAME }} --resource-group bootcampBenchmarkResourceGroup --xml)
+          publish_profile=$(az functionapp deployment list-publishing-profiles --name ${{ env.FUNCTION_APP_NAME }} --resource-group ${{ env.RESOURCE_GROUP_NAME }}  --xml)
           echo "publish_profile=$publish_profile" >> $GITHUB_OUTPUT
 
       - name: run azure functions action
