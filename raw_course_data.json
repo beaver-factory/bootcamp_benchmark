@@ -1,0 +1,675 @@
+[
+  {
+    "bootcampName": "CourseCareers",
+    "courses": [
+      {
+        "name": "Digital Marketing Course",
+        "skills": [
+          "Social Media Marketing",
+          "Email Marketing",
+          "Digital Marketing",
+          "Data Analytics ",
+          "Content Marketing"
+        ],
+        "description": "Students complete the course in a few weeks to a few months depending on how much time they commit. They learn everything required to land their first position. CourseCareers also teaches them exactly how to land an entry-level position or internship by giving them insider knowledge of how to apply to companies, what to look for in resumes/applications, how to prepare for interviews, and so much more. Visit https://coursecareers.com/explore/marketing"
+      },
+      {
+        "name": "Information Technology Course",
+        "skills": [],
+        "description": "Students complete the course in a few weeks to a few months depending on how much time they commit. They learn everything required to land their first position. CourseCareers also teaches them exactly how to land an entry-level position or internship by giving them insider knowledge of how to apply to companies, what to look for in resumes/applications, how to prepare for interviews, and so much more. Visit https://coursecareers.com/explore/it"
+      },
+      {
+        "name": "Technology Sales Course",
+        "skills": [],
+        "description": "Students complete the course in a few weeks to a few months depending on how much time they commit. They learn everything required to land their first position. CourseCareers also teaches them exactly how to land an entry-level position or internship by giving them insider knowledge of how to apply to companies, what to look for in resumes/applications, how to prepare for interviews, and so much more. Visit https://coursecareers.com/explore/sales"
+      }
+    ],
+    "locations": ["Online"]
+  },
+  {
+    "bootcampName": "Le Wagon",
+    "courses": [
+      {
+        "name": "Data Analytics Bootcamp",
+        "skills": [
+          "Business Intelligence",
+          "SQL",
+          "Python",
+          "Machine Learning",
+          "Data Visualization",
+          "Data Analytics "
+        ],
+        "description": "You\u2019ll dive into business KPIs and learn how to collect data before mastering data extraction using APIs and data transformation using advances SQL. You\u2019ll then learn how to communicate your results clearly using BI tools and data visualization. Finally, you\u2019ll run analyses on big data sets using Python and Jupiter notebook and learn the foundations of Machine Learning to collaborate with Data Scientists and Machine Learning Engineers. "
+      },
+      {
+        "name": "Data Analytics Bootcamp Online",
+        "skills": [
+          "Business Intelligence",
+          "SQL",
+          "Python",
+          "Machine Learning",
+          "Data Visualization",
+          "Data Analytics "
+        ],
+        "description": "You\u2019ll dive into business KPIs and learn how to collect data before mastering data extraction using APIs and data transformation using advances SQL. You\u2019ll then learn how to communicate your results clearly using BI tools and data visualization. Finally, you\u2019ll run analyses on big data sets using Python and Jupiter notebook and learn the foundations of Machine Learning to collaborate with Data Scientists and Machine Learning Engineers. "
+      },
+      {
+        "name": "Data Analytics Essentials Skill Course",
+        "skills": ["Excel", "SQL", "Data Visualization", "Data Analytics "],
+        "description": "Become autonomous with data thanks to SQL, Looker Studio and Google Sheets. You\u2019ll also learn how to understand, analyze and visualize data using Data Warehouse, ETL, KPIs and BigQuery."
+      },
+      {
+        "name": "Data Science Bootcamp - Full-time",
+        "skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Cloud Computing",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Git",
+          "Machine Learning",
+          "Python",
+          "SQL"
+        ],
+        "description": "Explore the fundamentals of data science. From Pandas to Deep Learning, you\u2019ll finish the course knowing how to explore, clean and transform data into actionable insights and how to implement machine learning models from start to finish in a production environment, working in teams with the best-in-class tool belt."
+      },
+      {
+        "name": "Data Science Bootcamp Online",
+        "skills": [
+          "SQL",
+          "Python",
+          "Machine Learning",
+          "Git",
+          "Data Visualization",
+          "Data Structures",
+          "Data Science",
+          "Data Analytics ",
+          "Cloud Computing",
+          "Business Intelligence",
+          "Artificial Intelligence",
+          "Algorithms"
+        ],
+        "description": "Explore the fundamentals of data science. From Pandas to Deep Learning, you\u2019ll finish the course knowing how to explore, clean and transform data into actionable insights and how to implement machine learning models from start to finish in a production environment, working in teams with the best-in-class tool belt."
+      },
+      {
+        "name": "Data Science Bootcamp - Part-time",
+        "skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Cloud Computing",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Git",
+          "Machine Learning",
+          "Python",
+          "SQL"
+        ],
+        "description": "Explore the fundamentals of data science. From Pandas to Deep Learning, you\u2019ll finish the course knowing how to explore, clean and transform data into actionable insights and how to implement machine learning models from start to finish in a production environment, working in teams with the best-in-class tool belt."
+      },
+      {
+        "name": "Data Science Bootcamp - Part-time Online",
+        "skills": [
+          "SQL",
+          "Python",
+          "Machine Learning",
+          "Git",
+          "Data Visualization",
+          "Data Structures",
+          "Data Science",
+          "Data Analytics ",
+          "Business Intelligence",
+          "Artificial Intelligence",
+          "Algorithms"
+        ],
+        "description": "Explore the fundamentals of data science. From Pandas to Deep Learning, you\u2019ll finish the course knowing how to explore, clean and transform data into actionable insights and how to implement machine learning models from start to finish in a production environment, working in teams with the best-in-class tool belt."
+      },
+      {
+        "name": "Growth & Data Automation Skill Course",
+        "skills": ["Growth Hacking", "Data Structures", "Python", "JavaScript"],
+        "description": "Discover how to automate data transfers between tools to create complex dashboards or automate tasks with Zapier, Make, n8n, and Fivetran. This course will cover the key concepts of automation with Zapier, as well as teach you how to build advanced workflows with Make. Additionally, we will introduce you to n8n, an open-source alternative for workflow automation, and show you how to centralize, organize, and visualize all of your data."
+      },
+      {
+        "name": "Python & Machine Learning Skill Course",
+        "skills": [
+          "Data Science",
+          "Data Analytics ",
+          "Artificial Intelligence",
+          "Algorithms",
+          "Python",
+          "Machine Learning"
+        ],
+        "description": "Make your data speak using Python and Jupiter. You\u2019ll learn how to manipulate your data more efficiently with Pandas Library and how to communicate your learnings with data visualization. Additionally, you\u2019ll learn the concepts behind Machine Learning and understand the cycle of an AI algorithm to deepen your analyses and make predictions. Finally, you\u2019ll learn how to implement Machine Learning algorithms."
+      },
+      {
+        "name": "Web Analytics & Tracking Skill Course",
+        "skills": ["Data Analytics ", "Digital Marketing"],
+        "description": "This course will teach you how to analyze and optimize website traffic and improve its performance with Google Analytics, Google Tag Manager & Looker Studio. You\u2019ll also learn all of the best practices for consulting, analyzing and managing feeds on a daily basis. Additionally, you\u2019ll learn how to define your KPIs and set up the tagging plan to monitor them efficiently. "
+      },
+      {
+        "name": "Web Development Bootcamp - Full-time",
+        "skills": [
+          "CSS",
+          "Front End",
+          "Git",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "MySQL",
+          "Rails",
+          "Ruby",
+          "Sinatra",
+          "SQL"
+        ],
+        "description": "Learn to build web applications from scratch. Our immersive course will take you from beginner to junior software developer in a matter of week. At the end of the course, you\u2019ll know how to build a robust and user-friendly app and how to follow the right workflow to collaborate with other developers, designers and product managers."
+      },
+      {
+        "name": "Web Development Bootcamp Online",
+        "skills": [
+          "SQL",
+          "Sinatra",
+          "Ruby",
+          "Rails",
+          "MySQL",
+          "jQuery",
+          "JavaScript",
+          "HTML",
+          "GitHub",
+          "Git",
+          "Front End",
+          "CSS"
+        ],
+        "description": "Learn to build web applications from scratch. Our immersive course will take you from beginner to junior software developer in a matter of week. At the end of the course, you\u2019ll know how to build a robust and user-friendly app and how to follow the right workflow to collaborate with other developers, designers and product managers."
+      },
+      {
+        "name": "Web Development Bootcamp - Part-time",
+        "skills": [
+          "GitHub",
+          "CSS",
+          "Front End",
+          "Git",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "MySQL",
+          "Rails",
+          "Ruby",
+          "Sinatra",
+          "SQL"
+        ],
+        "description": "Learn to build web applications from scratch. Our immersive course will take you from beginner to junior software developer in a matter of week. At the end of the course, you\u2019ll know how to build a robust and user-friendly app and how to follow the right workflow to collaborate with other developers, designers and product managers."
+      },
+      {
+        "name": "Web Development Bootcamp - Part-time Online",
+        "skills": [
+          "SQL",
+          "Sinatra",
+          "Ruby",
+          "Rails",
+          "MySQL",
+          "jQuery",
+          "JavaScript",
+          "HTML",
+          "GitHub",
+          "Git",
+          "Front End",
+          "CSS"
+        ],
+        "description": "Learn to build web applications from scratch. Our immersive course will take you from beginner to junior software developer in a matter of week. At the end of the course, you\u2019ll know how to build a robust and user-friendly app and how to follow the right workflow to collaborate with other developers, designers and product managers."
+      }
+    ],
+    "locations": [
+      "Amsterdam",
+      "Bali",
+      "Barcelona",
+      "Berlin",
+      "Bordeaux",
+      "Brussels",
+      "Buenos Aires",
+      "Cape Town",
+      "Casablanca",
+      "Cologne",
+      "Dubai",
+      "Lausanne",
+      "Lille",
+      "Lisbon",
+      "London",
+      "Lyon",
+      "Madrid",
+      "Marseille",
+      "Mauritius",
+      "Melbourne",
+      "Mexico City",
+      "Montreal",
+      "Munich",
+      "Nantes",
+      "Nice",
+      "Online",
+      "Paris",
+      "Porto",
+      "Rennes",
+      "Rio de Janeiro",
+      "Santiago",
+      "Sao Paulo",
+      "Shanghai",
+      "Singapore",
+      "Sydney",
+      "Tokyo",
+      "Toulouse",
+      "Zurich"
+    ]
+  },
+  {
+    "bootcampName": "Product Gym",
+    "courses": [
+      {
+        "name": "Product Management",
+        "skills": ["Product Management"],
+        "description": "Our Product Management career community membership gives you access to our 20+ live and recorded classes. Members also receive access to our suite of career services including resume, interview, case study and negotiation coaching, together with our tested job search strategy and supportive community."
+      },
+      {
+        "name": "QA Engineering (SDET)",
+        "skills": [
+          "Scrum",
+          "REST",
+          "Quality Assurance Testing",
+          "JavaScript",
+          "Java",
+          "GitHub",
+          "DevOps",
+          "Data Engineering",
+          "Agile"
+        ],
+        "description": "The QA Automation program is a 15-week course that teaches you the skills needed to become a Software Engineer in Test (SDET) or QA Engineer. As a student, you will work on industry-standard projects using JavaScript, Selenium Webdriver, Github, Postman and more. You will learn how to write test cases using BDD, investigate bugs or crashes on web and mobile apps and use JavaScript programming to automate your own test cases. Near the end of the course, you will build your portfolio with industry-level projects that employers are looking for. This will be in the form of a two-week sprint, where you and your team will assign each other tasks and work to complete them within the time period. The purpose of this is to build your portfolio, while preparing you for the workforce. This course is open to all experience levels."
+      }
+    ],
+    "locations": ["Online"]
+  },
+  {
+    "bootcampName": "Makers Academy",
+    "courses": [
+      {
+        "name": "Web Development",
+        "skills": [
+          "Ruby",
+          "Rails",
+          "CSS",
+          "JavaScript",
+          "HTML",
+          "Front End",
+          "Git",
+          "jQuery",
+          "Node.js",
+          "Sinatra",
+          "AngularJS",
+          "SQL",
+          "React.js"
+        ],
+        "description": "The course is designed for everyone, whether a complete novice, a computer science graduate wanting practical experience, or an entrepreneur sick of looking for a technical co-founder. Students learn an incredible amount, including: Ruby on Rails; HTML5 and CSS3; Agile and Lean Development; JavaScript, jQuery and NodeJS; along with Git and Heroku, and software design best practices. Students learn through first hand experience, community-driven classrooms, pairing, and project-based work. "
+      }
+    ],
+    "locations": ["Bristol", "Cambridge", "London", "Manchester", "Online"]
+  },
+  {
+    "bootcampName": "Skillcrush",
+    "courses": [
+      {
+        "name": "(1) Break Into Tech Program + Job Guarantee: Front End Developer Track",
+        "skills": [
+          "REST",
+          "React.js",
+          "Quality Assurance Testing",
+          "GitHub",
+          "CSS",
+          "Front End",
+          "Git",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "Mobile",
+          "Wordpress"
+        ],
+        "description": "Our Front End Developer course is an online, self-paced, comprehensive job training program that includes 180 days of career support and is backed by our job guarantee. \r\n\r\nIn as little as three months, you\u2019ll go from zero coding knowledge to being a job ready front end developer with skills in HTML, CSS, JavaScript, Git, and React with our accessible, fun, and expertly designed coursework \u2014 which includes tons of real-world practice and 1-on-1 instructor support and mentorship. \r\n\r\nOnce you\u2019re job ready, you\u2019ll enter our program\u2019s Get Hired portion, where you\u2019ll receive 180 days of job search support, including 1-on-1 coaching on your resume, portfolio, and interviewing skills. \r\n\r\nYou\u2019ll also learn our unusual \u2014 but extremely effective \u2014 job search strategy, attend weekly group coaching and communicate with your career coaches and fellow job seekers via Slack and email, and have the opportunity to talk to Skillcrush employer hiring partners. \r\n\r\nWe\u2019re so confident in our process that we'll fully refund your entire program fee if you haven\u2019t received a qualified offer within 180 days of starting your job search."
+      },
+      {
+        "name": "(2) Break Into Tech Program + Job Guarantee: UI/UX Designer Track",
+        "skills": ["HTML", "Design", "CSS"],
+        "description": "Our UI/UX Designer course is an online, self-paced, comprehensive job training program that includes 180 days of career support and is backed by our job guarantee. \r\n\r\nIn as little as three months, you\u2019ll go from zero design knowledge to being a job ready designer with skills in user experience research and design, web and visual design fundamentals, branding and identity design, and HTML and CSS with our accessible, fun, and expertly designed coursework \u2014 which includes tons of real-world practice and 1-on-1 instructor support and mentorship. \r\n\r\nOnce you\u2019re job ready, you\u2019ll enter our program\u2019s Get Hired portion, where you\u2019ll receive 180 days of job search support, including 1-on-1 coaching on your resume, portfolio, and interviewing skills. \r\n\r\nYou\u2019ll also learn our unusual \u2014 but extremely effective \u2014 job search strategy, attend weekly group coaching and communicate with your career coaches and fellow job seekers via Slack and email, and have the opportunity to talk to Skillcrush employer hiring partners. \r\n\r\nWe\u2019re so confident in our process that we'll fully refund your entire program fee if you haven\u2019t received a qualified offer within 180 days of starting your job search."
+      }
+    ],
+    "locations": ["Online"]
+  },
+  {
+    "bootcampName": "Tech Elevator",
+    "courses": [
+      {
+        "name": "Full-Time Java Coding Bootcamp - In-person",
+        "skills": [
+          "CSS",
+          "HTML",
+          "Java",
+          "JavaScript",
+          "Git",
+          "Front End",
+          "Agile",
+          "MVC",
+          "REST",
+          "Scrum",
+          "SQL",
+          "Income Share Agreement (ISA",
+          "Sallie Mae, Ascent or HFLA",
+          "local workforce grants",
+          "Veteran's Benefits"
+        ],
+        "description": "Course topics include an Introduction to Programming in Java, Client-Server Programming in Java, and Client Side Web Programming (Git, Java, SQL, Spring Boot, REST, JSON, HTML, CSS, JavaScript, and Vue.js)."
+      },
+      {
+        "name": "Full-Time Java Coding Bootcamp - Remote",
+        "skills": [
+          "CSS",
+          "Git",
+          "HTML",
+          "Java",
+          "JavaScript",
+          "Front End",
+          "Agile",
+          "MVC",
+          "REST",
+          "Scrum",
+          "SQL",
+          "Income Share Agreement (ISA",
+          "Sallie Mae, Ascent or HFLA",
+          "local workforce grants",
+          "Veteran's Benefits"
+        ],
+        "description": "Course topics include an Introduction to Programming in Java, Client-Server Programming in Java, and Client Side Web Programming (Git, Java, SQL, Spring Boot, REST, JSON, HTML, CSS, JavaScript, and Vue.js)."
+      },
+      {
+        "name": "Full-Time .NET/C# Coding Bootcamp - In-person",
+        "skills": [
+          "C#",
+          "CSS",
+          "Git",
+          "HTML",
+          ".NET",
+          "SQL",
+          "ASP.NET",
+          "MVC",
+          "MySQL",
+          "Agile",
+          "JavaScript",
+          "REST",
+          "Scrum",
+          "Income Share Agreement (ISA",
+          "Sallie Mae, Ascent or HFLA",
+          "local workforce grants",
+          "Veteran's Benefits"
+        ],
+        "description": "Course topics include an Introduction to Programming in C#, Client-Server Programming in .NET, and Client Side Web Programming (Git, C#, SQL, ASP.NET Web API, REST, JSON, HTML, CSS, JavaScript, and Vue.js)."
+      },
+      {
+        "name": "Part-Time Java Coding Bootcamp - Remote",
+        "skills": [
+          "SQL",
+          "Scrum",
+          "REST",
+          "MVC",
+          "JavaScript",
+          "Java",
+          "HTML",
+          "Git",
+          "Front End",
+          "CSS",
+          "Agile",
+          "Sallie Mae, Ascent\u00a0",
+          "local workforce grants"
+        ],
+        "description": "Course topics include an Introduction to Programming in Java, Client-Server Programming in Java, and Client Side Web Programming (Git, Java, SQL, Spring Boot, REST, JSON, HTML, CSS, JavaScript, and Vue.js)."
+      }
+    ],
+    "locations": [
+      "Cincinnati",
+      "Cleveland",
+      "Columbus",
+      "Detroit",
+      "Houston",
+      "Jersey City",
+      "Online",
+      "Philadelphia",
+      "Pittsburgh"
+    ]
+  },
+  {
+    "bootcampName": "Actualize",
+    "courses": [
+      {
+        "name": "Web Development",
+        "skills": [
+          "AngularJS",
+          "CSS",
+          "Git",
+          "HTML",
+          "JavaScript",
+          "Rails",
+          "Ruby",
+          "SQL"
+        ],
+        "description": null
+      }
+    ],
+    "locations": ["Chicago", "Online"]
+  },
+  {
+    "bootcampName": "Flatiron School",
+    "courses": [
+      {
+        "name": "Cybersecurity Engineering ",
+        "skills": [
+          "Cryptography",
+          "Ethical Hacking",
+          "Linux",
+          "Mobile Security",
+          "Network Security",
+          "Penetration Testing",
+          "Virtualization",
+          "Ascent",
+          "Climb"
+        ],
+        "description": "Our Cybersecurity Engineering program will teach you real skills using real tools, including our custom-built \u2018Cyber Range\u2019 lab environment. Thanks to our proven, employer-oriented curriculum, you\u2019ll graduate prepared for a range of vital tier 1+ cybersecurity roles \u2014 like security engineer or penetration tester \u2014 in months, instead of years.\r\n"
+      },
+      {
+        "name": "Data Science ",
+        "skills": [
+          "Algorithms",
+          "Data Science",
+          "Data Structures",
+          "Machine Learning",
+          "Python",
+          "R",
+          "SQL",
+          "Data Engineering",
+          "Data Visualization",
+          "Artificial Intelligence",
+          "Ascent",
+          "Climb"
+        ],
+        "description": "The Data Science course provides students with the knowledge, skills, and experience to get a job as a data scientist \u2013 which requires a mix of software engineering, statistical understanding, and the ability to apply both skills in new and challenging domains. The program will teach students to gather data, apply statistical analysis to answer questions with that data, and make their insights and information as actionable as possible.\r\n\r\nOur pedagogy ensures not only job readiness for today\u2019s market, but the aptitude and skills to keep learning and stay relevant.\r\n\r\nAt Flatiron School, students learn by building. Students will come away with an advanced Portfolio Project to demonstrate their technical proficiency and creativity to current or future job managers and hiring leads.\r\n"
+      },
+      {
+        "name": "Product Design (UX/UI Design)",
+        "skills": ["Design", "Ascent", "Climb"],
+        "description": "Flatiron School\u2019s Product Design course takes a modern approach to teaching digital design - one which is frequently validated by hiring managers and that will leave students fully prepared to pursue a variety of career paths, including UX Designer, UI Designer, Product Designer, or Full Stack Developer.\r\n\r\nFlatiron School\u2019s  Product Design course focuses on designing digital products, such as websites or mobile applications. Flatiron School course is crafted so anyone and everyone can be successful, regardless of skill level, artistic background, or coding knowledge. The course starts with ethical and inclusive design principles then progresses through UX and UI concepts, which includes instruction on cutting-edge tools like Figma. Students will end the course with a portfolio of project work intended to catch the eye of hiring managers.\r\n\r\n\r\n Flatiron School Product Design students rave about the structure, support, and camaraderie throughout the course. "
+      },
+      {
+        "name": "Software Engineering ",
+        "skills": [
+          "CSS",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "Node.js",
+          "Rails",
+          "React.js",
+          "Ruby",
+          "Sinatra",
+          "SQL",
+          "AngularJS",
+          "Algorithms",
+          "Git",
+          "GitHub",
+          "jQuery",
+          "Ascent",
+          "Climb"
+        ],
+        "description": "Being a software engineer requires more than knowing how to code or build a web app. Over 15 challenging weeks on Flatiron School\u2019s students learn to think, and build, like software engineers \u2014 from developing coding proficiency to gaining an understanding of how products are designed and managed. \r\n\r\nStudents develop key skills through interactive labs, lectures, and close collaboration, showcasing progress through Portfolio Projects. While the bulk of the material covered encompasses the Ruby and JavaScript ecosystems, we carefully designed our curriculum to prepare students to launch software engineering careers, independent of any specific language or technology. \r\n\r\nBy the completion of the program, students have done much more than simply build technical skills: they have maintained technical blogs to show they can credibly talk tech; they have become a part of the tech community; they have amassed an impressive portfolio of unique, functional web applications to show employers as they enter the job-search phase with the support of our Career Services team."
+      }
+    ],
+    "locations": ["Denver", "New York City", "Online"]
+  },
+  {
+    "bootcampName": "Codesmith",
+    "courses": [
+      {
+        "name": "CS Prep ",
+        "skills": ["Front End", "JavaScript", "Algorithms", "jQuery"],
+        "description": "CS Prep is a 2-week live-online part-time program that builds your core JavaScript knowledge, improves your technical communication, and develops your engineering toolkit so you can solve real-world problems. The program includes daily problem-solving workshops and a passionate coding community to help you prepare for top coding bootcamps, such as Codesmith's selective Software Engineering Immersive programs."
+      },
+      {
+        "name": "Full-Time Remote Software Engineering Immersive",
+        "skills": [
+          "Algorithms",
+          "AngularJS",
+          "CSS",
+          "Data Structures",
+          "DevOps",
+          "Express.js",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "Linux",
+          "Machine Learning",
+          "Mobile Security",
+          "MongoDB",
+          "MySQL",
+          "Node.js",
+          "Python",
+          "React.js",
+          "Scrum",
+          "SQL"
+        ],
+        "description": "The 13-week Full-Time Remote Software Engineering Immersive Program (offered in Pacific, Central, and Eastern time) is an advanced residency designed to help individuals launch a meaningful, high-level career in software engineering. The expertly designed curriculum teaches full-stack JavaScript and computer science, and is immersed in modern web technologies, such as React and Node.js. The rigorous curriculum is continuously adapted to focus on the most relevant and in-demand technologies. Codesmith offers an extensive career support program that guides students through the hiring process, including interview strategies, portfolio development, and post-graduation check-ins. Plus, the supportive Codesmith community encourages learners to tackle unique and unfamiliar problems, important when preparing for the ever-changing tech landscape. By the end of the 13-week Immersive, you will be an autonomous engineer, ready to make an impact on innovative tech companies worldwide."
+      },
+      {
+        "name": "Global Part-Time Remote Software Engineering Immersive",
+        "skills": [
+          "Algorithms",
+          "AngularJS",
+          "CSS",
+          "Data Structures",
+          "DevOps",
+          "Express.js",
+          "Front End",
+          "Git",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "Linux",
+          "Machine Learning",
+          "Mobile Security",
+          "MongoDB",
+          "MySQL",
+          "Node.js",
+          "Python",
+          "React.js",
+          "Scrum",
+          "SQL",
+          "GitHub"
+        ],
+        "description": "The 38-week Part-Time Remote Software Engineering Immersive Program (offered in Pacific time) is an advanced residency designed to help individuals launch a meaningful, high-level career in software engineering. While the Full-Time Immersive is an excellent option for someone looking to start a new career on an accelerated timeline, to better accommodate future engineers with different professional commitments or personal responsibilities, Codesmith offers the Part-Time Remote Immersive. The expertly designed curriculum teaches full stack JavaScript and computer science, and is immersed in modern web technologies, such as React and Node.js. The rigorous curriculum is the same as the full-time program, and is continuously adapted to focus on the most relevant and in-demand technologies. Codesmith offers an extensive career support program that guides students through the hiring process, including interview strategies, portfolio development, and post-graduation check-ins. Plus, the supportive Codesmith community encourages learners to tackle unique and unfamiliar problems, important when preparing for the ever-changing tech landscape. By the end of the program, you will be an autonomous engineer, ready to make an impact on innovative tech companies worldwide."
+      },
+      {
+        "name": "JavaScript for Beginners ",
+        "skills": ["JavaScript"],
+        "description": "JavaScript for Beginners is a part-time, remote program consisting of two consecutive Saturday sessions. The program is designed to be your introduction to coding, so no prior experience is required. The curriculum for JavaScript for Beginners is carefully constructed to give both a broad introduction to 'what programming is' as well as cover important JavaScript concepts so you'll be able to solve challenges and build projects with confidence. The program offers learners a launching point to continue their JavaScript studies, prepare for CS Prep, and build a future in software engineering."
+      },
+      {
+        "name": "NYC Onsite Software Engineering Immersive",
+        "skills": [
+          "AngularJS",
+          "CSS",
+          "Express.js",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "Machine Learning",
+          "MySQL",
+          "Node.js",
+          "React.js",
+          "SQL",
+          "Algorithms",
+          "Data Structures",
+          "Git",
+          "Linux",
+          "Mobile Security",
+          "MongoDB",
+          "Python",
+          "DevOps",
+          "Scrum",
+          "GitHub"
+        ],
+        "description": "The 13-week Full-Time NYC Onsite Software Engineering Immersive Program is an advanced residency designed to help individuals launch a meaningful, high-level career in software engineering. The expertly designed curriculum teaches full stack JavaScript and computer science, and is immersed in modern web technologies, such as React and Node.js. The rigorous curriculum is continuously adapted to focus on the most relevant and in-demand technologies. Codesmith offers an extensive career support program that guides students through the hiring process, including interview strategies, portfolio development, and post-graduation check-ins. Plus, the supportive Codesmith community encourages learners to tackle unique and unfamiliar problems, important when preparing for the ever-changing tech landscape. By the end of the 13-week Immersive, you will be an autonomous engineer, ready to make an impact on innovative tech companies worldwide."
+      }
+    ],
+    "locations": [
+      "Atlanta",
+      "Birmingham",
+      "Boston",
+      "Chicago",
+      "Dallas",
+      "Houston",
+      "London",
+      "Los Angeles",
+      "New York City",
+      "Online",
+      "Philadelphia",
+      "Phoenix",
+      "Portland",
+      "Seattle"
+    ]
+  },
+  {
+    "bootcampName": "Edureka",
+    "courses": [
+      {
+        "name": "AI & Machine Learning",
+        "skills": [
+          "Artificial Intelligence",
+          "Data Structures",
+          "Machine Learning",
+          "Python"
+        ],
+        "description": "Edureka AI and Machine Learning bootcamp curriculum is a Post Graduate Diploma Program developed in conjunction with E&ICT Academy and NIT Warangal faculty. The required time commitment is 8-10 hours per week. Live classes are held on weekends. AI & Machine Learning bootcamp students will learn Python, predictive analysis, natural language processing, and deep learning. Bootcamp students will complete an industry grade capstone project for their portfolio. \r\n \r\nLearners from diverse backgrounds are welcome to apply for the AI and Machine Learning bootcamp, and no prior knowledge of AI or Machine Learning is required. Bootcamp applicants should be graduates with degrees such as Bsc, BCA, MCA, B.E or B.Tech and must have studied PCM in 10+2. After submitting an online application, shortlisted applicants will be invited for an interview conducted by an Edureka faculty member.  \r\n \r\nAI and Machine Learning bootcamp students receive career assistance including interview practice and profile building, job placement services, and access to five job search portals powered by Edureka hiring partners. Students also receive around-the-clock industry expert support.    \r\n \r\nAI and Machine Learning bootcamp students will receive an industry-recognized certification from the E&ICT Academy, National Institute of Technology, Warangal and Edureka. "
+      },
+      {
+        "name": "Full Stack Web Development",
+        "skills": [
+          "CSS",
+          "Express.js",
+          "HTML",
+          "JavaScript",
+          "MongoDB",
+          "Node.js"
+        ],
+        "description": "Edureka Full Stack Web Development students will learn the MERN stack, Javascript, React, Node.js, and MongoDB. Bootcamp students will also learn to build APIs, product search pages, and product detail pages. The required time commitment is 20-30 hours per week. \r\n \r\nEdureka Full Stack Web Development bootcamp is designed for students or recent graduates interested in web development. Applicants are required only to have basic knowledge of one programming language. \r\n \r\nEdureka Full Stack Web Development students receive guidance on how to get a paid internship or full time job offer with Edureka or other organizations. Students may be referred to job offers within Edureka or suitable hiring partners, but employment is not guaranteed. \r\n \r\nAll Edureka Full Stack Web Development bootcamp students will receive a Course Completion Certificate. Students who build their own product within the timeline will receive an Edureka Internship Certificate, and those who build the best performing product will be awarded an Edureka Super Intern Certificate. These students will also be given the opportunity to be an Edureka teaching assistant. "
+      }
+    ],
+    "locations": ["Online"]
+  }
+]
