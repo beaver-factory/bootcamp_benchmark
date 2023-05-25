@@ -1,8 +1,11 @@
 venv:
 	python3 -m venv env
 
-install: venv
+install:
 	pip3 install -r requirements.txt
+
+lint:
+	flake8 --exclude=env
 
 unit_test:
 	pytest -v
