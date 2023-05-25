@@ -1,6 +1,6 @@
 import json
 import azure.functions as func
-from app import app
+from .app import app
 
 
 def main(mytimer: func.TimerRequest, outBlob: func.Out[bytes]) -> None:
