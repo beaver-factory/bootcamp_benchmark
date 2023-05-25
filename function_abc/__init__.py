@@ -3,6 +3,7 @@ import json
 import os
 import psycopg2
 
+
 def main(inBlob: func.InputStream):
     # read data from blob and update string
     jsonData = json.loads(inBlob.read())
@@ -19,8 +20,7 @@ def main(inBlob: func.InputStream):
             ID SERIAL PRIMARY KEY,
             abc_string VARCHAR(50)
         );
-        '''
-    )
+        ''')
 
     cur.execute("INSERT INTO abc (abc_string) VALUES (%s);", (abc_string,))
 
@@ -30,4 +30,3 @@ def main(inBlob: func.InputStream):
     # close it all down
     cur.close()
     conn.close()
-

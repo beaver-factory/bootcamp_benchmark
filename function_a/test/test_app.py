@@ -1,5 +1,5 @@
-import pytest
 from function_a.app import app
+
 
 def test_app():
     output = app()
