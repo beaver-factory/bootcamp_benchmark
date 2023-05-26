@@ -1,16 +1,15 @@
 import azure.functions as func
-import json
+import pandas as pd
+from .app import app
 
 
 def main(inBlob: func.InputStream, outBlob: func.Out[bytes]):
+    # consider refactoring conversion from dataframe to json and then df to csv into another function
     # read json data from blob
-    jsonData = json.loads(inBlob.read())
+    input_df = pd.read_json(inBlob.read())
 
-    # update value
-    jsonData['value'] = 'ab'
+    output_df = app(input_df)
 
-    # jsonify it and set data in new blob
-    # Note: this will completely overwrite the container.
-    # You would need to append data to the container then set it in reality.
-    mod_data = json.dumps(jsonData)
-    outBlob.set(mod_data.encode('utf-8'))
+    output = output_df.to_csv()
+
+    outBlob.set(output.encode('utf-8'))
