@@ -6,7 +6,7 @@ from .app import app
 def main(inBlob: func.InputStream, outBlob: func.Out[bytes]):
     # consider refactoring conversion from dataframe to
     # json and then df to csv into another function
-
+    print(inBlob.read())
     # read json data from blob
     input_df = pd.read_json(inBlob.read())
 
