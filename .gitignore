@@ -1,5 +1,9 @@
 .venv
 venv
+*/**/__pycache__
+env
+*.pyc
+test_output_*
 */__pycache__
 env
 *.pyc

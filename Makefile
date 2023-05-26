@@ -5,7 +5,7 @@ install:
 	pip3 install -r requirements.txt
 
 lint:
-	flake8 --exclude=env
+	flake8 --exclude=venv --ignore E501
 
 unit_test:
 	pytest -v
