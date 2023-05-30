@@ -26,3 +26,10 @@ ifdef v
 else
 	$(error TAG_VERSION is undefined)
 endif
+
+func:
+ifdef dir
+	func new --name $(dir) && bash script/funcs.sh $(dir)
+else
+	$(error directory is undefined)
+endif

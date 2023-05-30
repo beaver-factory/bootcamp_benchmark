@@ -65,3 +65,7 @@ make tag v=[type]
 ```
 
 Replace [type] with major, minor, or patch depending on the nature of the changes you've made. This will create and publish a new SemVer tag for your current state of the project.
+
+## Adding a function
+
+To add a new function to the project, please refer to [an_example_function](an_example_function/readme.md).
