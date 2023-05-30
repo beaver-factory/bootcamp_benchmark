@@ -1,0 +1,19 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "inBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "%BlobContainerPrefix%0/{blobName}",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "outBlob",
+      "type": "blob",
+      "direction": "out",
+      "path": "%BlobContainerPrefix%1/processed_course_data.csv",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
