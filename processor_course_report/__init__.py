@@ -1,14 +1,10 @@
 import azure.functions as func
 import pandas as pd
 from .app import app
-import logging
 
 
 def main(inBlob: func.InputStream, outBlob: func.Out[bytes]):
-    # consider refactoring conversion from dataframe to
-    # json and then df to csv into another function
-    logging.info(inBlob.read())
-    # read json data from blob
+
     input_df = pd.read_json(inBlob.read())
 
     output_df = app(input_df)

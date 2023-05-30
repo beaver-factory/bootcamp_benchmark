@@ -6,7 +6,8 @@
       "type": "blobTrigger",
       "direction": "in",
       "path": "%BlobContainerPrefix%0/{blobName}",
-      "connection": "AzureWebJobsStorage"
+      "connection": "AzureWebJobsStorage",
+      "dataType": "binary"
     },
     {
       "name": "outBlob",

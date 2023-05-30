@@ -3,6 +3,7 @@ exclude =
     venv/*
     env/*
     .venv/*
+    ./env/*
 
 ignore = 
     E501
