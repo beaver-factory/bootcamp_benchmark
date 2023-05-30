@@ -1,0 +1,8 @@
+[flake8]
+exclude =
+    venv/*
+    env/*
+    .venv/*
+
+ignore = 
+    E501
