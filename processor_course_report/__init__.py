@@ -1,7 +1,6 @@
 import azure.functions as func
 import pandas as pd
 from .app import app
-import logging
 
 
 def main(inBlob: func.InputStream, outBlob: func.Out[str]):
