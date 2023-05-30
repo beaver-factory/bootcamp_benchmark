@@ -20,6 +20,3 @@ def app(course_dataframe):
         'provider_tracks').reset_index().drop(['index'], axis=1)
 
     return exploded_tracks
-
-
-app()
