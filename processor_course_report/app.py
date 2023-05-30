@@ -11,6 +11,13 @@ def find_time_commitment(x):
 
 
 def process_scraped_data(course_dataframe):
+    """
+    Returns a processed DataFrame.
+        Argument:
+        course_dataframe(DataFrame): A pandas DataFrame of data structure found in template_data_structure.json
+        Return:
+        processed_dataframe(DataFrame): A pandas DataFrame containing processed course data
+    """
     required_fields = [
         'provider_courses',
         'course_name'
@@ -21,7 +28,7 @@ def process_scraped_data(course_dataframe):
     for field in required_fields:
         if field not in course_dataframe:
             raise Exception('Missing required field')
-        
+
     if type(course_dataframe.provider_courses != 'list'):
         raise Exception('Field is wrong datatype')
 
@@ -32,7 +39,8 @@ def process_scraped_data(course_dataframe):
     concat_normalised_df = pd.concat([df, normalised_df], axis=1).drop(
         ['provider_courses', 'provider_locations'], axis=1)
 
-    concat_normalised_df['time'] = concat_normalised_df.apply(lambda x: find_time_commitment(x), axis=1)
+    concat_normalised_df['time'] = concat_normalised_df.apply(
+        lambda x: find_time_commitment(x), axis=1)
 
     exploded_locations = concat_normalised_df.explode(
         'course_skills').reset_index().drop(['index', 'level_0'], axis=1)
