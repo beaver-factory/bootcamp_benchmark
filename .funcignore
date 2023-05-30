@@ -1,5 +1,7 @@
 .venv
+venv
+env
+
 .vscode
 local.settings.json
-venv
 an_example_function
