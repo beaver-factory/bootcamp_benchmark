@@ -1,6 +1,6 @@
 import azure.functions as func
 import pandas as pd
-from .app import app
+from .app import process_scraped_data
 
 
 def main(inBlob: func.InputStream, outBlob: func.Out[bytes]):

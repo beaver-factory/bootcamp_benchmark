@@ -10,7 +10,21 @@ def find_time_commitment(x):
         return None
 
 
-def app(course_dataframe):
+def process_scraped_data(course_dataframe):
+    required_fields = [
+        'provider_courses',
+        'course_name'
+        'course_skills',
+        'provider_tracks'
+    ]
+
+    for field in required_fields:
+        if field not in course_dataframe:
+            raise Exception('Missing required field')
+        
+    if type(course_dataframe.provider_courses != 'list'):
+        raise Exception('Field is wrong datatype')
+
     df = course_dataframe.explode('provider_courses').reset_index()
 
     normalised_df = pd.json_normalize(df.provider_courses)
