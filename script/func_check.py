@@ -4,6 +4,7 @@ excluded_directories = ['script', 'env']
 
 valid_directory_prefixes = ['collector_', 'processor_', 'loader_']
 
+
 def check_directory_naming():
     current_directory = os.getcwd()
 
@@ -20,13 +21,14 @@ def check_directory_naming():
             invalid_directories.append(directory)
 
     if len(invalid_directories) > 0:
-        print('\nInvalid directories found:\n')
+        print('\nInvalid directories:\n')
         for directory in invalid_directories:
             print(directory)
-        print('\nPlease rename them to start with one of the following prefixes:\n')
+        print('\nPlease use the following prefixes:\n')
         for prefix in valid_directory_prefixes:
             print(prefix)
 
         exit(1)
+
 
 check_directory_naming()
