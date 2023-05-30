@@ -6,3 +6,4 @@ scrapyscript==1.1.5
 pipreqs==0.4.13
 flake8==6.0.0
 pytest==7.3.1
+azure-functions==1.14.0

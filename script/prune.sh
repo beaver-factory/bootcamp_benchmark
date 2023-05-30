@@ -4,7 +4,7 @@
 pipreqs ./ --ignore venv --savepath requirements2.txt
 
 # dev dependencies
-declare -a dev_dependencies=("pipreqs==0.4.13" "flake8==6.0.0" "pytest==7.3.1")
+declare -a dev_dependencies=("pipreqs==0.4.13" "flake8==6.0.0" "pytest==7.3.1", "azure-functions==1.14.0")
 
 # diff the two requirements files
 diff --changed-group-format='%<' --unchanged-group-format='' requirements.txt requirements2.txt > temp_requirements.txt
