@@ -17,10 +17,16 @@ Before getting started, make sure you have [Python 3](https://www.python.org/dow
 After cloning the project, you should install the required dependencies. You can do this with the following command:
 
 ```bash
-make install
+make setup
 ```
 
 This command will use pip3 to install the dependencies listed in the `requirements.txt` file.
+
+## Adding dependencies
+
+```bash
+make dependency
+```
 
 ## Linting
 

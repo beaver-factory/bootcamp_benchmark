@@ -24,6 +24,9 @@ jobs:
           python-version: 3.8
           cache: "pip"
 
+      - name: prune dependencies
+        run: make prune
+
       - name: install dependencies
         shell: bash
         run: pip install -r requirements.txt

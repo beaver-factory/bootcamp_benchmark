@@ -134,3 +134,4 @@ webencodings==0.5.1
 websocket-client==1.5.1
 widgetsnbextension==4.0.7
 zope.interface==6.0
+pipreqs==0.4.13
