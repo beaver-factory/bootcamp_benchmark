@@ -5,6 +5,12 @@ import os
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from unittest.mock import patch, Mock
 from io import BytesIO
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# bug fix to prevent pytest from crashing
+os.environ["no_proxy"] = "*"
 
 
 @pytest.fixture(scope="session", autouse=True)
