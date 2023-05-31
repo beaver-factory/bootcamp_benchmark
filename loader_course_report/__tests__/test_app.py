@@ -26,23 +26,8 @@ def create_test_database():
     conn.close()
 
 
-@pytest.fixture
-def mock_blob_inputstream():
-    def generate_inputstream(path):
-        with open(path, 'rb') as file:
-            test_csv_data = BytesIO(file.read())
-
-        mock_inputstream = Mock()
-        mock_inputstream.read.return_value = test_csv_data
-
-        with patch('azure.functions.InputStream', return_value=mock_inputstream):
-            return mock_inputstream
-
-    return generate_inputstream
-
-
-def test_db_table_creation(mock_blob_inputstream):
-    new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+def test_db_table_creation():
+    new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report.csv')
     load_course_report_into_db(new_inputstream)
 
     query = 'SELECT * FROM course_report;'
@@ -51,8 +36,8 @@ def test_db_table_creation(mock_blob_inputstream):
     assert len(results) > 0
 
 
-def test_db_correct_lengths(mock_blob_inputstream):
-    new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+def test_db_correct_lengths():
+    new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report.csv')
     load_course_report_into_db(new_inputstream)
 
     query = 'SELECT * FROM course_report;'
@@ -62,8 +47,8 @@ def test_db_correct_lengths(mock_blob_inputstream):
     assert len(results[0]) == 9
 
 
-def test_rows_are_different(mock_blob_inputstream):
-    new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+def test_rows_are_different():
+    new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report.csv')
     load_course_report_into_db(new_inputstream)
 
     query = 'SELECT DISTINCT * FROM course_report;'
@@ -73,31 +58,42 @@ def test_rows_are_different(mock_blob_inputstream):
     assert results[0] != results[1]
 
 
-def test_throws_column_exception(mock_blob_inputstream):
+def test_throws_column_exception():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report_incorrect_col_name.csv')
+        new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_incorrect_col_name.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'Invalid CSV column names'
 
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report_missing_column.csv')
+        new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_missing_column.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'Invalid CSV column names'
 
 
-def test_empty_blob2(mock_blob_inputstream):
+def test_empty_blob():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report_only_headers.csv')
+        new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_only_headers.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'CSV is empty'
 
+
 # helpers
+
+def generate_inputstream(path):
+    with open(path, 'rb') as file:
+        test_csv_data = BytesIO(file.read())
+
+    mock_inputstream = Mock()
+    mock_inputstream.read.return_value = test_csv_data
+
+    with patch('azure.functions.InputStream', return_value=mock_inputstream):
+        return mock_inputstream
 
 
 def db_results(query):
