@@ -119,10 +119,10 @@ def test_function_returns_full_time_if_course_name_contains_full_time():
 def test_function_returns_none_if_course_name_does_not_contain_part_or_full_time():
     df = pd.DataFrame([{"course_name": 'heres a string'}])
     result = find_time_commitment(df.iloc[0])
-    assert result == None
+    assert result is None
 
 
 def test_function_returns_none_if_course_name_is_NaN():
     df = pd.DataFrame([{"course_name": float('NaN')}])
     result = find_time_commitment(df.iloc[0])
-    assert result == None
+    assert result is None
