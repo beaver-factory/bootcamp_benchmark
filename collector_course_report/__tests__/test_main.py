@@ -14,7 +14,7 @@ class TestMain(unittest.TestCase):
 
         # arrange
         mytimer = MagicMock()
-        outBlob = MagicMock(spec=func.Out[bytes])
+        outBlob = MagicMock(spec=func.Out[bytes], autospec=True)
 
         # act
         collector_course_report.main(mytimer, outBlob)
