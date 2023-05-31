@@ -1,0 +1,1905 @@
+[
+  {
+    "provider_name": "{Pro}Coders",
+    "provider_locations": ["West Yorkshire"],
+    "provider_tracks": ["Full Stack Developer"],
+    "provider_courses": "hi",
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/pro-coders",
+      "timestamp": "2023-05-25 14:12:01.139926"
+    }
+  },
+  {
+    "provider_name": "Command Shift",
+    "provider_locations": [
+      "Birmingham",
+      "Bristol",
+      "Cambridge",
+      "Dublin",
+      "Edinburgh",
+      "Glasgow",
+      "Leeds",
+      "London",
+      "Manchester",
+      "Online",
+      "Wales"
+    ],
+    "provider_tracks": ["Full Stack Developer", "Front End Developer"],
+    "provider_courses": [
+      {
+        "course_name": "BOOTCAMP",
+        "course_skills": [
+          "MVC",
+          "Mobile",
+          "SQL",
+          "MySQL",
+          "GitHub",
+          "Front End",
+          "Data Structures",
+          "Algorithms",
+          "CSS",
+          "Express.js",
+          "HTML",
+          "Node.js",
+          "React.js",
+          "Agile",
+          "DevOps",
+          "Git",
+          "JavaScript",
+          "REST"
+        ],
+        "course_locations": "Online",
+        "course_description": "Gain a comprehensive understanding of how to build software in our 28-week immersive part-time bootcamp, and gain the skills you need to become a Junior Software Engineer.\r\n\r\nOur renowned BOOTCAMP course covers all aspects of software development. You'll learn about the tools you\u2019ll need to get started, before moving on to gain an in-depth understanding of the most popular programming language used in the industry: JavaScript.\r\n\r\nYou'll then build backend services (or APIs) that can store, manipulate and provide data, which you'll later use when building interactive frontend applications which are able to consume this data to create interactive experiences for users."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/command-shift",
+      "timestamp": "2023-05-25 14:12:01.151735"
+    }
+  },
+  {
+    "provider_name": "Codez Academy ",
+    "provider_locations": ["Wales"],
+    "provider_tracks": ["Front End Developer"],
+    "provider_courses": [
+      {
+        "course_name": "Digital Roots Scheme",
+        "course_skills": ["HTML", "JavaScript", "CSS"],
+        "course_locations": "Wales",
+        "course_description": "Students will learn three main languages: CSS, HTML and Javascript. They will also learn illustration and design through Adobe Suite.  Students receive the core skills needed to build websites from the ground up and are guided in building a relevant portfolio. Codez Academy provides an industry-standard experience to give students the best chance of gaining employment upon completion of the scheme."
+      },
+      {
+        "course_name": "Foundation Course in Front-end Development",
+        "course_skills": ["HTML", "CSS", "JavaScript"],
+        "course_locations": "Wales",
+        "course_description": "Students will create two websites (a 1-page website and a 5-page website) over the course of 12 weeks. Students will learn to code in HTML, CSS and Javascript. Students will experience the following: \r\n\r\n-Discover FTP (File Transfer Process) website servers\r\n-Develop link building skills\r\n-Learn the Bootstrap framework for responsive design\r\n-Learn how to font with Awesome icons\r\n-Learn how to use Photoshop\r\n-Learn how to implement contact forms"
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/codez-academy",
+      "timestamp": "2023-05-25 14:12:01.312105"
+    }
+  },
+  {
+    "provider_name": "School of Code",
+    "provider_locations": ["Birmingham", "Liverpool", "London", "Manchester"],
+    "provider_tracks": ["Full Stack Developer"],
+    "provider_courses": [
+      {
+        "course_name": "School of Code Bootcamp",
+        "course_skills": [
+          "C#",
+          "JavaScript",
+          "CSS",
+          "Design",
+          "Express.js",
+          "Front End",
+          "Git",
+          "HTML",
+          "MongoDB",
+          "Node.js",
+          "React.js",
+          "User Experience Design",
+          "Algorithms",
+          "Data Structures",
+          "SQL"
+        ],
+        "course_locations": "Birmingham",
+        "course_description": "Learn Full-Stack Web Development on our 16 week Coding Bootcamp, completely *free of charge*. The aim of the course is to get more and different types of people into technology, and we partner with great companies who want to see the same happen such as Packt Publishing to allow us to run our first Bootcamp for free."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/school-of-code",
+      "timestamp": "2023-05-25 14:12:01.452579"
+    }
+  },
+  {
+    "provider_name": "Coders Lab",
+    "provider_locations": [
+      "Amsterdam",
+      "Brussels",
+      "Bucharest",
+      "Edinburgh",
+      "Glasgow",
+      "Gothenburg",
+      "Jakarta",
+      "Krak\u00f3w",
+      "Liverpool",
+      "London",
+      "Madrid",
+      "Manchester",
+      "Online",
+      "Prague",
+      "Stockholm",
+      "Vienna",
+      "Warsaw"
+    ],
+    "provider_tracks": [
+      "Full Stack Developer",
+      "Data Science",
+      "Front End Developer"
+    ],
+    "provider_courses": [
+      {
+        "course_name": "Automation Tester",
+        "course_skills": ["Java", "Quality Assurance Testing"],
+        "course_locations": "Warsaw, Online, Krak\u00f3w, Edinburgh, Glasgow, Liverpool, Manchester, London, Gothenburg, Stockholm, Brussels, Amsterdam, Prague, Vienna, Jakarta, Madrid, Bucharest",
+        "course_description": "Do you think that if you have yet no clue about coding then entering the IT industry will take too long? Not necessarily! The Automation Tester course may be an answer. Within just two weeks you will become a Junior Test Automation Specialist. Throughout this course, you will learn how to create automated tests. You will learn about the tools and the work environment of a tester and go through a complete Scrum sprint while becoming familiar with testing practices. In addition, this course can be combined into a bundle with the Manual Tester course."
+      },
+      {
+        "course_name": "Java Developer",
+        "course_skills": [
+          "Java",
+          "JavaScript",
+          "jQuery",
+          "MySQL",
+          "SQL",
+          "Git",
+          "GitHub",
+          "HTML"
+        ],
+        "course_locations": "Warsaw, Vienna, Krak\u00f3w, Online, Edinburgh, Glasgow, Liverpool, Manchester, London, Gothenburg, Stockholm, Brussels, Amsterdam, Prague, Jakarta, Madrid, Bucharest",
+        "course_description": "During the course, you will learn Java for Internet applications from scratch. This universal language works for mobile applications to even banking systems. It\u2019s universal which gives you the possibility to enter quite an exciting career path. You will get to know Spring - one of the most important Java frameworks and the Hibernate library. Java will be perfect for you if you like logic puzzles and analyzing problems thoroughly."
+      },
+      {
+        "course_name": "JavaScript Developer",
+        "course_skills": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "jQuery",
+          "MongoDB",
+          "Node.js",
+          "React.js"
+        ],
+        "course_locations": "Warsaw, Jakarta, Madrid, Krak\u00f3w, Online, Vienna, Edinburgh, Glasgow, Liverpool, Manchester, London, Gothenburg, Stockholm, Brussels, Amsterdam, Prague, Bucharest",
+        "course_description": "JavaScript Developer\r\nOur JavaScript Developer bootcamp helps you to start with the basics. By focusing on front-end related issues, the course allows you to self-sufficiently develop responsive websites based on any given layout. You don\u2019t have to have any experience to join this program. This course is right for you if you are interested in running web applications and learning what they look like.  You will learn how to make your first website, understand advanced issues related to setting up elements on the page and how to breathe life into your static website using JavaScript. You will put your knowledge into practice. This is where you will learn how to combine the acquired knowledge and prepare the final project. It will be a showcase for your future employer."
+      },
+      {
+        "course_name": "Manual Tester",
+        "course_skills": [
+          "CSS",
+          "HTML",
+          "Linux",
+          "MySQL",
+          "Scrum",
+          "Agile",
+          "REST"
+        ],
+        "course_locations": "Warsaw, Jakarta, Krak\u00f3w, Online, Vienna, Edinburgh, Glasgow, Liverpool, Manchester, London, Gothenburg, Stockholm, Brussels, Amsterdam, Prague, Madrid, Bucharest",
+        "course_description": "If you consider entering the IT job market then manual testing is considered as the quickest way to achieve it. The Manual Tester course will help you to start your adventure with IT. You will learn about good practices in testing, the tools, and the work environment of a tester. You also take part in a full Scrum sprint. In a very short time, you will become a Junior Manual Tester, which will be confirmed by passing an exam and getting an ISTQB (International Software Testing Qualifications Board) certificate. "
+      },
+      {
+        "course_name": "Python Developer",
+        "course_skills": [
+          "Django",
+          "JavaScript",
+          "jQuery",
+          "MySQL",
+          "Python",
+          "CSS",
+          "Git",
+          "GitHub",
+          "HTML"
+        ],
+        "course_locations": "Warsaw, Jakarta, Krak\u00f3w, Online, Edinburgh, Glasgow, Liverpool, Manchester, London, Gothenburg, Stockholm, Brussels, Amsterdam, Prague, Vienna, Madrid, Bucharest",
+        "course_description": "Python developer bootcamp is a basic course that will lead you to create your first applications. By learning the back-end Python, you will know the secrets of writing the server-side code. You will be responsible for system logic and making sure that the front-end part receives the appropriate information to display correctly in the browser window. After completing the Python Developer course, you can develop your professional career towards a full-stack developer, software architect, or project manager. "
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/coders-lab",
+      "timestamp": "2023-05-25 14:12:01.809041"
+    }
+  },
+  {
+    "provider_name": "Nology",
+    "provider_locations": [
+      "Bristol",
+      "London",
+      "Manchester",
+      "Melbourne",
+      "Online",
+      "Sydney"
+    ],
+    "provider_tracks": ["Full Stack Developer", "Front End Developer"],
+    "provider_courses": [
+      {
+        "course_name": "ENTRY-LEVEL CLOUD ENGINEER",
+        "course_skills": [
+          "AngularJS",
+          "CSS",
+          "HTML",
+          "JavaScript",
+          "MongoDB",
+          "Agile",
+          "Front End",
+          "Git",
+          "jQuery",
+          "Express.js",
+          "MySQL",
+          "Node.js",
+          "Quality Assurance Testing",
+          "React.js",
+          "Scrum"
+        ],
+        "course_locations": "Online",
+        "course_description": "Spend 12 weeks (full-time) training with our instructors, learning the foundations you need to launch a thriving tech career. Upon successful completion of the training, we\u2019ll hire you as a _nologist. You\u2019ll then be deployed to work on-site with one of our clients (think Deutsche Bank, Admiral, and Accenture) as a Junior Software Developer or Junior Cloud Engineer depending on the training cohort you joined.\r\n\r\n\r\nTraining is open to any tech enthusiast, from any background. No previous coding experience or background in tech is necessary \u2013 just the passion and determination to learn!\r\n\r\n\r\nUpon successful completion of your training, you\u2019ll receive a conditional job placement. We\u2019ll deploy you as a Junior Cloud Engineer or a Junior Software Developer (dependent on the training cohort you joined) on an 18-month placement with one of our UK clients in an office-based, hybrid, or remote role. In response to market conditions and the rising cost of living, we have increased the _nologist salary range. This means that our new _nologist salaries will be as follows:\r\n0-6 months employed \u2013 \u00a326,000\r\n7-12 months employed \u2013 \u00a328,000\r\n13-18 months employed \u2013 \u00a330,000\r\n\r\n\r\nDuring your 18-month client placement you\u2019ll gain practical experience working on a variety of exciting projects as part of a real tech team. Our Talent Team will be on hand throughout your placement to support and provide further coaching, with check-ins at week 1 and week 2, and monthly thereafter."
+      },
+      {
+        "course_name": "ENTRY-LEVEL SOFTWARE ENGINEER",
+        "course_skills": [
+          "JavaScript",
+          "Java",
+          "HTML",
+          "Front End",
+          "Cloud Computing"
+        ],
+        "course_locations": "Online",
+        "course_description": "Spend 12 weeks (full-time) training with our instructors, learning the foundations you need to launch a thriving tech career. Upon successful completion of the training, we\u2019ll hire you as a _nologist. You\u2019ll then be deployed to work on-site with one of our clients (think Deutsche Bank, Admiral, and Accenture) as a Junior Software Developer or Junior Cloud Engineer depending on the training cohort you joined.\r\n\r\n\r\nTraining is open to any tech enthusiast, from any background. No previous coding experience or background in tech is necessary \u2013 just the passion and determination to learn!\r\n\r\n\r\nUpon successful completion of your training, you\u2019ll receive a conditional job placement. We\u2019ll deploy you as a Junior Cloud Engineer or a Junior Software Developer (dependent on the training cohort you joined) on an 18-month placement with one of our UK clients in an office-based, hybrid, or remote role. In response to market conditions and the rising cost of living, we have increased the _nologist salary range. This means that our new _nologist salaries will be as follows:\r\n0-6 months employed \u2013 \u00a326,000\r\n7-12 months employed \u2013 \u00a328,000\r\n13-18 months employed \u2013 \u00a330,000\r\n\r\n\r\nDuring your 18-month client placement you\u2019ll gain practical experience working on a variety of exciting projects as part of a real tech team. Our Talent Team will be on hand throughout your placement to support and provide further coaching, with check-ins at week 1 and week 2, and monthly thereafter."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/nology",
+      "timestamp": "2023-05-25 14:12:01.823085"
+    }
+  },
+  {
+    "provider_name": "EyUp",
+    "provider_locations": ["Sheffield"],
+    "provider_tracks": ["Full Stack Developer"],
+    "provider_courses": [
+      {
+        "course_name": "Full Stack Coding",
+        "course_skills": [
+          "PHP",
+          "Node.js",
+          "JavaScript",
+          "HTML",
+          "GitHub",
+          "CSS"
+        ],
+        "course_locations": "Sheffield",
+        "course_description": "The bootcamp covers topics like JavaScript, HTML, CSS, PHP, Node, and GitHub. Students also receive training for the Scrum Master Certification.  EyUp cohorts are kept small to mirror the size of the average dev team, and the instructors are all experienced industry professionals who also act as mentors to bootcamp students."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/eyup",
+      "timestamp": "2023-05-25 14:12:01.896198"
+    }
+  },
+  {
+    "provider_name": "Coder Space",
+    "provider_locations": ["Liverpool"],
+    "provider_tracks": ["Front End Developer"],
+    "provider_courses": [
+      {
+        "course_name": "Web Dev Coding Bootcamp",
+        "course_skills": ["CSS", "HTML", "PHP", "JavaScript"],
+        "course_locations": "Liverpool",
+        "course_description": "This bootcamp takes students through a broad curriculum including different skills, technologies, and methodologies. Students will learn HTML/ CSS, JavaScript, PHP, NodeJS, Git, and be immersed in test-driven development."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/coder-space",
+      "timestamp": "2023-05-25 14:12:02.017256"
+    }
+  },
+  {
+    "provider_name": "Makers Academy",
+    "provider_locations": [
+      "Bristol",
+      "Cambridge",
+      "London",
+      "Manchester",
+      "Online"
+    ],
+    "provider_tracks": ["Full Stack Developer"],
+    "provider_courses": [
+      {
+        "course_name": "Web Development",
+        "course_skills": [
+          "Ruby",
+          "Rails",
+          "CSS",
+          "JavaScript",
+          "HTML",
+          "Front End",
+          "Git",
+          "jQuery",
+          "Node.js",
+          "Sinatra",
+          "AngularJS",
+          "SQL",
+          "React.js"
+        ],
+        "course_locations": "London",
+        "course_description": "The course is designed for everyone, whether a complete novice, a computer science graduate wanting practical experience, or an entrepreneur sick of looking for a technical co-founder. Students learn an incredible amount, including: Ruby on Rails; HTML5 and CSS3; Agile and Lean Development; JavaScript, jQuery and NodeJS; along with Git and Heroku, and software design best practices. Students learn through first hand experience, community-driven classrooms, pairing, and project-based work. "
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/makers-academy",
+      "timestamp": "2023-05-25 14:12:02.074506"
+    }
+  },
+  {
+    "provider_name": "Code Nation",
+    "provider_locations": ["Cambridge", "Manchester"],
+    "provider_tracks": [
+      "Cyber Security",
+      "Full Stack Developer",
+      "Mobile App Development",
+      "Front End Developer"
+    ],
+    "provider_courses": [
+      {
+        "course_name": "Master: Coding",
+        "course_skills": [
+          "CSS",
+          "JavaScript",
+          "React.js",
+          "Agile",
+          "Express.js",
+          "Front End",
+          "HTML",
+          "iOS",
+          "jQuery",
+          "MongoDB",
+          "Node.js",
+          "SQL",
+          "Swift",
+          "Xcode"
+        ],
+        "course_locations": "Manchester",
+        "course_description": "The \u2018Master Coding\u2019 bootcamp gives students the skills they need to become Junior Developers in just 12 week.\r\n\r\nWe work with a network of amazing businesses to shape what we teach, helping us to create the next generation of digital talent that the sector demands.\r\n\r\nStudents will learn the fundamentals of coding with us, covering both Front and Back End Development,  In other words, they\u2019ll be equipped with the technical skills to build fully functioning websites, databases and mobile apps. And best of all, we make sure they know things that modern technical employers are in need of, working with the tech stacks they use too.\r\n\r\nWe know that businesses need more than just people who can code - they need work-ready Software Developers who can add value to their business. That\u2019s why we ensure commercial and personal skills are built in to what we teach as well. Employability is at the core of what we do, and students will own the role of a professional Developer by taking on lightning talks, stand ups, Kanban boards and commercial projects. \r\n\r\nIn just 12 weeks, our students will be business-ready Junior Developers.\r\n\r\nThere\u2019s no pre-course assessment to complete prior to studying with us, and we can support with equipment that you will be using for the duration of the course. We also have financing options available, meaning our courses are more accessible than ever. "
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/code-nation",
+      "timestamp": "2023-05-25 14:12:02.103730"
+    }
+  },
+  {
+    "provider_name": "Shillington School",
+    "provider_locations": [
+      "Brisbane",
+      "London",
+      "Manchester",
+      "Melbourne",
+      "New York City",
+      "Online",
+      "Sydney"
+    ],
+    "provider_tracks": ["UX Design"],
+    "provider_courses": [
+      {
+        "course_name": "(AU) Full-Time Graphic Design Course",
+        "course_skills": ["Design", "User Experience Design"],
+        "course_locations": "Brisbane, Melbourne, Sydney",
+        "course_description": "Shillington is a global design school created by today\u2019s professionals to help students upskill and change careers. With campuses in New York, London, Manchester, Sydney, Melbourne and Brisbane\u2014the fast-paced, intensive course teaches the skills required to succeed as a designer.\r\n\r\nThe innovative curriculum encourages experimentation, creative thinking and problem solving\u2014all linked to real-world design briefs. Shillington treats students as designers from day one, covering design principles,\u00a0color theory and\u00a0typography basics.\r\n\r\nShillington students graduate with\u00a0a professional design portfolio and industry-relevant skills, going on to work for top\u00a0creative studios, big brands or launching their own businesses\u2014all within 3 months full-time or 9 months part-time.\r\n\r\nFor the full list of upcoming course dates, check the Sydney and Melbourne page:\r\nhttps://www.shillingtoneducation.com/au/graphic-design-course/course-dates-and-fees/"
+      },
+      {
+        "course_name": "(AU) Part-Time Graphic Design Course",
+        "course_skills": ["Design", "User Experience Design"],
+        "course_locations": "Brisbane, Melbourne, Sydney",
+        "course_description": "Shillington is a global design school created by today\u2019s professionals to help students upskill and change careers. With campuses in New York, London, Manchester, Sydney, Melbourne and Brisbane\u2014the fast-paced, intensive course teaches the skills required to succeed as a designer.\r\n\r\nThe innovative curriculum encourages experimentation, creative thinking and problem solving\u2014all linked to real-world design briefs. Shillington treats students as designers from day one, covering design principles,\u00a0color theory and\u00a0typography basics.\r\n\r\nShillington students graduate with\u00a0a professional design portfolio and industry-relevant skills, going on to work for top\u00a0creative studios, big brands or launching their own businesses\u2014all within 3 months full-time or 9 months part-time.\r\n\r\nFor the full list of upcoming course dates, check the Sydney and Melbourne page:\r\nhttps://www.shillingtoneducation.com/au/graphic-design-course/course-dates-and-fees/"
+      },
+      {
+        "course_name": "(NY) Full-Time Graphic Design Course",
+        "course_skills": ["Design", "User Experience Design"],
+        "course_locations": "New York City",
+        "course_description": "Shillington is a global design school created by today\u2019s professionals to help students upskill and change careers. With campuses in New York, London, Manchester, Sydney, Melbourne and Brisbane\u2014the fast-paced, intensive course teaches the skills required to succeed as a designer.\r\n\r\nThe innovative curriculum encourages experimentation, creative thinking and problem solving\u2014all linked to real-world design briefs. Shillington treats students as designers from day one, covering design principles,\u00a0color theory and\u00a0typography basics.\r\n\r\nShillington students graduate with\u00a0a professional design portfolio and industry-relevant skills, going on to work for top\u00a0creative studios, big brands or launching their own businesses\u2014all within 3 months full-time or 9 months part-time.\r\n\r\nFor the full list of upcoming course dates, check the New York page:\r\nhttps://www.shillingtoneducation.com/us/graphic-design-course/course-dates-and-fees/"
+      },
+      {
+        "course_name": "(NY) Part-Time Graphic Design Course",
+        "course_skills": ["Design", "User Experience Design"],
+        "course_locations": "New York City",
+        "course_description": "Shillington is a global design school created by today\u2019s professionals to help students upskill and change careers. With campuses in New York, London, Manchester, Sydney, Melbourne and Brisbane\u2014the fast-paced, intensive course teaches the skills required to succeed as a designer.\r\n\r\nThe innovative curriculum encourages experimentation, creative thinking and problem solving\u2014all linked to real-world design briefs. Shillington treats students as designers from day one, covering design principles,\u00a0color theory and\u00a0typography basics.\r\n\r\nShillington students graduate with\u00a0a professional design portfolio and industry-relevant skills, going on to work for top\u00a0creative studios, big brands or launching their own businesses\u2014all within 3 months full-time or 9 months part-time.\r\n\r\nFor the full list of upcoming course dates, check the New York page:\r\nhttps://www.shillingtoneducation.com/us/graphic-design-course/course-dates-and-fees/"
+      },
+      {
+        "course_name": "(UK) Full-Time Graphic Design Course",
+        "course_skills": ["Design", "User Experience Design"],
+        "course_locations": "Manchester, London",
+        "course_description": "Shillington is a global design school created by today\u2019s professionals to help students upskill and change careers. With campuses in New York, London, Manchester, Sydney, Melbourne and Brisbane\u2014the fast-paced, intensive course teaches the skills required to succeed as a designer.\r\n\r\nThe innovative curriculum encourages experimentation, creative thinking and problem solving\u2014all linked to real-world design briefs. Shillington treats students as designers from day one, covering design principles,\u00a0color theory and\u00a0typography basics.\r\n\r\nShillington students graduate with\u00a0a professional design portfolio and industry-relevant skills, going on to work for top\u00a0creative studios, big brands or launching their own businesses\u2014all within 3 months full-time or 9 months part-time.\r\n\r\nFor the full list of upcoming course dates, check the London and Manchester page:\r\nhttps://www.shillingtoneducation.com/uk/graphic-design-course/course-dates-and-fees/"
+      },
+      {
+        "course_name": "(UK) Part-Time Graphic Design Course",
+        "course_skills": ["Design", "User Experience Design"],
+        "course_locations": "Manchester, London",
+        "course_description": "Shillington is a global design school created by today\u2019s professionals to help students upskill and change careers. With campuses in New York, London, Manchester, Sydney, Melbourne and Brisbane\u2014the fast-paced, intensive course teaches the skills required to succeed as a designer.\r\n\r\nThe innovative curriculum encourages experimentation, creative thinking and problem solving\u2014all linked to real-world design briefs. Shillington treats students as designers from day one, covering design principles,\u00a0color theory and\u00a0typography basics.\r\n\r\nShillington students graduate with\u00a0a professional design portfolio and industry-relevant skills, going on to work for top\u00a0creative studios, big brands or launching their own businesses\u2014all within 3 months full-time or 9 months part-time.\r\n\r\nFor the full list of upcoming course dates, check the London and Manchester page:\r\nhttps://www.shillingtoneducation.com/uk/graphic-design-course/course-dates-and-fees/"
+      },
+      {
+        "course_name": "(UK Time Zone) Online Part-Time Graphic Design Course",
+        "course_skills": ["Design"],
+        "course_locations": "Manchester, London",
+        "course_description": "The Online Course mimics the On-Campus experience as closely as possible\u2014maintaining the Shillington ethos.  A majority of lectures, demonstrations and briefs will be delivered live by your teachers during class time, and additional study material will be made available as recordings after the class. The Online Course is designed to keep you engaged and connected with your fellow classmates and teachers over the duration of the course. The teachers will be there to guide and support you in real-time as they would in the classroom. You\u2019ll also be working on real-world briefs individually, in pairs or groups with your fellow students to apply what you\u2019ve learnt. The course meets Monday, Tuesday & Wednesday nights for 9 months. Classes are offered in 3 time zones\u2014US East Coast, US West Coast and UK.\r\n"
+      },
+      {
+        "course_name": "(US East Coast Time Zone) Online Part-Time Graphic Design Course",
+        "course_skills": ["Design"],
+        "course_locations": "New York City",
+        "course_description": "The Online Course mimics the On-Campus experience as closely as possible\u2014maintaining the Shillington ethos.  A majority of lectures, demonstrations and briefs will be delivered live by your teachers during class time, and additional study material will be made available as recordings after the class. The Online Course is designed to keep you engaged and connected with your fellow classmates and teachers over the duration of the course. The teachers will be there to guide and support you in real-time as they would in the classroom. You\u2019ll also be working on real-world briefs individually, in pairs or groups with your fellow students to apply what you\u2019ve learnt. The course meets Monday, Tuesday & Wednesday nights for 9 months. Classes are offered in 3 time zones\u2014US East Coast, US West Coast and UK.\r\n"
+      },
+      {
+        "course_name": "(US West Coast Time Zone) Online Part-Time Graphic Design Course",
+        "course_skills": ["Design"],
+        "course_locations": "Brisbane, Melbourne, Sydney, New York City",
+        "course_description": "The Online Course mimics the On-Campus experience as closely as possible\u2014maintaining the Shillington ethos.  A majority of lectures, demonstrations and briefs will be delivered live by your teachers during class time, and additional study material will be made available as recordings after the class. The Online Course is designed to keep you engaged and connected with your fellow classmates and teachers over the duration of the course. The teachers will be there to guide and support you in real-time as they would in the classroom. You\u2019ll also be working on real-world briefs individually, in pairs or groups with your fellow students to apply what you\u2019ve learnt. The course meets Monday, Tuesday & Wednesday nights for 9 months. Classes are offered in 3 time zones\u2014US East Coast, US West Coast and UK.\r\n"
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/shillington-school",
+      "timestamp": "2023-05-25 14:12:02.142323"
+    }
+  },
+  {
+    "provider_name": "CodeClan",
+    "provider_locations": ["Edinburgh", "Glasgow"],
+    "provider_tracks": [
+      "Full Stack Developer",
+      "UX Design",
+      "Data Science",
+      "Front End Developer"
+    ],
+    "provider_courses": [
+      {
+        "course_name": "Professional Data Analysis",
+        "course_skills": [
+          "SQL",
+          "R",
+          "Python",
+          "Machine Learning",
+          "GitHub",
+          "Git",
+          "Data Visualization",
+          "Data Science",
+          "Data Analytics "
+        ],
+        "course_locations": "Edinburgh",
+        "course_description": "Transform and future-proof your career by getting the skills and knowledge to become a professional data analyst. This full-time immersive Professional Data Analysis course is delivered in a practical, hands-on way by expert instructors who will prepare you for the real world, giving you technical skills the industry needs and the soft skill you need to transform your career."
+      },
+      {
+        "course_name": "Professional Software Development ",
+        "course_skills": [
+          "REST",
+          "Python",
+          "Express.js",
+          "DevOps",
+          "Agile",
+          "CSS",
+          "Front End",
+          "Git",
+          "HTML",
+          "Java",
+          "JavaScript",
+          "MongoDB",
+          "Node.js",
+          "React.js",
+          "Sinatra",
+          "SQL",
+          "User Experience Design"
+        ],
+        "course_locations": "Glasgow, Edinburgh",
+        "course_description": "Our full-time, project-based coding course is fast-paced and stimulating \u2013 just like your new career in the demanding tech industry will be. We\u2019re the first digital skills academy in the UK to become a Scottish Qualifications Authority (SQA) approved centre, which means we are the only UK academy to be able to offer a Professional Development Award in Software Development, recognised and endorsed by employers across Scotland. With a high ratio of instructors to students, our teaching approach supplements and complements more traditional routes."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/codeclan",
+      "timestamp": "2023-05-25 14:12:02.236799"
+    }
+  },
+  {
+    "provider_name": "Northcoders",
+    "provider_locations": ["Leeds", "Manchester"],
+    "provider_tracks": ["Full Stack Developer"],
+    "provider_courses": [
+      {
+        "course_name": "Coding Bootcamp",
+        "course_skills": [
+          "React.js",
+          "JavaScript",
+          "HTML",
+          "Git",
+          "Front End",
+          "CSS"
+        ],
+        "course_locations": "Leeds, Manchester",
+        "course_description": "Become a software engineer in 13 weeks at our coding bootcamps in Manchester, Leeds, Newcastle, Birmingham and remotely.\r\n\r\nUnlike our Data Engineering bootcamp where you focus specifically on the \"back-end\" of software, or our DevOps Engineering bootcamp that deals specifically with software development and IT operations, our coding bootcamp focuses on building websites and mobile phone apps.\r\n\r\nThe application process takes 2-3 weeks and we would advise you to apply sooner rather than later to give yourself plenty of time to work through the preparation materials.\r\n\r\nApplicants living in England can apply for DfE funding to cover the entire cost of the course. Get in touch to find out if you qualify."
+      },
+      {
+        "course_name": "Data Engineering Bootcamp",
+        "course_skills": ["SQL", "Python", "Data Engineering"],
+        "course_locations": "Leeds, Manchester",
+        "course_description": "Become a data engineer in 13 weeks at our coding bootcamps in Manchester, Leeds, Newcastle, Birmingham and remote.\r\n\r\nUnlike our software engineering bootcamp where you build websites or mobile phone apps, or our DevOps Engineering bootcamp that deals specifically with software development and IT operations, data engineering focuses specifically on \u201cthe back end\u201d of software.\r\n\r\nThe course is designed and delivered by industry experts, who will give you the skills, support and advice you need to kickstart your career as a junior data engineer.\r\n\r\nThe application process takes 2-3 weeks and we would advise you to apply sooner rather than later to give yourself plenty of time to work through the preparation materials.\r\n\r\nApplicants living in England can apply for DfE funding to cover the entire cost of the course. Get in touch to find out if you qualify."
+      },
+      {
+        "course_name": "DevOps Bootcamp",
+        "course_skills": ["DevOps"],
+        "course_locations": "Leeds, Manchester",
+        "course_description": "Become a DevOps engineer in 13 weeks at our coding bootcamps in Manchester, Leeds, Newcastle, Birmingham and remote.\r\n\r\nOur newest bootcamp focuses on one of the most in-demand jobs in the tech sector - DevOps. What didn't exist as a separate job a few years ago is now one of the most sought-after skill sets in the industry.\r\n\r\nUnlike our software engineering bootcamp where you build websites or mobile phone apps, and our data engineering bootcamp which deals specifically on \u201cthe back end\u201d of software, the DevOps bootcamp focuses on combining software development and IT operations to shorten the development cycle of systems and applications.\r\n\r\nThe course is designed and delivered by industry experts, who will give you the skills, support and advice you need to kickstart your career as a junior DevOps engineer. \r\n\r\nApplicants living in England can apply for DfE funding to cover the entire cost of the course. Get in touch to find out if you qualify."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/northcoders",
+      "timestamp": "2023-05-25 14:12:02.322132"
+    }
+  },
+  {
+    "provider_name": "GoCode Academy",
+    "provider_locations": ["Buckinghamshire"],
+    "provider_tracks": ["Full Stack Developer"],
+    "provider_courses": [
+      {
+        "course_name": "GoCode Sprint Bootcamp",
+        "course_skills": [
+          "HTML",
+          "CSS",
+          "MySQL",
+          "jQuery",
+          "Front End",
+          "Git",
+          "JavaScript",
+          "PHP",
+          "Wordpress"
+        ],
+        "course_locations": "Buckinghamshire",
+        "course_description": "Students will learn the following: HTML (XHTML 1.0 and HTML 5)\r\nCSS3 (including elements of 1 and 2, where not deprecated)\r\nJavascript, both as the Document Object Model and Libraries (jQuery, Prototype, Angular etc)\r\nProcedural PHP 5.6 (with references to PHP 7)\r\nOOP PHP 5.6\r\nMySQL 5\r\nApache\r\ncPanel/Plesk"
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/gocode-academy",
+      "timestamp": "2023-05-25 14:12:02.533939"
+    }
+  },
+  {
+    "provider_name": "Intela Education",
+    "provider_locations": [
+      "Birmingham",
+      "Calgary",
+      "Costa Mesa",
+      "London",
+      "Los Angeles",
+      "San Jose"
+    ],
+    "provider_tracks": [
+      "Cyber Security",
+      "Product Manager",
+      "Full Stack Developer",
+      "Data Science",
+      "Mobile App Development",
+      "Front End Developer"
+    ],
+    "provider_courses": [
+      {
+        "course_name": "Advanced Financial Data Science & AI Bootcamp ($1200 Cloud Service provided)",
+        "course_skills": [
+          "Data Science",
+          "Machine Learning",
+          "Python",
+          "Spark"
+        ],
+        "course_locations": "London",
+        "course_description": "Welcome to the four-day Cognitive Class Data Science Bootcamp! This is an intensive hands-on bootcamp, where you can learn the advanced topics of data science from IBM data scientists. You will learn machine learning, Deep Learning, Big Data, and Apache Spark. You will have a chance to apply your new skills to many finance-related projects.\r\n\r\nWhat you will achieve at the end of the bootcamp:\r\n\r\nAn understanding of data analysis, machine learning, Apache Spark, and deep learning techniques. Also libraries such as Pandas, Sickit-learn, and TensorFlow. All the materials are delivered through hands-on sessions."
+      },
+      {
+        "course_name": "Data Science & AI Bootcamp ($1200 Cloud Service provided)",
+        "course_skills": [
+          "Data Science",
+          "Machine Learning",
+          "Spark",
+          "Virtualization"
+        ],
+        "course_locations": "Costa Mesa",
+        "course_description": "Welcome to the four-day Cognitive Class Data Science Bootcamp!\r\n\r\nThis is an intensive hands-on bootcamp, where you can learn the fundamentals of data science from data scientists at IBM.\r\n\r\nYou will learn how to use the popular Python programming language for data analysis and data visualization, we'll introduce you to machine learning, AI, big data, and Apache Spark. You'll have a chance to apply your new skills to on data science projects.\r\n\r\nWhat you will achieve at the end of the bootcamp:\r\n\r\nAn understanding of data science, machine learning, and deep learning techniques. Data cleaning and pre-processing. Data Visualization. Python, Apache Spark, TensorFlow."
+      },
+      {
+        "course_name": "Data Science Machine Learning AI Bootcamp",
+        "course_skills": ["Data Science", "Python", "Spark"],
+        "course_locations": "Los Angeles, London, Calgary, Birmingham, San Jose",
+        "course_description": "In just 4 days you will gain practical Machine Learning, AI, Deep Learning, Big Data knowledge in our in-class training led by IBM\u2019s Cognitive Class professors.\r\n\r\nWhat you will achieve at the end of the bootcamp:\r\nPractical knowledge of Data Analysis, Machine Learning, Apache Spark\r\nDeep Learning techniques and libraries such as Pandas, Sickitlearn, and TensorFlow.\r\nAll the materials are delivered through hands-on sessions to help you apply your new skills to on Data Science projects immediately."
+      },
+      {
+        "course_name": "Financial Data Science & AI Bootcamp ($1200 Cloud Service provided)",
+        "course_skills": [
+          "Data Science",
+          "Machine Learning",
+          "Python",
+          "Spark"
+        ],
+        "course_locations": "Costa Mesa",
+        "course_description": "Welcome to the four-day Cognitive Class Data Science Bootcamp! This is an intensive hands-on bootcamp, where you can learn the advanced topics of data science from IBM data scientists. You will learn machine learning, Deep Learning, Big Data, and Apache Spark. You will have a chance to apply your new skills to many finance-related projects.\r\n\r\nWhat you will achieve at the end of the bootcamp:\r\n\r\nAn understanding of data analysis, machine learning, Apache Spark, and deep learning techniques. Also libraries such as Pandas, Sickit-learn, and TensorFlow. All the materials are delivered through hands-on sessions."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/intela-education",
+      "timestamp": "2023-05-25 14:12:02.592172"
+    }
+  },
+  {
+    "provider_name": "Preface Coding",
+    "provider_locations": ["Hong Kong", "London", "Online", "Tokyo"],
+    "provider_tracks": ["Full Stack Developer", "Data Science"],
+    "provider_courses": [
+      {
+        "course_name": "Data Science & A.I. with Python (1-on-1 in person)",
+        "course_skills": [
+          "SQL",
+          "Data Analytics ",
+          "Data Science",
+          "Data Visualization",
+          "Python"
+        ],
+        "course_locations": "Hong Kong",
+        "course_description": "Data Science & A.I. with Python is a 5 modules curriculum, with a total of 80 hours of learning program (each module can be taken separately). \r\n\r\nOur course specializes in delivering data science with a focus on practical business applications that span across 5 modules of increasing complexity and goals. Whether you're looking to leverage on Python to derive value from data for better business decisions or dive into machine learning and algorithms for predictive analysis, this course empowers you with all the skills needed to boost your career in the data science field. "
+      },
+      {
+        "course_name": "Data Science & A.I. with Python (1-on-1 online)",
+        "course_skills": [
+          "Data Science",
+          "Data Visualization",
+          "Python",
+          "Data Analytics "
+        ],
+        "course_locations": "Online",
+        "course_description": "Data Science & A.I. with Python is a 5 modules curriculum, with a total of 80 hours of learning program (each module can be taken separately). Our course specializes in delivering data science with a focus on practical business applications that span across 5 modules of increasing complexity and goals. Whether you're looking to leverage on Python to derive value from data for better business decisions or dive into machine learning and algorithms for predictive analysis, this course empowers you with all the skills needed to boost your career in the data science field. "
+      },
+      {
+        "course_name": "Data Science with Python Basics Boot Camp (16-hours)",
+        "course_skills": [
+          "Data Science",
+          "Data Visualization",
+          "Python",
+          "Data Analytics "
+        ],
+        "course_locations": "Hong Kong, London, Tokyo, Online",
+        "course_description": "The 16-hours Data Science boot-camp is suitable for complete beginners and teaches students how to master the use of Python.\r\n\r\nBoth online and in-person format is available. "
+      },
+      {
+        "course_name": "Full Stack Web Development (1-on-1 in person)",
+        "course_skills": [
+          "CSS",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "Rails",
+          "Ruby",
+          "SQL"
+        ],
+        "course_locations": "Hong Kong",
+        "course_description": "Full Stack Web Development is a 5 modules curriculum, with a total of 80 hours learning program (each module can be taken separately.) In this course, you will learn about how dynamic web applications like Airbnb are built - from the client-facing side of beautiful design to backend workflow of database management, web infrastructure and more. We\u2019ll walk you through both front and back-end development with business use cases happening in Silicon Valley.\r\n\r\nWhether you want to become a web programmer, a technical consultant or a project manager who knows a technical project inside out, this programme is the Swiss knife you need to level up your competitiveness in the digital era."
+      },
+      {
+        "course_name": "Full Stack Web Development (1-on-1 online)",
+        "course_skills": [
+          "CSS",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "SQL",
+          "Ruby"
+        ],
+        "course_locations": "Online",
+        "course_description": "Full Stack Web Development is a 5 modules curriculum, with a total of 80 hours learning program (each module can be taken separately.) In this course, you will learn about how dynamic web applications like Airbnb are built - from the client-facing side of beautiful design to backend workflow of database management, web infrastructure and more. We\u2019ll walk you through both front and back-end development with business use cases happening in Silicon Valley.\r\n\r\nWhether you want to become a web programmer, a technical consultant or a project manager who knows a technical project inside out, this programme is the Swiss knife you need to level up your competitiveness in the digital era."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/preface-coding",
+      "timestamp": "2023-05-25 14:12:02.610011"
+    }
+  },
+  {
+    "provider_name": "Cambridge Spark",
+    "provider_locations": ["Cambridge", "London"],
+    "provider_tracks": ["Data Science"],
+    "provider_courses": [
+      {
+        "course_name": "Applied Data Science Career Track",
+        "course_skills": ["Data Science"],
+        "course_locations": "Cambridge",
+        "course_description": "Get the entire Professional Development track + comprehensive career support and introductions to our network of hiring companies."
+      },
+      {
+        "course_name": "Applied Data Science Professional Development Track",
+        "course_skills": ["Data Science"],
+        "course_locations": "Cambridge",
+        "course_description": "Attend intensive training weekends, get mentored by industry experts and access a range of industry-sponsored problems to build your portfolio."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/cambridge-spark",
+      "timestamp": "2023-05-25 14:12:02.707720"
+    }
+  },
+  {
+    "provider_name": "Sputnik",
+    "provider_locations": ["London"],
+    "provider_tracks": ["Full Stack Developer", "UX Design"],
+    "provider_courses": [
+      {
+        "course_name": "The Development Mastery",
+        "course_skills": ["Agile", "Front End"],
+        "course_locations": "London",
+        "course_description": "The 8-month Development Mastery course covers coding languages, product creation, strategy and teamwork. Students are trained to learn current methods and tools, and how to adapt to ever-changing technology. Sputnik provides an immersive training that includes working on real projects sourced from real companies."
+      },
+      {
+        "course_name": "The UX Master",
+        "course_skills": [
+          "Design",
+          "User Experience Design",
+          "Agile",
+          "Artificial Intelligence",
+          "Data Visualization",
+          "Scrum",
+          "Virtualization"
+        ],
+        "course_locations": "London",
+        "course_description": "The 1-year project-based UX Mastery course covers UX principles, user research, and analysis frameworks. Students are trained to learn current methods and tools, and how to adapt to ever-changing technology. Sputnik provides immersive training that includes working on real projects sourced from real companies."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/sputnik",
+      "timestamp": "2023-05-25 14:12:02.723235"
+    }
+  },
+  {
+    "provider_name": "Codesmith",
+    "provider_locations": [
+      "Atlanta",
+      "Birmingham",
+      "Boston",
+      "Chicago",
+      "Dallas",
+      "Houston",
+      "London",
+      "Los Angeles",
+      "New York City",
+      "Online",
+      "Philadelphia",
+      "Phoenix",
+      "Portland",
+      "Seattle"
+    ],
+    "provider_tracks": ["Full Stack Developer", "Front End Developer"],
+    "provider_courses": [
+      {
+        "course_name": "CS Prep ",
+        "course_skills": ["Front End", "JavaScript", "Algorithms", "jQuery"],
+        "course_locations": "Online",
+        "course_description": "CS Prep is a 2-week live-online part-time program that builds your core JavaScript knowledge, improves your technical communication, and develops your engineering toolkit so you can solve real-world problems. The program includes daily problem-solving workshops and a passionate coding community to help you prepare for top coding bootcamps, such as Codesmith's selective Software Engineering Immersive programs."
+      },
+      {
+        "course_name": "Full-Time Remote Software Engineering Immersive",
+        "course_skills": [
+          "Algorithms",
+          "AngularJS",
+          "CSS",
+          "Data Structures",
+          "DevOps",
+          "Express.js",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "Linux",
+          "Machine Learning",
+          "Mobile Security",
+          "MongoDB",
+          "MySQL",
+          "Node.js",
+          "Python",
+          "React.js",
+          "Scrum",
+          "SQL"
+        ],
+        "course_locations": "Online",
+        "course_description": "The 13-week Full-Time Remote Software Engineering Immersive Program (offered in Pacific, Central, and Eastern time) is an advanced residency designed to help individuals launch a meaningful, high-level career in software engineering. The expertly designed curriculum teaches full-stack JavaScript and computer science, and is immersed in modern web technologies, such as React and Node.js. The rigorous curriculum is continuously adapted to focus on the most relevant and in-demand technologies. Codesmith offers an extensive career support program that guides students through the hiring process, including interview strategies, portfolio development, and post-graduation check-ins. Plus, the supportive Codesmith community encourages learners to tackle unique and unfamiliar problems, important when preparing for the ever-changing tech landscape. By the end of the 13-week Immersive, you will be an autonomous engineer, ready to make an impact on innovative tech companies worldwide."
+      },
+      {
+        "course_name": "Global Part-Time Remote Software Engineering Immersive",
+        "course_skills": [
+          "Algorithms",
+          "AngularJS",
+          "CSS",
+          "Data Structures",
+          "DevOps",
+          "Express.js",
+          "Front End",
+          "Git",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "Linux",
+          "Machine Learning",
+          "Mobile Security",
+          "MongoDB",
+          "MySQL",
+          "Node.js",
+          "Python",
+          "React.js",
+          "Scrum",
+          "SQL",
+          "GitHub"
+        ],
+        "course_locations": "Online",
+        "course_description": "The 38-week Part-Time Remote Software Engineering Immersive Program (offered in Pacific time) is an advanced residency designed to help individuals launch a meaningful, high-level career in software engineering. While the Full-Time Immersive is an excellent option for someone looking to start a new career on an accelerated timeline, to better accommodate future engineers with different professional commitments or personal responsibilities, Codesmith offers the Part-Time Remote Immersive. The expertly designed curriculum teaches full stack JavaScript and computer science, and is immersed in modern web technologies, such as React and Node.js. The rigorous curriculum is the same as the full-time program, and is continuously adapted to focus on the most relevant and in-demand technologies. Codesmith offers an extensive career support program that guides students through the hiring process, including interview strategies, portfolio development, and post-graduation check-ins. Plus, the supportive Codesmith community encourages learners to tackle unique and unfamiliar problems, important when preparing for the ever-changing tech landscape. By the end of the program, you will be an autonomous engineer, ready to make an impact on innovative tech companies worldwide."
+      },
+      {
+        "course_name": "JavaScript for Beginners ",
+        "course_skills": ["JavaScript"],
+        "course_locations": "Online",
+        "course_description": "JavaScript for Beginners is a part-time, remote program consisting of two consecutive Saturday sessions. The program is designed to be your introduction to coding, so no prior experience is required. The curriculum for JavaScript for Beginners is carefully constructed to give both a broad introduction to 'what programming is' as well as cover important JavaScript concepts so you'll be able to solve challenges and build projects with confidence. The program offers learners a launching point to continue their JavaScript studies, prepare for CS Prep, and build a future in software engineering."
+      },
+      {
+        "course_name": "NYC Onsite Software Engineering Immersive",
+        "course_skills": [
+          "AngularJS",
+          "CSS",
+          "Express.js",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "Machine Learning",
+          "MySQL",
+          "Node.js",
+          "React.js",
+          "SQL",
+          "Algorithms",
+          "Data Structures",
+          "Git",
+          "Linux",
+          "Mobile Security",
+          "MongoDB",
+          "Python",
+          "DevOps",
+          "Scrum",
+          "GitHub"
+        ],
+        "course_locations": "New York City",
+        "course_description": "The 13-week Full-Time NYC Onsite Software Engineering Immersive Program is an advanced residency designed to help individuals launch a meaningful, high-level career in software engineering. The expertly designed curriculum teaches full stack JavaScript and computer science, and is immersed in modern web technologies, such as React and Node.js. The rigorous curriculum is continuously adapted to focus on the most relevant and in-demand technologies. Codesmith offers an extensive career support program that guides students through the hiring process, including interview strategies, portfolio development, and post-graduation check-ins. Plus, the supportive Codesmith community encourages learners to tackle unique and unfamiliar problems, important when preparing for the ever-changing tech landscape. By the end of the 13-week Immersive, you will be an autonomous engineer, ready to make an impact on innovative tech companies worldwide."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/codesmith",
+      "timestamp": "2023-05-25 14:12:02.838635"
+    }
+  },
+  {
+    "provider_name": "Black Codher",
+    "provider_locations": ["Birmingham"],
+    "provider_tracks": [],
+    "provider_courses": [
+      {
+        "course_name": "Full Stack Development",
+        "course_skills": [
+          "Artificial Intelligence",
+          "CSS",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "Machine Learning",
+          "Python"
+        ],
+        "course_locations": "Birmingham",
+        "course_description": "The curriculum covers coding fundamentals and front end frameworks. Students will learn Python, HTML, CSS, and JavaScript as well as how to build web and mobile applications. Students will be introduced to databases, machine learning, and artificial intelligence. Students will learn design thinking, data management, and data analytics. \r\n\r\nClasses are held two evenings per week from 6pm to 9pm. "
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/black-codher",
+      "timestamp": "2023-05-25 14:12:02.845119"
+    }
+  },
+  {
+    "provider_name": "Le Wagon",
+    "provider_locations": [
+      "Amsterdam",
+      "Bali",
+      "Barcelona",
+      "Berlin",
+      "Bordeaux",
+      "Brussels",
+      "Buenos Aires",
+      "Cape Town",
+      "Casablanca",
+      "Cologne",
+      "Dubai",
+      "Lausanne",
+      "Lille",
+      "Lisbon",
+      "London",
+      "Lyon",
+      "Madrid",
+      "Marseille",
+      "Mauritius",
+      "Melbourne",
+      "Mexico City",
+      "Montreal",
+      "Munich",
+      "Nantes",
+      "Nice",
+      "Online",
+      "Paris",
+      "Porto",
+      "Rennes",
+      "Rio de Janeiro",
+      "Santiago",
+      "Sao Paulo",
+      "Shanghai",
+      "Singapore",
+      "Sydney",
+      "Tokyo",
+      "Toulouse",
+      "Zurich"
+    ],
+    "provider_tracks": [
+      "Full Stack Developer",
+      "Data Science",
+      "Front End Developer"
+    ],
+    "provider_courses": [
+      {
+        "course_name": "Data Analytics Bootcamp",
+        "course_skills": [
+          "Business Intelligence",
+          "SQL",
+          "Python",
+          "Machine Learning",
+          "Data Visualization",
+          "Data Analytics "
+        ],
+        "course_locations": "Brussels, Paris, Bordeaux, Lille, Amsterdam, London, Lisbon, Nantes, Berlin, Lyon, Marseille, Barcelona, Rennes, Zurich, Madrid, Lausanne, Munich, Nice, Cologne, Porto, Toulouse, Montreal, Buenos Aires, Mexico City, Santiago, Sao Paulo, Rio de Janeiro, Sydney",
+        "course_description": "You\u2019ll dive into business KPIs and learn how to collect data before mastering data extraction using APIs and data transformation using advances SQL. You\u2019ll then learn how to communicate your results clearly using BI tools and data visualization. Finally, you\u2019ll run analyses on big data sets using Python and Jupiter notebook and learn the foundations of Machine Learning to collaborate with Data Scientists and Machine Learning Engineers. "
+      },
+      {
+        "course_name": "Data Analytics Bootcamp Online",
+        "course_skills": [
+          "Business Intelligence",
+          "SQL",
+          "Python",
+          "Machine Learning",
+          "Data Visualization",
+          "Data Analytics "
+        ],
+        "course_locations": "Online",
+        "course_description": "You\u2019ll dive into business KPIs and learn how to collect data before mastering data extraction using APIs and data transformation using advances SQL. You\u2019ll then learn how to communicate your results clearly using BI tools and data visualization. Finally, you\u2019ll run analyses on big data sets using Python and Jupiter notebook and learn the foundations of Machine Learning to collaborate with Data Scientists and Machine Learning Engineers. "
+      },
+      {
+        "course_name": "Data Analytics Essentials Skill Course",
+        "course_skills": [
+          "Excel",
+          "SQL",
+          "Data Visualization",
+          "Data Analytics "
+        ],
+        "course_locations": "Online",
+        "course_description": "Become autonomous with data thanks to SQL, Looker Studio and Google Sheets. You\u2019ll also learn how to understand, analyze and visualize data using Data Warehouse, ETL, KPIs and BigQuery."
+      },
+      {
+        "course_name": "Data Science Bootcamp - Full-time",
+        "course_skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Cloud Computing",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Git",
+          "Machine Learning",
+          "Python",
+          "SQL"
+        ],
+        "course_locations": "Brussels, Paris, Bordeaux, London, Berlin, Lyon, Tokyo, Shanghai, Marseille, Amsterdam, Lisbon, Sao Paulo, Montreal, Melbourne, Buenos Aires, Mexico City, Singapore, Rio de Janeiro, Lille, Lausanne, Santiago, Dubai, Nantes, Nice, Casablanca, Barcelona, Madrid, Munich, Mauritius, Bali",
+        "course_description": "Explore the fundamentals of data science. From Pandas to Deep Learning, you\u2019ll finish the course knowing how to explore, clean and transform data into actionable insights and how to implement machine learning models from start to finish in a production environment, working in teams with the best-in-class tool belt."
+      },
+      {
+        "course_name": "Data Science Bootcamp Online",
+        "course_skills": [
+          "SQL",
+          "Python",
+          "Machine Learning",
+          "Git",
+          "Data Visualization",
+          "Data Structures",
+          "Data Science",
+          "Data Analytics ",
+          "Cloud Computing",
+          "Business Intelligence",
+          "Artificial Intelligence",
+          "Algorithms"
+        ],
+        "course_locations": "Online",
+        "course_description": "Explore the fundamentals of data science. From Pandas to Deep Learning, you\u2019ll finish the course knowing how to explore, clean and transform data into actionable insights and how to implement machine learning models from start to finish in a production environment, working in teams with the best-in-class tool belt."
+      },
+      {
+        "course_name": "Data Science Bootcamp - Part-time",
+        "course_skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Cloud Computing",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Git",
+          "Machine Learning",
+          "Python",
+          "SQL"
+        ],
+        "course_locations": "Brussels, Paris, Sao Paulo, Tokyo, Melbourne, Buenos Aires, Rio de Janeiro, Bordeaux, Amsterdam, London, Nantes, Montreal, Shanghai, Marseille, Mexico City, Singapore, Santiago, Berlin, Lyon, Casablanca, Barcelona, Madrid, Lille, Lisbon, Lausanne, Munich, Dubai, Nice",
+        "course_description": "Explore the fundamentals of data science. From Pandas to Deep Learning, you\u2019ll finish the course knowing how to explore, clean and transform data into actionable insights and how to implement machine learning models from start to finish in a production environment, working in teams with the best-in-class tool belt."
+      },
+      {
+        "course_name": "Data Science Bootcamp - Part-time Online",
+        "course_skills": [
+          "SQL",
+          "Python",
+          "Machine Learning",
+          "Git",
+          "Data Visualization",
+          "Data Structures",
+          "Data Science",
+          "Data Analytics ",
+          "Business Intelligence",
+          "Artificial Intelligence",
+          "Algorithms"
+        ],
+        "course_locations": "Online",
+        "course_description": "Explore the fundamentals of data science. From Pandas to Deep Learning, you\u2019ll finish the course knowing how to explore, clean and transform data into actionable insights and how to implement machine learning models from start to finish in a production environment, working in teams with the best-in-class tool belt."
+      },
+      {
+        "course_name": "Growth & Data Automation Skill Course",
+        "course_skills": [
+          "Growth Hacking",
+          "Data Structures",
+          "Python",
+          "JavaScript"
+        ],
+        "course_locations": "Online",
+        "course_description": "Discover how to automate data transfers between tools to create complex dashboards or automate tasks with Zapier, Make, n8n, and Fivetran. This course will cover the key concepts of automation with Zapier, as well as teach you how to build advanced workflows with Make. Additionally, we will introduce you to n8n, an open-source alternative for workflow automation, and show you how to centralize, organize, and visualize all of your data."
+      },
+      {
+        "course_name": "Python & Machine Learning Skill Course",
+        "course_skills": [
+          "Data Science",
+          "Data Analytics ",
+          "Artificial Intelligence",
+          "Algorithms",
+          "Python",
+          "Machine Learning"
+        ],
+        "course_locations": "Online",
+        "course_description": "Make your data speak using Python and Jupiter. You\u2019ll learn how to manipulate your data more efficiently with Pandas Library and how to communicate your learnings with data visualization. Additionally, you\u2019ll learn the concepts behind Machine Learning and understand the cycle of an AI algorithm to deepen your analyses and make predictions. Finally, you\u2019ll learn how to implement Machine Learning algorithms."
+      },
+      {
+        "course_name": "Web Analytics & Tracking Skill Course",
+        "course_skills": ["Data Analytics ", "Digital Marketing"],
+        "course_locations": "Online",
+        "course_description": "This course will teach you how to analyze and optimize website traffic and improve its performance with Google Analytics, Google Tag Manager & Looker Studio. You\u2019ll also learn all of the best practices for consulting, analyzing and managing feeds on a daily basis. Additionally, you\u2019ll learn how to define your KPIs and set up the tagging plan to monitor them efficiently. "
+      },
+      {
+        "course_name": "Web Development Bootcamp - Full-time",
+        "course_skills": [
+          "CSS",
+          "Front End",
+          "Git",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "MySQL",
+          "Rails",
+          "Ruby",
+          "Sinatra",
+          "SQL"
+        ],
+        "course_locations": "Rennes, Madrid, Lausanne, Singapore, Sao Paulo, Berlin, Bali, Mexico City, Tokyo, Marseille, Brussels, Paris, Amsterdam, Montreal, Shanghai, Lyon, Nantes, Lille, London, Melbourne, Buenos Aires, Lisbon, Barcelona, Rio de Janeiro, Munich, Dubai, Santiago, Nice, Cologne, Casablanca, Bordeaux, Mauritius, Zurich, Porto, Cape Town, Toulouse, Sydney",
+        "course_description": "Learn to build web applications from scratch. Our immersive course will take you from beginner to junior software developer in a matter of week. At the end of the course, you\u2019ll know how to build a robust and user-friendly app and how to follow the right workflow to collaborate with other developers, designers and product managers."
+      },
+      {
+        "course_name": "Web Development Bootcamp Online",
+        "course_skills": [
+          "SQL",
+          "Sinatra",
+          "Ruby",
+          "Rails",
+          "MySQL",
+          "jQuery",
+          "JavaScript",
+          "HTML",
+          "GitHub",
+          "Git",
+          "Front End",
+          "CSS"
+        ],
+        "course_locations": "Online",
+        "course_description": "Learn to build web applications from scratch. Our immersive course will take you from beginner to junior software developer in a matter of week. At the end of the course, you\u2019ll know how to build a robust and user-friendly app and how to follow the right workflow to collaborate with other developers, designers and product managers."
+      },
+      {
+        "course_name": "Web Development Bootcamp - Part-time",
+        "course_skills": [
+          "GitHub",
+          "CSS",
+          "Front End",
+          "Git",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "MySQL",
+          "Rails",
+          "Ruby",
+          "Sinatra",
+          "SQL"
+        ],
+        "course_locations": "Brussels, Paris, Bordeaux, Lille, London, Rio de Janeiro, Sao Paulo, Nantes, Montreal, Berlin, Lyon, Tokyo, Marseille, Melbourne, Buenos Aires, Mexico City, Barcelona, Lausanne, Shanghai, Santiago, Rennes, Amsterdam, Singapore, Casablanca, Madrid, Mauritius, Lisbon, Bali, Munich, Dubai, Nice, Cologne",
+        "course_description": "Learn to build web applications from scratch. Our immersive course will take you from beginner to junior software developer in a matter of week. At the end of the course, you\u2019ll know how to build a robust and user-friendly app and how to follow the right workflow to collaborate with other developers, designers and product managers."
+      },
+      {
+        "course_name": "Web Development Bootcamp - Part-time Online",
+        "course_skills": [
+          "SQL",
+          "Sinatra",
+          "Ruby",
+          "Rails",
+          "MySQL",
+          "jQuery",
+          "JavaScript",
+          "HTML",
+          "GitHub",
+          "Git",
+          "Front End",
+          "CSS"
+        ],
+        "course_locations": "Online",
+        "course_description": "Learn to build web applications from scratch. Our immersive course will take you from beginner to junior software developer in a matter of week. At the end of the course, you\u2019ll know how to build a robust and user-friendly app and how to follow the right workflow to collaborate with other developers, designers and product managers."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/le-wagon",
+      "timestamp": "2023-05-25 14:12:02.926995"
+    }
+  },
+  {
+    "provider_name": "CodeOp",
+    "provider_locations": ["Barcelona", "London", "Online"],
+    "provider_tracks": ["Full Stack Developer", "Data Science"],
+    "provider_courses": [
+      {
+        "course_name": "Data Science (Part-time)",
+        "course_skills": [
+          "Data Visualization",
+          "Data Structures",
+          "Data Analytics ",
+          "Data Science",
+          "MySQL",
+          "Python",
+          "SQL"
+        ],
+        "course_locations": "Online",
+        "course_description": "Our Data Science course provides you with an industry-ready toolkit to build your data science career, while creating multiple portfolio pieces to showcase your new skill set.\r\n\r\n- Learn the fundamental concepts of Statistics and Machine Learning Access and create datasets from Relational Databases using SQL\r\n- Get hands-on training using libraries in Python: NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, and more\r\n- Collaborate on the development of projects using Git Learn to utilise cloud services\r\n- Get exposed to processing alternative data formats including: time series, NLP (Natural Language Processing), and Geospatial data"
+      },
+      {
+        "course_name": "Full Stack Development (Full-time)",
+        "course_skills": [
+          "GitHub",
+          "Git",
+          "Express.js",
+          "JavaScript",
+          "MySQL",
+          "Node.js",
+          "React.js",
+          "Scrum"
+        ],
+        "course_locations": "London, Barcelona, Online",
+        "course_description": "Our Full Stack Web Development course will provide you with everything you need to launch your career as a junior software developer.\r\n\r\n- Master the fundamentals that will allow you to able to break down any Full Stack project in terms of its most important assets.\r\n- Work on solving coding challenges and figuring out algorithms to solve problems.\r\n- Build your logic skills and problem-solving strategies, and develop an engineering mindset.\r\n- Learn all the tools that make modern web development possible\u2014React, Vue, Express, MySQL, Git, Heroku.\r\n- Understand the core concepts behind each tool, and the foundations and core functionalities of each framework.\r\n\r\nYou can do the course online (\u20ac6,500) or in person in Barcelona (\u20ac7,800) or London (\u00a37,500)."
+      },
+      {
+        "course_name": "Full Stack Development (Full Time - in person)",
+        "course_skills": [
+          "MySQL",
+          "React.js",
+          "Node.js",
+          "JavaScript",
+          "GitHub",
+          "Git",
+          "Front End"
+        ],
+        "course_locations": "Barcelona, London",
+        "course_description": "Our Full Stack Web Development course will provide you with everything you need to launch your career as a junior software developer.\r\n\r\n- Master the fundamentals that will allow you to able to break down any Full Stack project in terms of its most important assets.\r\n- Work on solving coding challenges and figuring out algorithms to solve problems.\r\n- Build your logic skills and problem-solving strategies, and develop an engineering mindset.\r\n- Learn all the tools that make modern web development possible\u2014React, Vue, Express, MySQL, Git, Heroku.\r\n- Understand the core concepts behind each tool, and the foundations and core functionalities of each framework.\r\n\r\nThe course cost is \u20ac7,800 in Barcelona and \u00a37,500 in London."
+      },
+      {
+        "course_name": "Full Stack Development (Part-time)",
+        "course_skills": [
+          "JavaScript",
+          "GitHub",
+          "Git",
+          "MySQL",
+          "Node.js",
+          "React.js",
+          "Scrum",
+          "SQL"
+        ],
+        "course_locations": "Online",
+        "course_description": "Our Full Stack Web Development course will provide you with everything you need to launch your career as a junior software developer.\r\n\r\n- Master the fundamentals that will allow you to able to break down any Full Stack project in terms of its most important assets.\r\n- Work on solving coding challenges and figuring out algorithms to solve problems.\r\n- Build your logic skills and problem-solving strategies, and develop an engineering mindset.\r\n- Learn all the tools that make modern web development possible\u2014React, Vue, Express, MySQL, Git, Heroku.\r\n- Understand the core concepts behind each tool, and the foundations and core functionalities of each framework.\r\n\r\nThere are timing options of two evening classes per week or three morning classes per week."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/codeop",
+      "timestamp": "2023-05-25 14:12:02.962194"
+    }
+  },
+  {
+    "provider_name": "Constructor Labs",
+    "provider_locations": ["London"],
+    "provider_tracks": ["Full Stack Developer"],
+    "provider_courses": [
+      {
+        "course_name": "Full Stack Web Development",
+        "course_skills": [
+          "JavaScript",
+          "Node.js",
+          "Express.js",
+          "HTML",
+          "CSS",
+          "Front End",
+          "React.js",
+          "SQL",
+          "Git"
+        ],
+        "course_locations": "London",
+        "course_description": "Students will learn how to build full applications from front end, back end, databases and deployment to production. The main technologies we cover are JavaScript, React, Node, Express, HTML, CSS, Git, SQL, Postgres and more. We use Test Driven Development and Pair Programming to ensure students have a comprehensive skill set which our hiring partners look for."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/constructor-labs",
+      "timestamp": "2023-05-25 14:12:03.037062"
+    }
+  },
+  {
+    "provider_name": "Tecky Academy",
+    "provider_locations": ["Hong Kong", "London", "Toronto"],
+    "provider_tracks": [
+      "Full Stack Developer",
+      "Mobile App Development",
+      "Front End Developer"
+    ],
+    "provider_courses": [
+      {
+        "course_name": "MicroMaster A.I. & Programming",
+        "course_skills": [
+          "Algorithms",
+          "CSS",
+          "DevOps",
+          "Express.js",
+          "Front End",
+          "HTML",
+          "Java",
+          "JavaScript",
+          "MongoDB",
+          "Node.js",
+          "Python",
+          "React.js",
+          "Spark",
+          "Artificial Intelligence",
+          "Data Engineering",
+          "Data Science",
+          "Data Structures",
+          "Design",
+          "Git",
+          "GitHub",
+          "Machine Learning",
+          "Mobile",
+          "MVC",
+          "Networking",
+          "REST",
+          "SQL"
+        ],
+        "course_locations": "London, Toronto, Hong Kong",
+        "course_description": "MicroMaster A.I. & Programming bootcamp students will learn web fundamentals with JavaScript, web server programming, back end development, front end development, and data engineering. MicroMaster A.I. & Programming bootcamp students will receive a certificate upon graduation. "
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/tecky-academy",
+      "timestamp": "2023-05-25 14:12:03.063320"
+    }
+  },
+  {
+    "provider_name": "Data Science Dojo",
+    "provider_locations": [
+      "Albuquerque",
+      "Amsterdam",
+      "Austin",
+      "Bangkok",
+      "Barcelona",
+      "Bucharest",
+      "Chicago",
+      "Dubai",
+      "Las Vegas",
+      "London",
+      "New York City",
+      "Paris",
+      "Pretoria",
+      "Seattle",
+      "Singapore",
+      "Sydney",
+      "Toronto",
+      "Washington"
+    ],
+    "provider_tracks": ["Data Science"],
+    "provider_courses": [
+      {
+        "course_name": "5-Day Data Science and Data Engineering Bootcamp | Amsterdam",
+        "course_skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Hadoop",
+          "Machine Learning",
+          "Python",
+          "R"
+        ],
+        "course_locations": "Amsterdam",
+        "course_description": "Over the course of five days, you will go through a series of exercises to learn and apply a variety of data science skills. Our comprehensive curriculum balances theory with practice, as we firmly believe in a hands-on approach to learning data science. Meals are included on all five days of the bootcamp. At Data Science Dojo, we believe that you do not need an advanced degree or months of training to get started with data science. Our attendees come from diverse backgrounds, including software development, medicine, education, project management, public service, finance, and more. Our experienced teaching team has iteratively refined the curriculum so you can tackle real world problems right away. Our hands-on curriculum will get you started with practical data science and data engineering in just 5 days: Learn the theory and practice of data science and engineering using state of the art tools Explore, visualize, and cluster data Build and evaluate predictive models for classification and regression Design online experiments Build an end-to-end internet of things (IoT) solution. Through hands-on exercises, you will be exposed to a variety of technologies: Hive, Spark, Mahout, Hadoop, stream processors, data ingestors. Learn more by visiting our curriculum page, or for a quick overview, download our course outline. After the bootcamp, our mentors will guide you as you take on new data science problems through Kaggle competitions."
+      },
+      {
+        "course_name": "5-Day Data Science and Data Engineering Bootcamp | Austin",
+        "course_skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Excel",
+          "Hadoop",
+          "Machine Learning",
+          "Python",
+          "R"
+        ],
+        "course_locations": "Austin",
+        "course_description": "Over the course of five days, you will go through a series of exercises to learn and apply a variety of data science skills. Our comprehensive curriculum balances theory with practice, as we firmly believe in a hands-on approach to learning data science. Meals are included on all five days of the bootcamp. At Data Science Dojo, we believe that you do not need an advanced degree or months of training to get started with data science. Our attendees come from diverse backgrounds, including software development, medicine, education, project management, public service, finance, and more. Our experienced teaching team has iteratively refined the curriculum so you can tackle real world problems right away. Our hands-on curriculum will get you started with practical data science and data engineering in just 5 days: Learn the theory and practice of data science and engineering using state of the art tools Explore, visualize, and cluster data Build and evaluate predictive models for classification and regression Design online experiments Build an end-to-end internet of things (IoT) solution. Through hands-on exercises, you will be exposed to a variety of technologies: Hive, Spark, Mahout, Hadoop, stream processors, data ingestors. Learn more by visiting our curriculum page, or for a quick overview, download our course outline. After the bootcamp, our mentors will guide you as you take on new data science problems through Kaggle competitions."
+      },
+      {
+        "course_name": "5-Day Data Science and Data Engineering Bootcamp | Barcelona",
+        "course_skills": [
+          "Data Science",
+          "Excel",
+          "Python",
+          "R",
+          "SQL",
+          "Algorithms",
+          "Data Analytics ",
+          "Data Visualization",
+          "Hadoop",
+          "Machine Learning"
+        ],
+        "course_locations": "Barcelona",
+        "course_description": "Over the course of five days, you will go through a series of exercises to learn and apply a variety of data science skills. Our comprehensive curriculum balances theory with practice, as we firmly believe in a hands-on approach to learning data science. Meals are included on all five days of the bootcamp.\r\nAt Data Science Dojo, we believe that you do not need an advanced degree or months of training to get started with data science. Our attendees come from diverse backgrounds, including software development, medicine, education, project management, public service, finance, and more. Our experienced teaching team has iteratively refined the curriculum so you can tackle real world problems right away. Our hands-on curriculum will get you started with practical data science and data engineering in just 5 days: Learn the theory and practice of data science and engineering using state of the art tools Explore, visualize, and cluster data Build and evaluate predictive models for classification and regression Design online experiments Build an end-to-end internet of things (IoT) solution. Through hands-on exercises, you will be exposed to a variety of technologies: Hive, Spark, Mahout, Hadoop, stream processors, data ingestors. Learn more by visiting our curriculum page, or for a quick overview, download our course outline. After the bootcamp, our mentors will guide you as you take on new data science problems through Kaggle competitions.\r\n"
+      },
+      {
+        "course_name": "5-Day Data Science and Data Engineering Bootcamp | DC",
+        "course_skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Data Analytics ",
+          "Data Science",
+          "Data Visualization",
+          "Hadoop",
+          "Machine Learning",
+          "Python",
+          "R"
+        ],
+        "course_locations": "Washington",
+        "course_description": "Over the course of five days, you will go through a series of exercises to learn and apply a variety of data science skills. Our comprehensive curriculum balances theory with practice, as we firmly believe in a hands-on approach to learning data science. Meals are included on all five days of the bootcamp. At Data Science Dojo, we believe that you do not need an advanced degree or months of training to get started with data science. Our attendees come from diverse backgrounds, including software development, medicine, education, project management, public service, finance, and more. Our experienced teaching team has iteratively refined the curriculum so you can tackle real world problems right away. Our hands-on curriculum will get you started with practical data science and data engineering in just 5 days: Learn the theory and practice of data science and engineering using state of the art tools Explore, visualize, and cluster data Build and evaluate predictive models for classification and regression Design online experiments Build an end-to-end internet of things (IoT) solution. Through hands-on exercises, you will be exposed to a variety of technologies: Hive, Spark, Mahout, Hadoop, stream processors, data ingestors. Learn more by visiting our curriculum page, or for a quick overview, download our course outline. After the bootcamp, our mentors will guide you as you take on new data science problems through Kaggle competitions."
+      },
+      {
+        "course_name": "5-Day Data Science and Data Engineering Bootcamp | NYC",
+        "course_skills": [
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Hadoop",
+          "Python",
+          "R"
+        ],
+        "course_locations": "New York City",
+        "course_description": "Over the course of five days, you will go through a series of exercises to learn and apply a variety of data science skills. Our comprehensive curriculum balances theory with practice, as we firmly believe in a hands-on approach to learning data science. Meals are included on all five days of the bootcamp. At Data Science Dojo, we believe that you do not need an advanced degree or months of training to get started with data science. Our attendees come from diverse backgrounds, including software development, medicine, education, project management, public service, finance, and more. Our experienced teaching team has iteratively refined the curriculum so you can tackle real world problems right away. Our hands-on curriculum will get you started with practical data science and data engineering in just 5 days: Learn the theory and practice of data science and engineering using state of the art tools Explore, visualize, and cluster data Build and evaluate predictive models for classification and regression Design online experiments Build an end-to-end internet of things (IoT) solution. Through hands-on exercises, you will be exposed to a variety of technologies: Hive, Spark, Mahout, Hadoop, stream processors, data ingestors. Learn more by visiting our curriculum page, or for a quick overview, download our course outline. After the bootcamp, our mentors will guide you as you take on new data science problems through Kaggle competitions."
+      },
+      {
+        "course_name": "5-Day Data Science and Data Engineering Bootcamp | Seattle",
+        "course_skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Excel",
+          "Hadoop",
+          "Machine Learning",
+          "Python",
+          "R"
+        ],
+        "course_locations": "Seattle",
+        "course_description": "Over the course of five days, you will go through a series of exercises to learn and apply a variety of data science skills. Our comprehensive curriculum balances theory with practice, as we firmly believe in a hands-on approach to learning data science. Meals are included on all five days of the bootcamp. At Data Science Dojo, we believe that you do not need an advanced degree or months of training to get started with data science. Our attendees come from diverse backgrounds, including software development, medicine, education, project management, public service, finance, and more. Our experienced teaching team has iteratively refined the curriculum so you can tackle real world problems right away. Our hands-on curriculum will get you started with practical data science and data engineering in just 5 days: Learn the theory and practice of data science and engineering using state of the art tools Explore, visualize, and cluster data Build and evaluate predictive models for classification and regression Design online experiments Build an end-to-end internet of things (IoT) solution. Through hands-on exercises, you will be exposed to a variety of technologies: Hive, Spark, Mahout, Hadoop, stream processors, data ingestors. Learn more by visiting our curriculum page, or for a quick overview, download our course outline. After the bootcamp, our mentors will guide you as you take on new data science problems through Kaggle competitions."
+      },
+      {
+        "course_name": "5-Day Data Science and Data Engineering Bootcamp | Singapore",
+        "course_skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Excel",
+          "Hadoop",
+          "Machine Learning",
+          "Python",
+          "R"
+        ],
+        "course_locations": "Singapore",
+        "course_description": "Endorsed by CITREP+\r\n\r\nOver the course of five days, you will go through a series of exercises to learn and apply a variety of data science skills. Our comprehensive curriculum balances theory with practice, as we firmly believe in a hands-on approach to learning data science. Meals are included on all five days of the bootcamp. At Data Science Dojo, we believe that you do not need an advanced degree or months of training to get started with data science. Our attendees come from diverse backgrounds, including software development, medicine, education, project management, public service, finance, and more. Our experienced teaching team has iteratively refined the curriculum so you can tackle real world problems right away. Our hands-on curriculum will get you started with practical data science and data engineering in just 5 days: Learn the theory and practice of data science and engineering using state of the art tools Explore, visualize, and cluster data Build and evaluate predictive models for classification and regression Design online experiments Build an end-to-end internet of things (IoT) solution. Through hands-on exercises, you will be exposed to a variety of technologies: Hive, Spark, Mahout, Hadoop, stream processors, data ingestors. Learn more by visiting our curriculum page, or for a quick overview, download our course outline. After the bootcamp, our mentors will guide you as you take on new data science problems through Kaggle competitions."
+      },
+      {
+        "course_name": "A Hands-on Introduction to Data Science (Data Science Certificate)",
+        "course_skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Business Intelligence",
+          "Data Analytics ",
+          "Data Science",
+          "Data Visualization",
+          "Excel",
+          "Machine Learning",
+          "Python",
+          "R"
+        ],
+        "course_locations": "Albuquerque",
+        "course_description": "Data literacy is a crucial but rare skill to have for any modern-day business. Our bootcamp curriculum teaches working professionals how to extract actionable insights from data enabling you to solve real-world problems in the shortest duration possible. A series of live in-person instructor-led tutorials will teach you the fundamentals of data science and equip you with skills in R programming and Azure machine learning tools for data science. Our carefully crafted curriculum provides the right mix of theoretical concepts, hands-on practical exercises, and business interpretation of results.\r\n\r\nWho should attend?\r\nWorking professionals who want to add data science to their current positions, or who\r\nwant to learn more about this new field.\r\n\r\nProgram Requirements:\r\nYou should have an interest in data science and data engineering as well as knowledge of at least one programming language. However, many of our attendees come to us with little to no programming experience. Our pre-bootcamp materials will get you where you need to be to hit the ground running."
+      },
+      {
+        "course_name": "A Hands-on Introduction to the Internet of Things (IoT)",
+        "course_skills": [
+          "Algorithms",
+          "Artificial Intelligence",
+          "Data Analytics ",
+          "Data Science",
+          "Machine Learning",
+          "Python",
+          "R",
+          "SQL"
+        ],
+        "course_locations": "Albuquerque",
+        "course_description": "According to Gartner, there will be 20 billion connected devices on the planet by 2020. These connected devices, sometimes referred to as the Internet of Things (IoT), range from personal gadgets like mobile phones and wearables to home appliances and automobiles. As industries rely more and more on automation, we will see industrial equipment rely more and more on sensor data.\r\n\r\nThis introductory course will give attendees an introduction to the exciting field of the Internet of Things. We will start with a gentle introduction, understand the architecture of an IoT application and build working prototypes for different industries. We will also discuss the pertinent legal, ethical, security and data governance issues.\r\n\r\nWho should attend?\r\nThis 2-day course is open for all working professionals who want to get hands-on, real-world, practical learning on IoTs.\r\n\r\nProgram Requirements:\r\nYou should have an interest in data science and data engineering. Having programming experience is not a pre-requisite for enrollment in this course."
+      },
+      {
+        "course_name": "Data Science for Managers and Business Leaders",
+        "course_skills": [
+          "Algorithms",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Machine Learning",
+          "Python",
+          "R",
+          "Virtualization"
+        ],
+        "course_locations": "Barcelona, Toronto, Washington, New York City, Chicago, Seattle, Austin, Singapore, Amsterdam, Paris, Sydney, Dubai, Las Vegas, Albuquerque, London, Bucharest, Pretoria, Bangkok",
+        "course_description": "Data Science Dojo\u2019s course for managers and business leaders covers an overview of key machine learning and data science subjects to understand the landscape, business challenges, and important core concepts of machine learning and data science. The online course is instructor-led and taught live so you can still gain the advantage of being coached through your learning experience in a more dynamic, interactive environment than self-paced online courses. We believe learning data science properly requires an attentive approach to teaching, so our online course follows the same principle as our in-person experience, where students are taught with real instructors and will take part in the theory, practical exercises, activities, questions and answers, and more like they would in a classroom."
+      },
+      {
+        "course_name": "Python for Data Science",
+        "course_skills": [
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Python"
+        ],
+        "course_locations": "Barcelona, Toronto, Washington, New York City, Chicago, Seattle, Austin, Singapore, Amsterdam, Paris, Sydney, Dubai, Las Vegas, Albuquerque, London, Bucharest, Pretoria, Bangkok",
+        "course_description": "Python has quickly become one of the most popular programming languages among individuals and organizations around the world. Its general purpose appeals to many different industries and allows professionals to transfer their skillset across careers, especially data science, machine learning, and artificial intelligence.\r\nThis Python bootcamp focuses specifically on data science. Throughout the course, you will practice the basics, learn more advanced techniques, and finish with a project to put all your newfound knowledge to use. In 5 days (3 hours per day) you can get started and polish your Python abilities for data science and analysis."
+      },
+      {
+        "course_name": "Remote Data Science & Data Engineering Bootcamp",
+        "course_skills": [
+          "Algorithms",
+          "Data Analytics ",
+          "Data Science",
+          "Data Structures",
+          "Data Visualization",
+          "Hadoop",
+          "Machine Learning",
+          "Python",
+          "R"
+        ],
+        "course_locations": "Barcelona, Toronto, Washington, New York City, Chicago, Seattle, Austin, Singapore, Amsterdam, Paris, Sydney, Dubai, Las Vegas, Albuquerque, London, Bucharest, Pretoria, Bangkok",
+        "course_description": "Data Science Dojo\u2019s bootcamp course covers several important machine learning and data science subjects to equip you in implementing predictive models and data pipelines end-to-end, understanding the underpinning theory and concepts, and ingraining the critical thinking process behind data science. \r\n\r\nThe online course is instructor-led and taught live so you can still gain the advantage of being coached through your learning experience in a more dynamic, interactive environment than self-paced online courses. We believe learning data science properly requires an attentive approach to teaching, so our online course follows the same principle as our in-person experience, where students are taught with real instructors and will take part in the theory, practical exercises, activities, questions and answers, and more like they would in a classroom."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/data-science-dojo",
+      "timestamp": "2023-05-25 14:12:03.114352"
+    }
+  },
+  {
+    "provider_name": "iO Academy",
+    "provider_locations": ["Bath", "Bristol", "London", "Online"],
+    "provider_tracks": [
+      "Full Stack Developer",
+      "Data Science",
+      "Front End Developer"
+    ],
+    "provider_courses": [
+      {
+        "course_name": "Coding Quick Start",
+        "course_skills": ["JavaScript", "HTML", "CSS"],
+        "course_locations": "Online",
+        "course_description": "Essential tech training for absolute beginners. The Coding Quick Start is designed to introduce you to the fundamentals of programming and web development using HTML, CSS and Javascript."
+      },
+      {
+        "course_name": "Data Science and Machine Learning",
+        "course_skills": [
+          "Python",
+          "Data Visualization",
+          "Data Science",
+          "Data Engineering",
+          "Data Analytics ",
+          "Artificial Intelligence",
+          "Algorithms"
+        ],
+        "course_locations": "Online",
+        "course_description": "After covering an initial intro to Python, the course focus for the first six weeks is statistics and data science, followed by the second six weeks which focuses on machine learning and more advanced topics."
+      },
+      {
+        "course_name": "Full Stack Track",
+        "course_skills": [
+          "MVC",
+          "HTML",
+          "CSS",
+          "PHP",
+          "JavaScript",
+          "jQuery",
+          "Express.js",
+          "Front End",
+          "Git",
+          "MySQL",
+          "Node.js",
+          "Product Management",
+          "React.js",
+          "MongoDB",
+          "SQL",
+          "Scrum",
+          "User Experience Design",
+          "Agile",
+          "GitHub",
+          "REST"
+        ],
+        "course_locations": "Bath",
+        "course_description": "Students will learn the fundamentals of coding, software design and project management. "
+      },
+      {
+        "course_name": "Software Developer Essentials",
+        "course_skills": [
+          "User Experience Design",
+          "SQL",
+          "Scrum",
+          "REST",
+          "React.js",
+          "Product Management",
+          "PHP",
+          "Node.js",
+          "MySQL",
+          "MVC",
+          "jQuery",
+          "JavaScript",
+          "HTML",
+          "GitHub",
+          "Git",
+          "Front End",
+          "CSS",
+          "Agile"
+        ],
+        "course_locations": "Online",
+        "course_description": "A fully online course packed with all the knowledge and skills needed to become a professional software engineer."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/io-academy",
+      "timestamp": "2023-05-25 14:12:03.196565"
+    }
+  },
+  {
+    "provider_name": "Tech Educators",
+    "provider_locations": ["London", "Online"],
+    "provider_tracks": ["Full Stack Developer", "Front End Developer"],
+    "provider_courses": [
+      {
+        "course_name": "Ethereum, Polygon and Solidity (Full Time, Daytime)",
+        "course_skills": ["Web3", "Solidity", "Cryptography", "Blockchain"],
+        "course_locations": "London, Online",
+        "course_description": "The Web3 Bootcamp covers topics like blockchain and cryptography fundamentals, Ethereum, Polygon. Solidity, smart contracts, and decentralised apps. This program is available at no cost to students due to our partnership with Polygon. This is the full time, daytime (GMT) course."
+      },
+      {
+        "course_name": "Ethereum, Polygon and Solidity (Part Time, Evening)",
+        "course_skills": ["Web3", "Solidity", "Cryptography", "Blockchain"],
+        "course_locations": "Online, London",
+        "course_description": "The Web3 Bootcamp covers topics like blockchain and cryptography fundamentals, Ethereum, Polygon. Solidity, smart contracts, and decentralised apps. This program is available at no cost to students due to our partnership with Polygon. This is the part time, evening (GMT) course."
+      },
+      {
+        "course_name": "Full Stack Web Development (Full Time, Daytime)",
+        "course_skills": [
+          "React.js",
+          "Node.js",
+          "JavaScript",
+          "HTML",
+          "Front End",
+          "Express.js",
+          "CSS"
+        ],
+        "course_locations": "London, Online",
+        "course_description": "The Full Stack Development bootcamp covers topics like HTML, CSS, JavaScript, MongoDB, Express, React, and Node.js. UK students are allowed to take the first session of the bootcamp at no charge to give them a chance to try development. This is the full time, daytime version of our course, we also offer evening, part time bootcamps."
+      },
+      {
+        "course_name": "Full Stack Web Development (Part Time, Evening)",
+        "course_skills": [
+          "React.js",
+          "Node.js",
+          "JavaScript",
+          "HTML",
+          "Front End",
+          "Express.js",
+          "CSS"
+        ],
+        "course_locations": "Online, London",
+        "course_description": "The Full Stack Development bootcamp covers topics like HTML, CSS, JavaScript, MongoDB, Express, React, and Node.js. UK students are allowed to take the first session of the bootcamp at no charge to give them a chance to try development. This is the part-time, evening version of our course, we also offer daytime, full time bootcamps."
+      },
+      {
+        "course_name": "Polygon and Solidity DayTime course",
+        "course_skills": [
+          "Web3",
+          "Solidity",
+          "React.js",
+          "JavaScript",
+          "HTML",
+          "GitHub",
+          "Git",
+          "Front End",
+          "Design",
+          "Data Structures",
+          "Blockchain",
+          "Algorithms"
+        ],
+        "course_locations": "London",
+        "course_description": "Learn Solidity from the very basics to advanced. Variables, Functions, Interfaces, Libraries, Structs, Mappings, Arrays, and Abstract Contracts all-round learning fun and easy. "
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/tech-educators",
+      "timestamp": "2023-05-25 14:12:03.209237"
+    }
+  },
+  {
+    "provider_name": "Ironhack",
+    "provider_locations": [
+      "Amsterdam",
+      "Barcelona",
+      "Berlin",
+      "Bordeaux",
+      "D\u00fcsseldorf",
+      "Lisbon",
+      "London",
+      "Madrid",
+      "Mexico City",
+      "Miami",
+      "New York City",
+      "Online",
+      "Paris",
+      "Sao Paulo",
+      "Tampa"
+    ],
+    "provider_tracks": [
+      "Full Stack Developer",
+      "UX Design",
+      "Data Science",
+      "Front End Developer"
+    ],
+    "provider_courses": [
+      {
+        "course_name": "Cyber Security Bootcamp",
+        "course_skills": [
+          "CompTIA Network+",
+          "CompTIA Security+",
+          "Cryptography",
+          "Ethical Hacking",
+          "Linux",
+          "Mobile Security",
+          "Network Security",
+          "Penetration Testing",
+          "SIEM Administration",
+          "Virtualization"
+        ],
+        "course_locations": "Lisbon, Sao Paulo, Amsterdam, Berlin, Paris, Mexico City, Barcelona, London, Online, Madrid",
+        "course_description": "The Ironhack Cybersecurity Bootcamp covers the hands-on and practical skills necessary for\r\nBootcampers to land high-paying careers in cybersecurity, one of the world\u2019s fastest growing\r\nindustries.\r\n\r\nThe bootcamp is an accelerated cybersecurity training program designed to successfully\r\nprepare people with little or no background in IT for entry level jobs in cybersecurity, a highly\r\nin-demand and lucrative career path. The Bootcamp is delivered in a blended format at a Cybint\r\nCertified Center with both on campus learning and online self-paced activities.\r\n"
+      },
+      {
+        "course_name": "Data Analytics Bootcamp (Full-time)",
+        "course_skills": [
+          "Data Science",
+          "Data Structures",
+          "Git",
+          "Machine Learning",
+          "MySQL",
+          "Python",
+          "R",
+          "Data Analytics ",
+          "Data Visualization",
+          "SQL"
+        ],
+        "course_locations": "Online, Miami, London, Paris, Madrid, Barcelona, Mexico City, Berlin, Amsterdam, Sao Paulo, Lisbon",
+        "course_description": "This course enables students to become a Full Fledged Data Analyst in 9 weeks. Students will develop practical skills useful in the data industry. \r\n\r\nRamp-up pre-work and learn intermediate topics of data analytics using Pandas and data engineering to create a data application using real datasets. You'll also learn to use Python and Business Intelligence.\r\n\r\nThrough the bootcamp you will learn by doing projects combining data analytics and programming. Ironhack's Data Analytics Bootcamp is meant to help you secure a spot in the data industry.\r\n\r\nHowever, the most important skill that students will take away from this course is the ability to learn. Technology is fast-moving and ever-changing. "
+      },
+      {
+        "course_name": "Data Analytics Bootcamp (Part-Time)",
+        "course_skills": [
+          "Git",
+          "MySQL",
+          "Python",
+          "SQL",
+          "Data Analytics ",
+          "Data Structures",
+          "Data Visualization"
+        ],
+        "course_locations": "Online, Miami, London, Madrid, Barcelona, Mexico City, Paris, Berlin, Amsterdam, Sao Paulo, Lisbon",
+        "course_description": "This course enables students to become a Full Fledged Data Analyst in 24 weeks. Students will develop practical skills useful in the data industry. \r\n\r\nRamp-up pre-work and learn intermediate topics of data analytics using Pandas and data engineering to create a data application using real datasets. You'll also learn to use Python and Business Intelligence.\r\n\r\nThrough the bootcamp you will learn by doing projects combining data analytics and programming. Ironhack's Data Analytics Bootcamp is meant to help you secure a spot in the data industry.\r\n\r\nHowever, the most important skill that students will take away from this course is the ability to learn. Technology is fast-moving and ever-changing. "
+      },
+      {
+        "course_name": "UX/UI Design Bootcamp (Full-Time)",
+        "course_skills": [
+          "CSS",
+          "HTML",
+          "User Experience Design",
+          "Agile",
+          "Mobile",
+          "Product Management"
+        ],
+        "course_locations": "Online, London, Madrid, Paris, Mexico City, Barcelona, Berlin, Miami, Amsterdam, Sao Paulo, Lisbon",
+        "course_description": "This 9 week immersive course is catered to beginners with no previous design or technical experience. Students will be taught the fundamentals of User Centered Design and learn to validate ideas through user research, rapid prototyping & heuristic evaluation. The course will end with a capstone project where students will take a new product idea from validation to launch. \r\n\r\nBy the end of the course, students will be ready to start a new career as a UX Designer, Freelance or turbo charge their current professional trajectory. "
+      },
+      {
+        "course_name": "UX/UI Design Course (Part-Time)",
+        "course_skills": [
+          "CSS",
+          "Design",
+          "Product Management",
+          "User Experience Design",
+          "Agile",
+          "HTML",
+          "Mobile"
+        ],
+        "course_locations": "Online, London, Miami, Mexico City, Berlin, Barcelona, Madrid, Paris, Amsterdam, Sao Paulo, Lisbon",
+        "course_description": "The UX/UI Design Part-time course meets Tuesdays, Thursdays and Saturdays with additional online coursework over a period of 6 months. Students will be taught the fundamentals of User Centered Design and learn to validate ideas through user research, rapid prototyping & heuristic evaluation. The course will end with a capstone project where students will take a new product idea from validation to launch. \r\n\r\nBy the end of the course, students will be ready to start a new career as a UX Designer, Freelance or turbo charge their current professional trajectory. "
+      },
+      {
+        "course_name": "Web Development Bootcamp (Full-time)",
+        "course_skills": [
+          "AngularJS",
+          "CSS",
+          "Express.js",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "MongoDB",
+          "Node.js",
+          "React.js"
+        ],
+        "course_locations": "Online, Miami, London, Madrid, Berlin, Amsterdam, Mexico City, Paris, Barcelona, Sao Paulo, Lisbon",
+        "course_description": "This course enables students to design and build full stack JavaScript web applications. Students will learn the fundamentals of programming, with a big emphasis on battle-tested patterns and best practices. By the end of the course, students will have the ability to evaluate a problem and select the optimal solution using the language/framework best suited for a project\u2019s scope.\r\n\r\nIn addition to technical skills, the course will train students in how to think like a programmer. Students will learn how to deconstruct complex problems and break them into smaller modules.\r\n\r\nHowever, the most important skill that students will take away from this course is the ability to learn. Technology is fast-moving and ever-changing. A good programmer has a general understanding of the various programming languages and when to use them. A great programmer understands the fundamental structure and possesses the ability to learn any new language when required."
+      },
+      {
+        "course_name": "Web Development Bootcamp (Part-Time)",
+        "course_skills": [
+          "AngularJS",
+          "Express.js",
+          "Front End",
+          "HTML",
+          "JavaScript",
+          "MongoDB",
+          "Node.js",
+          "CSS",
+          "React.js"
+        ],
+        "course_locations": "Online, Miami, Madrid, Barcelona, Paris, Berlin, Mexico City, Amsterdam, Sao Paulo, Lisbon",
+        "course_description": "This course enables students to design and build full stack JavaScript web applications. Students will learn the fundamentals of programming, with a big emphasis on battle-tested patterns and best practices. By the end of the course, students will have the ability to evaluate a problem and select the optimal solution using the language/framework best suited for a project\u2019s scope.\r\n\r\nIn addition to technical skills, the course will train students in how to think like a programmer. Students will learn how to deconstruct complex problems and break them into smaller modules.\r\n\r\nHowever, the most important skill that students will take away from this course is the ability to learn. Technology is fast-moving and ever-changing. A good programmer has a general understanding of the various programming languages and when to use them. A great programmer understands the fundamental structure and possesses the ability to learn any new language when required."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/ironhack",
+      "timestamp": "2023-05-25 14:12:03.236206"
+    }
+  },
+  {
+    "provider_name": "23 Code Street",
+    "provider_locations": ["London"],
+    "provider_tracks": ["Front End Developer"],
+    "provider_courses": [
+      {
+        "course_name": "Web Development Foundation Course",
+        "course_skills": [
+          "CSS",
+          "HTML",
+          "JavaScript",
+          "jQuery",
+          "Node.js",
+          "React.js"
+        ],
+        "course_locations": "London",
+        "course_description": "23 Code Street's Web Development Foundation course aims to give you a strong foundation in web development and is designed for beginners with no or little previous experience.\r\n\r\nClasses take place two nights a week from 7:30 pm to 9:30 pm over a 3 month period. You\u2019ll learn the skills to build websites and discuss code confidently. The focus will be on HTML5, CSS3, Javascript, and JQuery but we also cover other topics such as  Git and Github, pair programming, clean code, responsive design and accessible development.\r\n\r\n You will work on multiple projects throughout the course to gain practical experience and have work to take away to include in a portfolio and show to potential employers. Our classes are informal and fun and we encourage openness and questions without ego or competition. At the end of the course, you'll have the opportunity to complete a 2-week internship with one of our partners.\r\n\r\nWhen you study with us, you'll also be paying for a disadvantaged woman in Mumbai to learn digital skills as part of our India project. \r\n\r\n Visit our website to read some of our students' stories and find out more. \r\n"
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/23-code-street",
+      "timestamp": "2023-05-25 14:12:03.413903"
+    }
+  },
+  {
+    "provider_name": "TechSwitch",
+    "provider_locations": ["London"],
+    "provider_tracks": ["Full Stack Developer"],
+    "provider_courses": [
+      {
+        "course_name": "Software Development",
+        "course_skills": [
+          "Agile",
+          "Front End",
+          "DevOps",
+          "CSS",
+          "Git",
+          "GitHub",
+          "HTML",
+          "Java",
+          "JavaScript",
+          ".NET",
+          "React.js"
+        ],
+        "course_locations": "London",
+        "course_description": "TechSwitch is a 12-week, online Software Developer bootcamp followed by an 18-month paid internship. TechSwitch students will learn agile methods, DevOps, full stack software development, software design, and software testing. Languages and technologies taught vary based on the companies in partnership with TechSwitch at any given time. All bootcamp students will work with a personal mentor. \r\n\r\nThe bootcamp and internship are both full time (Monday-Friday) and are not designed to fit alongside work or school schedules. Bootcamp cohorts are kept between 5 and 10 students to ensure one-on-one training time. \r\n"
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/techswitch",
+      "timestamp": "2023-05-25 14:12:03.441698"
+    }
+  }
+]
