@@ -28,6 +28,9 @@ jobs:
         shell: bash
         run: pip install -r requirements.txt
 
+      # - name: prune dependencies
+      #   run: make prune
+
       - name: lint
         run: make lint
 
