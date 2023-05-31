@@ -64,11 +64,14 @@ def test_raises_exception_on_incorrect_shape_at_nest(expected_data_structure):
     assert 'course_skills' in str(excinfo.value)
 
 
-# def test_raises_exception_on_incorrect_type(expected_data_structure):
+def test_raises_exception_on_incorrect_type(expected_data_structure):
+    error_structure = expected_data_structure
+    error_structure[0]['provider_courses'] = "hi"
+    df = pd.read_json(json.dumps(error_structure))
 
-#     df = pd.read_json(expected_data_structure)
+    with pytest.raises(Exception) as excinfo:
+        process_scraped_data(df)
 
-#     with pytest.raises(Exception) as excinfo:
-#         process_scraped_data(df)
+    print(excinfo.traceback)
 
-#     assert 'Field is wrong datatype' in str(excinfo.value)
+    assert 'Field is wrong datatype' in str(excinfo.value)
