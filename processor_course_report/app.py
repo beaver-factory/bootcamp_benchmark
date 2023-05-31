@@ -1,5 +1,4 @@
 import pandas as pd
-import json
 
 
 def find_time_commitment(x):
@@ -19,25 +18,6 @@ def process_scraped_data(course_dataframe):
         Return:
         processed_dataframe(DataFrame): A pandas DataFrame containing processed course data
     """
-    required_fields = [
-        'provider_courses',
-        'provider_tracks',
-    ]
-
-    required_nested_fields = [
-        "course_skills",
-        "course_locations"
-    ]
-
-    for field in required_fields:
-        if field not in course_dataframe:
-            print(field)
-            print(course_dataframe)
-            raise Exception('Missing required field')
-
-
-    # if type(course_dataframe.provider_courses) != 'list':
-    #     raise Exception('Field is wrong datatype')
 
     df = course_dataframe.explode('provider_courses').reset_index()
 
@@ -59,46 +39,3 @@ def process_scraped_data(course_dataframe):
         'provider_tracks').reset_index().drop(['index'], axis=1)
 
     return exploded_tracks
-
-
-course_dict = [{
-    "provider_name": "",
-    "provider_locations": [""],
-    "provider_tracks": [""],
-    "provider_courses": [
-        {
-            "course_name": "",
-            "course_skills": [""],
-            "course_locations": "",
-            "course_desc": ""
-        }
-    ],
-    "meta": {
-        "target_url": "",
-        "timestamp": ""
-    }
-},
-    {
-    "provider_name": "",
-        "provider_locations": [""],
-        "provider_tracks": [""],
-        "provider_courses": [
-            {
-                "course_name": "",
-                "course_skills": [""],
-                "course_locations": "",
-                "course_desc": ""
-            }
-        ],
-    "meta": {
-            "target_url": "",
-            "timestamp": ""
-            }
-}
-]
-
-parsed_data = json.dumps(course_dict)
-
-df = pd.read_json(parsed_data)
-
-process_scraped_data(df)
