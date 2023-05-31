@@ -7,7 +7,7 @@
       "direction": "in",
       "path": "%BlobContainerPrefix%0/{blobName}",
       "connection": "AzureWebJobsStorage",
-      "dataType": "binary"
+      "dataType": "string"
     },
     {
       "name": "outBlob",
