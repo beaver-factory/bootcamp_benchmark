@@ -22,7 +22,7 @@ def find_time_commitment(x):
         return None
 
 
-def process_scraped_data(course_dataframe):
+def process_scraped_data(unprocessed_dataframe):
     """
     Returns a processed DataFrame.
 
@@ -32,23 +32,31 @@ def process_scraped_data(course_dataframe):
         processed_dataframe(DataFrame): A pandas DataFrame containing processed course data
     """
 
-    df = course_dataframe.explode('provider_courses').reset_index()
+    exploded_courses = unprocessed_dataframe.explode(
+        'provider_courses').reset_index()
 
-    normalised_df = pd.json_normalize(df.provider_courses)
+    normalised_courses = pd.json_normalize(exploded_courses.provider_courses)
 
-    concat_normalised_df = pd.concat([df, normalised_df], axis=1).drop(
-        ['provider_courses', 'provider_locations'], axis=1)
+    concat_dataframe_with_courses = pd.concat([exploded_courses, normalised_courses], axis=1).drop([
+        'provider_courses', 'provider_locations'], axis=1)
 
-    concat_normalised_df['time'] = concat_normalised_df.apply(
+    concat_dataframe_with_courses['time'] = concat_dataframe_with_courses.apply(
         lambda x: find_time_commitment(x), axis=1)
 
-    exploded_locations = concat_normalised_df.explode(
+    exploded_skills = concat_dataframe_with_courses.explode(
         'course_skills').reset_index().drop(['index', 'level_0'], axis=1)
 
-    normalised_meta = pd.concat([exploded_locations, pd.json_normalize(
-        exploded_locations.meta)], axis=1).drop('meta', axis=1)
+    normalised_meta = pd.json_normalize(exploded_skills.meta)
 
-    exploded_tracks = normalised_meta.explode(
+    concat_dataframe_with_meta = pd.concat(
+        [exploded_skills, normalised_meta], axis=1).drop('meta', axis=1)
+
+    exploded_tracks = concat_dataframe_with_meta.explode(
         'provider_tracks').reset_index().drop(['index'], axis=1)
 
-    return exploded_tracks
+    exploded_tracks['course_locations'] = exploded_tracks['course_locations'].map(
+        lambda x: x.split(', '))
+
+    processed_dataframe = exploded_tracks.explode('course_locations')
+
+    return processed_dataframe
