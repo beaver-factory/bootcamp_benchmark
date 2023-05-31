@@ -2,13 +2,9 @@ from ..app import load_course_report_into_db
 import pytest
 import psycopg2
 import os
-import pandas as pd
-from dotenv import load_dotenv
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from unittest.mock import patch, Mock
 from io import BytesIO
-
-load_dotenv()
 
 
 @pytest.fixture(scope="session", autouse=True)
