@@ -26,61 +26,34 @@ def create_test_database():
     conn.close()
 
 
-def generate_inputstream(path):
-    with open(path, 'rb') as file:
-        test_csv_data = BytesIO(file.read())
-
-    mock_inputstream = Mock()
-    mock_inputstream.read.return_value = test_csv_data
-
-    return mock_inputstream
-
-
 @pytest.fixture
-def mock_blob_inputstream_correct_data():
-    mock_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+def mock_blob_inputstream():
+    def generate_inputstream(path):
+        with open(path, 'rb') as file:
+            test_csv_data = BytesIO(file.read())
 
-    with patch('azure.functions.InputStream', return_value=mock_inputstream):
-        yield mock_inputstream
+        mock_inputstream = Mock()
+        mock_inputstream.read.return_value = test_csv_data
 
+        with patch('azure.functions.InputStream', return_value=mock_inputstream):
+            return mock_inputstream
 
-@pytest.fixture
-def mock_blob_inputstream_incorrect_col_name():
-    mock_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_incorrect_col_name.csv')
-
-    with patch('azure.functions.InputStream', return_value=mock_inputstream):
-        yield mock_inputstream
-
-
-@pytest.fixture
-def mock_blob_inputstream_missing_column():
-    mock_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_missing_column.csv')
-
-    with patch('azure.functions.InputStream', return_value=mock_inputstream):
-        yield mock_inputstream
+    return generate_inputstream
 
 
-@pytest.fixture
-def mock_blob_inputstream_empty():
-    mock_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_only_headers.csv')
-
-    with patch('azure.functions.InputStream', return_value=mock_inputstream):
-        yield mock_inputstream
-
-
-def test_db_table_creation(mock_blob_inputstream_correct_data):
-
-    load_course_report_into_db(mock_blob_inputstream_correct_data)
+def test_db_table_creation(mock_blob_inputstream):
+    new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+    load_course_report_into_db(new_inputstream)
 
     query = 'SELECT * FROM course_report;'
     results = db_results(query)
 
-    assert len(results) != 0
+    assert len(results) > 0
 
 
-def test_db_correct_lengths(mock_blob_inputstream_correct_data):
-
-    load_course_report_into_db(mock_blob_inputstream_correct_data)
+def test_db_correct_lengths(mock_blob_inputstream):
+    new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+    load_course_report_into_db(new_inputstream)
 
     query = 'SELECT * FROM course_report;'
     results = db_results(query)
@@ -89,8 +62,9 @@ def test_db_correct_lengths(mock_blob_inputstream_correct_data):
     assert len(results[0]) == 9
 
 
-def test_rows_are_different(mock_blob_inputstream_correct_data):
-    load_course_report_into_db(mock_blob_inputstream_correct_data)
+def test_rows_are_different(mock_blob_inputstream):
+    new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+    load_course_report_into_db(new_inputstream)
 
     query = 'SELECT DISTINCT * FROM course_report;'
     results = db_results(query)
@@ -99,29 +73,33 @@ def test_rows_are_different(mock_blob_inputstream_correct_data):
     assert results[0] != results[1]
 
 
-def test_throws_column_exception(mock_blob_inputstream_incorrect_col_name, mock_blob_inputstream_missing_column):
+def test_throws_column_exception(mock_blob_inputstream):
     with pytest.raises(Exception) as csv_error:
-        load_course_report_into_db(mock_blob_inputstream_incorrect_col_name)
+        new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report_incorrect_col_name.csv')
+        load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'Invalid CSV column names'
 
     with pytest.raises(Exception) as csv_error:
-        load_course_report_into_db(mock_blob_inputstream_missing_column)
+        new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report_missing_column.csv')
+        load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'Invalid CSV column names'
 
 
-def test_empty_blob(mock_blob_inputstream_empty):
+def test_empty_blob2(mock_blob_inputstream):
     with pytest.raises(Exception) as csv_error:
-        load_course_report_into_db(mock_blob_inputstream_empty)
+        new_inputstream = mock_blob_inputstream('./loader_course_report/__tests__/test_course_report_only_headers.csv')
+        load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'CSV is empty'
 
-
 # helpers
+
+
 def db_results(query):
     conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
     cur = conn.cursor()
