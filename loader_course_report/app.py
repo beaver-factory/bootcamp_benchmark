@@ -8,13 +8,16 @@ def load_course_report_into_db(inBlob: func.InputStream):
     df = pd.read_csv(inBlob.read())
     df.pop(df.columns[0])
 
-    column_headers = ['provider_name', 'provider_tracks', 'course_name', 'course_skills', 'course_locations', 'course_description', 'target_url', 'timestamp']
+    column_headers = ['provider_name', 'provider_tracks', 'course_name', 'course_skills', 'course_locations', 'course_description', 'time', 'target_url', 'timestamp']
 
     if df.columns.values.tolist() != column_headers:
         raise Exception('Invalid CSV column names')
 
     if len(df.index) == 0:
-        raise Exception('CSV is empty')
+        raise Exception('CSV only has headers')
+
+    if all(df.iloc[0].isnull().values.tolist()):
+        raise Exception('CSV has headers but no data')
 
     # establish connection to db, using ARM template connectionstring'
     conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
@@ -32,6 +35,7 @@ def load_course_report_into_db(inBlob: func.InputStream):
                 skill VARCHAR(50),
                 course_location TEXT,
                 description TEXT,
+                time_commitment VARCHAR(20),
                 collection_url TEXT,
                 collection_date DATE
             );
@@ -40,7 +44,7 @@ def load_course_report_into_db(inBlob: func.InputStream):
     tup = list(df.itertuples(index=False))
 
     args_str = ','.join(cur.mogrify(
-        "(%s,%s,%s,%s,%s,%s,%s,%s)", x).decode('utf-8') for x in tup)
+        "(%s,%s,%s,%s,%s,%s,%s,%s,%s)", x).decode('utf-8') for x in tup)
 
     cur.execute("""INSERT INTO course_report (
                  provider_name,
@@ -49,6 +53,7 @@ def load_course_report_into_db(inBlob: func.InputStream):
                  skill,
                  course_location,
                  description,
+                 time_commitment,
                  collection_url,
                  collection_date
              ) VALUES """ + args_str)
