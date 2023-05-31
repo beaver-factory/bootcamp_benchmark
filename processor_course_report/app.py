@@ -2,6 +2,18 @@ import pandas as pd
 
 
 def find_time_commitment(x):
+    """
+    Returns a string of the time commitment or None.
+
+        Argument:
+        x(Series): A pandas Series containing the course names
+        Returns:
+        time_commitment(str): A string of the time commitment found in the course name
+        time_commitment(None): If no time commitment found in the course name
+    """
+
+    if not isinstance(x.course_name, str):
+        return None
     if 'part time' in x.course_name.lower():
         return 'part_time'
     if 'full time' in x.course_name.lower():
@@ -13,6 +25,7 @@ def find_time_commitment(x):
 def process_scraped_data(course_dataframe):
     """
     Returns a processed DataFrame.
+
         Argument:
         course_dataframe(DataFrame): A pandas DataFrame of data structure found in template_data_structure.json
         Return:
