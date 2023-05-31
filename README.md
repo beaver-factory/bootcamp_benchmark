@@ -48,6 +48,11 @@ make unit_test
 
 This command will run all the unit tests in the project and provide a verbose output.
 
+In order to run tests against a containerised PostgreSQL server, you will first need to have docker running and then run 
+```
+make dock
+```
+
 ## Versioning and Creating New Tags
 
 This project uses Semantic Versioning (SemVer)[https://semver.org/] to manage version numbers and changes. There are three types of version changes:
