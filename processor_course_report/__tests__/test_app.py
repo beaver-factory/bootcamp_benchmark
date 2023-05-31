@@ -64,12 +64,16 @@ def test_raises_exception_on_incorrect_shape_at_nest(expected_data_structure):
 
     assert 'course_skills' in str(excinfo.value)
 
+
 def test_returns_pandas_dataframe(expected_data_structure):
-    result = process_scraped_data(pd.read_json(json.dumps(expected_data_structure)))
+    result = process_scraped_data(pd.read_json(
+        json.dumps(expected_data_structure)))
     assert isinstance(result, pd.DataFrame)
 
+
 def test_dataframe_contains_correct_columns(expected_data_structure):
-    result = process_scraped_data(pd.read_json(json.dumps(expected_data_structure)))
+    result = process_scraped_data(pd.read_json(
+        json.dumps(expected_data_structure)))
     expected = [
         'provider_name',
         'provider_tracks',
@@ -83,7 +87,10 @@ def test_dataframe_contains_correct_columns(expected_data_structure):
     ]
 
     assert all(column in result.columns.values for column in expected)
+    assert result.shape[1] == 9
+
 
 def test_dataframe_contains_correct_number_of_rows(expected_data_structure):
-    result = process_scraped_data(pd.read_json(json.dumps(expected_data_structure)))
+    result = process_scraped_data(pd.read_json(
+        json.dumps(expected_data_structure)))
     assert result.shape[0] == 2
