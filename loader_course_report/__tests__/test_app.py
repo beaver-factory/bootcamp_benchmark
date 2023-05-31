@@ -46,7 +46,7 @@ def test_db_correct_lengths():
     results = db_results(query)
 
     assert len(results) == 10
-    assert len(results[0]) == 9
+    assert len(results[0]) == 10
 
 
 def test_rows_are_different():
@@ -76,16 +76,25 @@ def test_throws_column_exception():
     assert str(csv_error.value) == 'Invalid CSV column names'
 
 
-def test_empty_blob():
+def test_csv_only_has_headers():
     with pytest.raises(Exception) as csv_error:
         new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_only_headers.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
-    assert str(csv_error.value) == 'CSV is empty'
+    assert str(csv_error.value) == 'CSV only has headers'
 
+
+def test_csv_has_headers_but_empty_rows():
+    with pytest.raises(Exception) as csv_error:
+        new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_headers_empty_rows.csv')
+        load_course_report_into_db(new_inputstream)
+
+    print(f'Error is: {str(csv_error.value)}')
+    assert str(csv_error.value) == 'CSV has headers but no data'
 
 # helpers
+
 
 def generate_inputstream(path):
     with open(path, 'rb') as file:
