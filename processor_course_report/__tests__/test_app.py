@@ -83,3 +83,7 @@ def test_dataframe_contains_correct_columns(expected_data_structure):
     ]
 
     assert all(column in result.columns.values for column in expected)
+
+def test_dataframe_contains_correct_number_of_rows(expected_data_structure):
+    result = process_scraped_data(pd.read_json(json.dumps(expected_data_structure)))
+    assert result.shape[0] == 2
