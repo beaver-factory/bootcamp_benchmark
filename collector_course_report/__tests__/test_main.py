@@ -1,28 +1,18 @@
-import unittest
-from unittest.mock import MagicMock, patch
-import importlib
+import pytest
+import json
 import azure.functions as func
-import collector_course_report
+from collector_course_report import main
 
+def test_main(mocker):
+    # arrange
+    mock_get_scraped_data = mocker.patch('collector_course_report.get_scraped_data')
+    mock_get_scraped_data.return_value = {"foo": "bar"}
 
-class TestMain(unittest.TestCase):
+    mock_out_blob = mocker.Mock(spec=func.Out[bytes])
 
-    @patch('collector_course_report.app.get_scraped_data', return_value={'foo': 'bar'})
-    def test_main(self, mock_get_scraped_data):
-        # annoyingly have to reload module to ensure that the foobar mock is applied
-        importlib.reload(collector_course_report)
+    # act
+    main(None, mock_out_blob)
 
-        # arrange
-        mytimer = MagicMock()
-        outBlob = MagicMock(spec=func.Out[bytes], autospec=True)
-
-        # act
-        collector_course_report.main(mytimer, outBlob)
-
-        # assert
-        mock_get_scraped_data.assert_called_once()
-        outBlob.set.assert_called_once_with(b'{"foo": "bar"}')
-
-
-if __name__ == '__main__':
-    unittest.main()
+    # assert
+    mock_get_scraped_data.assert_called_once()
+    mock_out_blob.set.assert_called_once_with(json.dumps({"foo": "bar"}).encode('utf-8'))
