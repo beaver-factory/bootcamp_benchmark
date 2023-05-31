@@ -21,7 +21,7 @@ def process_scraped_data(course_dataframe):
     """
     required_fields = [
         'provider_courses',
-        'provider_tracks'
+        'provider_tracks',
     ]
 
     required_nested_fields = [
@@ -29,17 +29,15 @@ def process_scraped_data(course_dataframe):
         "course_locations"
     ]
 
-    print(type(course_dataframe.provider_courses))
-    print(course_dataframe.provider_courses)
     for field in required_fields:
         if field not in course_dataframe:
+            print(field)
+            print(course_dataframe)
             raise Exception('Missing required field')
 
-    # for field in required_nested_fields:
-    #     if field not in course_dataframe.
 
-    if type(course_dataframe.provider_courses) != 'list':
-        raise Exception('Field is wrong datatype')
+    # if type(course_dataframe.provider_courses) != 'list':
+    #     raise Exception('Field is wrong datatype')
 
     df = course_dataframe.explode('provider_courses').reset_index()
 
