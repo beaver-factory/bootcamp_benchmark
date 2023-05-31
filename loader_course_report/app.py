@@ -1,12 +1,24 @@
 import psycopg2
 import os
+import pandas as pd
+import azure.functions as func
 
 
-def load_course_report_into_db(input_df):
+def load_course_report_into_db(inBlob: func.InputStream):
+    df = pd.read_csv(inBlob.read())
+    df.pop(df.columns[0])
+
+    column_headers = ['provider_name', 'provider_tracks', 'course_name', 'course_skills', 'course_locations', 'course_description', 'target_url', 'timestamp']
+
+    if df.columns.values.tolist() != column_headers:
+        raise Exception('Invalid CSV column names')
+
+    if len(df.index) == 0:
+        raise Exception('CSV is empty')
+
     # establish connection to db, using ARM template connectionstring'
     conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
     cur = conn.cursor()
-    # only drop and insert if new csv contains some data
 
     # do we want to drop table or keep a record of previous scraped data? What if all data is dropped?
     cur.execute('DROP TABLE IF EXISTS course_report')
@@ -21,13 +33,11 @@ def load_course_report_into_db(input_df):
                 course_location TEXT,
                 description TEXT,
                 collection_url TEXT,
-                collection_date TEXT
+                collection_date DATE
             );
             ''')
 
-    input_df.pop(input_df.columns[0])
-    # tup = input_df.apply(tuple, axis=1).tolist()
-    tup = list(input_df.itertuples(index=False))
+    tup = list(df.itertuples(index=False))
 
     args_str = ','.join(cur.mogrify(
         "(%s,%s,%s,%s,%s,%s,%s,%s)", x).decode('utf-8') for x in tup)
