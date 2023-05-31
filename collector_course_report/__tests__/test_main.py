@@ -1,6 +1,6 @@
 import json
-import azure.functions as func
 from collector_course_report import main
+
 
 class OutBlobMock:
     def __init__(self):
@@ -8,6 +8,7 @@ class OutBlobMock:
 
     def set(self, data):
         self.data = data
+
 
 def test_main(mocker):
     # arrange
