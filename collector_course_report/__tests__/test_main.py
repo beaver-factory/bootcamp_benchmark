@@ -1,7 +1,7 @@
-import pytest
 import json
 import azure.functions as func
 from collector_course_report import main
+
 
 def test_main(mocker):
     # arrange
