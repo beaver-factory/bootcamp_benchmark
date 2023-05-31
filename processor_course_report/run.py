@@ -1,3 +1,3 @@
-from app import app
+from app import process_scraped_data
 
-app()
+process_scraped_data()
