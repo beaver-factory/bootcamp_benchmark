@@ -1,4 +1,4 @@
-from ..app import process_scraped_data
+from ..app import (process_scraped_data, find_time_commitment)
 import pytest
 import pandas as pd
 import json
@@ -11,11 +11,17 @@ def expected_data_structure():
         {
             "provider_name": "",
             "provider_locations": [""],
-            "provider_tracks": [""],
+            "provider_tracks": ["", "", ""],
             "provider_courses": [
                 {
                     "course_name": "",
                     "course_skills": [""],
+                    "course_locations": "",
+                    "course_description": ""
+                },
+                {
+                    "course_name": "",
+                    "course_skills": ["", "", ""],
                     "course_locations": "",
                     "course_description": ""
                 }
@@ -56,6 +62,7 @@ def test_raises_exception_on_incorrect_shape_at_first_level():
 def test_raises_exception_on_incorrect_shape_at_nest(expected_data_structure):
     error_structure = copy.deepcopy(expected_data_structure)
     del error_structure[0]['provider_courses'][0]['course_skills']
+    del error_structure[0]['provider_courses'][1]['course_skills']
     del error_structure[1]['provider_courses'][0]['course_skills']
     df = pd.read_json(json.dumps(error_structure))
 
@@ -93,4 +100,29 @@ def test_dataframe_contains_correct_columns(expected_data_structure):
 def test_dataframe_contains_correct_number_of_rows(expected_data_structure):
     result = process_scraped_data(pd.read_json(
         json.dumps(expected_data_structure)))
-    assert result.shape[0] == 2
+    assert result.shape[0] == 13
+
+
+# find_time_commitment tests:
+def test_function_returns_part_time_if_course_name_contains_part_time():
+    df = pd.DataFrame([{"course_name": 'heres a part time string'}])
+    result = find_time_commitment(df.iloc[0])
+    assert result == 'part_time'
+
+
+def test_function_returns_full_time_if_course_name_contains_full_time():
+    df = pd.DataFrame([{"course_name": 'heres a full time string'}])
+    result = find_time_commitment(df.iloc[0])
+    assert result == 'full_time'
+
+
+def test_function_returns_none_if_course_name_does_not_contain_part_or_full_time():
+    df = pd.DataFrame([{"course_name": 'heres a string'}])
+    result = find_time_commitment(df.iloc[0])
+    assert result == None
+
+
+def test_function_returns_none_if_course_name_is_NaN():
+    df = pd.DataFrame([{"course_name": float('NaN')}])
+    result = find_time_commitment(df.iloc[0])
+    assert result == None
