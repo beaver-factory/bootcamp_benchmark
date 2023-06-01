@@ -9,3 +9,5 @@ test_output_*
 */**/__pycache__
 */__pycache__
 *.pyc
+
+.env

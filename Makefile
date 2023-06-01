@@ -33,3 +33,6 @@ ifdef dir
 else
 	$(error directory is undefined)
 endif
+
+dock:
+	docker run --name postgres-server -e POSTGRES_PASSWORD=password123 -e POSTGRES_USER=db_admin -e POSTGRES_HOST_AUTH_METHOD=password -d -p 5432:5432 postgres
