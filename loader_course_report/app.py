@@ -19,11 +19,11 @@ def load_course_report_into_db(inBlob: func.InputStream):
     if all(df.iloc[0].isnull().values.tolist()):
         raise Exception('CSV has headers but no data')
 
-    # establish connection to db, using ARM template connectionstring'
+    # establish connection to db, using env variable,
+    # either ARM template connectionstring for production or .env for testing'
     conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
     cur = conn.cursor()
 
-    # do we want to drop table or keep a record of previous scraped data? What if all data is dropped?
     cur.execute('DROP TABLE IF EXISTS course_report')
 
     cur.execute('''
@@ -43,6 +43,8 @@ def load_course_report_into_db(inBlob: func.InputStream):
 
     tup = list(df.itertuples(index=False))
 
+    # converting df rows into string for SQL query, while protecting from injection
+    # enables multiple rows to be added to query string
     args_str = ','.join(cur.mogrify(
         "(%s,%s,%s,%s,%s,%s,%s,%s,%s)", x).decode('utf-8') for x in tup)
 

@@ -15,7 +15,7 @@ os.environ["no_proxy"] = "*"
 
 @pytest.fixture(scope="session", autouse=True)
 def create_test_database():
-    # connect to docker containerised psql server
+    """connects to docker containerised psql server and created test db"""
     conn = psycopg2.connect("host='localhost' user='db_admin' password='password123'")
     conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cur = conn.cursor()
@@ -55,6 +55,7 @@ def test_rows_are_different():
 
     query = 'SELECT DISTINCT * FROM course_report;'
     results = db_results(query)
+    print(results)
 
     assert len(results) == 10
     assert results[0] != results[1]
@@ -97,6 +98,7 @@ def test_csv_has_headers_but_empty_rows():
 
 
 def generate_inputstream(path):
+    """converts a local csv file and returns a mocked blob input stream containing that data"""
     with open(path, 'rb') as file:
         test_csv_data = BytesIO(file.read())
 
@@ -108,6 +110,7 @@ def generate_inputstream(path):
 
 
 def db_results(query):
+    """takes an SQL query and returns a list of all rows (as tuples) from the containerised test db"""
     conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
     cur = conn.cursor()
 
