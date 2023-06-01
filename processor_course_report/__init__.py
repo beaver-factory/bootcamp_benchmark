@@ -5,7 +5,7 @@ from .app import process_scraped_data
 
 def main(inBlob: func.InputStream, outBlob: func.Out[bytes]):
 
-    input_df = pd.read_json(inBlob.read())
+    input_df = pd.read_json(inBlob.read().decode('utf-8'))
 
     output_df = process_scraped_data(input_df)
 
