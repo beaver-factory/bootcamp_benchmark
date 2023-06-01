@@ -4,7 +4,6 @@ import psycopg2
 import os
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from unittest.mock import patch, Mock
-from io import BytesIO
 from dotenv import load_dotenv
 
 load_dotenv()
