@@ -100,7 +100,7 @@ def test_csv_has_headers_but_empty_rows():
 def generate_inputstream(path):
     """converts a local csv file and returns a mocked blob input stream containing that data"""
     with open(path, 'rb') as file:
-        test_csv_data = BytesIO(file.read())
+        test_csv_data = file.read()
 
     mock_inputstream = Mock()
     mock_inputstream.read.return_value = test_csv_data

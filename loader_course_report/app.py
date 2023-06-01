@@ -2,10 +2,11 @@ import psycopg2
 import os
 import pandas as pd
 import azure.functions as func
+from io import BytesIO
 
 
 def load_course_report_into_db(inBlob: func.InputStream):
-    df = pd.read_csv(inBlob.read())
+    df = pd.read_csv(BytesIO(inBlob.read()))
     df.pop(df.columns[0])
 
     column_headers = ['provider_name', 'provider_tracks', 'course_name', 'course_skills', 'course_locations', 'course_description', 'time', 'target_url', 'timestamp']
