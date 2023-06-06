@@ -1,8 +1,16 @@
-import requests
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
+import os
+import logging
 
-def app_logic():
-    request = requests.get('https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=2fcbe42d&app_key=dca0e1f6a8240307499ecf6afb168a2d%09&what=git&title_only=software%20developer&location0=UK&location1=North%20East%20England')
+def collect_adzuna():
+    
+    vault_URI = f'https://{os.environ["KeyVaultName"]}.vault.azure.net'
 
-    return request.json()
+    credential = DefaultAzureCredential()
 
-print(app_logic())
+    secret_client = SecretClient(vault_url=vault_URI, credential=credential)
+
+    secret = secret_client.get_secret("adzunaAppId")
+
+    logging.info(secret.name)
