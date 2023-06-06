@@ -1,6 +1,6 @@
 import datetime
 import logging
-import collector_adzuna
+from .app import collector_adzuna
 import azure.functions as func
 
 
