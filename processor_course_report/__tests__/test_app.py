@@ -1,4 +1,4 @@
-from ..app import (process_scraped_data)
+from ..app import (process_scraped_data, process_skills_data)
 import pytest
 import pandas as pd
 import json
@@ -13,13 +13,13 @@ expected_data_structure = [
         "provider_courses": [
             {
                 "course_name": "test",
-                "course_skills": ["test"],
+                "course_skills": ["test skill 1"],
                 "course_locations": "test",
                 "course_description": "test"
             },
             {
                 "course_name": "test",
-                "course_skills": ["test1", "test2", "test3"],
+                "course_skills": ["test skill 1", "test skill 2", "test skill 3"],
                 "course_locations": "Manchester",
                 "course_description": "test"
             }
@@ -36,8 +36,8 @@ expected_data_structure = [
         "provider_courses": [
             {
                 "course_name": "",
-                "course_skills": [""],
-                "course_locations": "",
+                "course_skills": ["test skill 1"],
+                "course_locations": "Birmingham",
                 "course_description": ""
             }
         ],
@@ -97,5 +97,31 @@ def test_dataframe_contains_correct_columns():
 def test_dataframe_contains_correct_number_of_rows():
     result = process_scraped_data(pd.read_json(
         json.dumps(expected_data_structure)))
+    assert result.shape[0] == 4
+
+
+def test_process_skills_data_returns_datafrom():
+    result = process_skills_data(pd.read_json(
+        json.dumps(expected_data_structure)))
+    assert isinstance(result, pd.DataFrame)
+
+
+def test_process_skills_data_removes_duplicate_skills():
+    result = process_skills_data(pd.read_json(
+        json.dumps(expected_data_structure)))
+    expected = ['test skill 1', 'test skill 2', 'test skill 3']
+
+    assert result['course_skills'].values.tolist() == expected
+
+    course_data_frame = process_scraped_data(pd.read_json(
+        json.dumps(expected_data_structure)))
+
+    assert course_data_frame['course_skills'].unique().tolist() == expected
+
+
+def test_process_skills_data_returns_expected_shape_data_frame():
+    result = process_skills_data(pd.read_json(
+        json.dumps(expected_data_structure)))
 
     assert result.shape[0] == 3
+    assert result.shape[1] == 1
