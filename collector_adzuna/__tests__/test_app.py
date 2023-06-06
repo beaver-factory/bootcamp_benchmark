@@ -1,6 +1,6 @@
-from ..app import app_logic
+from ..app import collect_adzuna
 
 
 def test_app():
-    app_logic()
+    collect_adzuna()
     pass
