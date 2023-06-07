@@ -4,7 +4,7 @@ import os
 import logging
 
 
-def collect_adzuna():
+def collector_adzuna():
 
     vault_URI = f'https://{os.environ["KeyVaultName"]}.vault.azure.net'
 
