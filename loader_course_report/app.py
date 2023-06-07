@@ -27,11 +27,11 @@ def load_course_report_into_db(inBlob: func.InputStream):
                 provider_name VARCHAR(50),
                 course_name VARCHAR(100),
                 skill VARCHAR(50),
-                course_country VARCHAR(10),
+                course_location VARCHAR(50),
                 description TEXT,
                 collection_url TEXT,
                 collection_date DATE,
-                course_location VARCHAR(50)
+                course_country VARCHAR(10)
             );
             ''')
 
