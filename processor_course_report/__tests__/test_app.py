@@ -109,7 +109,7 @@ def test_dataframe_contains_correct_number_of_rows():
     assert result.shape[0] == 4
 
 
-def test_raises_exception_if_receives_empty_dataframe():
+def test_raises_exception_if_skills_processor_receives_empty_dataframe():
     test_empty_dataframe = pd.DataFrame([])
 
     with pytest.raises(Exception) as err:
