@@ -9,7 +9,7 @@ def load_course_report_into_db(inBlob: func.InputStream):
     df = pd.read_csv(BytesIO(inBlob.read()))
     df.pop(df.columns[0])
 
-    column_headers = ['provider_name', 'provider_tracks', 'course_name', 'course_skills', 'course_locations', 'course_description', 'time', 'target_url', 'timestamp']
+    column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations', 'course_description', 'target_url', 'timestamp', 'course_country']
 
     if df.columns.values.tolist() != column_headers:
         raise Exception('Invalid CSV column names')
@@ -31,14 +31,13 @@ def load_course_report_into_db(inBlob: func.InputStream):
             CREATE TABLE course_report (
                 ID SERIAL PRIMARY KEY,
                 provider_name VARCHAR(50),
-                track VARCHAR(50),
                 course_name VARCHAR(100),
                 skill VARCHAR(50),
-                course_location TEXT,
+                course_country VARCHAR(10),
                 description TEXT,
-                time_commitment VARCHAR(20),
                 collection_url TEXT,
-                collection_date DATE
+                collection_date DATE,
+                course_location VARCHAR(50)
             );
             ''')
 
@@ -47,18 +46,17 @@ def load_course_report_into_db(inBlob: func.InputStream):
     # converting df rows into string for SQL query, while protecting from injection
     # enables multiple rows to be added to query string
     args_str = ','.join(cur.mogrify(
-        "(%s,%s,%s,%s,%s,%s,%s,%s,%s)", x).decode('utf-8') for x in tup)
+        "(%s,%s,%s,%s,%s,%s,%s,%s)", x).decode('utf-8') for x in tup)
 
     cur.execute("""INSERT INTO course_report (
                  provider_name,
-                 track,
                  course_name,
                  skill,
                  course_location,
                  description,
-                 time_commitment,
                  collection_url,
-                 collection_date
+                 collection_date,
+                 course_country
              ) VALUES """ + args_str)
 
     # !Important, make changes persist on db!
