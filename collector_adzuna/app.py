@@ -35,7 +35,7 @@ def collector_adzuna(inBlob: func.InputStream):
         response = requests.get(request_url)
 
         if response.status_code >= 400:
-            logging.warning(f'ADzuna API GET request failed for keyword={keyword}')
+            logging.warning(f'Adzuna API GET request failed for keyword={keyword}')
         else:
             response_json = response.json()
 
