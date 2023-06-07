@@ -3,6 +3,24 @@ from ..app import collector_adzuna
 import json
 import requests_mock
 import pytest
+import os
+import shutil
+import csv
+
+dirpath = 'collector_adzuna/__tests__/csv'
+
+
+@pytest.fixture(scope="session", autouse=True)
+def create_csv():
+
+    if os.path.exists(dirpath):
+        shutil.rmtree(dirpath)
+
+    generate_csv()
+
+    yield
+
+    shutil.rmtree(dirpath)
 
 
 def generate_inputstream(path):
@@ -18,11 +36,11 @@ def generate_inputstream(path):
 
 
 @patch('collector_adzuna.app.get_secret_value', return_value='test')
-def test_one_request_is_made_to_API_with_correctly_formatted_result(mock):
+def test_one_request_is_made_to_API_with_correctly_formatted_result(mock, create_csv):
     with requests_mock.Mocker() as m:
         m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1', json={"count": 227})
 
-        test_input_stream = generate_inputstream("./collector_adzuna/__tests__/test_one_skill.csv")
+        test_input_stream = generate_inputstream("./collector_adzuna/__tests__/csv/test_one_skill.csv")
 
         result = collector_adzuna(test_input_stream)
 
@@ -36,7 +54,7 @@ def test_multiple_requests_made_to_API_with_correctly_formatted_result(mock):
         m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=AngularJS', json={"count": 227})
         m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=CSS', json={"count": 4608})
 
-        test_input_stream = generate_inputstream("./collector_adzuna/__tests__/test_skills.csv")
+        test_input_stream = generate_inputstream("./collector_adzuna/__tests__/csv/test_skills.csv")
 
         result = collector_adzuna(test_input_stream)
 
@@ -45,9 +63,29 @@ def test_multiple_requests_made_to_API_with_correctly_formatted_result(mock):
 
 
 def test_error_raised_when_skills_csv_is_empty():
-    test_input_stream = generate_inputstream("./collector_adzuna/__tests__/test_skills_empty.csv")
+    test_input_stream = generate_inputstream("./collector_adzuna/__tests__/csv/test_skills_empty.csv")
 
     with pytest.raises(Exception) as error:
         collector_adzuna(test_input_stream)
 
     assert str(error.value) == 'List of skills is empty, CSV may be empty'
+
+
+def generate_csv():
+    """creates a series of CSVs containing data needed for tests"""
+
+    os.mkdir(f'{dirpath}')
+
+    with open(f'{dirpath}/test_one_skill.csv', 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile, delimiter=',')
+        csvwriter.writerow(['', 'course_skills'])
+        csvwriter.writerow(['0', 'AngularJS'])
+
+    with open(f'{dirpath}/test_skills_empty.csv', 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile, delimiter=',')
+
+    with open(f'{dirpath}/test_skills.csv', 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile, delimiter=',')
+        csvwriter.writerow(['', 'course_skills'])
+        csvwriter.writerow(['0', 'AngularJS'])
+        csvwriter.writerow(['1', 'CSS'])
