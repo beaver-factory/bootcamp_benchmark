@@ -6,18 +6,27 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from unittest.mock import patch, Mock
 from dotenv import load_dotenv
 import pandas as pd
+import shutil
 
 load_dotenv()
 
 # bug fix to prevent pytest from crashing
 os.environ["no_proxy"] = "*"
+dirpath = 'loader_course_report/__tests__/csv'
 
 
 @pytest.fixture(scope="session", autouse=True)
 def create_csv():
+
+    if os.path.exists(dirpath):
+        shutil.rmtree(dirpath)
+
     column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations', 'course_description', 'target_url', 'timestamp', 'course_country']
 
     generate_csv(column_headers)
+    yield 
+
+    shutil.rmtree(dirpath)
 
 @pytest.fixture(scope="session", autouse=True)
 def create_test_database():
@@ -35,7 +44,7 @@ def create_test_database():
 
 
 def test_db_table_creation():
-    new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+    new_inputstream = generate_inputstream(f'{dirpath}/test_course_report.csv')
     load_course_report_into_db(new_inputstream)
 
     query = 'SELECT * FROM course_report;'
@@ -45,7 +54,7 @@ def test_db_table_creation():
 
 
 def test_db_correct_lengths():
-    new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+    new_inputstream = generate_inputstream(f'{dirpath}/test_course_report.csv')
     load_course_report_into_db(new_inputstream)
 
     query = 'SELECT * FROM course_report;'
@@ -56,7 +65,7 @@ def test_db_correct_lengths():
 
 
 def test_rows_are_different():
-    new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report.csv')
+    new_inputstream = generate_inputstream(f'{dirpath}/test_course_report.csv')
     load_course_report_into_db(new_inputstream)
 
     query = 'SELECT DISTINCT * FROM course_report;'
@@ -69,14 +78,14 @@ def test_rows_are_different():
 
 def test_throws_column_exception():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_incorrect_col_name.csv')
+        new_inputstream = generate_inputstream(f'{dirpath}/test_course_report_incorrect_col_name.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'Invalid CSV column names'
 
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_missing_column.csv')
+        new_inputstream = generate_inputstream(f'{dirpath}/test_course_report_missing_column.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -85,7 +94,7 @@ def test_throws_column_exception():
 
 def test_csv_only_has_headers():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_only_headers.csv')
+        new_inputstream = generate_inputstream(f'{dirpath}/test_course_report_only_headers.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -94,7 +103,7 @@ def test_csv_only_has_headers():
 
 def test_csv_has_headers_but_empty_rows():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream('./loader_course_report/__tests__/test_course_report_headers_empty_rows.csv')
+        new_inputstream = generate_inputstream(f'{dirpath}/test_course_report_headers_empty_rows.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -133,15 +142,17 @@ def db_results(query):
 def generate_csv(headers):
     """takes a list of headers and outputs a base csv and test csv's"""
 
+
+    os.mkdir(f'{dirpath}')
     df = pd.DataFrame(columns=headers)
 
     # headers only csv
-    df.to_csv('loader_course_report/__tests__/test_course_report_only_headers.csv')
+    df.to_csv(f'{dirpath}/test_course_report_only_headers.csv')
 
     # empty rows
     df.loc[0] = ["" for header in headers]
 
-    df.to_csv('loader_course_report/__tests__/test_course_report_headers_empty_rows.csv')
+    df.to_csv(f'{dirpath}/test_course_report_headers_empty_rows.csv')
 
     # base csv
     for i in range(3):
@@ -149,16 +160,16 @@ def generate_csv(headers):
 
 
     df['timestamp'] = df['timestamp'].replace('test', '2023-01-01')
-    df.to_csv('loader_course_report/__tests__/test_course_report.csv')
+    df.to_csv(f'{dirpath}/test_course_report.csv')
 
     # incorrect col names
     df.rename(columns={'course_name': 'name'}, inplace=True)
 
-    df.to_csv('loader_course_report/__tests__/test_course_report_incorrect_col_name.csv')
+    df.to_csv(f'{dirpath}/test_course_report_incorrect_col_name.csv')
 
     # missing col
     df = df.drop(columns=['name'])
 
-    df.to_csv('loader_course_report/__tests__/test_course_report_missing_column.csv')
+    df.to_csv(f'{dirpath}/test_course_report_missing_column.csv')
 
 
