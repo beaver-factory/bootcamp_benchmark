@@ -1,17 +1,23 @@
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
 import os
-# remove below on deployment
-from dotenv import load_dotenv
+import json
 import requests
-
-# remove on deployment
-load_dotenv()
+import azure.functions as func
 
 
-def collector_adzuna(list_of_keywords):
+def collector_adzuna(inBlob: func.InputStream):
 
-    # Get Adzuna app id/key secrets from key vault
+    skills_csv_string = inBlob.read()
+
+    unformatted_skills_list = "".join(skills_csv_string).split("\n")
+
+    list_of_keywords = []
+
+    for skill in unformatted_skills_list:
+        if skill != "" and skill != ",course_skills":
+            formatted_skill = skill.split(",")[1]
+            list_of_keywords.append(formatted_skill)
 
     vault_URI = f'https://{os.environ["KeyVaultName"]}.vault.azure.net'
 
@@ -23,9 +29,9 @@ def collector_adzuna(list_of_keywords):
 
     app_key_secret = secret_client.get_secret("adzunaAppKey")
 
-    skill_count = {}
-
     # Get request to adzuna for each keyword
+
+    skill_count = {}
 
     for keyword in list_of_keywords:
         request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret.value}&app_key={app_key_secret.value}&what={keyword}&location0=UK&content-type=application/json"
@@ -38,8 +44,4 @@ def collector_adzuna(list_of_keywords):
 
         skill_count[keyword] = job_count
 
-    return skill_count
-
-
-#  remove on deployment
-print(collector_adzuna(['python', 'JavaScript']))
+    return json.dumps(skill_count)
