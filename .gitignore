@@ -11,3 +11,5 @@ test_output_*
 *.pyc
 
 .env
+
+processed_*.csv
