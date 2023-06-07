@@ -11,6 +11,9 @@ def process_scraped_data(unprocessed_dataframe):
         processed_dataframe(DataFrame): A pandas DataFrame containing processed course data
     """
 
+    if unprocessed_dataframe.empty:
+        raise Exception('Unprocessed dataframe is empty, check json output from collector')
+
     # convert array of course objects to rows
     exploded_courses = unprocessed_dataframe.explode(
         'provider_courses').reset_index()
@@ -52,6 +55,9 @@ def process_skills_data(unprocessed_dataframe):
         Return:
         processed_dataframe(DataFrame): A pandas DataFrame containing processed skills data
     """
+
+    if unprocessed_dataframe.empty:
+        raise Exception('Unprocessed dataframe is empty, check json output from collector')
 
     exploded_courses = unprocessed_dataframe.explode(
         'provider_courses').reset_index()

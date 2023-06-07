@@ -49,6 +49,15 @@ expected_data_structure = [
 ]
 
 
+def test_raises_exception_if_receives_empty_dataframe():
+    test_empty_dataframe = pd.DataFrame([])
+
+    with pytest.raises(Exception) as err:
+        process_scraped_data(test_empty_dataframe)
+
+    assert str(err.value) == 'Unprocessed dataframe is empty, check json output from collector'
+
+
 def test_raises_exception_on_incorrect_shape_at_first_level():
     test_dataframe = pd.DataFrame([{'test': 'string'}])
     with pytest.raises(KeyError) as excinfo:
@@ -98,6 +107,15 @@ def test_dataframe_contains_correct_number_of_rows():
     result = process_scraped_data(pd.read_json(
         json.dumps(expected_data_structure)))
     assert result.shape[0] == 4
+
+
+def test_raises_exception_if_receives_empty_dataframe():
+    test_empty_dataframe = pd.DataFrame([])
+
+    with pytest.raises(Exception) as err:
+        process_skills_data(test_empty_dataframe)
+
+    assert str(err.value) == 'Unprocessed dataframe is empty, check json output from collector'
 
 
 def test_process_skills_data_returns_datafrom():
