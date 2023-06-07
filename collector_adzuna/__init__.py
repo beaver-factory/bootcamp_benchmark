@@ -1,16 +1,11 @@
-import datetime
-import logging
 from .app import collector_adzuna
 import azure.functions as func
+import json
 
 
-def main(mytimer: func.TimerRequest) -> None:
-    utc_timestamp = datetime.datetime.utcnow().replace(
-        tzinfo=datetime.timezone.utc).isoformat()
+def main(mytimer: func.TimerRequest, outBlob: func.Out[bytes]) -> None:
 
-    if mytimer.past_due:
-        logging.info('The timer is past due!')
+    api_data = collector_adzuna()
 
-    collector_adzuna()
-
-    logging.info('Python timer trigger function ran at %s', utc_timestamp)
+    json_data = json.dumps(api_data)
+    outBlob.set(json_data.encode('utf-8'))
