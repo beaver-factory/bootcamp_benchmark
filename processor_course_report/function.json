@@ -5,7 +5,7 @@
       "name": "inBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "%BlobContainerPrefix%0/{blobName}",
+      "path": "%BlobContainerPrefix%0/CourseReport_{timestamp}.json",
       "connection": "AzureWebJobsStorage",
       "dataType": "string"
     },
@@ -13,7 +13,14 @@
       "name": "outBlob",
       "type": "blob",
       "direction": "out",
-      "path": "%BlobContainerPrefix%1/processed_course_data.csv",
+      "path": "%BlobContainerPrefix%1/processed_course_data_{DateTime}.csv",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "outBlob2",
+      "type": "blob",
+      "direction": "out",
+      "path": "%BlobContainerPrefix%1/processed_skills_data_{DateTime}.csv",
       "connection": "AzureWebJobsStorage"
     }
   ]
