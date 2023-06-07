@@ -5,7 +5,7 @@
       "name": "inBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "%BlobContainerPrefix%0/{blobName}",
+      "path": "%BlobContainerPrefix%0/CourseReport_{timestamp}.json",
       "connection": "AzureWebJobsStorage",
       "dataType": "string"
     },
