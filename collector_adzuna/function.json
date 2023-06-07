@@ -8,6 +8,14 @@
       "schedule": "0 */60 * * * *"
     },
     {
+      "name": "inBlob",
+      "type": "blob",
+      "direction": "in",
+      "path": "%BlobContainerPrefix%1/processed_skills_data_{timestamp}.csv",
+      "connection": "AzureWebJobsStorage",
+      "dataType": "string"
+    },
+    {
       "name": "outBlob",
       "type": "blob",
       "direction": "out",
