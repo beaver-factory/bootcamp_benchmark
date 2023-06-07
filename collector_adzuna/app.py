@@ -4,11 +4,15 @@ import os
 import json
 import requests
 import azure.functions as func
+import logging
 
 
 def collector_adzuna(inBlob: func.InputStream):
 
     skills_csv_string = inBlob.read()
+
+    if len(skills_csv_string) == 0:
+        raise Exception('List of skills is empty, CSV may be empty')
 
     unformatted_skills_list = "".join(skills_csv_string).split("\n")
 
@@ -19,29 +23,34 @@ def collector_adzuna(inBlob: func.InputStream):
             formatted_skill = skill.split(",")[1]
             list_of_keywords.append(formatted_skill)
 
+    app_id_secret = get_secret_value("adzunaAppId")
+
+    app_key_secret = get_secret_value("adzunaAppKey")
+
+    skill_count = {}
+
+    for keyword in list_of_keywords:
+        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&what={keyword}&location0=UK&content-type=application/json"
+
+        response = requests.get(request_url)
+
+        if response.status_code >= 400:
+            logging.warning(f'ADzuna API GET request failed for keyword={keyword}')
+        else:
+            response_json = response.json()
+
+            job_count = response_json['count']
+
+            skill_count[keyword] = job_count
+
+    return json.dumps(skill_count)
+
+
+def get_secret_value(secret_name):
     vault_URI = f'https://{os.environ["KeyVaultName"]}.vault.azure.net'
 
     credential = DefaultAzureCredential()
 
     secret_client = SecretClient(vault_url=vault_URI, credential=credential)
 
-    app_id_secret = secret_client.get_secret("adzunaAppId")
-
-    app_key_secret = secret_client.get_secret("adzunaAppKey")
-
-    # Get request to adzuna for each keyword
-
-    skill_count = {}
-
-    for keyword in list_of_keywords:
-        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret.value}&app_key={app_key_secret.value}&what={keyword}&location0=UK&content-type=application/json"
-
-        request = requests.get(request_url)
-
-        request_json = request.json()
-
-        job_count = request_json['count']
-
-        skill_count[keyword] = job_count
-
-    return json.dumps(skill_count)
+    return secret_client.get_secret(secret_name).value
