@@ -101,6 +101,8 @@ def load_course_skills_into_db(inBlob: func.InputStream):
 
 
 def handle_errors(column_headers, df):
+    """Takes a list of headers and a dataframe, handles error checking by raising exceptions"""
+
     if df.columns.values.tolist() != column_headers:
         raise Exception('Invalid CSV column names')
 
