@@ -5,12 +5,19 @@ import os
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from unittest.mock import patch, Mock
 from dotenv import load_dotenv
+import pandas as pd
 
 load_dotenv()
 
 # bug fix to prevent pytest from crashing
 os.environ["no_proxy"] = "*"
 
+
+@pytest.fixture(scope="session", autouse=True)
+def create_csv():
+    column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations', 'course_description', 'target_url', 'timestamp', 'course_country']
+
+    generate_csv(column_headers)
 
 @pytest.fixture(scope="session", autouse=True)
 def create_test_database():
@@ -44,8 +51,8 @@ def test_db_correct_lengths():
     query = 'SELECT * FROM course_report;'
     results = db_results(query)
 
-    assert len(results) == 10
-    assert len(results[0]) == 10
+    assert len(results) == 3
+    assert len(results[0]) == 9
 
 
 def test_rows_are_different():
@@ -56,7 +63,7 @@ def test_rows_are_different():
     results = db_results(query)
     print(results)
 
-    assert len(results) == 10
+    assert len(results) == 3
     assert results[0] != results[1]
 
 
@@ -121,3 +128,37 @@ def db_results(query):
     conn.close()
 
     return rows
+
+
+def generate_csv(headers):
+    """takes a list of headers and outputs a base csv and test csv's"""
+
+    df = pd.DataFrame(columns=headers)
+
+    # headers only csv
+    df.to_csv('loader_course_report/__tests__/test_course_report_only_headers.csv')
+
+    # empty rows
+    df.loc[0] = ["" for header in headers]
+
+    df.to_csv('loader_course_report/__tests__/test_course_report_headers_empty_rows.csv')
+
+    # base csv
+    for i in range(3):
+        df.loc[i] = ['test' for header in headers]
+
+
+    df['timestamp'] = df['timestamp'].replace('test', '2023-01-01')
+    df.to_csv('loader_course_report/__tests__/test_course_report.csv')
+
+    # incorrect col names
+    df.rename(columns={'course_name': 'name'}, inplace=True)
+
+    df.to_csv('loader_course_report/__tests__/test_course_report_incorrect_col_name.csv')
+
+    # missing col
+    df = df.drop(columns=['name'])
+
+    df.to_csv('loader_course_report/__tests__/test_course_report_missing_column.csv')
+
+
