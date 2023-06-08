@@ -11,7 +11,7 @@
       "name": "outBlob",
       "type": "blob",
       "direction": "out",
-      "path": "%BlobContainerPrefix%0/CourseReport_{DateTime}.json",
+      "path": "%BlobContainer1%/CourseReport_{DateTime}.json",
       "connection": "AzureWebJobsStorage"
     }
   ]

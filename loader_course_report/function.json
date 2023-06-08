@@ -5,7 +5,7 @@
       "name": "inBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "%BlobContainerPrefix%1/{blobName}",
+      "path": "%BlobContainer2%/{blobName}",
       "connection": "AzureWebJobsStorage"
     }
   ]
