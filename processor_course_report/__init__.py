@@ -12,7 +12,7 @@ def main(inBlob: func.InputStream, outBlob: func.Out[bytes], outBlob2: func.Out[
     locations = input_obj.pop(0)
 
     input = json.dumps(input_obj)
-    input_df = pd.read_json(input.read().decode('utf-8'))
+    input_df = pd.read_json(input)
 
     bootcamps_df = process_scraped_data(input_df, locations["uk_locations"])
     bootcamps_csv = bootcamps_df.to_csv()
