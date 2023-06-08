@@ -1,13 +1,20 @@
 import azure.functions as func
 import pandas as pd
 from .app import process_scraped_data, process_skills_data
+import json
 
 
 def main(inBlob: func.InputStream, outBlob: func.Out[bytes], outBlob2: func.Out[bytes]):
 
-    input_df = pd.read_json(inBlob.read().decode('utf-8'))
+    input_json = inBlob.read().decode('utf-8')
+    input_obj = json.loads(input_json)
 
-    bootcamps_df = process_scraped_data(input_df)
+    locations = input_obj.pop(0)
+
+    input = json.dumps(input_obj)
+    input_df = pd.read_json(input)
+
+    bootcamps_df = process_scraped_data(input_df, locations["uk_locations"])
     bootcamps_csv = bootcamps_df.to_csv()
     outBlob.set(bootcamps_csv.encode('utf-8'))
 

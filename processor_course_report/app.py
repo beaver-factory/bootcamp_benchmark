@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def process_scraped_data(unprocessed_dataframe):
+def process_scraped_data(unprocessed_dataframe, locations):
     """
     Returns a processed DataFrame.
 
@@ -37,9 +37,9 @@ def process_scraped_data(unprocessed_dataframe):
 
     exploded_locations = concat_dataframe_with_meta.explode('course_locations')
 
-    course_locations = ['Online', 'Bath', 'Birmingham', 'Bristol', 'Buckinghamshire', 'Cambridge', 'Edinburgh', 'Glasgow', 'Leeds', 'Liverpool', 'London', 'Manchester', 'Sheffield', 'Wales', 'West Yorkshire']
+    locations.append('Online')
 
-    exploded_locations_filtered = exploded_locations[exploded_locations['course_locations'].isin(course_locations)]
+    exploded_locations_filtered = exploded_locations[exploded_locations['course_locations'].isin(locations)]
 
     exploded_locations_filtered.loc[:, ('course_country',)] = 'UK'
 

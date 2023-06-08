@@ -13,6 +13,11 @@ class CourseReportSpider(scrapy.Spider):
             cities = response.xpath(
                 '//li[contains(@data-city-name, "united kingdom")]/a')
 
+            # extract list of UK cities
+            yield {"uk_locations": response.xpath(
+                '//li[contains(@data-city-name, "united kingdom")]/a/text()').extract()}
+
+            # begin visiting cities
             for city in cities:
                 yield response.follow(city, self.parse)
 
