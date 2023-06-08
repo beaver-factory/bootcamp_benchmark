@@ -16,7 +16,7 @@ def collector_adzuna(inBlob: func.InputStream):
     if len(skills_csv_string) == 0:
         raise Exception('List of skills is empty, CSV may be empty')
 
-    unformatted_skills_list = skills_csv_string.split("\r\n")
+    unformatted_skills_list = skills_csv_string.split("\n")
 
     logging.info(unformatted_skills_list)
 

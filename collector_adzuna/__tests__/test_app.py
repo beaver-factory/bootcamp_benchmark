@@ -77,15 +77,15 @@ def generate_csv():
     os.mkdir(f'{dirpath}')
 
     with open(f'{dirpath}/test_one_skill.csv', 'w', newline='') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=',')
+        csvwriter = csv.writer(csvfile, delimiter=',', lineterminator='\n')
         csvwriter.writerow(['', 'course_skills'])
         csvwriter.writerow(['0', 'AngularJS'])
 
     with open(f'{dirpath}/test_skills_empty.csv', 'w', newline='') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=',')
+        csvwriter = csv.writer(csvfile, delimiter=',', lineterminator='\n')
 
     with open(f'{dirpath}/test_skills.csv', 'w', newline='') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=',')
+        csvwriter = csv.writer(csvfile, delimiter=',', lineterminator='\n')
         csvwriter.writerow(['', 'course_skills'])
         csvwriter.writerow(['0', 'AngularJS'])
         csvwriter.writerow(['1', 'CSS'])
