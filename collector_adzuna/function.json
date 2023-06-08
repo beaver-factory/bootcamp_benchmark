@@ -5,13 +5,13 @@
       "name": "mytimer",
       "type": "timerTrigger",
       "direction": "in",
-      "schedule": "0 */60 * * * *"
+      "schedule": "0 30 9 * * 1-5"
     },
     {
       "name": "inBlob",
       "type": "blob",
       "direction": "in",
-      "path": "%BlobContainerPrefix%1/processed_skills_data_{timestamp}.csv",
+      "path": "%BlobContainer2%/processed_skills_data_latest.csv",
       "connection": "AzureWebJobsStorage",
       "dataType": "string"
     },
@@ -19,7 +19,7 @@
       "name": "outBlob",
       "type": "blob",
       "direction": "out",
-      "path": "%BlobContainerPrefix%0/Adzuna_{DateTime}.json",
+      "path": "%BlobContainer1%/Adzuna_{DateTime}.json",
       "connection": "AzureWebJobsStorage"
     }
   ]
