@@ -25,7 +25,7 @@ def create_csv():
 
 def generate_inputstream(path):
     """converts a local csv file and returns a mocked blob input stream containing that data"""
-    with open(path, 'r') as file:
+    with open(path, 'rb') as file:
         test_csv_data = file.read()
 
     mock_inputstream = Mock()
