@@ -6,35 +6,13 @@ on:
       - main
 
 env:
-  FUNCTION_APP_NAME: bootcampbfuncappstag
-  RESOURCE_GROUP_NAME: bootcampBenchmarkStaging
+  FUNCTION_APP_NAME: bootcampbfuncappstag2
+  RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
 
 jobs:
   TestAndLint:
     runs-on: ubuntu-latest
     name: Test and Lint
-    # Docker Hub image that `container-job` executes in
-    # container: node:10.18-jessie
-
-    # # Service containers to run with `container-job`
-    # services:
-    #   # Label used to access the service container
-    #   postgres:
-    #     # Docker Hub image
-    #     image: postgres
-    #     # Provide the password for postgres
-    #     env:
-    #       POSTGRES_PASSWORD: password123
-    #       POSTGRES_USER: db_admin
-    #       POSTGRES_HOST_AUTH_METHOD: password
-    #     # Set health checks to wait until postgres has started
-    #     ports: 
-    #       - 5432:5432
-    #     options: >-
-    #       --health-cmd pg_isready
-    #       --health-interval 10s
-    #       --health-timeout 5s
-    #       --health-retries 5
 
     steps:
       - name: checkout code
@@ -89,7 +67,7 @@ jobs:
       - name: azure login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS_2 }}
 
       - name: get function app publish profile
         id: profilevar
