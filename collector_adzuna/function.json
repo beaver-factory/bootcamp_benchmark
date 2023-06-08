@@ -13,7 +13,7 @@
       "direction": "in",
       "path": "%BlobContainer2%/processed_skills_data_latest.csv",
       "connection": "AzureWebJobsStorage",
-      "dataType": "string"
+      "dataType": "binary"
     },
     {
       "name": "outBlob",

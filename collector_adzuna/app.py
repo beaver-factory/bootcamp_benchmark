@@ -11,10 +11,14 @@ def collector_adzuna(inBlob: func.InputStream):
 
     skills_csv_string = inBlob.read().decode('utf-8')
 
+    logging.info(skills_csv_string)
+
     if len(skills_csv_string) == 0:
         raise Exception('List of skills is empty, CSV may be empty')
 
     unformatted_skills_list = skills_csv_string.split("\r\n")
+
+    logging.info(unformatted_skills_list)
 
     list_of_keywords = []
 
