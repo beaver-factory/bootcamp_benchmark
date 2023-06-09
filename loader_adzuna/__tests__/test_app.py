@@ -15,7 +15,7 @@ os.environ["no_proxy"] = "*"
 
 # globals
 
-os.environ['PSQL_CONNECTIONSTRING'] += "host='localhost' user='db_admin' password='password123' dbname='test_adzuna'"
+os.environ['PSQL_CONNECTIONSTRING'] = "host='localhost' user='db_admin' password='password123' dbname='test_adzuna'"
 dirpath = 'loader_adzuna/__tests__/csv'
 
 # fixtures
