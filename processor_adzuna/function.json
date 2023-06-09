@@ -10,7 +10,7 @@
     },
     {
       "name": "outBlob",
-      "type": "blobTrigger",
+      "type": "blob",
       "direction": "out",
       "path": "%BlobContainer2%/adzuna_jobs_{DateTime}.json",
       "connection": "AzureWebJobsStorage"
