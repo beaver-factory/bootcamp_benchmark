@@ -14,7 +14,6 @@ load_dotenv()
 os.environ["no_proxy"] = "*"
 
 # globals
-os.environ['PSQL_CONNECTIONSTRING'] = "host='localhost' user='db_admin' password='password123' dbname='test_course_report'"
 dirpath = 'loader_course_report/__tests__/csv'
 
 
@@ -38,6 +37,8 @@ def create_csv():
 @pytest.fixture(scope="session", autouse=True)
 def create_test_database():
     """connects to docker containerised psql server and created test db"""
+    os.environ['PSQL_CONNECTIONSTRING'] = "host='localhost' user='db_admin' password='password123' dbname='test_course_report'"
+
     conn = psycopg2.connect("host='localhost' user='db_admin' password='password123'")
     conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cur = conn.cursor()
