@@ -37,7 +37,7 @@ jobs:
       - name: test
         run: make dock && make unit_test
         env:
-          PSQL_CONNECTIONSTRING: "host='localhost' user='db_admin' password='password123' dbname='test_course_report'"
+          PSQL_CONNECTIONSTRING: "host='localhost' user='db_admin' password='password123' dbname='test_db'"
 
       - name: function conformity
         run: make func_check
