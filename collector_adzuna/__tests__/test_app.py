@@ -25,7 +25,7 @@ def create_csv():
 
 def generate_inputstream(path):
     """converts a local csv file and returns a mocked blob input stream containing that data"""
-    with open(path, 'r') as file:
+    with open(path, 'rb') as file:
         test_csv_data = file.read()
 
     mock_inputstream = Mock()
@@ -77,15 +77,15 @@ def generate_csv():
     os.mkdir(f'{dirpath}')
 
     with open(f'{dirpath}/test_one_skill.csv', 'w', newline='') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=',')
+        csvwriter = csv.writer(csvfile, delimiter=',', lineterminator='\n')
         csvwriter.writerow(['', 'course_skills'])
         csvwriter.writerow(['0', 'AngularJS'])
 
     with open(f'{dirpath}/test_skills_empty.csv', 'w', newline='') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=',')
+        csvwriter = csv.writer(csvfile, delimiter=',', lineterminator='\n')
 
     with open(f'{dirpath}/test_skills.csv', 'w', newline='') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=',')
+        csvwriter = csv.writer(csvfile, delimiter=',', lineterminator='\n')
         csvwriter.writerow(['', 'course_skills'])
         csvwriter.writerow(['0', 'AngularJS'])
         csvwriter.writerow(['1', 'CSS'])

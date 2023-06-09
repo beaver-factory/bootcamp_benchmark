@@ -5,7 +5,7 @@
       "name": "inBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "%BlobContainer1%/CourseReport_{timestamp}.json",
+      "path": "%BlobContainer1%/course_report_raw_{timestamp}.json",
       "connection": "AzureWebJobsStorage",
       "dataType": "string"
     },
@@ -13,14 +13,21 @@
       "name": "outBlob",
       "type": "blob",
       "direction": "out",
-      "path": "%BlobContainer2%/processed_course_data_{DateTime}.csv",
+      "path": "%BlobContainer2%/course_report_courses_{DateTime}.csv",
       "connection": "AzureWebJobsStorage"
     },
     {
       "name": "outBlob2",
       "type": "blob",
       "direction": "out",
-      "path": "%BlobContainer2%/processed_skills_data_{DateTime}.csv",
+      "path": "%BlobContainer2%/course_report_skills_{DateTime}.csv",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "outBlob3",
+      "type": "blob",
+      "direction": "out",
+      "path": "%BlobContainer2%/latest_course_report_skills.csv",
       "connection": "AzureWebJobsStorage"
     }
   ]

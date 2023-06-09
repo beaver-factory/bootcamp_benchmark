@@ -5,7 +5,7 @@
       "name": "inBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "%BlobContainer2%/{blobName}",
+      "path": "%BlobContainer2%/course_report_{blobName}",
       "connection": "AzureWebJobsStorage"
     }
   ]

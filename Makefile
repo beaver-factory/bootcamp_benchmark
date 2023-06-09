@@ -28,11 +28,10 @@ else
 endif
 
 func:
-ifdef dir
-	func new --name $(dir) && bash script/funcs.sh $(dir)
-else
-	$(error directory is undefined)
-endif
+	@read -p "Enter the directory name for your function: " dir; \
+	func new --name $$dir && bash script/funcs.sh $$dir \
+	
+	
 
 dock:
 	docker run --name postgres-server -e POSTGRES_PASSWORD=password123 -e POSTGRES_USER=db_admin -e POSTGRES_HOST_AUTH_METHOD=password -d -p 5432:5432 postgres
