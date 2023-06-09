@@ -42,8 +42,8 @@ def create_test_database():
     conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cur = conn.cursor()
 
-    cur.execute(f'DROP DATABASE IF EXISTS test_db;')
-    cur.execute(f'CREATE DATABASE test_db;')
+    cur.execute('DROP DATABASE IF EXISTS test_db;')
+    cur.execute('CREATE DATABASE test_db;')
 
     conn.commit()
     cur.close()
