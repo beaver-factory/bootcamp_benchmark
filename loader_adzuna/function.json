@@ -1,0 +1,12 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "inBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "%BlobContainer2%/adzuna_jobs_{timestamp}.csv",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
