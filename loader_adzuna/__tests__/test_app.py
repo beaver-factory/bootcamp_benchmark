@@ -38,14 +38,12 @@ def create_csv():
 @pytest.fixture(scope="session", autouse=True)
 def create_test_database():
     """connects to docker containerised psql server and created test db"""
-    os.environ['PSQL_CONNECTIONSTRING'] = "host='localhost' user='db_admin' password='password123' dbname='test_adzuna'"
     conn = psycopg2.connect("host='localhost' user='db_admin' password='password123'")
     conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cur = conn.cursor()
-    db_name = 'test_adzuna'
 
-    cur.execute(f'DROP DATABASE IF EXISTS {db_name};')
-    cur.execute(f'CREATE DATABASE {db_name};')
+    cur.execute(f'DROP DATABASE IF EXISTS test_db;')
+    cur.execute(f'CREATE DATABASE test_db;')
 
     conn.commit()
     cur.close()
