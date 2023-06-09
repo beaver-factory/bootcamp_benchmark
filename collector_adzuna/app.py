@@ -11,21 +11,18 @@ def collector_adzuna(inBlob: func.InputStream):
 
     skills_csv_string = inBlob.read().decode('utf-8')
 
-    logging.info(skills_csv_string)
-
     if len(skills_csv_string) == 0:
         raise Exception('List of skills is empty, CSV may be empty')
 
     unformatted_skills_list = skills_csv_string.split("\n")
-
-    logging.info(unformatted_skills_list)
 
     list_of_keywords = []
 
     for skill in unformatted_skills_list:
         if skill != "" and skill != ",course_skills":
             formatted_skill = skill.split(",")[1]
-            list_of_keywords.append(formatted_skill)
+            if formatted_skill != "":
+                list_of_keywords.append(formatted_skill)
 
     app_id_secret = get_secret_value("adzunaAppId")
 
