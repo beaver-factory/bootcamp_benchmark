@@ -7,7 +7,6 @@ from io import BytesIO
 
 def load_adzuna_jobs_per_skill(inBlob: func.InputStream):
     df = pd.read_csv(BytesIO(inBlob.read()))
-    df.pop(df.columns[0])
 
     column_headers = ['skill', 'number_of_jobs']
 

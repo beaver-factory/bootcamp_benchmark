@@ -168,25 +168,25 @@ def generate_csv(headers):
     df = pd.DataFrame(columns=headers)
 
     # headers only csv
-    df.to_csv(f'{dirpath}/test_adzuna_only_headers.csv')
+    df.to_csv(f'{dirpath}/test_adzuna_only_headers.csv', index=False)
 
     # empty rows
     df.loc[0] = ["" for header in headers]
 
-    df.to_csv(f'{dirpath}/test_adzuna_headers_empty_rows.csv')
+    df.to_csv(f'{dirpath}/test_adzuna_headers_empty_rows.csv', index=False)
 
     # base csv
     for i in range(3):
         df.loc[i] = [f'test{i}', i]
 
-    df.to_csv(f'{dirpath}/test_adzuna.csv')
+    df.to_csv(f'{dirpath}/test_adzuna.csv', index=False)
 
     # incorrect col names
     df.rename(columns={headers[0]: 'diplodocus'}, inplace=True)
 
-    df.to_csv(f'{dirpath}/test_adzuna_incorrect_col_name.csv')
+    df.to_csv(f'{dirpath}/test_adzuna_incorrect_col_name.csv', index=False)
 
     # missing col
     df = df.drop(columns=['diplodocus'])
 
-    df.to_csv(f'{dirpath}/test_adzuna_missing_column.csv')
+    df.to_csv(f'{dirpath}/test_adzuna_missing_column.csv', index=False)
