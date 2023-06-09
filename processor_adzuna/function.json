@@ -12,7 +12,7 @@
       "name": "outBlob",
       "type": "blob",
       "direction": "out",
-      "path": "%BlobContainer2%/adzuna_jobs_{DateTime}.json",
+      "path": "%BlobContainer2%/adzuna_jobs_{DateTime}.csv",
       "connection": "AzureWebJobsStorage"
     }
   ]
