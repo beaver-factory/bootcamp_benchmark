@@ -12,21 +12,23 @@ dirpath = 'processor_adzuna/__tests__/json'
 def test_app():
     test_input = generate_inputstream(f"{dirpath}/one_skill.json")
     test_csv = process_adzuna_data(test_input)
-    test_csv.close()
+    # test_csv.close()
 
-    with open('processed_skill_count.csv', newline='') as csvfile:
-        csv_reader = csv.reader(csvfile, delimiter=',')
-        csv_rows = []
-        for row in csv_reader:
+    # with open(test_csv, newline='') as csvfile:
+    csvfile = test_csv.getvalue()
+    csv_reader = csv.reader(csvfile.split('\n'), delimiter=',')
+    csv_rows = []
+    for row in csv_reader:
+        if len(row) > 0:
             csv_rows.append(row)
 
-        csv_headers = csv_rows[0]
-        csv_content = csv_rows[1:]
+    csv_headers = csv_rows[0]
+    csv_content = csv_rows[1:]
 
-        assert csv_headers == ['skill', 'number_of_jobs']
-        for row in csv_content:
-            assert type(row[0]) is str
-            assert type(int(row[1])) is int
+    assert csv_headers == ['skill', 'number_of_jobs']
+    for row in csv_content:
+        assert type(row[0]) is str
+        assert type(int(row[1])) is int
 
 
 @pytest.fixture(scope="session", autouse=True)
