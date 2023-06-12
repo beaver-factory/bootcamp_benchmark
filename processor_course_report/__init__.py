@@ -9,10 +9,13 @@ def main(inBlob: func.InputStream, outBlob: func.Out[bytes], outBlob2: func.Out[
 
     input_json = inBlob.read().decode('utf-8')
 
-    if input_json == '' or input_json == '[]':
-        raise Exception('Unprocessed json is empty, check json output from collector')
+    if input_json == '':
+        raise Exception('Blob is empty, check json output from collector')
 
     input_obj = json.loads(input_json)
+
+    if len(input_obj) == 0:
+        raise Exception('Unprocessed json is empty, check json output from collector')
 
     locations = input_obj.pop(0)
 
