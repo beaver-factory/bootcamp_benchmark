@@ -9,7 +9,7 @@ def main(inBlob: func.InputStream, outBlob: func.Out[bytes], outBlob2: func.Out[
 
     input_json = inBlob.read().decode('utf-8')
 
-    if input_json == '':
+    if input_json == '' or input_json == '[]':
         raise Exception('Unprocessed json is empty, check json output from collector')
 
     input_obj = json.loads(input_json)
