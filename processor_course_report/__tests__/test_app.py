@@ -54,6 +54,15 @@ locations = {
 }
 
 
+def test_raises_exception_if_receives_empty_dataframe():
+    test_empty_dataframe = pd.DataFrame([])
+
+    with pytest.raises(Exception) as err:
+        process_course_data(test_empty_dataframe, locations["uk_locations"])
+
+    assert str(err.value) == 'Unprocessed dataframe is empty, check json output from collector'
+
+
 def test_raises_exception_on_incorrect_shape_at_first_level():
     test_dataframe = pd.DataFrame([{'test': 'string'}])
     with pytest.raises(KeyError) as excinfo:

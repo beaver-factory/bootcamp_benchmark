@@ -12,6 +12,9 @@ def process_course_data(unprocessed_dataframe, locations):
         processed_dataframe(DataFrame): A pandas DataFrame containing processed course data
     """
 
+    if unprocessed_dataframe.empty:
+        raise Exception('Unprocessed dataframe is empty, check json output from collector')
+
     # convert array of course objects to rows
     exploded_courses = unprocessed_dataframe.explode(
         'provider_courses').reset_index()
