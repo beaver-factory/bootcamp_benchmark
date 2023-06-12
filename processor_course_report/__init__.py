@@ -6,7 +6,11 @@ import json
 
 def main(inBlob: func.InputStream, outBlob: func.Out[bytes], outBlob2: func.Out[bytes], outBlob3: func.Out[bytes]):
 
-    input_json = inBlob.read().decode('utf-8')
+    try:
+        input_json = inBlob.read().decode('utf-8')
+    except json.JSONDecodeError:
+        raise Exception('Unprocessed json is empty, check json output from collector')
+
     input_obj = json.loads(input_json)
 
     locations = input_obj.pop(0)
