@@ -1,7 +1,8 @@
 import pandas as pd
+import logging
 
 
-def process_scraped_data(unprocessed_dataframe, locations):
+def process_course_data(unprocessed_dataframe, locations):
     """
     Returns a processed DataFrame.
 
@@ -23,14 +24,20 @@ def process_scraped_data(unprocessed_dataframe, locations):
     concat_dataframe_with_courses = pd.concat([exploded_courses, normalised_courses], axis=1).drop([
         'provider_courses', 'provider_locations', 'provider_tracks'], axis=1)
 
+    logging.info('Successfully added each course of provider_courses into dataframe and removed the following columns: provider_courses, provider_locations, provider_tracks')
+
     exploded_skills = concat_dataframe_with_courses.explode(
         'course_skills').reset_index().drop(['index', 'level_0'], axis=1)
+
+    logging.info('Successfully exploded course skills array into rows')
 
     # adding metadata to dataframe
     normalised_meta = pd.json_normalize(exploded_skills.meta)
 
     concat_dataframe_with_meta = pd.concat(
         [exploded_skills, normalised_meta], axis=1).drop('meta', axis=1)
+
+    logging.info('Successfully added meta data to dataframe')
 
     # handle locations
     concat_dataframe_with_meta['course_locations'] = concat_dataframe_with_meta['course_locations'].map(lambda x: x.split(', '))
@@ -40,6 +47,8 @@ def process_scraped_data(unprocessed_dataframe, locations):
     locations.append('Online')
 
     exploded_locations_filtered = exploded_locations[exploded_locations['course_locations'].isin(locations)]
+
+    logging.info('Successfully filtered course_locations by locations taken from spider')
 
     exploded_locations_filtered.loc[:, ('course_country',)] = 'UK'
 
