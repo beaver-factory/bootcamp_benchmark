@@ -8,6 +8,12 @@ import logging
 
 
 def collector_adzuna(inBlob: func.InputStream):
+    """
+    Makes calls to Adzuna API to find the number of jobs listed for each skill.
+
+        Argument: takes a csv file of a list of skills from the most recent Course Report scrape: latest_course_report_skills.csv
+        Returns: a json object featuring keys of each skill and a count of the number of job ads on Adzuna featuring that skill
+    """
 
     skills_csv_string = inBlob.read().decode('utf-8')
 
@@ -23,6 +29,8 @@ def collector_adzuna(inBlob: func.InputStream):
             formatted_skill = skill.split(",")[1]
             if formatted_skill != "":
                 list_of_keywords.append(formatted_skill)
+
+    logging.info('Succesfully read latest_course_report_skills.csv and formatted skills into list')
 
     app_id_secret = get_secret_value("adzunaAppId")
 
@@ -48,10 +56,20 @@ def collector_adzuna(inBlob: func.InputStream):
 
 
 def get_secret_value(secret_name):
+    """
+    Takes the name of a secret stored in the Azure Key Vault and returns its value
+
+        Argument: name of a secret
+        Returns: value of the given secret name
+    """
     vault_URI = f'https://{os.environ["KeyVaultName"]}.vault.azure.net'
 
     credential = DefaultAzureCredential()
 
     secret_client = SecretClient(vault_url=vault_URI, credential=credential)
 
-    return secret_client.get_secret(secret_name).value
+    secret_value = secret_client.get_secret(secret_name).value
+
+    logging.info(f'Succesfully retrieved {secret_name} secret from vault')
+
+    return secret_value

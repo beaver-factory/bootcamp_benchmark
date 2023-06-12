@@ -4,6 +4,9 @@ import io
 
 
 def process_adzuna_data(inBlob):
+    """
+    Takes the raw json produced by collector_adzuna and returns a csv file
+    """
     input_json = inBlob.read().decode('utf-8')
 
     parsed_input = json.loads(input_json)
@@ -20,6 +23,9 @@ def process_adzuna_data(inBlob):
 
 
 def error_handling(parsed_input):
+    """
+    Checks the input given to process_adzuna_data and raises Exceptions if needed
+    """
     if parsed_input == {}:
         raise Exception('Adzuna raw json is empty')
 
