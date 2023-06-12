@@ -29,4 +29,3 @@ def main(inBlob: func.InputStream, outBlob: func.Out[bytes], outBlob2: func.Out[
     skills_csv = skills_df.to_csv()
     outBlob2.set(skills_csv.encode('utf-8'))
     outBlob3.set(skills_csv.encode('utf-8'))
-    
