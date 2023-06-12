@@ -3,9 +3,14 @@ import os
 import pandas as pd
 import azure.functions as func
 from io import BytesIO
+import logging
 
 
 def load_course_report_into_db(inBlob: func.InputStream):
+    """
+    Creates a connection to the PSQL server before creating course_report table and inserting data.
+
+    """
     df = pd.read_csv(BytesIO(inBlob.read()))
     df.pop(df.columns[0])
 
@@ -16,6 +21,7 @@ def load_course_report_into_db(inBlob: func.InputStream):
     # establish connection to db, using env variable,
     # either ARM template connectionstring for production or .env for testing'
     conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
+    logging.info('Successfully connected to PSQL server using PSQL_CONNECTIONSTRING to load course data')
     cur = conn.cursor()
     table_name = 'course_report'
 
@@ -35,6 +41,8 @@ def load_course_report_into_db(inBlob: func.InputStream):
             );
             ''')
 
+    logging.info('Successfully created course_report table')
+
     tup = list(df.itertuples(index=False))
 
     # converting df rows into string for SQL query, while protecting from injection
@@ -53,6 +61,8 @@ def load_course_report_into_db(inBlob: func.InputStream):
                  course_country
              ) VALUES """ + args_str)
 
+    logging.info('Successfully inserted values into course_report table')
+
     # !Important, make changes persist on db!
     conn.commit()
 
@@ -62,6 +72,10 @@ def load_course_report_into_db(inBlob: func.InputStream):
 
 
 def load_course_skills_into_db(inBlob: func.InputStream):
+    """
+    Creates a connection to the PSQL server before creating and course_skills table and inserting data.
+
+    """
     df = pd.read_csv(BytesIO(inBlob.read()))
     df.pop(df.columns[0])
 
@@ -72,6 +86,8 @@ def load_course_skills_into_db(inBlob: func.InputStream):
     # establish connection to db, using env variable,
     # either ARM template connectionstring for production or .env for testing'
     conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
+    logging.info('Successfully connected to PSQL server using PSQL_CONNECTIONSTRING to load skills data')
+
     cur = conn.cursor()
     table_name = 'course_skills'
 
@@ -84,6 +100,7 @@ def load_course_skills_into_db(inBlob: func.InputStream):
             );
             ''')
 
+    logging.info('Successfully created course_skills table')
     tup = list(df.itertuples(index=False))
 
     # converting df rows into string for SQL query, while protecting from injection
@@ -91,6 +108,8 @@ def load_course_skills_into_db(inBlob: func.InputStream):
     args_str = ','.join(cur.mogrify("(%s)", x).decode('utf-8') for x in tup)
 
     cur.execute(f"""INSERT INTO {table_name} (skill) VALUES """ + args_str)
+
+    logging.info('Successfully inserted values into course_skills table')
 
     # !Important, make changes persist on db!
     conn.commit()
