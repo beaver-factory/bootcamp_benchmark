@@ -50,7 +50,7 @@ def test_raises_exception_when_json_is_empty():
     test_input = generate_inputstream(f"{dirpath}/empty_skills.json")
 
     with pytest.raises(Exception) as err:
-        result = process_adzuna_data(test_input)
+        process_adzuna_data(test_input)
 
     assert str(err.value) == 'Adzuna raw json is empty'
 

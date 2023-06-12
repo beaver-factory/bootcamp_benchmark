@@ -1,4 +1,4 @@
-from ..app import (process_scraped_data, process_skills_data)
+from ..app import (process_course_data, process_skills_data)
 import pytest
 import pandas as pd
 import json
@@ -58,7 +58,7 @@ def test_raises_exception_if_receives_empty_dataframe():
     test_empty_dataframe = pd.DataFrame([])
 
     with pytest.raises(Exception) as err:
-        process_scraped_data(test_empty_dataframe, locations["uk_locations"])
+        process_course_data(test_empty_dataframe, locations["uk_locations"])
 
     assert str(err.value) == 'Unprocessed dataframe is empty, check json output from collector'
 
@@ -66,7 +66,7 @@ def test_raises_exception_if_receives_empty_dataframe():
 def test_raises_exception_on_incorrect_shape_at_first_level():
     test_dataframe = pd.DataFrame([{'test': 'string'}])
     with pytest.raises(KeyError) as excinfo:
-        process_scraped_data(test_dataframe, locations["uk_locations"])
+        process_course_data(test_dataframe, locations["uk_locations"])
 
     assert 'provider_courses' in str(excinfo.value)
 
@@ -79,19 +79,19 @@ def test_raises_exception_on_incorrect_shape_at_nest():
     df = pd.read_json(json.dumps(error_structure))
 
     with pytest.raises(KeyError) as excinfo:
-        process_scraped_data(df, locations["uk_locations"])
+        process_course_data(df, locations["uk_locations"])
 
     assert 'course_skills' in str(excinfo.value)
 
 
 def test_returns_pandas_dataframe():
-    result = process_scraped_data(pd.read_json(
+    result = process_course_data(pd.read_json(
         json.dumps(expected_data_structure)), locations["uk_locations"])
     assert isinstance(result, pd.DataFrame)
 
 
 def test_dataframe_contains_correct_columns():
-    result = process_scraped_data(pd.read_json(
+    result = process_course_data(pd.read_json(
         json.dumps(expected_data_structure)), locations["uk_locations"])
     expected = [
         'provider_name',
@@ -109,7 +109,7 @@ def test_dataframe_contains_correct_columns():
 
 
 def test_dataframe_contains_correct_number_of_rows():
-    result = process_scraped_data(pd.read_json(
+    result = process_course_data(pd.read_json(
         json.dumps(expected_data_structure)), locations["uk_locations"])
     print(result)
     assert result.shape[0] == 4
@@ -137,7 +137,7 @@ def test_process_skills_data_removes_duplicate_skills():
 
     assert result['course_skills'].values.tolist() == expected
 
-    course_data_frame = process_scraped_data(pd.read_json(
+    course_data_frame = process_course_data(pd.read_json(
         json.dumps(expected_data_structure)), locations["uk_locations"])
 
     assert course_data_frame['course_skills'].unique().tolist() == expected
