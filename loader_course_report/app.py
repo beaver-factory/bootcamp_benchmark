@@ -41,7 +41,7 @@ def load_course_report_into_db(inBlob: func.InputStream):
             );
             ''')
 
-    logging.info('Successfully created course_report table')
+    logging.info(f'Successfully created {table_name} table')
 
     tup = list(df.itertuples(index=False))
 
@@ -61,7 +61,7 @@ def load_course_report_into_db(inBlob: func.InputStream):
                  course_country
              ) VALUES """ + args_str)
 
-    logging.info('Successfully inserted values into course_report table')
+    logging.info(f'Successfully inserted values into {table_name} table')
 
     # !Important, make changes persist on db!
     conn.commit()
@@ -100,7 +100,7 @@ def load_course_skills_into_db(inBlob: func.InputStream):
             );
             ''')
 
-    logging.info('Successfully created course_skills table')
+    logging.info(f'Successfully created {table_name} table')
     tup = list(df.itertuples(index=False))
 
     # converting df rows into string for SQL query, while protecting from injection
@@ -109,7 +109,7 @@ def load_course_skills_into_db(inBlob: func.InputStream):
 
     cur.execute(f"""INSERT INTO {table_name} (skill) VALUES """ + args_str)
 
-    logging.info('Successfully inserted values into course_skills table')
+    logging.info(f'Successfully inserted values into {table_name} table')
 
     # !Important, make changes persist on db!
     conn.commit()

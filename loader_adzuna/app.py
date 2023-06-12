@@ -34,7 +34,7 @@ def load_adzuna_jobs_per_skill(inBlob: func.InputStream):
             );
             ''')
 
-    logging.info('Successfully created adzuna_job_counts table')
+    logging.info(f'Successfully created {table_name} table')
 
     tup = list(df.itertuples(index=False))
 
@@ -48,7 +48,7 @@ def load_adzuna_jobs_per_skill(inBlob: func.InputStream):
                  job_count
              ) VALUES """ + args_str)
 
-    logging.info('Successfully inserted values into adzuna_job_counts table')
+    logging.info(f'Successfully inserted values into {table_name} table')
 
     # !Important, make changes persist on db!
     conn.commit()
