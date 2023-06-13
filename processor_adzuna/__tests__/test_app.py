@@ -46,13 +46,22 @@ def test_processor_creates_csv_with_correct_headers_and_data():
     assert csv_content[0][1] == '200'
 
 
+def test_raises_exception_when_inBlob_is_empty():
+    test_input = generate_inputstream(f"{dirpath}/no_file.json")
+
+    with pytest.raises(Exception) as err:
+        process_adzuna_data(test_input)
+
+    assert str(err.value) == 'Blob is empty, check json output from collector'
+
+
 def test_raises_exception_when_json_is_empty():
     test_input = generate_inputstream(f"{dirpath}/empty_skills.json")
 
     with pytest.raises(Exception) as err:
         process_adzuna_data(test_input)
 
-    assert str(err.value) == 'Adzuna raw json is empty'
+    assert str(err.value) == 'Unprocessed json is empty, check json output from collector'
 
 
 def test_raises_exception_when_skill_count_is_wrong_data_type():
@@ -65,7 +74,7 @@ def test_raises_exception_when_skill_count_is_wrong_data_type():
 
 
 def generate_inputstream(path):
-    """converts a local csv file and returns a mocked blob input stream containing that data"""
+    """converts a local json file and returns a mocked blob input stream containing that data"""
     with open(path, 'rb') as file:
         test_json_data = file.read()
 
@@ -86,6 +95,9 @@ def generate_json():
 
     with open(f'{dirpath}/empty_skills.json', 'w') as file:
         file.write(json.dumps({}))
+
+    with open(f'{dirpath}/no_file.json', 'w') as file:
+        file.write("")
 
     with open(f"{dirpath}/incorrect_data_type_for_skill_count.json", 'w') as file:
         file.write(json.dumps({'AngularJS': '200'}))
