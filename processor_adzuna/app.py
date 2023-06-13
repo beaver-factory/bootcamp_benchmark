@@ -9,6 +9,9 @@ def process_adzuna_data(inBlob):
     """
     input_json = inBlob.read().decode('utf-8')
 
+    if input_json == '':
+        raise Exception('Blob is empty, check json output from collector')
+
     parsed_input = json.loads(input_json)
 
     error_handling(parsed_input)
@@ -26,8 +29,9 @@ def error_handling(parsed_input):
     """
     Checks the input given to process_adzuna_data and raises Exceptions if needed
     """
-    if parsed_input == {}:
-        raise Exception('Adzuna raw json is empty')
+
+    if len(parsed_input) == 0:
+        raise Exception('Unprocessed json is empty, check json output from collector')
 
     for skill_count in parsed_input.values():
         if type(skill_count) != int:
