@@ -2,7 +2,7 @@ import os
 
 excluded_directories = ['script', 'env', 'an_example_function', 'venv', '__pycache__']
 
-valid_directory_prefixes = ['collector_', 'processor_', 'loader_']
+valid_directory_prefixes = ['collector_', 'processor_', 'loader_', 'utils']
 
 
 def check_directory_naming():
