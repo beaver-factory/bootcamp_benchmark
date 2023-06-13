@@ -1,9 +1,8 @@
-import psycopg2
-import os
 import pandas as pd
 import azure.functions as func
 from io import BytesIO
 import logging
+from utils import handle_loader_errors, establish_connection, close_connection, generate_insertion_string
 
 
 def load_course_report_into_db(inBlob: func.InputStream):
@@ -16,13 +15,11 @@ def load_course_report_into_db(inBlob: func.InputStream):
 
     column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations', 'course_description', 'target_url', 'timestamp', 'course_country']
 
-    handle_errors(column_headers, df)
+    handle_loader_errors(column_headers, df)
 
     # establish connection to db, using env variable,
     # either ARM template connectionstring for production or .env for testing'
-    conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
-    logging.info('Successfully connected to PSQL server using PSQL_CONNECTIONSTRING to load course data')
-    cur = conn.cursor()
+    conn, cur = establish_connection()
     table_name = 'course_report'
 
     cur.execute(f'DROP TABLE IF EXISTS {table_name}')
@@ -43,12 +40,7 @@ def load_course_report_into_db(inBlob: func.InputStream):
 
     logging.info(f'Successfully created {table_name} table')
 
-    tup = list(df.itertuples(index=False))
-
-    # converting df rows into string for SQL query, while protecting from injection
-    # enables multiple rows to be added to query string
-    args_str = ','.join(cur.mogrify(
-        "(%s,%s,%s,%s,%s,%s,%s,%s)", x).decode('utf-8') for x in tup)
+    args_str = generate_insertion_string(df, cur, 8)
 
     cur.execute(f"""INSERT INTO {table_name} (
                  provider_name,
@@ -63,12 +55,7 @@ def load_course_report_into_db(inBlob: func.InputStream):
 
     logging.info(f'Successfully inserted values into {table_name} table')
 
-    # !Important, make changes persist on db!
-    conn.commit()
-
-    # close it all down
-    cur.close()
-    conn.close()
+    close_connection(cur, conn)
 
 
 def load_course_skills_into_db(inBlob: func.InputStream):
@@ -80,15 +67,9 @@ def load_course_skills_into_db(inBlob: func.InputStream):
     df.pop(df.columns[0])
 
     column_headers = ['course_skills']
+    handle_loader_errors(column_headers, df)
 
-    handle_errors(column_headers, df)
-
-    # establish connection to db, using env variable,
-    # either ARM template connectionstring for production or .env for testing'
-    conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
-    logging.info('Successfully connected to PSQL server using PSQL_CONNECTIONSTRING to load skills data')
-
-    cur = conn.cursor()
+    conn, cur = establish_connection()
     table_name = 'course_skills'
 
     cur.execute(f'DROP TABLE IF EXISTS {table_name}')
@@ -101,11 +82,8 @@ def load_course_skills_into_db(inBlob: func.InputStream):
             ''')
 
     logging.info(f'Successfully created {table_name} table')
-    tup = list(df.itertuples(index=False))
 
-    # converting df rows into string for SQL query, while protecting from injection
-    # enables multiple rows to be added to query string
-    args_str = ','.join(cur.mogrify("(%s)", x).decode('utf-8') for x in tup)
+    args_str = generate_insertion_string(df, cur, 1)
 
     cur.execute(f"""INSERT INTO {table_name} (skill) VALUES """ + args_str)
 
@@ -117,16 +95,3 @@ def load_course_skills_into_db(inBlob: func.InputStream):
     # close it all down
     cur.close()
     conn.close()
-
-
-def handle_errors(column_headers, df):
-    """Takes a list of headers and a dataframe, handles error checking by raising exceptions"""
-
-    if df.columns.values.tolist() != column_headers:
-        raise Exception('Invalid CSV column names')
-
-    if len(df.index) == 0:
-        raise Exception('CSV only has headers')
-
-    if all(df.iloc[0].isnull().values.tolist()):
-        raise Exception('CSV has headers but no data')
