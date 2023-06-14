@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "loaders/**"
+      - ".github/workflows/deploy_loaders_stag.yaml"
 
 env:
   FUNCTION_APP_NAME: bb-loaders-stag2
