@@ -1,12 +1,11 @@
 import pandas as pd
-import azure.functions as func
-import psycopg2
-import os
+from azure.functions import InputStream
 from io import BytesIO
 import logging
+from loader_utils import handle_loader_errors, establish_connection, close_connection, generate_insertion_string
 
 
-def load_adzuna_jobs_per_skill(inBlob: func.InputStream):
+def load_adzuna_jobs_per_skill(inBlob: InputStream):
     """
     Creates a connection to the PSQL server before creating adzuna_job_counts table and inserting data.
 
@@ -15,13 +14,9 @@ def load_adzuna_jobs_per_skill(inBlob: func.InputStream):
 
     column_headers = ['skill', 'number_of_jobs']
 
-    handle_errors(column_headers, df)
+    handle_loader_errors(column_headers, df)
 
-    # establish connection to db, using env variable,
-    # either ARM template connectionstring for production or .env for testing'
-    conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
-    logging.info('Successfully connected to PSQL server using PSQL_CONNECTIONSTRING to load Adzuna jobs data')
-    cur = conn.cursor()
+    conn, cur = establish_connection()
     table_name = 'adzuna_job_counts'
 
     cur.execute(f'DROP TABLE IF EXISTS {table_name}')
@@ -36,12 +31,7 @@ def load_adzuna_jobs_per_skill(inBlob: func.InputStream):
 
     logging.info(f'Successfully created {table_name} table')
 
-    tup = list(df.itertuples(index=False))
-
-    # converting df rows into string for SQL query, while protecting from injection
-    # enables multiple rows to be added to query string
-    args_str = ','.join(cur.mogrify(
-        "(%s,%s)", x).decode('utf-8') for x in tup)
+    args_str = generate_insertion_string(df, cur, 2)
 
     cur.execute(f"""INSERT INTO {table_name} (
                  skill,
@@ -50,22 +40,4 @@ def load_adzuna_jobs_per_skill(inBlob: func.InputStream):
 
     logging.info(f'Successfully inserted values into {table_name} table')
 
-    # !Important, make changes persist on db!
-    conn.commit()
-
-    # close it all down
-    cur.close()
-    conn.close()
-
-
-def handle_errors(column_headers, df):
-    """Takes a list of headers and a dataframe, handles error checking by raising exceptions"""
-
-    if df.columns.values.tolist() != column_headers:
-        raise Exception('Invalid CSV column names')
-
-    if len(df.index) == 0:
-        raise Exception('CSV only has headers')
-
-    if all(df.iloc[0].isnull().values.tolist()):
-        raise Exception('CSV has headers but no data')
+    close_connection(cur, conn)
