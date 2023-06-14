@@ -12,6 +12,10 @@ env:
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
   AZURE_FUNCTIONAPP_PACKAGE_PATH: "./loaders"
 
+defaults:
+  run:
+    working-directory: loaders
+
 jobs:
   TestAndLint:
     runs-on: ubuntu-latest
