@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'processors/**''
+      - 'processors/**'
       - './github/workflows/deploy_processors.yaml'
 
 env:
