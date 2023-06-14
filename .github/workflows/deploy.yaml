@@ -4,10 +4,16 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'old_functionapp/**'
 
 env:
   FUNCTION_APP_NAME: bootcampbfuncappstag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
+
+defaults:
+  run:
+    working-directory: old_functionapp
 
 jobs:
   TestAndLint:
