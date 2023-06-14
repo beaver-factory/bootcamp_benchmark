@@ -1,11 +1,11 @@
 import pandas as pd
-import azure.functions as func
+from azure.functions import InputStream
 from io import BytesIO
 import logging
 from utils import handle_loader_errors, establish_connection, close_connection, generate_insertion_string
 
 
-def load_course_report_into_db(inBlob: func.InputStream):
+def load_course_report_into_db(inBlob: InputStream):
     """
     Creates a connection to the PSQL server before creating course_report table and inserting data.
 
@@ -17,8 +17,6 @@ def load_course_report_into_db(inBlob: func.InputStream):
 
     handle_loader_errors(column_headers, df)
 
-    # establish connection to db, using env variable,
-    # either ARM template connectionstring for production or .env for testing'
     conn, cur = establish_connection()
     table_name = 'course_report'
 
@@ -89,9 +87,4 @@ def load_course_skills_into_db(inBlob: func.InputStream):
 
     logging.info(f'Successfully inserted values into {table_name} table')
 
-    # !Important, make changes persist on db!
-    conn.commit()
-
-    # close it all down
-    cur.close()
-    conn.close()
+    close_connection(cur, conn)

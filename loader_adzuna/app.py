@@ -1,11 +1,11 @@
 import pandas as pd
-import azure.functions as func
+from azure.functions import InputStream
 from io import BytesIO
 import logging
 from utils import handle_loader_errors, establish_connection, close_connection, generate_insertion_string
 
 
-def load_adzuna_jobs_per_skill(inBlob: func.InputStream):
+def load_adzuna_jobs_per_skill(inBlob: InputStream):
     """
     Creates a connection to the PSQL server before creating adzuna_job_counts table and inserting data.
 
@@ -31,8 +31,6 @@ def load_adzuna_jobs_per_skill(inBlob: func.InputStream):
 
     logging.info(f'Successfully created {table_name} table')
 
-    # converting df rows into string for SQL query, while protecting from injection
-    # enables multiple rows to be added to query string
     args_str = generate_insertion_string(df, cur, 2)
 
     cur.execute(f"""INSERT INTO {table_name} (
