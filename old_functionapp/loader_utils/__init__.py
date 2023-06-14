@@ -47,7 +47,7 @@ def generate_insertion_string(df: DataFrame, cur: psycopg2.extensions.cursor, co
     tup = list(df.itertuples(index=False))
 
     # arrange string in format (%s,%s,%s...)
-    string_with_insertions = "(" + ("%s," * row_quant)
+    string_with_insertions = "(" + ("%s," * col_quant)
     finalised_string = string_with_insertions[:-1] + ")"
 
     return ','.join(cur.mogrify(finalised_string, x).decode('utf-8') for x in tup)

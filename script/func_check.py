@@ -1,6 +1,7 @@
 import os
 
-excluded_directories = ['script', 'env', 'an_example_function', 'venv', '__pycache__']
+excluded_directories = ['script', 'env',
+                        'an_example_function', 'venv', '__pycache__']
 
 valid_directory_prefixes = ['collector_', 'processor_', 'loader_', 'utils']
 
