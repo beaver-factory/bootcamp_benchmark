@@ -14,7 +14,7 @@ load_dotenv()
 os.environ["no_proxy"] = "*"
 
 # globals
-dirpath = 'loaders/loader_course_report/__tests__/csv'
+dirpath = 'loader_course_report/__tests__/csv'
 
 
 @pytest.fixture(scope="session", autouse=True)
