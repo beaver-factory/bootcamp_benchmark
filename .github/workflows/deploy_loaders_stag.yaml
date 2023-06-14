@@ -40,7 +40,7 @@ jobs:
         run: make lint
 
       - name: test
-        run: make unit_test
+        run: make dock && make unit_test
 
       - name: function conformity
         run: make func_check
