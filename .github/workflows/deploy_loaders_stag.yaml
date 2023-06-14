@@ -21,9 +21,6 @@ jobs:
   TestAndLint:
     runs-on: ubuntu-latest
     name: Test and Lint
-    default:
-      runs:
-        working-directory: loaders
 
     steps:
       - name: checkout code
