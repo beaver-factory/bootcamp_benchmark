@@ -2,11 +2,14 @@ import os
 
 excluded_directories = ['script', 'env', 'an_example_function', 'venv', '__pycache__']
 
-valid_directory_prefixes = ['collector_', 'processor_', 'loader_', 'utils']
-
-
 def check_directory_naming():
     current_directory = os.getcwd()
+
+    func_app_folder = current_directory.split('/')[-1]
+    if func_app_folder[-1] == 's':
+        valid_directory_prefix = func_app_folder[:-1] + '_'
+    else:
+        valid_directory_prefix = func_app_folder + '_'
 
     directories = []
 
@@ -17,16 +20,14 @@ def check_directory_naming():
     invalid_directories = []
 
     for directory in directories:
-        if not directory.startswith(tuple(valid_directory_prefixes)):
+        if not directory.startswith(valid_directory_prefix):
             invalid_directories.append(directory)
 
     if len(invalid_directories) > 0:
         print('\nInvalid directories:\n')
         for directory in invalid_directories:
             print(directory)
-        print('\nPlease use the following prefixes:\n')
-        for prefix in valid_directory_prefixes:
-            print(prefix)
+        print(f'\nPlease use the following prefix for directories within this location: "{valid_directory_prefix}"')
 
         exit(1)
 
