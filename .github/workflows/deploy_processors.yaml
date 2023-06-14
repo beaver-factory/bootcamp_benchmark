@@ -10,10 +10,7 @@ on:
 env:
   FUNCTION_APP_NAME: bb-processors-stag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
-
-defaults:
-  run:
-    working-directory: old_functionapp
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './bb-processors-stag2' 
 
 jobs:
   TestAndLint:
@@ -33,7 +30,7 @@ jobs:
 
       - name: install dependencies
         shell: bash
-        run: pip install -r requirements.txt
+        run: pip install -r ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}requirements.txt
 
       - name: lint
         run: make lint
@@ -62,8 +59,8 @@ jobs:
       - name: install python dependencies
         shell: bash
         run: |
-          pushd ''
-          pip install -r requirements.txt --target=".python_packages/lib/site-packages"
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          pip install -r ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}requirements.txt --target=".python_packages/lib/site-packages"
           popd
 
       - name: azure login
@@ -81,6 +78,7 @@ jobs:
         uses: Azure/functions-action@v1.3.2
         with:
           app-name: ${{ env.FUNCTION_APP_NAME}}
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ steps.profilevar.outputs.publish_profile }}
           scm-do-build-during-deployment: true
           enable-oryx-build: false
