@@ -16,6 +16,9 @@ jobs:
   TestAndLint:
     runs-on: ubuntu-latest
     name: Test and Lint
+    default:
+      runs:
+        working-directory: ./bb-processors-stag2
 
     steps:
       - name: checkout code
@@ -30,7 +33,7 @@ jobs:
 
       - name: install dependencies
         shell: bash
-        run: pip install -r ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}requirements.txt
+        run: pip install -r requirements.txt
 
       - name: lint
         run: make lint
