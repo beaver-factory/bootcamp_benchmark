@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - bb-processors-stag2
+      - processors
 
 env:
   FUNCTION_APP_NAME: bb-processors-stag2
