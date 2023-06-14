@@ -42,3 +42,4 @@ typing_extensions==4.6.3
 urllib3==2.0.3
 w3lib==2.1.1
 zope.interface==6.0
+flake8==6.0.0
