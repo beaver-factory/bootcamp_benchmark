@@ -9,7 +9,7 @@ dependency:
 	pip freeze | grep $$package >> requirements.txt
 
 prune:
-	bash ..script/prune.sh
+	bash ../script/prune.sh
 
 lint:
 	flake8
@@ -18,15 +18,15 @@ unit_test:
 	pytest -v
 
 func_check:
-	python3 ..script/func_check.py
+	python3 ../script/func_check.py
 
 tag:
 ifdef v
-	bash ..script/tag.sh $(v)
+	bash ../script/tag.sh $(v)
 else
 	$(error TAG_VERSION is undefined)
 endif
 
 func:
 	@read -p "Enter the directory name for your function: " dir; \
-	func new --name $$dir && bash ..script/funcs.sh $$dir \
+	func new --name $$dir && bash ../script/funcs.sh $$dir \
