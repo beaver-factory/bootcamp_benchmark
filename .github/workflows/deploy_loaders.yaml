@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - bb-loaders-stag2
+      - "loaders/**"
 
 env:
   FUNCTION_APP_NAME: bb-loaders-stag2
