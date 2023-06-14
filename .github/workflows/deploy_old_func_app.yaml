@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'old_functionapp/**'
+      - '.github/workflows/deplot_old_func_app.yaml'
 
 env:
   FUNCTION_APP_NAME: bootcampbfuncappstag2
