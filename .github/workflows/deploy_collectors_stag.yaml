@@ -12,6 +12,10 @@ env:
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
   AZURE_FUNCTION_APP_PACKAGE_PATH: './collectors'
 
+defaults:
+  run:
+    working-directory: collectors
+
 jobs:
   TestAndLint:
     runs-on: ubuntu-latest
