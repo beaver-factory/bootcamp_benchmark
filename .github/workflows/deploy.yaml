@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - old_functionapp
+      - 'old_functionapp/**'
 
 env:
   FUNCTION_APP_NAME: bootcampbfuncappstag2
