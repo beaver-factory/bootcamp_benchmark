@@ -18,7 +18,7 @@ unit_test:
 	pytest -v
 
 func_check:
-	python3 script/func_check.py
+	python3 ../script/func_check.py
 
 tag:
 ifdef v
