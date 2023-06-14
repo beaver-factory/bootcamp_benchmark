@@ -11,7 +11,7 @@ on:
 env:
   FUNCTION_APP_NAME: bootcampbfuncappstag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
-  AZURE_FUNCTION_APP_PACKAGE_PATH: '../old_functionapp'
+  AZURE_FUNCTION_APP_PACKAGE_PATH: './old_functionapp'
 
 defaults:
   run:
