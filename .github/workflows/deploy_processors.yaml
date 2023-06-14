@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Test and Lint
     defaults:
-      runs:
+      run:
         working-directory: processors
 
     steps:
