@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - processors
+      - processors/**
+      - github/workflows/deploy_processors.yaml
 
 env:
   FUNCTION_APP_NAME: bb-processors-stag2
