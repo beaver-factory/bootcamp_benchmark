@@ -15,7 +15,7 @@ os.environ["no_proxy"] = "*"
 
 # globals
 
-dirpath = 'loader_adzuna/__tests__/csv'
+dirpath = 'loaders/loader_adzuna/__tests__/csv'
 
 # fixtures
 
