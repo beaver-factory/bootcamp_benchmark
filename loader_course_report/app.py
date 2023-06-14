@@ -2,7 +2,7 @@ import pandas as pd
 from azure.functions import InputStream
 from io import BytesIO
 import logging
-from utils import handle_loader_errors, establish_connection, close_connection, generate_insertion_string
+from loader_utils import handle_loader_errors, establish_connection, close_connection, generate_insertion_string
 
 
 def load_course_report_into_db(inBlob: InputStream):
@@ -56,7 +56,7 @@ def load_course_report_into_db(inBlob: InputStream):
     close_connection(cur, conn)
 
 
-def load_course_skills_into_db(inBlob: func.InputStream):
+def load_course_skills_into_db(inBlob: InputStream):
     """
     Creates a connection to the PSQL server before creating and course_skills table and inserting data.
 

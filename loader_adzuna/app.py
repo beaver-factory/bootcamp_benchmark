@@ -2,7 +2,7 @@ import pandas as pd
 from azure.functions import InputStream
 from io import BytesIO
 import logging
-from utils import handle_loader_errors, establish_connection, close_connection, generate_insertion_string
+from loader_utils import handle_loader_errors, establish_connection, close_connection, generate_insertion_string
 
 
 def load_adzuna_jobs_per_skill(inBlob: InputStream):
