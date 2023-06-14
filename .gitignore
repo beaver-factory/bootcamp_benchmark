@@ -13,3 +13,5 @@ test_output_*
 .env
 
 processed_*.csv
+
+local.settings.json
