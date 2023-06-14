@@ -13,3 +13,5 @@ __pycache__
 .env
 
 processed_*.csv
+
+local.settings.json
