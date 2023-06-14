@@ -41,8 +41,8 @@ def close_connection(cur: psycopg2.extensions.cursor, conn: psycopg2.extensions.
     conn.close()
 
 
-def generate_insertion_string(df: DataFrame, cur: psycopg2.extensions.cursor, row_quant: int) -> str:
-    """Takes a pandas dataframe, a psycopg2 cursor and a row number. Generates a valid table insertion string for use in a PSQL query with multiple rows"""
+def generate_insertion_string(df: DataFrame, cur: psycopg2.extensions.cursor, col_quant: int) -> str:
+    """Takes a pandas dataframe, a psycopg2 cursor and a number representing the number of columns. Generates a valid table insertion string for use in a PSQL query with multiple rows"""
 
     tup = list(df.itertuples(index=False))
 
