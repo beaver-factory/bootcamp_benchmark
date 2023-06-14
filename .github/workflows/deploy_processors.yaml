@@ -10,7 +10,7 @@ on:
 env:
   FUNCTION_APP_NAME: bb-processors-stag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: './bb-processors-stag2' 
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './processors' 
 
 jobs:
   TestAndLint:
@@ -18,7 +18,7 @@ jobs:
     name: Test and Lint
     default:
       runs:
-        working-directory: ./bb-processors-stag2
+        working-directory: ./processors
 
     steps:
       - name: checkout code
@@ -63,7 +63,7 @@ jobs:
         shell: bash
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          pip install -r ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}requirements.txt --target=".python_packages/lib/site-packages"
+          pip install -r requirements.txt --target=".python_packages/lib/site-packages"
           popd
 
       - name: azure login
