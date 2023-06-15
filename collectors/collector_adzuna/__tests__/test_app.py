@@ -1,5 +1,5 @@
 from unittest.mock import patch, Mock
-from ..app import collector_adzuna
+from ..app import collector_adzuna, create_keyword_string
 import json
 import requests_mock
 import pytest
@@ -38,37 +38,67 @@ def generate_inputstream(path):
 @patch('collector_adzuna.app.get_secret_value', return_value='test')
 def test_one_request_is_made_to_API_with_correctly_formatted_result(mock, create_csv):
     with requests_mock.Mocker() as m:
-        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1', json={"count": 227})
+        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1',
+              json={"count": 227})
 
-        test_input_stream = generate_inputstream("./collector_adzuna/__tests__/csv/test_one_skill.csv")
+        test_input_stream = generate_inputstream(
+            "./collector_adzuna/__tests__/csv/test_one_skill.csv")
 
         result = collector_adzuna(test_input_stream)
 
         assert m.call_count == 1
-        assert result == json.dumps({"AngularJS": 227})
+        assert result == json.dumps({"HTML": 227})
 
 
 @patch('collector_adzuna.app.get_secret_value', return_value='test')
 def test_multiple_requests_made_to_API_with_correctly_formatted_result(mock):
     with requests_mock.Mocker() as m:
-        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=AngularJS', json={"count": 227})
-        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=CSS', json={"count": 4608})
+        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=HTML',
+              json={"count": 227})
+        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=CSS',
+              json={"count": 4608})
 
-        test_input_stream = generate_inputstream("./collector_adzuna/__tests__/csv/test_skills.csv")
+        test_input_stream = generate_inputstream(
+            "./collector_adzuna/__tests__/csv/test_skills.csv")
 
         result = collector_adzuna(test_input_stream)
 
         assert m.call_count == 2
-        assert result == json.dumps({"AngularJS": 227, "CSS": 4608})
+        assert result == json.dumps({"HTML": 227, "CSS": 4608})
 
 
 def test_error_raised_when_skills_csv_is_empty():
-    test_input_stream = generate_inputstream("./collector_adzuna/__tests__/csv/test_skills_empty.csv")
+    test_input_stream = generate_inputstream(
+        "./collector_adzuna/__tests__/csv/test_skills_empty.csv")
 
     with pytest.raises(Exception) as error:
         collector_adzuna(test_input_stream)
 
     assert str(error.value) == 'List of skills is empty, CSV may be empty'
+
+
+def test_create_keyword_string_returns_same_keyword_when_no_processing_needed():
+    keyword = "python"
+    result = create_keyword_string(keyword)
+    expected = "python"
+
+    assert result == expected
+
+
+def test_create_keyword_string_returns_variants_of_dotjs_formatted_correctly():
+    keyword = "React.js"
+    result = create_keyword_string(keyword)
+    expected = "React.js%20React"
+
+    assert result == expected
+
+
+def test_create_keyword_string_returns_variants_of_JS_formatted_correctly():
+    keyword = "AngularJS"
+    result = create_keyword_string(keyword)
+    expected = "AngularJS%20Angular"
+
+    assert result == expected
 
 
 def generate_csv():
@@ -79,7 +109,7 @@ def generate_csv():
     with open(f'{dirpath}/test_one_skill.csv', 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=',', lineterminator='\n')
         csvwriter.writerow(['', 'course_skills'])
-        csvwriter.writerow(['0', 'AngularJS'])
+        csvwriter.writerow(['0', 'HTML'])
 
     with open(f'{dirpath}/test_skills_empty.csv', 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=',', lineterminator='\n')
@@ -87,5 +117,5 @@ def generate_csv():
     with open(f'{dirpath}/test_skills.csv', 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=',', lineterminator='\n')
         csvwriter.writerow(['', 'course_skills'])
-        csvwriter.writerow(['0', 'AngularJS'])
+        csvwriter.writerow(['0', 'HTML'])
         csvwriter.writerow(['1', 'CSS'])
