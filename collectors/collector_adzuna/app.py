@@ -40,7 +40,11 @@ def collector_adzuna(inBlob: func.InputStream):
     skill_count = {}
 
     for keyword in list_of_keywords:
-        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&what={keyword}&location0=UK&category=it-jobs&content-type=application/json"
+        keyword_variants = create_keyword_variants(keyword)
+
+        keyword_query = create_keyword_query(keyword, keyword_variants)
+
+        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&{keyword_query}&location0=UK&category=it-jobs&content-type=application/json"
 
         response = requests.get(request_url)
 
@@ -75,3 +79,42 @@ def get_secret_value(secret_name):
     logging.info(f'Succesfully retrieved {secret_name} secret from vault')
 
     return secret_value
+
+
+def create_keyword_variants(keyword):
+    """
+    Takes a keyword and adds possible variants to include in an API search
+
+        Argument: skill keyword
+        Returns: skill keyword with possible variants separated by a space
+    """
+    processed_keywords = keyword
+
+    # JavaScript skill processing
+    if ".js" in keyword:
+        processed_keywords += f" {keyword.split('.')[0]}"
+    elif keyword[-2:] == "JS":
+        processed_keywords += f" {keyword[:-2]}"
+
+    return processed_keywords
+
+
+def create_keyword_query(keyword, variant_keywords):
+    """
+    Takes the original keyword and the keyword with variants and returns the correct query for an API call
+
+        Arguments: original keyword and keywords with variants
+        Returns: correct search query for the type of keyword given
+    """
+    search_param = "what="
+
+    if keyword != variant_keywords:
+        # If multiple variants have been added to the search, results should check for each version independently
+        search_param = "what_or="
+    elif len(keyword.split(" ")) > 1:
+        # If skill has multiple words, results must include all words
+        search_param = "what_phrase="
+
+    keyword_query = search_param + variant_keywords
+
+    return keyword_query
