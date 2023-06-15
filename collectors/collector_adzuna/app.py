@@ -30,7 +30,8 @@ def collector_adzuna(inBlob: func.InputStream):
             if formatted_skill != "":
                 list_of_keywords.append(formatted_skill)
 
-    logging.info('Succesfully read latest_course_report_skills.csv and formatted skills into list')
+    logging.info(
+        'Successfully read latest_course_report_skills.csv and formatted skills into list')
 
     app_id_secret = get_secret_value("adzunaAppId")
 
@@ -39,12 +40,13 @@ def collector_adzuna(inBlob: func.InputStream):
     skill_count = {}
 
     for keyword in list_of_keywords:
-        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&what={keyword}&location0=UK&content-type=application/json"
+        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&what={keyword}&location0=UK&category=it-jobs&content-type=application/json"
 
         response = requests.get(request_url)
 
         if response.status_code >= 400:
-            logging.warning(f'Adzuna API GET request failed for keyword={keyword}')
+            logging.warning(
+                f'Adzuna API GET request failed for keyword={keyword}')
         else:
             response_json = response.json()
 
