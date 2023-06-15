@@ -3,16 +3,19 @@ from azure.keyvault.secrets import SecretClient
 import os
 import json
 import requests
-import azure.functions as func
+from azure.functions import InputStream
 import logging
 
 
-def collector_adzuna(inBlob: func.InputStream):
+def collector_adzuna(inBlob: InputStream) -> str:
     """
     Makes calls to Adzuna API to find the number of jobs listed for each skill.
 
-        Argument: takes a csv file of a list of skills from the most recent Course Report scrape: latest_course_report_skills.csv
-        Returns: a json object featuring keys of each skill and a count of the number of job ads on Adzuna featuring that skill
+        Parameters:
+        - inBlob (InputStream): takes a csv file of a list of skills from the most recent Course Report scrape: latest_course_report_skills.csv
+        
+        Returns:
+        - A json object string featuring keys of each skill and a count of the number of job ads on Adzuna featuring that skill
     """
 
     skills_csv_string = inBlob.read().decode('utf-8')
@@ -61,12 +64,15 @@ def collector_adzuna(inBlob: func.InputStream):
     return json.dumps(skill_count)
 
 
-def get_secret_value(secret_name):
+def get_secret_value(secret_name: str):
     """
     Takes the name of a secret stored in the Azure Key Vault and returns its value
 
-        Argument: name of a secret
-        Returns: value of the given secret name
+        Parameters:
+        - secret_name (string): name of a secret
+
+        Returns:
+        - (any): value of the given secret name
     """
     vault_URI = f'https://{os.environ["KeyVaultName"]}.vault.azure.net'
 
@@ -81,12 +87,15 @@ def get_secret_value(secret_name):
     return secret_value
 
 
-def create_keyword_variants(keyword):
+def create_keyword_variants(keyword: str) -> str:
     """
     Takes a keyword and adds possible variants to include in an API search
 
-        Argument: skill keyword
-        Returns: skill keyword with possible variants separated by a space
+        Parameters:
+        - keyword (string): skill keyword
+
+        Returns:
+        - (string): skill keyword with possible variants separated by a space
     """
     processed_keywords = keyword
 
@@ -99,12 +108,16 @@ def create_keyword_variants(keyword):
     return processed_keywords
 
 
-def create_keyword_query(keyword, variant_keywords):
+def create_keyword_query(keyword: str, variant_keywords:str) -> str:
     """
     Takes the original keyword and the keyword with variants and returns the correct query for an API call
 
-        Arguments: original keyword and keywords with variants
-        Returns: correct search query for the type of keyword given
+        Parameters:
+        - keyword (string): original keyword
+        - variant_keywords (string): keywords with variants
+
+        Returns:
+        - (string): correct search query for the type of keyword given
     """
     search_param = "what="
 

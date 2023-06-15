@@ -3,9 +3,7 @@ import json
 import pytest
 
 
-@pytest.fixture(scope="session", autouse=True)
-def expected_data_structure():
-    return {
+expected_data_structure = {
         "provider_name": "",
         "provider_locations": [""],
         "provider_tracks": [""],
@@ -43,7 +41,7 @@ def test_generate_example_report(actual_data):
     save_file.close()
 
 
-def test_spider_returns_expected_data_structure(expected_data_structure, actual_data):
+def test_spider_returns_expected_data_structure(actual_data):
     expected_keys = expected_data_structure.keys()
 
     actual_parsed_keys = actual_data[1].keys()
@@ -51,7 +49,7 @@ def test_spider_returns_expected_data_structure(expected_data_structure, actual_
     assert expected_keys == actual_parsed_keys
 
 
-def test_spider_returns_data(actual_data, expected_data_structure):
+def test_spider_returns_data(actual_data):
     expected_keys = expected_data_structure.keys()
 
     for key in expected_keys:

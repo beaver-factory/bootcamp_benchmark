@@ -129,7 +129,7 @@ def test_create_keyword_query_returns_variants_of_JS_formatted_correctly():
 
 
 def generate_csv():
-    """creates a series of CSVs containing data needed for tests"""
+    """Creates a series of CSVs containing data needed for tests"""
 
     os.mkdir(f'{dirpath}')
 
