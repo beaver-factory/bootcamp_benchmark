@@ -88,7 +88,7 @@ def test_create_keyword_string_returns_same_keyword_when_no_processing_needed():
 def test_create_keyword_string_returns_variants_of_dotjs_formatted_correctly():
     keyword = "React.js"
     result = create_keyword_string(keyword)
-    expected = "React.js%20React"
+    expected = "React.js React"
 
     assert result == expected
 
@@ -96,7 +96,7 @@ def test_create_keyword_string_returns_variants_of_dotjs_formatted_correctly():
 def test_create_keyword_string_returns_variants_of_JS_formatted_correctly():
     keyword = "AngularJS"
     result = create_keyword_string(keyword)
-    expected = "AngularJS%20Angular"
+    expected = "AngularJS Angular"
 
     assert result == expected
 

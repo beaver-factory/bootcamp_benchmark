@@ -86,14 +86,14 @@ def create_keyword_string(keyword):
     Takes a keyword and adds possible variants to include in an API search
 
         Argument: skill keyword
-        Returns: skill keyword  with possible variants formatted for use in API call string
+        Returns: skill keyword with possible variants separated by a space
     """
     processed_keyword_string = keyword
 
     # JavaScript skill processing
     if ".js" in keyword:
-        processed_keyword_string += f"%20{keyword.split('.')[0]}"
+        processed_keyword_string += f" {keyword.split('.')[0]}"
     elif keyword[-2:] == "JS":
-        processed_keyword_string += f"%20{keyword[:-2]}"
+        processed_keyword_string += f" {keyword[:-2]}"
 
     return processed_keyword_string
