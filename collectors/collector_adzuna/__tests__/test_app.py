@@ -1,5 +1,5 @@
 from unittest.mock import patch, Mock
-from ..app import collector_adzuna, create_keyword_string
+from ..app import collector_adzuna, create_keyword_variants, create_keyword_query
 import json
 import requests_mock
 import pytest
@@ -77,26 +77,53 @@ def test_error_raised_when_skills_csv_is_empty():
     assert str(error.value) == 'List of skills is empty, CSV may be empty'
 
 
-def test_create_keyword_string_returns_same_keyword_when_no_processing_needed():
+def test_create_keyword_variants_returns_same_keyword_when_no_processing_needed():
     keyword = "python"
-    result = create_keyword_string(keyword)
+    result = create_keyword_variants(keyword)
     expected = "python"
 
     assert result == expected
 
 
-def test_create_keyword_string_returns_variants_of_dotjs_formatted_correctly():
+def test_create_keyword_variants_returns_variants_of_dotjs_formatted_correctly():
     keyword = "React.js"
-    result = create_keyword_string(keyword)
+    result = create_keyword_variants(keyword)
     expected = "React.js React"
 
     assert result == expected
 
 
-def test_create_keyword_string_returns_variants_of_JS_formatted_correctly():
+def test_create_keyword_variants_returns_variants_of_JS_formatted_correctly():
     keyword = "AngularJS"
-    result = create_keyword_string(keyword)
+    result = create_keyword_variants(keyword)
     expected = "AngularJS Angular"
+
+    assert result == expected
+
+
+def test_create_keyword_query_returns_same_keyword_when_no_processing_needed():
+    keyword = "python"
+    variant_keywords = "python"
+    result = create_keyword_query(keyword, variant_keywords)
+    expected = "what=python"
+
+    assert result == expected
+
+
+def test_create_keyword_query_returns_variants_of_dotjs_formatted_correctly():
+    keyword = "React.js"
+    variant_keywords = "React.js React"
+    result = create_keyword_query(keyword, variant_keywords)
+    expected = "what_or=React.js React"
+
+    assert result == expected
+
+
+def test_create_keyword_query_returns_variants_of_JS_formatted_correctly():
+    keyword = "Quality Assurance Testing"
+    variant_keywords = "Quality Assurance Testing"
+    result = create_keyword_query(keyword, variant_keywords)
+    expected = "what_and=Quality Assurance Testing"
 
     assert result == expected
 
