@@ -1,4 +1,4 @@
-name: Staging Processor Function Deployment
+name: Staging Processor Functions Deployment
 
 on:
   push:
@@ -6,12 +6,12 @@ on:
       - main
     paths:
       - 'processors/**'
-      - '.github/workflows/deploy_processors.yaml'
 
 env:
   FUNCTION_APP_NAME: bb-processors-stag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
   AZURE_FUNCTIONAPP_PACKAGE_PATH: './processors' 
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS_2 }}
 
 jobs:
   TestAndLint:
@@ -36,6 +36,9 @@ jobs:
         shell: bash
         run: pip install -r requirements.txt
 
+      # - name: prune dependencies
+      #   run: make prune
+
       - name: lint
         run: make lint
 
@@ -45,7 +48,7 @@ jobs:
       - name: function conformity
         run: make func_check
 
-  StagingFunctionDeployment:
+  StagingProcessorFunctionsDeployment:
     runs-on: ubuntu-latest
     needs: TestAndLint
     name: Staging Functions Deployment
@@ -70,7 +73,7 @@ jobs:
       - name: azure login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_2 }}
+          creds: ${{ env.AZURE_CREDENTIALS }}
 
       - name: get function app publish profile
         id: profilevar
