@@ -3,8 +3,8 @@ import pytest
 import psycopg2
 import os
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from unittest.mock import patch, Mock
 from dotenv import load_dotenv
+from loader_utils import close_connection, generate_inputstream, db_results
 import pandas as pd
 import shutil
 
@@ -19,11 +19,13 @@ dirpath = 'loader_course_report/__tests__/csv'
 
 @pytest.fixture(scope="session", autouse=True)
 def create_csv():
+    """Checks if test csvs are created, deletes if so, then generates fresh ones"""
 
     if os.path.exists(dirpath):
         shutil.rmtree(dirpath)
 
-    column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations', 'course_description', 'target_url', 'timestamp', 'course_country']
+    column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations',
+                      'course_description', 'target_url', 'timestamp', 'course_country']
     skills_header = ['course_skills']
 
     generate_csv(column_headers)
@@ -36,18 +38,17 @@ def create_csv():
 
 @pytest.fixture(scope="session", autouse=True)
 def create_test_database():
-    """connects to docker containerised psql server and created test db"""
+    """Connects to docker containerised psql server and creates test db"""
 
-    conn = psycopg2.connect("host='localhost' user='db_admin' password='password123'")
+    conn = psycopg2.connect(
+        "host='localhost' user='db_admin' password='password123'")
     conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cur = conn.cursor()
 
     cur.execute('DROP DATABASE IF EXISTS test_db;')
     cur.execute('CREATE DATABASE test_db;')
 
-    conn.commit()
-    cur.close()
-    conn.close()
+    close_connection(cur, conn)
 
 
 # course_report
@@ -86,14 +87,16 @@ def test_rows_are_different():
 
 def test_throws_column_exception():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_course_report_incorrect_col_name.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_course_report_incorrect_col_name.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'Invalid CSV column names'
 
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_course_report_missing_column.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_course_report_missing_column.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -102,7 +105,8 @@ def test_throws_column_exception():
 
 def test_csv_only_has_headers():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_course_report_only_headers.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_course_report_only_headers.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -111,7 +115,8 @@ def test_csv_only_has_headers():
 
 def test_csv_has_headers_but_empty_rows():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_course_report_headers_empty_rows.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_course_report_headers_empty_rows.csv')
         load_course_report_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -158,14 +163,16 @@ def test_rows_are_unique():
 
 def test_skills_throws_column_exception():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_course_skills_incorrect_col_name.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_course_skills_incorrect_col_name.csv')
         load_course_skills_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'Invalid CSV column names'
 
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_course_skills_missing_column.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_course_skills_missing_column.csv')
         load_course_skills_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -174,7 +181,8 @@ def test_skills_throws_column_exception():
 
 def test_skills_csv_only_has_headers():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_course_skills_only_headers.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_course_skills_only_headers.csv')
         load_course_skills_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -183,7 +191,8 @@ def test_skills_csv_only_has_headers():
 
 def test_skills_csv_has_headers_but_empty_rows():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_course_skills_headers_empty_rows.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_course_skills_headers_empty_rows.csv')
         load_course_skills_into_db(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -192,35 +201,14 @@ def test_skills_csv_has_headers_but_empty_rows():
 
 # helpers
 
-def generate_inputstream(path):
-    """converts a local csv file and returns a mocked blob input stream containing that data"""
-    with open(path, 'rb') as file:
-        test_csv_data = file.read()
-
-    mock_inputstream = Mock()
-    mock_inputstream.read.return_value = test_csv_data
-
-    with patch('azure.functions.InputStream', return_value=mock_inputstream):
-        return mock_inputstream
-
-
-def db_results(query):
-    """takes an SQL query and returns a list of all rows (as tuples) from the containerised test db"""
-    conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
-    cur = conn.cursor()
-
-    cur.execute(query)
-    rows = cur.fetchall()
-
-    conn.commit()
-    cur.close()
-    conn.close()
-
-    return rows
-
 
 def generate_csv(headers):
-    """takes a list of headers and outputs a base csv and test csv's"""
+    """
+    Generates a series of test csv's
+
+    Parameters:
+    - headers (List[str]): a list of headers to use when generating csvs
+    """
 
     os.mkdir(f'{dirpath}')
     df = pd.DataFrame(columns=headers)
@@ -252,7 +240,12 @@ def generate_csv(headers):
 
 
 def generate_skills_csvs(headers):
-    """takes a list of headers and outputs a base csv and test csv's"""
+    """
+    Generates a series of test csv's
+
+    Parameters:
+    - headers (List[str]): a list of headers to use when generating csvs
+    """
 
     df = pd.DataFrame(columns=headers)
 

@@ -7,13 +7,17 @@ from loader_utils import handle_loader_errors, establish_connection, close_conne
 
 def load_course_report_into_db(inBlob: InputStream):
     """
-    Creates a connection to the PSQL server before creating course_report table and inserting data.
+    Connects to the PSQL server, creates course_report table, inserts data.
 
+        :param inBlob: Azure input blob trigger inputstream
+        :type inBlob: InputStream
     """
+
     df = pd.read_csv(BytesIO(inBlob.read()))
     df.pop(df.columns[0])
 
-    column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations', 'course_description', 'target_url', 'timestamp', 'course_country']
+    column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations',
+                      'course_description', 'target_url', 'timestamp', 'course_country']
 
     handle_loader_errors(column_headers, df)
 
@@ -58,9 +62,12 @@ def load_course_report_into_db(inBlob: InputStream):
 
 def load_course_skills_into_db(inBlob: InputStream):
     """
-    Creates a connection to the PSQL server before creating and course_skills table and inserting data.
+    Connects to the PSQL server, creates course_skills table, inserts data.
 
+        :param inBlob: Azure input stream from blob trigger
+        :type inBlob: InputStream
     """
+
     df = pd.read_csv(BytesIO(inBlob.read()))
     df.pop(df.columns[0])
 

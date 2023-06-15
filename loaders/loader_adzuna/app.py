@@ -7,8 +7,10 @@ from loader_utils import handle_loader_errors, establish_connection, close_conne
 
 def load_adzuna_jobs_per_skill(inBlob: InputStream):
     """
-    Creates a connection to the PSQL server before creating adzuna_job_counts table and inserting data.
+    Connects to the PSQL server, creates adzuna_job_counts table, inserts data.
 
+        :param inBlob: Azure input stream from blob trigger
+        :type inBlob: InputStream
     """
     df = pd.read_csv(BytesIO(inBlob.read()))
 
