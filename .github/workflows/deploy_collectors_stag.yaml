@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - 'collectors/**'
-      - '.github/workflows/deploy_collectors_stag.yaml'
 
 
 env:
