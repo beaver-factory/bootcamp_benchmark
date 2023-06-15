@@ -1,4 +1,4 @@
-name: Staging Function Deployment
+name: Staging Collector Functions Deployment
 
 on:
   push:
@@ -6,13 +6,13 @@ on:
       - main
     paths:
       - 'collectors/**'
-      - '.github/workflows/deploy_collectors_stag.yaml'
 
 
 env:
   FUNCTION_APP_NAME: bb-collectors-stag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
   AZURE_FUNCTION_APP_PACKAGE_PATH: './collectors'
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS_2 }}
 
 defaults:
   run:
@@ -49,7 +49,7 @@ jobs:
       - name: function conformity
         run: make func_check
 
-  StagingFunctionDeployment:
+  StagingCollectorFunctionsDeployment:
     runs-on: ubuntu-latest
     needs: TestAndLint
     name: Staging Functions Deployment
@@ -74,7 +74,7 @@ jobs:
       - name: azure login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_2 }}
+          creds: ${{ env.AZURE_CREDENTIALS }}
 
       - name: get function app publish profile
         id: profilevar
