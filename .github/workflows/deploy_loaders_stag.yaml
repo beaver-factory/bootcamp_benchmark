@@ -1,4 +1,4 @@
-name: Staging loader Function Deployment
+name: Staging Loader Functions Deployment
 
 on:
   push:
@@ -35,6 +35,9 @@ jobs:
       - name: install dependencies
         shell: bash
         run: pip install -r requirements.txt
+
+      # - name: prune dependencies
+      #   run: make prune
 
       - name: lint
         run: make lint

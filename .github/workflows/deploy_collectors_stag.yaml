@@ -1,4 +1,4 @@
-name: Staging Function Deployment
+name: Staging Collector Functions Deployment
 
 on:
   push:

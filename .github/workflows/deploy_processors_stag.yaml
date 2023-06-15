@@ -1,4 +1,4 @@
-name: Staging Processor Function Deployment
+name: Staging Processor Functions Deployment
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'processors/**'
-      - '.github/workflows/deploy_processors.yaml'
+      - '.github/workflows/deploy_processors_stag.yaml'
 
 env:
   FUNCTION_APP_NAME: bb-processors-stag2
@@ -35,6 +35,9 @@ jobs:
       - name: install dependencies
         shell: bash
         run: pip install -r requirements.txt
+
+      # - name: prune dependencies
+      #   run: make prune
 
       - name: lint
         run: make lint
