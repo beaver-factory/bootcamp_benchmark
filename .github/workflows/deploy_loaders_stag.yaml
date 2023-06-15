@@ -12,6 +12,7 @@ env:
   FUNCTION_APP_NAME: bb-loaders-stag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
   AZURE_FUNCTIONAPP_PACKAGE_PATH: "./loaders"
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS_2 }}
 
 defaults:
   run:
@@ -75,7 +76,7 @@ jobs:
       - name: azure login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_2 }}
+          creds: ${{ env.AZURE_CREDENTIALS }}
 
       - name: get function app publish profile
         id: profilevar
