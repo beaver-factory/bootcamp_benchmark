@@ -6,10 +6,8 @@ def get_scraped_data():
     """
     Executes and retrieves output from CourseReportSpider
 
-        Parameters: none
-
-        Returns:
-        - (List[obj]): list of skill provider objects
+    :return: list of skill provider objects
+    :rtype: list
     """
     processor = Processor()
     job = Job(CourseReportSpider)
