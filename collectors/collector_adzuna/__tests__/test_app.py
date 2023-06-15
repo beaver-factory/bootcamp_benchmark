@@ -123,7 +123,7 @@ def test_create_keyword_query_returns_variants_of_JS_formatted_correctly():
     keyword = "Quality Assurance Testing"
     variant_keywords = "Quality Assurance Testing"
     result = create_keyword_query(keyword, variant_keywords)
-    expected = "what_and=Quality Assurance Testing"
+    expected = "what_phrase=Quality Assurance Testing"
 
     assert result == expected
 

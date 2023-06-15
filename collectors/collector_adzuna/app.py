@@ -113,7 +113,7 @@ def create_keyword_query(keyword, variant_keywords):
         search_param = "what_or="
     elif len(keyword.split(" ")) > 1:
         # If skill has multiple words, results must include all words
-        search_param = "what_and="
+        search_param = "what_phrase="
 
     keyword_query = search_param + variant_keywords
 
