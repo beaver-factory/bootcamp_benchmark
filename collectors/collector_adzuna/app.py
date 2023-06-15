@@ -40,7 +40,11 @@ def collector_adzuna(inBlob: func.InputStream):
     skill_count = {}
 
     for keyword in list_of_keywords:
-        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&what={keyword}&location0=UK&category=it-jobs&content-type=application/json"
+        processed_keyword_string = create_keyword_string(keyword)
+
+        # if processed string is multiple words, change type of search
+
+        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&what={processed_keyword_string}&location0=UK&category=it-jobs&content-type=application/json"
 
         response = requests.get(request_url)
 
@@ -75,3 +79,21 @@ def get_secret_value(secret_name):
     logging.info(f'Succesfully retrieved {secret_name} secret from vault')
 
     return secret_value
+
+
+def create_keyword_string(keyword):
+    """
+    Takes a keyword and adds possible variants to include in an API search
+
+        Argument: skill keyword
+        Returns: skill keyword  with possible variants formatted for use in API call string
+    """
+    processed_keyword_string = keyword
+
+    # JavaScript skill processing
+    if ".js" in keyword:
+        processed_keyword_string += f"%20{keyword.split('.')[0]}"
+    elif keyword[-2:] == "JS":
+        processed_keyword_string += f"%20{keyword[:-2]}"
+
+    return processed_keyword_string
