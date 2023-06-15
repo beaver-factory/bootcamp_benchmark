@@ -1,12 +1,24 @@
-import azure.functions as func
+from azure.functions import InputStream, Out
 import pandas as pd
 from .app import process_course_data, process_skills_data
 import json
 import logging
 
 
-def main(inBlob: func.InputStream, outBlob: func.Out[bytes], outBlob2: func.Out[bytes], outBlob3: func.Out[bytes]):
+def main(inBlob: InputStream, outBlob: Out[bytes], outBlob2: Out[bytes], outBlob3: Out[bytes]):
+    """Main function for processor_course_report
 
+    :param inBlob: Azure input blob
+    :type inBlob: InputStream
+    :param outBlob: Azure output blob
+    :type outBlob: Out[bytes]
+    :param outBlob2: Azure output blob
+    :type outBlob2: Out[bytes]
+    :param outBlob3: Azure output blob
+    :type outBlob3: Out[bytes]
+    :raises Exception: Empty blob alert
+    :raises Exception: Json empty alert
+    """
     input_json = inBlob.read().decode('utf-8')
 
     if input_json == '':

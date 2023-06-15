@@ -3,15 +3,15 @@ import logging
 
 
 def process_course_data(unprocessed_dataframe, locations):
-    """
-    Returns a processed DataFrame.
+    """Processes a dataframe of course data, cleaning it and arranging it for db insertion.
 
-        Argument:
-        course_dataframe(DataFrame): A pandas DataFrame of data structure found in template_data_structure.json
-        Return:
-        processed_dataframe(DataFrame): A pandas DataFrame containing processed course data
+    :param unprocessed_dataframe: A pandas DataFrame of data structure found in template_data_structure.json
+    :type unprocessed_dataframe: DataFrame
+    :param locations: list of GB locations
+    :type locations: list
+    :return: a pandas DataFrame containing processed course data
+    :rtype: DataFrame
     """
-
     # convert array of course objects to rows
     exploded_courses = unprocessed_dataframe.explode(
         'provider_courses').reset_index()
@@ -53,13 +53,13 @@ def process_course_data(unprocessed_dataframe, locations):
 
 
 def process_skills_data(unprocessed_dataframe):
-    """
-    Returns a processed DataFrame.
+    """Returns a processed DataFrame.
 
-        Argument:
-        course_dataframe(DataFrame): A pandas DataFrame of data structure found in template_data_structure.json
-        Return:
-        processed_dataframe(DataFrame): A pandas DataFrame containing processed skills data
+    :param unprocessed_dataframe: A pandas DataFrame of data structure found in template_data_structure.json
+    :type unprocessed_dataframe: DataFrame
+    :raises Exception: Empty dataframe alert
+    :return: A pandas DataFrame containing processed skills data
+    :rtype: DataFrame
     """
 
     if unprocessed_dataframe.empty:
