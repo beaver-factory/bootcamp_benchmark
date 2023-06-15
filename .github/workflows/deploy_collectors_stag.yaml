@@ -49,7 +49,7 @@ jobs:
       - name: function conformity
         run: make func_check
 
-  StagingFunctionDeployment:
+  StagingCollectorFunctionsDeployment:
     runs-on: ubuntu-latest
     needs: TestAndLint
     name: Staging Functions Deployment
