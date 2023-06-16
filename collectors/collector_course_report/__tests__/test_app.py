@@ -4,22 +4,22 @@ import pytest
 
 
 expected_data_structure = {
-        "provider_name": "",
-        "provider_locations": [""],
-        "provider_tracks": [""],
-        "provider_courses": [
-            {
-                "course_name": "",
-                "course_skills": [""],
-                "course_locations": "",
-                "course_desc": ""
-            }
-        ],
-        "meta": {
-            "target_url": "",
-            "timestamp": ""
+    "provider_name": "",
+    "provider_locations": [""],
+    "provider_tracks": [""],
+    "provider_courses": [
+        {
+            "course_name": "",
+            "course_skills": [""],
+            "course_locations": "",
+            "course_desc": ""
         }
+    ],
+    "meta": {
+        "target_url": "",
+        "timestamp": ""
     }
+}
 
 
 @pytest.fixture(scope="session", autouse=True)

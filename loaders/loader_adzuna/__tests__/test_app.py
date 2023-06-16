@@ -3,7 +3,6 @@ import pytest
 import psycopg2
 import os
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from unittest.mock import patch, Mock
 from dotenv import load_dotenv
 from loader_utils import close_connection, generate_inputstream, db_results
 import pandas as pd
