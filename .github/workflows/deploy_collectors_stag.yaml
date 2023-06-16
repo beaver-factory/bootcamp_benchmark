@@ -65,16 +65,16 @@ jobs:
           creds: ${{ env.AZURE_CREDENTIALS }}
 
       - name: Deploy Secrets to Key Vault
-      run: |
-        az keyvault secret set \
-        --name adzunaAppKey \
-        --vault-name ${{ env.KEY_VAULT_NAME }} \
-        --value ${{secrets.ADZUNA_APP_KEY}} \
+        run: |
+          az keyvault secret set \
+          --name adzunaAppKey \
+          --vault-name ${{ env.KEY_VAULT_NAME }} \
+          --value ${{secrets.ADZUNA_APP_KEY}} \
 
-        az keyvault secret set \
-        --name adzunaAppId \
-        --vault-name ${{ env.KEY_VAULT_NAME }} \
-        --value ${{secrets.ADZUNA_APP_ID}} \ 
+          az keyvault secret set \
+          --name adzunaAppId \
+          --vault-name ${{ env.KEY_VAULT_NAME }} \
+          --value ${{secrets.ADZUNA_APP_ID}} \ 
       
 
   StagingCollectorFunctionsDeployment:
