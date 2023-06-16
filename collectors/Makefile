@@ -30,3 +30,6 @@ endif
 func:
 	@read -p "Enter the directory name for your function: " dir; \
 	func new --name $$dir && bash ../script/funcs.sh $$dir \
+
+adzuna_secrets:
+	bash set_adzuna_secrets.sh
