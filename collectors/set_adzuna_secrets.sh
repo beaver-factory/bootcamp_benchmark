@@ -1,7 +1,5 @@
 #!/bin/bash
 
-SECRET_NAME="AZURE_FUNCTIONAPP_PUBLISH_PROFILE"
-
 source ../.env
 
 if [[ -z $ADZUNA_APP_KEY || -z $ADZUNA_APP_ID ]]; then
