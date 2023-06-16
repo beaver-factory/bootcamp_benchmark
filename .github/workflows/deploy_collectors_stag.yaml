@@ -69,12 +69,12 @@ jobs:
           az keyvault secret set \
           --name adzunaAppKey \
           --vault-name ${{ env.KEY_VAULT_NAME }} \
-          --value ${{secrets.ADZUNA_APP_KEY}} \
+          --value ${{secrets.ADZUNA_APP_KEY}} 
 
           az keyvault secret set \
           --name adzunaAppId \
           --vault-name ${{ env.KEY_VAULT_NAME }} \
-          --value ${{secrets.ADZUNA_APP_ID}} \ 
+          --value ${{secrets.ADZUNA_APP_ID}} 
       
 
   StagingCollectorFunctionsDeployment:
