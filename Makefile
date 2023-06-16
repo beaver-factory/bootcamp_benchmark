@@ -3,6 +3,13 @@ setup:
 	. venv/bin/activate && pip install -r requirements.txt
 	@echo "\nTo activate the virtual environment, run 'source venv/bin/activate'\n"
 
+dirs = . collectors processors loaders
+
+setup_repo:
+	for i in $(dirs); do \
+		${MAKE} -C $$i setup; \
+	done
+
 dependency:
 	@read -p "Enter the package name to install via pip: " package; \
 	pip install $$package && \
