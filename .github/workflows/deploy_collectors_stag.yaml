@@ -51,30 +51,21 @@ jobs:
       - name: function conformity
         run: make func_check
 
-  AddAdzunaSecretsToKeyVault:
-    runs-on: ubuntu-latest
-    name: Add Adzuna Secrets to Key Vault
+  # AddAdzunaSecretsToKeyVault:
+  #   runs-on: ubuntu-latest
+  #   name: Add Adzuna Secrets to Key Vault
 
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v3
+  #   steps:
+  #     - name: checkout code
+  #       uses: actions/checkout@v3
 
-      - name: azure login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_2 }}
+  #     - name: azure login
+  #       uses: azure/login@v1
+  #       with:
+  #         creds: ${{ env.AZURE_CREDENTIALS }}
 
-      - name: Deploy Secrets to Key Vault
-        run: |
-          az keyvault secret set \
-          --name adzunaAppKey \
-          --vault-name ${{ env.KEY_VAULT_NAME }} \
-          --value ${{ secrets.ADZUNA_APP_KEY }} \
+      
 
-          az keyvault secret set \
-          --name adzunaAppId \
-          --vault-name ${{ env.KEY_VAULT_NAME }} \
-          --value ${{ secrets.ADZUNA_APP_ID }} \  
 
   StagingCollectorFunctionsDeployment:
     runs-on: ubuntu-latest
@@ -103,6 +94,18 @@ jobs:
         with:
           creds: ${{ env.AZURE_CREDENTIALS }}
 
+      - name: Deploy Secrets to Key Vault
+        run: |
+          az keyvault secret set \
+          --name adzunaAppKey \
+          --vault-name ${{ env.KEY_VAULT_NAME }} \
+          --value ${{ secrets.ADZUNA_APP_KEY }} \
+
+          az keyvault secret set \
+          --name adzunaAppId \
+          --vault-name ${{ env.KEY_VAULT_NAME }} \
+          --value ${{ secrets.ADZUNA_APP_ID }} \ 
+
       - name: get function app publish profile
         id: profilevar
         run: |
@@ -117,3 +120,4 @@ jobs:
           publish-profile: ${{ steps.profilevar.outputs.publish_profile }}
           scm-do-build-during-deployment: true
           enable-oryx-build: false
+        
