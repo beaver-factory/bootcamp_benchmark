@@ -55,6 +55,11 @@ jobs:
     name: Add Adzuna Secrets to Key Vault
 
     steps:
+      - name: azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ env.AZURE_CREDENTIALS }}
+          
       - name: Deploy Secrets to Key Vault
         run: |
           az keyvault secret set \
