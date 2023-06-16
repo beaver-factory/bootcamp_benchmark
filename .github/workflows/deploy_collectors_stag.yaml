@@ -13,6 +13,7 @@ env:
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
   AZURE_FUNCTION_APP_PACKAGE_PATH: './collectors'
   AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS_2 }}
+  KEY_VAULT_NAME: bootcampbkeyvaultstag2
 
 defaults:
   run:
@@ -48,6 +49,23 @@ jobs:
 
       - name: function conformity
         run: make func_check
+
+  AddAdzunaSecretsToKeyVault:
+    runs-on: ubuntu-latest
+    name: Add Adzuna Secrets to Key Vault
+
+    steps:
+      - name: Deploy Secrets to Key Vault
+        run: |
+          az keyvault secret set \
+          --name adzunaAppKey \
+          --vault-name ${{ env.KEY_VAULT_NAME }} \
+          --value ${{ secrets.ADZUNA_APP_KEY }} \
+
+          az keyvault secret set \
+          --name adzunaAppId \
+          --vault-name ${{ env.KEY_VAULT_NAME }} \
+          --value ${{ secrets.ADZUNA_APP_ID }} \  
 
   StagingCollectorFunctionsDeployment:
     runs-on: ubuntu-latest

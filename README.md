@@ -74,3 +74,11 @@ Replace [type] with major, minor, or patch depending on the nature of the change
 ## Adding a function
 
 To add a new function to the project, please refer to [an_example_function](an_example_function/readme.md).
+
+## Adding secrets
+
+Before deploying the `collectors` function app, check if the repo has secrets set for `ADZUNA_APP_KEY` and `ADZUNA_APP_ID` by running `gh secret list`.
+
+If these values are not set in the repo secrets, create their values from the Adzuna API and add them to a root level .env
+
+Then `cd collectors` and run `make adzuna_secrets` to set these values as GitHub secrets which are then read during the collectors deployment and added to the Azure Key Vault.
