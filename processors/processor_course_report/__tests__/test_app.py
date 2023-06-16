@@ -6,7 +6,6 @@ import copy
 
 
 expected_data_structure = [
-
     {
         "provider_name": "test",
         "provider_locations": ["test"],

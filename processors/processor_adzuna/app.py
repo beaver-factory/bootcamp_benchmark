@@ -1,12 +1,19 @@
 import csv
 import json
 import io
+from azure.functions import InputStream
 
 
-def process_adzuna_data(inBlob):
+def process_adzuna_data(inBlob: InputStream):
+    """Generates a csv file based on json data from adzuna
+
+    :param inBlob: an azure input stream containing raw blob data
+    :type inBlob: InputStream
+    :raises Exception: empty blob alert
+    :return: a csv representation of the raw json data
+    :rtype: StringIO
     """
-    Takes the raw json produced by collector_adzuna and returns a csv file
-    """
+
     input_json = inBlob.read().decode('utf-8')
 
     if input_json == '':
@@ -26,13 +33,19 @@ def process_adzuna_data(inBlob):
 
 
 def error_handling(parsed_input):
-    """
-    Checks the input given to process_adzuna_data and raises Exceptions if needed
+    """Error Handling for process_adzuna_data
+
+    :param parsed_input: parsed json input
+    :type parsed_input: json
+    :raises Exception: Empty unprocessed json
+    :raises Exception: Skill value incorrect
     """
 
     if len(parsed_input) == 0:
-        raise Exception('Unprocessed json is empty, check json output from collector')
+        raise Exception(
+            'Unprocessed json is empty, check json output from collector')
 
     for skill_count in parsed_input.values():
         if type(skill_count) != int:
-            raise Exception('At least one of the skills count values is not an integer')
+            raise Exception(
+                'At least one of the skills count values is not an integer')

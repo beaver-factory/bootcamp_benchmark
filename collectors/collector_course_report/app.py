@@ -4,7 +4,10 @@ from scrapyscript import Job, Processor
 
 def get_scraped_data():
     """
-    Returns the output from the execution of CourseReportSpider as list of providers
+    Executes and retrieves output from CourseReportSpider
+
+    :return: list of skill provider objects
+    :rtype: list
     """
     processor = Processor()
     job = Job(CourseReportSpider)

@@ -5,6 +5,7 @@ import os
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from unittest.mock import patch, Mock
 from dotenv import load_dotenv
+from loader_utils import close_connection, generate_inputstream, db_results
 import pandas as pd
 import shutil
 
@@ -22,7 +23,7 @@ dirpath = 'loader_adzuna/__tests__/csv'
 
 @pytest.fixture(scope="session", autouse=True)
 def create_csv():
-
+    """Checks if test csvs are created, deletes if so, then generates fresh ones"""
     if os.path.exists(dirpath):
         shutil.rmtree(dirpath)
 
@@ -37,17 +38,17 @@ def create_csv():
 
 @pytest.fixture(scope="session", autouse=True)
 def create_test_database():
-    """connects to docker containerised psql server and created test db"""
-    conn = psycopg2.connect("host='localhost' user='db_admin' password='password123'")
+    """Connects to docker containerised psql server and creates test db"""
+
+    conn = psycopg2.connect(
+        "host='localhost' user='db_admin' password='password123'")
     conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cur = conn.cursor()
 
     cur.execute('DROP DATABASE IF EXISTS test_db;')
     cur.execute('CREATE DATABASE test_db;')
 
-    conn.commit()
-    cur.close()
-    conn.close()
+    close_connection(cur, conn)
 
 # tests
 
@@ -101,14 +102,16 @@ def test_rows_are_unique():
 
 def test_throws_column_exception():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_adzuna_incorrect_col_name.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_adzuna_incorrect_col_name.csv')
         load_adzuna_jobs_per_skill(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'Invalid CSV column names'
 
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_adzuna_missing_column.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_adzuna_missing_column.csv')
         load_adzuna_jobs_per_skill(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -117,7 +120,8 @@ def test_throws_column_exception():
 
 def test_csv_only_has_headers():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_adzuna_only_headers.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_adzuna_only_headers.csv')
         load_adzuna_jobs_per_skill(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
@@ -126,43 +130,23 @@ def test_csv_only_has_headers():
 
 def test_csv_has_headers_but_empty_rows():
     with pytest.raises(Exception) as csv_error:
-        new_inputstream = generate_inputstream(f'{dirpath}/test_adzuna_headers_empty_rows.csv')
+        new_inputstream = generate_inputstream(
+            f'{dirpath}/test_adzuna_headers_empty_rows.csv')
         load_adzuna_jobs_per_skill(new_inputstream)
 
     print(f'Error is: {str(csv_error.value)}')
     assert str(csv_error.value) == 'CSV has headers but no data'
+
+
 # helpers
 
 
-def db_results(query):
-    """takes an SQL query and returns a list of all rows (as tuples) from the containerised test db"""
-    conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
-    cur = conn.cursor()
-
-    cur.execute(query)
-    rows = cur.fetchall()
-
-    conn.commit()
-    cur.close()
-    conn.close()
-
-    return rows
-
-
-def generate_inputstream(path):
-    """converts a local csv file and returns a mocked blob input stream containing that data"""
-    with open(path, 'rb') as file:
-        test_csv_data = file.read()
-
-    mock_inputstream = Mock()
-    mock_inputstream.read.return_value = test_csv_data
-
-    with patch('azure.functions.InputStream', return_value=mock_inputstream):
-        return mock_inputstream
-
-
 def generate_csv(headers):
-    """takes a list of headers and outputs a base csv and test csv's"""
+    """Generates a series of test csv's
+
+    :param headers: a list of headers to use when generating csvs
+    :type headers: list
+    """
 
     os.mkdir(f'{dirpath}')
     df = pd.DataFrame(columns=headers)

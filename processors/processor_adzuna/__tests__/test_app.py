@@ -12,6 +12,7 @@ dirpath = 'processor_adzuna/__tests__/json'
 
 @pytest.fixture(scope="session", autouse=True)
 def create_json():
+    """Checks if test jsons are created, deletes if so, then generates fresh ones"""
 
     if os.path.exists(dirpath):
         shutil.rmtree(dirpath)
@@ -74,7 +75,7 @@ def test_raises_exception_when_skill_count_is_wrong_data_type():
 
 
 def generate_inputstream(path):
-    """converts a local json file and returns a mocked blob input stream containing that data"""
+    """Converts a local json file and returns a mocked blob input stream containing that data"""
     with open(path, 'rb') as file:
         test_json_data = file.read()
 
@@ -86,7 +87,7 @@ def generate_inputstream(path):
 
 
 def generate_json():
-    """creates a series of CSVs containing data needed for tests"""
+    """Creates a series of CSVs containing data needed for tests"""
 
     os.mkdir(f'{dirpath}')
 
@@ -104,6 +105,13 @@ def generate_json():
 
 
 def convert_csv_to_list(csv_as_stringIO):
+    """Converts a csv file to a list
+
+    :param csv_as_stringIO: csv_as_stringIO (StringIO): a csv file
+    :type csv_as_stringIO: StringIO
+    :return: a list of lists containing strings representing rows
+    :rtype: list
+    """
     csvfile = csv_as_stringIO.getvalue()
     csv_reader = csv.reader(csvfile.split('\n'), delimiter=',')
     csv_rows = []
