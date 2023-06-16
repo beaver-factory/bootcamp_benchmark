@@ -8,6 +8,9 @@ dependency:
 	pip install $$package && \
 	pip freeze | grep $$package >> requirements.txt
 
+lint:
+	flake8
+
 tag:
 ifdef v
 	bash script/tag.sh $(v)
