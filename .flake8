@@ -4,6 +4,7 @@ exclude =
     env/*
     .venv/*
     ./env/*
+    an_example_function
 
 ignore = 
     E501
