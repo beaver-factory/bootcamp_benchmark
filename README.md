@@ -30,7 +30,7 @@ make setup
 
 ## Linting
 
-This project uses `flake8` for code linting. Navigate to the root directory to lint across the whole repo, or into a specific function app directory to lint only files within that project. Then run:
+This project uses `flake8` for code linting. Navigate to the root directory to lint across the whole repo, or into a specific function app directory to lint only files within that project. Activate the virtual environment and then run:
 
 ```bash
 make lint
@@ -40,7 +40,7 @@ This command will run `flake8` on all the python files in the project.
 
 ## Testing
 
-This project uses `pytest` for testing. To run the tests for a function app, navigate to the appropriate directory and use:
+This project uses `pytest` for testing. To run the tests for a function app, navigate to the appropriate directory, activate the virtual environment and use:
 
 ```bash
 make unit_test
@@ -61,11 +61,11 @@ To install a package into a virtual environment and add to the `requirements.txt
 make dependency
 ```
 
-from either the root directory or a specific function app directory.
+from within the directory and virtual environment of either root or a specific function app.
 
 ## Prune Dependencies
 
-To check for surplus dependencies in your `requirements.txt` file, navigate to the function app directory and run
+To check for surplus dependencies in your `requirements.txt` file, navigate to the function app directory, activate the virtual environment and run
 
 ```bash
 make prune
@@ -77,7 +77,7 @@ To add a new function to a function app, follow the steps found in [an_example_f
 
 ## Check Function Conformity
 
-To check your directories follow the correct naming structure, navigate into a function app directory and run 
+To check your directories follow the correct naming structure, navigate into a function app directory, activate the virtual environment and run 
 
 ```bash
 make func_check
