@@ -83,6 +83,26 @@ make adzuna_secrets
 
 to set these values as GitHub secrets which are then read during the collectors deployment and added to the Azure Key Vault.
 
+## Deployment
+
+As with the [infra repo](https://github.com/northcoders-dev/bootcamp_benchmark_infra), this project contains workflows that allow deployment to either a staging or production environment.
+
+For the staging environment, each function app can be deployed independently. The current triggers are changes on `main` to either the function app directory or its workflow file.
+
+To change which resource group or function app your directory will deploy to, update the environment variables in the appropriate workflow file, for example:
+
+```
+env:
+  FUNCTION_APP_NAME: bb-processors-stag2
+  RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './processors' 
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS_2 }}
+```
+
+The `FUNCTION_APP_NAME` and `RESOURCE_GROUP_NAME` should match the values defined in the infra repo. `AZURE_FUNCTIONAPP_PACKAGE_PATH` should match the path to the directory you wish to deploy. As described in the [infra repo](https://github.com/northcoders-dev/bootcamp_benchmark_infra), you should ensure the GitHub secrets for this repo contain your Azure credentials. 
+
+<!-- TODO: add details of production deployment once we've figured it out! -->
+
 ## Versioning and Creating New Tags
 
 This project uses Semantic Versioning [SemVer](https://semver.org/) to manage version numbers and changes. There are three types of version changes:
