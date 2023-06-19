@@ -48,7 +48,7 @@ make unit_test
 
 This command will run all the unit tests in the project and provide a verbose output.
 
-For tests in the `loader` function app, you will need to run tests against a containerised PostgreSQL server. You will first need to have docker running and then run 
+For tests in the `loader` function app, you will need to run tests against a containerised PostgreSQL server. You will first need to have `Docker` running and then run 
 ```bash
 make dock
 ```
@@ -61,7 +61,7 @@ To install a package into a virtual environment and add to the `requirements.txt
 make dependency
 ```
 
-from either the root directory or specific function app directory.
+from either the root directory or a specific function app directory.
 
 ## Creating a Function
 
@@ -70,14 +70,14 @@ To add a new function to a function app, follow the steps found in [an_example_f
 ## Adding Secrets
 
 Before deploying the `collectors` function app, check if the repo has secrets set for `ADZUNA_APP_KEY` and `ADZUNA_APP_ID` by running 
-```
+``` bash
 gh secret list
 ```
 
 If these values are not set in the repo secrets, create their values from the Adzuna API and add them to a root level `.env`.
 
 Then `cd collectors` and run 
-```
+``` bash
 make adzuna_secrets
 ``` 
 
