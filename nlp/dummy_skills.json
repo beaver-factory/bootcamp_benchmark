@@ -1,0 +1,30 @@
+{
+    "result":  [
+        [
+            "CSS", "HTML", "JavaScript", "Ruby", "Express.js", "Front End", "Git", "Node.js", "Rails", "React.js", "SQL", "Express", "React", "Typescript", "C#", ".Net"
+        ],
+        [
+            "React", ".Net", "Node"
+        ],
+        [
+            "React", "React.js", "Express", "Express.js"
+        ],
+        [
+            "SQL", "MySQL", "PSQL", "NoSQL"
+        ]  
+    ],
+    "expected": [
+        [
+            "CSS", "HTML", "JavaScript", "Ruby", "Express.js", "Front End", "Git", "Node.js", "Rails", "React.js", "SQL", "C#", "Typescript", ".Net" 
+        ],
+        [
+            "React", ".Net", "Node", "C#", "JavaScript"
+        ],
+        [
+            "React", "Express", "Node", "JavaScript"
+        ],
+        [
+            "SQL", "MySQL", "PSQL", "NoSQL"
+        ]
+    ]
+}
