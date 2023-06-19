@@ -14,7 +14,7 @@ Before getting started, make sure you have [`Python 3`](https://www.python.org/d
 
 ## Setup
 
-Since each function app can be deployed independently, each contains its own `Makefile` and `requirements.txt` file. The root directory also contains a `Makefile` and `requirements.txt` for repo wide commands. 
+Since each function app can be deployed independently, each contains its own `Makefile` for useful commands and a `requirements.txt` file for setting up a virtual environment. The root directory also contains a `Makefile` and `requirements.txt` for repo wide commands. 
 
 After cloning the repo, you can set up each virtual environment and install the appropriate dependencies with `pip3` in one go by running the following command from the root directory:
 
@@ -63,9 +63,25 @@ make dependency
 
 from either the root directory or a specific function app directory.
 
+## Prune Dependencies
+
+To check for surplus dependencies in your `requirements.txt` file, navigate to the function app directory and run
+
+```bash
+make prune
+```
+
 ## Creating a Function
 
 To add a new function to a function app, follow the steps found in [an_example_function](an_example_function/readme.md) from within the directory.
+
+## Check Function Conformity
+
+To check your directories follow the correct naming structure, navigate into a function app directory and run 
+
+```bash
+make func_check
+```
 
 ## Adding Secrets
 
