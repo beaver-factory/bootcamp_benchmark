@@ -39,7 +39,7 @@ def main(inBlob: InputStream, outBlob: Out[bytes], outBlob2: Out[bytes], outBlob
     bootcamps_csv = bootcamps_df.to_csv()
     outBlob.set(bootcamps_csv.encode('utf-8'))
 
-    skills_df = process_skills_data(input_df)
+    skills_df = process_skills_data(bootcamps_df)
     logging.info('Successfully processed skills data')
     skills_csv = skills_df.to_csv()
     outBlob2.set(skills_csv.encode('utf-8'))
