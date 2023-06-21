@@ -23,3 +23,5 @@ tomli==2.0.1
 tzdata==2023.3
 urllib3==2.0.3
 yarg==0.1.9
+openai==0.27.8
+python-dotenv==1.0.0
