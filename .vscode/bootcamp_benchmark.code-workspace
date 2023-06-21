@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../collectors"
+		},
+		{
+			"path": "../loaders"
+		},
+		{
+			"path": "../processors"
+		}
+	],
+	"settings": {
+		  "python.defaultInterpreterPath": "./venv/bin/python"
+	}
+}
