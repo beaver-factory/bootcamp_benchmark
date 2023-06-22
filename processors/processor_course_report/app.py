@@ -72,7 +72,4 @@ def process_skills_data(unprocessed_dataframe):
 
     skills_df = normalised_courses['course_skills'].explode('course_skills').drop_duplicates().reset_index().drop('index', axis=1)
 
-    # ai stuff goes here
-
-    # return ai-ified-skills_df
     return skills_df
