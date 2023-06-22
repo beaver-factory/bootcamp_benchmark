@@ -1,10 +1,19 @@
 import pandas as pd
+from pandas import DataFrame
 import os
 import openai
 import json
+from typing import List
 
 
-def skill_deduper(df):
+def skill_deduper(df: DataFrame) -> DataFrame:
+    """Removes duplicates of skills e.g. ["React", "react.js"] becomes ["react"]
+
+    :param df: DataFrame containing skills
+    :type df: DataFrame
+    :return: DataFrame containing skill
+    :rtype: DataFrame
+    """
     openai.api_key = os.environ["OPENAI_API_KEY"]
 
     prepared_skills_list = prep_prompt_input(df)
@@ -33,25 +42,38 @@ def skill_deduper(df):
     return pd.DataFrame([{"skills": edgy_skills}])
 
 
-def prep_prompt_input(df):
+def prep_prompt_input(df: DataFrame) -> List[str]:
+    """Performs essential preprocessing of skills list before handing to OpenAI
+
+    :param df: DataFrame containing skills
+    :type df: DataFrame
+    :raises Exception: skill list error
+    :return: list of skill strings
+    :rtype: List[str]
+    """
 
     skills_list = df["skills"][0]
 
     if len(skills_list) == 0:
         raise Exception("Cannot prep prompt, list of skills is empty")
 
-    # essential steps:
-    # sort alphabetically
     alpha_skills = sorted(skills_list)
-    # lowercase everything
+
     lower_skills = [x.lower() for x in alpha_skills]
-    # only unique values
+
     prepared_skills_list = list(dict.fromkeys(lower_skills))
 
     return prepared_skills_list
 
 
-def check_edge_case_dict(skills_list):
+def check_edge_case_dict(skills_list: List[str]) -> List[str]:
+    """Checks output of OpenAI and removes any known lingering duplicated skills
+
+    :param skills_list: list of skill strings
+    :type skills_list: List[str]
+    :return: list of skill strings
+    :rtype: List[str]
+    """
 
     skills_to_dedupe = {
         "html5": "html",
