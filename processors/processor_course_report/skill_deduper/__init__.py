@@ -2,7 +2,6 @@ import pandas as pd
 from pandas import DataFrame
 import os
 import openai
-import json
 from typing import List
 
 
