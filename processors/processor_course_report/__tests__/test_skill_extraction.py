@@ -1,4 +1,5 @@
 from ..extract_skills import extract_skills
+import pytest
 
 test_input = "As a Software Engineer graduate you will be ready to start a career in a variety of coding roles. Throughout this bootcamp you will learn to: create front-end web application with modern JavaScript frameworks such as Angular or React, develop full-stack applications with in-demand technologies such as Ruby on Rails, Python with Django, and Express with Node.js, and integrate third-party application programming interfaces (APIs) in an application."
 
@@ -24,3 +25,15 @@ def test_returns_expected_list_of_skills():
     expected = ['Python', 'PowerBI', 'Database Management', 'PSQL']
 
     assert result == expected
+
+def test_raises_exception_on_incorrect_input_type():
+    with pytest.raises(Exception) as e:
+        extract_skills(123)
+
+    assert str(e.value) == 'Input must be str'
+
+def test_raises_exception_on_empty_input():
+    with pytest.raises(Exception) as e:
+        extract_skills('')
+
+    assert str(e.value) == 'Cannot prepare prompt, input str'

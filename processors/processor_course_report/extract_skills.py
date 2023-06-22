@@ -17,6 +17,12 @@ def extract_skills(description):
     :rtype: list
     """
 
+    if type(description) != str:
+        raise Exception("Input must be str")
+
+    if len(description) == 0:
+        raise Exception("Cannot prepare prompt, input str")
+
     examples = 'JavaScript, Front-End, HTML, CSS, Node.js'
 
     prompt1 = f'Extract a single, comma separated list of technologies, programming languages, and frameworks from the following description where the course purports to teach this :\n\n """{description}""" \n which are similar to or equal to these examples: \n """{examples}""" '
