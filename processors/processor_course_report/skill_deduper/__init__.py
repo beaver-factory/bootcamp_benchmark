@@ -7,15 +7,7 @@ import json
 def skill_deduper(df):
     openai.api_key = os.environ["OPENAI_API_KEY"]
 
-    skills_list = df["skills"][0]
-
-    # essential steps:
-    # sort alphabetically
-    alpha_skills = sorted(skills_list)
-    # lowercase everything
-    lower_skills = [x.lower() for x in alpha_skills]
-    # only unique values
-    prepared_skills_list = list(dict.fromkeys(lower_skills))
+    prepared_skills_list = prep_prompt_input(df)
 
     response = openai.Completion.create(
         model="text-davinci-003",
@@ -33,7 +25,42 @@ def skill_deduper(df):
         presence_penalty=0.0
     )
 
-    response_string = response.choices[0].text
+    response_string = response["choices"][0]["text"]
     actual = response_string.split(', ')
 
-    return pd.DataFrame([{"skills": actual}])
+    edgy_skills = check_edge_case_dict(actual)
+
+    return pd.DataFrame([{"skills": edgy_skills}])
+
+
+def prep_prompt_input(df):
+
+    skills_list = df["skills"][0]
+
+    if len(skills_list) == 0:
+        raise Exception("Cannot prep prompt, list of skills is empty")
+
+    # essential steps:
+    # sort alphabetically
+    alpha_skills = sorted(skills_list)
+    # lowercase everything
+    lower_skills = [x.lower() for x in alpha_skills]
+    # only unique values
+    prepared_skills_list = list(dict.fromkeys(lower_skills))
+
+    return prepared_skills_list
+
+
+def check_edge_case_dict(skills_list):
+
+    skills_to_dedupe = {
+        "html5": "html",
+    }
+
+    for skill in skills_list:
+        if skill in skills_to_dedupe and skills_to_dedupe[skill] in skills_list:
+            skills_list.remove(skill)
+        elif skill in skills_to_dedupe:
+            skills_list[skills_list.index(skill)] = skills_to_dedupe[skill]
+
+    return skills_list
