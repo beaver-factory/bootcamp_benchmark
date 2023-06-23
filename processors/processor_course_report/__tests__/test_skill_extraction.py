@@ -13,27 +13,22 @@ test_input5 = "On our Data Science course, you will learn the fundamentals of th
 
 
 def test_returns_correct_typing():
-    result = extract_skills(test_input5)
+    result = extract_skills(test_input)
 
     for skill in result:
         assert type(skill) is str
 
-@pytest.mark.skip(reason='OpenAi response too volatile')
-def test_returns_expected_list_of_skills():
-    result = extract_skills(test_input5)
 
-    expected = ['Python', 'PowerBI', 'Database Management', 'PSQL']
+def test_returns_expected_list_of_skills():
+    result = extract_skills(test_input)
+
+    expected = ['JavaScript', 'Angular', 'React', 'Ruby on Rails', 'Python', 'Django', 'Express', 'Node.js']
 
     assert result == expected
+
 
 def test_raises_exception_on_incorrect_input_type():
     with pytest.raises(Exception) as e:
         extract_skills(123)
 
     assert str(e.value) == 'Input must be str'
-
-def test_raises_exception_on_empty_input():
-    with pytest.raises(Exception) as e:
-        extract_skills('')
-
-    assert str(e.value) == 'Cannot prepare prompt, input str'

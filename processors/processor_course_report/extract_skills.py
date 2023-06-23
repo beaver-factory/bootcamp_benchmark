@@ -1,11 +1,4 @@
-import os
-import openai
-from dotenv import load_dotenv
-
-load_dotenv()
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
+import spacy
 
 def extract_skills(description):
     """
@@ -19,31 +12,107 @@ def extract_skills(description):
 
     if type(description) != str:
         raise Exception("Input must be str")
+    
+    existing_skills = [
+        "CSS",
+        "HTML",
+        "JavaScript",
+        "Ruby",
+        "Express.js",
+        "Front End",
+        "Git",
+        "Node.js",
+        "Rails",
+        "React.js",
+        "SQL",
+        "C#",
+        "Design",
+        "MongoDB",
+        "User Experience Design",
+        "Algorithms",
+        "Data Structures",
+        "PHP",
+        "GitHub",
+        "Agile",
+        "iOS",
+        "jQuery",
+        "Swift",
+        "Xcode",
+        "AngularJS",
+        "MySQL",
+        "Quality Assurance Testing",
+        "Scrum",
+        "Java",
+        "Cloud Computing",
+        "Linux",
+        "REST",
+        "Django",
+        "Python",
+        "Data Engineering",
+        "DevOps",
+        "Data Visualization",
+        "Data Science",
+        "Data Analytics",
+        "Artificial Intelligence",
+        "MVC",
+        "Product Management",
+        "Machine Learning",
+        "R",
+        "Sinatra",
+        "Mobile Security",
+        "Business Intelligence",
+        "Excel",
+        "Growth Hacking",
+        "Digital Marketing",
+        "CompTIA Network+",
+        "CompTIA Security+",
+        "Cryptography",
+        "Ethical Hacking",
+        "Network Security",
+        "Penetration Testing",
+        "SIEM Administration",
+        "Virtualization",
+        "Mobile",
+        "Wordpress",
+        "Spark",
+        "Networking",
+        "ChatGPT",
+        "Generative AI",
+        "SEO",
+        "Content Marketing",
+        "Email Marketing",
+        "Social Media Marketing",
+        "NaN",
+        "SEM",
+        "Hadoop",
+        ".NET",
+        "Web3",
+        "Solidity",
+        "Blockchain",
+        "Sales"
+    ]
 
-    if len(description) == 0:
-        raise Exception("Cannot prepare prompt, input str")
+    supplemental_skills = [
+        "Ruby on Rails",
+        "Angular",
+        "React",
+        "Express"
+    ]
 
-    examples = 'JavaScript, Front-End, HTML, CSS, Node.js'
+    base_skills = existing_skills + supplemental_skills
 
-    prompt1 = f'Extract a single, comma separated list of technologies, programming languages, and frameworks from the following description where the course purports to teach this :\n\n """{description}""" \n which are similar to or equal to these examples: \n """{examples}""" '
+    patterns = [
+        {"label": "SKILL", "pattern": skill} for skill in base_skills
+    ]
 
-    # Alternative prompt following prompt writing guidelines, though gave slightly worse results
-    # prompt2 = f'''Extract a single, comma separated list of technologies, programming languages, and frameworks from the description below which are similar to or equal to these examples: {examples}
+    nlp = spacy.load("en_core_web_md")
+    ruler = nlp.add_pipe("entity_ruler", before='ner')
+    ruler.add_patterns(patterns)
 
-    # ###
-    # Description: {description}
-    # '''
+    doc = nlp(description)
 
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=prompt1,
-        max_tokens=100,
-        top_p=0.1,
-        temperature=1,
-        frequency_penalty=0.8,
-        presence_penalty=0.0
-    )
+    skills = [ent.text for ent in doc.ents if ent.label_ == 'SKILL']
 
-    output = response.choices[0].text.strip()
+    print(skills)
 
-    return output.split(', ')
+    return skills
