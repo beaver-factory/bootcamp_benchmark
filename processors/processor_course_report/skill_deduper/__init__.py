@@ -15,7 +15,7 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
     # handle input
     input_json = inBlob.read().decode('utf-8')
 
-    if input_json == '':
+    if input_json == "" or input_json == {}:
         raise Exception('inBlob is empty, check skills_dict.json exists')
 
     skills_dict = json.loads(input_json)
