@@ -1,11 +1,6 @@
-import pandas as pd
 from pandas import DataFrame
-from typing import List
 from dotenv import load_dotenv
 from azure.functions import InputStream, Out
-from pathlib import Path
-import os
-import openai
 import json
 
 load_dotenv()
@@ -32,7 +27,7 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
         try:
             key = next(key for key, value in skills_dict.items() if skill in value)
             new_df["course_skills"][0][i] = key
-        except:
+        except StopIteration:
             new_skills_dict[skill] = [skill]
 
     # handle output

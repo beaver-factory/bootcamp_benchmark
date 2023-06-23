@@ -2,9 +2,7 @@ from processor_course_report.skill_deduper import check_edge_case_dict
 from processor_utils import generate_inputstream
 import pandas as pd
 from dotenv import load_dotenv
-import pytest
 from unittest.mock import patch
-from io import BytesIO
 
 load_dotenv()
 
