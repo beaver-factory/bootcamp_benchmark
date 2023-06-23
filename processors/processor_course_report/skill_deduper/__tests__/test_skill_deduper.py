@@ -12,7 +12,7 @@ dirpath = 'processor_course_report/skill_deduper/skills_dict.json'
 
 
 @patch('azure.functions.Out')
-def test_check_edge_case_dict_does_nothig_if_all_valid(outblob):
+def test_check_edge_case_dict_does_nothing_if_all_valid(outblob):
     new_inputstream = generate_inputstream(dirpath)
     df = pd.DataFrame([{"course_skills": ['html', 'react', 'express']}])
 
@@ -35,7 +35,7 @@ def test_check_edge_case_dict_replaces_values(outblob):
 
 
 @patch('azure.functions.Out')
-def test_check_edge_case_dict_outputs_new_blob(outblob):
+def test_check_edge_case_dict_outputs_new_blob_only_if_difference(outblob):
     new_inputstream = generate_inputstream(dirpath)
     df = pd.DataFrame([{"course_skills": ['test1', 'test2']}])
 
@@ -44,6 +44,14 @@ def test_check_edge_case_dict_outputs_new_blob(outblob):
 
     assert outblob.set.call_count == 1
     assert skill_list[0] == 'test1'
+
+    df = pd.DataFrame([{"course_skills": ['html']}])
+
+    result = check_edge_case_dict(df, new_inputstream, outblob)
+    skill_list = result["course_skills"][0]
+
+    assert outblob.set.call_count == 1
+    assert skill_list[0] == 'html'
 
 
 @patch('azure.functions.Out')
