@@ -3,76 +3,74 @@ from pandas import DataFrame
 import os
 import openai
 from typing import List
+from dotenv import load_dotenv
+import json
+
+load_dotenv()
 
 
-def skill_deduper(df: DataFrame) -> DataFrame:
-    """Removes duplicates of skills e.g. ["React", "react.js"] becomes ["react"]
+# def skill_deduper() -> DataFrame:
+#     """Removes duplicates of skills e.g. ["React", "react.js"] becomes ["react"]
 
-    :param df: DataFrame containing skills
-    :type df: DataFrame
-    :return: DataFrame containing skill
-    :rtype: DataFrame
-    """
-    openai.api_key = os.environ["OPENAI_API_KEY"]
+#     :param df: DataFrame containing skills
+#     :type df: DataFrame
+#     :return: DataFrame containing skill
+#     :rtype: DataFrame
+#     """
+#     openai.api_key = os.environ["OPENAI_API_KEY"]
 
-    prepared_skills_list = prep_prompt_input(df)
+#     # skills_list = df["course_skills"][0]
+#     # prepared_skills_list = prep_prompt_input(skills_list)
 
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=f"""Here is a list of software development technologies with lots of similar values:{prepared_skills_list}.
-        Please perform the following steps in this order:
-        1. Remove any values that are the same as other values but that also include an additional suffix.
-        2. Remove any values that are abbreviations of other values.
-        3. Remove any values that are acronyms of other values.
-        4. Return the list as a series of comma separated values.
-        Please return only the list and no other words or phrases.\n \n""",
-        temperature=1,
-        max_tokens=100,
-        top_p=0.1,
-        frequency_penalty=0.8,
-        presence_penalty=0.0
-    )
+#     response = openai.Completion.create(
+#         model="text-davinci-003",
+#         prompt=f"""We are using python to create a list of software development technologies and programming skills, which currently includes lots of similar values:['agile', 'angular', 'angularjs', 'data engineering', 'devops', 'express', 'express.js', 'javascript', 'js', 'mysql', 'networking', 'node', 'node.js', 'nodejs', 'nodered', 'postgresql', 'postgresql', 'problem solving', 'psql', 'react', 'react.js', 'reactjs', 'sql', 'ts', 'typescript'].
+#         Please perform the following steps in this order:
+#         1. Remove any values from the list that are the same as other values in the list, but that also include an additional suffix.
+#         2. Remove any values that are abbreviations of other values.
+#         3. Remove any values that are acronyms of other values.
+#         4. Return one list of unique values, and one list of the extracted related values.
+#         Please return only the lists and no other words or phrases.\n \n""",
+#         temperature=1,
+#         max_tokens=1000,
+#         top_p=0.1,
+#         frequency_penalty=0.8,
+#         presence_penalty=0.0
+#     )
 
-    response_string = response["choices"][0]["text"]
-    actual = response_string.split(', ')
+#     print('response 1:', response["choices"][0]['text'])
 
-    edgy_skills = check_edge_case_dict(actual)
+#     # response_string = response["choices"][0]["text"]
+#     # actual = response_string[8:]
+#     # print(actual)
+#     # edgy_skills = check_edge_case_dict(actual)
 
-    return pd.DataFrame([{"skills": edgy_skills}])
+#     # return pd.DataFrame([{"skills": edgy_skills}])
 
 
-def prep_prompt_input(df: DataFrame) -> List[str]:
+def prep_prompt_input(skills_list: List[str]) -> List[str]:
     """Performs essential preprocessing of skills list before handing to OpenAI
 
-    :param df: DataFrame containing skills
-    :type df: DataFrame
+    :param skills_list: List of skills
+    :type df: List[str]
     :raises Exception: skill list error
     :return: list of skill strings
     :rtype: List[str]
     """
 
-    skills_list = df["skills"][0]
-
     if len(skills_list) == 0:
         raise Exception("Cannot prep prompt, list of skills is empty")
 
-    alpha_skills = sorted(skills_list)
-
-    lower_skills = [x.lower() for x in alpha_skills]
+    lower_skills = [x.lower() for x in skills_list]
 
     prepared_skills_list = list(dict.fromkeys(lower_skills))
 
-    return prepared_skills_list
+    sorted_list = sorted(prepared_skills_list)
+    print(sorted_list)
 
 
 def check_edge_case_dict(skills_list: List[str]) -> List[str]:
-    """Checks output of OpenAI and removes any known lingering duplicated skills
-
-    :param skills_list: list of skill strings
-    :type skills_list: List[str]
-    :return: list of skill strings
-    :rtype: List[str]
-    """
+    # INPUT course_report df and output course_report df
 
     skills_to_dedupe = {
         "html5": "html",
@@ -85,3 +83,7 @@ def check_edge_case_dict(skills_list: List[str]) -> List[str]:
             skills_list[skills_list.index(skill)] = skills_to_dedupe[skill]
 
     return skills_list
+
+
+# prep_prompt_input(["react", "react.JS", "react.js", "React", "React.JS", "ReactJS", "posgresql", "SQL", "postgreSQL", "PSQL", "psql", "angular", "angularJS", "angularjs", "Express", "express.js", "Agile", "problem solving", "data engineering", "mysql", "devops", "Networking", "Node", "node.js", "nodeRED", "NodeJS", "js", "JavaScript", "ts", "TypeScript"])
+skill_deduper()

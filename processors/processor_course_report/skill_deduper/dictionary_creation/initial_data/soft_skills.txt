@@ -1,0 +1,108 @@
+Problem-solving
+Analytical thinking
+Critical thinking
+Creativity
+Collaboration
+Communication
+Time management
+Attention to detail
+Adaptability
+Agile development
+Scrum
+Waterfall
+Kanban
+Test-driven development
+Object-oriented programming
+Functional programming
+Version control
+Code review
+Documentation
+User-centered design
+Project management
+Requirements gathering
+Quality assurance
+Debugging
+Code refactoring
+Visual Studio Code
+PyCharm
+Eclipse
+IntelliJ IDEA
+Xcode
+Sublime Text
+Atom
+Notepad++
+Vim
+Emacs
+Git
+GitHub
+Bitbucket
+GitLab
+Subversion (SVN)
+Jira
+Trello
+Asana
+Basecamp
+Slack
+Microsoft Teams
+Zoom
+Google Meet
+Amazon Web Services (AWS)
+Microsoft Azure
+Google Cloud Platform (GCP)
+IBM Cloud
+Oracle Cloud
+Hadoop
+Apache Spark
+Apache Kafka
+Apache Hive
+Apache Flink
+Tableau
+Power BI
+QlikView
+Plotly
+D3.js
+TensorFlow
+PyTorch
+scikit-learn
+Apache MXNet
+DataRobot
+MySQL
+PostgreSQL
+MongoDB
+Oracle Database
+Microsoft SQL Server
+Jenkins
+CircleCI
+Travis CI
+GitLab CI/CD
+TeamCity
+Docker
+Kubernetes
+Docker Compose
+Apache Mesos
+Amazon ECS
+Django
+Ruby on Rails
+Flask
+Express.js
+Laravel
+Selenium
+JUnit
+Pytest
+NUnit
+Jasmine
+Postman
+Swagger
+OpenAPI
+Insomnia
+Apigee
+Splunk
+ELK Stack (Elasticsearch, Logstash, Kibana)
+New Relic
+Datadog
+Grafana
+
+
+
+
+
