@@ -50,8 +50,9 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
 
     if len(course_skills) == len(new_df):
         new_df["course_skills"] = course_skills
-
-    return new_df
+        return new_df
+    else:
+        raise Exception('Row count of new dataframe does not match original dataframe')
 
 
 def handle_known_suffixes(skill: str) -> str:
