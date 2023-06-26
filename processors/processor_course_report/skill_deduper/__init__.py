@@ -7,6 +7,19 @@ load_dotenv()
 
 
 def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]) -> DataFrame:
+    """Checks a course report dataframe with skills for duplicates and alters it according to a dictionary.
+
+    :param df: a pandas dataframe
+    :type df: DataFrame
+    :param inBlob: an azure inputstream
+    :type inBlob: InputStream
+    :param outBlob: an azure output blob
+    :type outBlob: Out[bytes]
+    :raises Exception: empty dict blob warning (checking for existence of dictionary)
+    :return: a new pandas dataframe
+    :rtype: DataFrame
+    """
+
     # handle input
     input_json = inBlob.read().decode('utf-8')
 
@@ -38,14 +51,26 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
     return new_df
 
 
-def handle_known_suffixes(skill):
-    if '.js' in skill:
-        skill = skill[:-3]
+def handle_known_suffixes(skill: str) -> str:
+    """handles known problematic suffixes, removing them from a string appropriately
 
-    if skill != 'js' and 'js' in skill:
-        skill = skill[:-2]
+    :param skill: string of a tech skill
+    :type skill: str
+    :return: updated string
+    :rtype: str
+    """
 
-    if skill != '.net' and '.net' in skill:
-        skill = skill[:-4]
+    # if skill is one of these, early return
+    full_skill_names = ['json', 'js', '.net']
+
+    if skill in full_skill_names:
+        return skill
+
+    # otherwise, check the suffix blacklist
+    unwanted_suffixes = ['.js', 'js', '.net']
+
+    for substr in unwanted_suffixes:
+        if substr in skill and f".{substr}" not in skill:
+            return skill[:-len(substr)]
 
     return skill
