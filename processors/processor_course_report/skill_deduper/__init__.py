@@ -16,6 +16,7 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
     :param outBlob: an azure output blob
     :type outBlob: Out[bytes]
     :raises Exception: empty dict blob warning (checking for existence of dictionary)
+    :raises Exception: non-matching df lengths warning
     :return: a new pandas dataframe
     :rtype: DataFrame
     """
@@ -33,14 +34,15 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
     course_skills = new_df["course_skills"].tolist()
 
     # dict checker
-    for i in range(len(course_skills)):
-        skill = handle_known_suffixes(course_skills[i])
-        course_skills[i] = course_skills[i].lower()
+    for index in range(len(course_skills)):
+        skill = handle_known_suffixes(course_skills[index])
+        course_skills[index] = course_skills[index].lower()
 
-        try:
-            key = next(key for key, value in skills_dict.items() if skill in value)
-            course_skills[i] = key
-        except StopIteration:
+        for key, value in skills_dict.items():
+            if skill in value:
+                course_skills[index] = key
+                break
+        else:
             new_skills_dict[skill] = [skill]
 
     # handle output
