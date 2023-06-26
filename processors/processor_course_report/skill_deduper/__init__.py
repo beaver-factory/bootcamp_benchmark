@@ -51,8 +51,6 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
     if len(course_skills) == len(new_df):
         new_df["course_skills"] = course_skills
 
-    print(new_df)
-
     return new_df
 
 
