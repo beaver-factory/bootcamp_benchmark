@@ -21,7 +21,7 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
 
     # dict checker
     for i in range(len(course_skills)):
-        skill = course_skills[i]
+        skill = handle_known_suffixes(course_skills[i])
         new_df["course_skills"][0][i] = new_df["course_skills"][0][i].lower()
 
         try:
@@ -36,3 +36,16 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
         outBlob.set(output.encode('utf-8'))
 
     return new_df
+
+
+def handle_known_suffixes(skill):
+    if '.js' in skill:
+        skill = skill[:-3]
+
+    if skill != 'js' and 'js' in skill:
+        skill = skill[:-2]
+
+    if skill != '.net' and '.net' in skill:
+        skill = skill[:-4]
+
+    return skill

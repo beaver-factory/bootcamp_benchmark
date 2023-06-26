@@ -1,4 +1,4 @@
-from processor_course_report.skill_deduper import check_edge_case_dict
+from processor_course_report.skill_deduper import check_edge_case_dict, handle_known_suffixes
 from processor_utils import generate_inputstream
 import pandas as pd
 from dotenv import load_dotenv
@@ -61,3 +61,23 @@ def test_check_edge_case_dict_outputs_lowercase_df(outblob):
     skill_list = result["course_skills"][0]
 
     assert skill_list[0] == 'html'
+
+
+def test_handle_known_suffixes_removes_js():
+    result_js = handle_known_suffixes('js')
+    result_dot_js = handle_known_suffixes('node.js')
+    result_nodejs = handle_known_suffixes('nodejs')
+
+    assert result_js == 'js'
+    assert result_dot_js == 'node'
+    assert result_nodejs == 'node'
+
+
+def test_handle_known_suffixes_removes_net():
+    result_js = handle_known_suffixes('.net')
+    result_dot_net = handle_known_suffixes('tech.net')
+    result_technet = handle_known_suffixes('technet')
+
+    assert result_js == '.net'
+    assert result_dot_net == 'tech'
+    assert result_technet == 'technet'
