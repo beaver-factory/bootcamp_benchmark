@@ -24,7 +24,14 @@ def test_returns_expected_list_of_skills():
 
     expected = ['JavaScript', 'Angular', 'React', 'Ruby on Rails', 'Python', 'Django', 'Express', 'Node.js']
 
-    assert result == expected
+    assert sorted(result) == sorted(expected)
+
+def test_returns_correct_skills():
+    result = extract_skills(test_input3)
+
+    expected = ["SQL", "Excel", "PowerBI", "Tableau", "Python"]
+
+    assert sorted(result) == sorted(expected)
 
 
 def test_raises_exception_on_incorrect_input_type():
