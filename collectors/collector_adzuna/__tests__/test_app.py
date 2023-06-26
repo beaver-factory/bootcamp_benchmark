@@ -128,6 +128,14 @@ def test_create_keyword_query_returns_variants_of_JS_formatted_correctly():
     assert result == expected
 
 
+def test_keyword_query_returns_encoded_hash():
+    keyword = 'C#'
+    result = create_keyword_query(keyword, create_keyword_variants(keyword))
+    expected = 'what=C%23'
+
+    assert result == expected
+
+
 def generate_csv():
     """Creates a series of CSVs containing data needed for tests"""
 

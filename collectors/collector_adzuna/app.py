@@ -117,6 +117,10 @@ def create_keyword_query(keyword: str, variant_keywords: str) -> str:
     :return: correct search query for the type of keyword given
     :rtype: str
     """
+
+    print(keyword)
+    print(variant_keywords)
+
     search_param = "what="
 
     if keyword != variant_keywords:
@@ -125,6 +129,9 @@ def create_keyword_query(keyword: str, variant_keywords: str) -> str:
     elif len(keyword.split(" ")) > 1:
         # If skill has multiple words, results must include all words
         search_param = "what_phrase="
+
+    if '#' in variant_keywords:
+        variant_keywords = variant_keywords.replace('#', '%23')
 
     keyword_query = search_param + variant_keywords
 
