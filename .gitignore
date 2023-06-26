@@ -15,3 +15,5 @@ __pycache__
 processed_*.csv
 
 local.settings.json
+
+.DS_Store
