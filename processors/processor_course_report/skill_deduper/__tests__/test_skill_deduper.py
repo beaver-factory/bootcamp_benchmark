@@ -12,10 +12,12 @@ dirpath = 'processor_course_report/skill_deduper/skills_dict.json'
 @patch('azure.functions.Out')
 def test_check_edge_case_dict_does_nothing_if_all_valid(outblob):
     new_inputstream = generate_inputstream(dirpath)
-    df = pd.DataFrame([{"course_skills": ['html', 'react', 'express']}])
+    skills = ['html', 'react', 'express']
+    data = [{"course_skills": skill} for skill in skills]
+    df = pd.DataFrame(data)
 
     result = check_edge_case_dict(df, new_inputstream, outblob)
-    skill_list = result["course_skills"][0]
+    skill_list = result["course_skills"].tolist()
 
     assert skill_list[0] == 'html'
     assert outblob.set.call_count == 0
@@ -24,10 +26,12 @@ def test_check_edge_case_dict_does_nothing_if_all_valid(outblob):
 @patch('azure.functions.Out')
 def test_check_edge_case_dict_replaces_values(outblob):
     new_inputstream = generate_inputstream(dirpath)
-    df = pd.DataFrame([{"course_skills": ['html5']}])
+    skills = ['html5']
+    data = [{"course_skills": skill} for skill in skills]
+    df = pd.DataFrame(data)
 
     result = check_edge_case_dict(df, new_inputstream, outblob)
-    skill_list = result["course_skills"][0]
+    skill_list = result["course_skills"].tolist()
 
     assert skill_list[0] == 'html'
 
@@ -35,18 +39,22 @@ def test_check_edge_case_dict_replaces_values(outblob):
 @patch('azure.functions.Out')
 def test_check_edge_case_dict_outputs_new_blob_only_if_difference(outblob):
     new_inputstream = generate_inputstream(dirpath)
-    df = pd.DataFrame([{"course_skills": ['test1', 'test2']}])
+    skills = ['test1', 'test2']
+    data = [{"course_skills": skill} for skill in skills]
+    df = pd.DataFrame(data)
 
     result = check_edge_case_dict(df, new_inputstream, outblob)
-    skill_list = result["course_skills"][0]
+    skill_list = result["course_skills"].tolist()
 
     assert outblob.set.call_count == 1
     assert skill_list[0] == 'test1'
 
-    df = pd.DataFrame([{"course_skills": ['html']}])
+    skills = ['html']
+    data = [{"course_skills": skill} for skill in skills]
+    df = pd.DataFrame(data)
 
     result = check_edge_case_dict(df, new_inputstream, outblob)
-    skill_list = result["course_skills"][0]
+    skill_list = result["course_skills"].tolist()
 
     assert outblob.set.call_count == 1
     assert skill_list[0] == 'html'
@@ -55,10 +63,12 @@ def test_check_edge_case_dict_outputs_new_blob_only_if_difference(outblob):
 @patch('azure.functions.Out')
 def test_check_edge_case_dict_outputs_lowercase_df(outblob):
     new_inputstream = generate_inputstream(dirpath)
-    df = pd.DataFrame([{"course_skills": ['HTML']}])
+    skills = ['HTML']
+    data = [{"course_skills": skill} for skill in skills]
+    df = pd.DataFrame(data)
 
     result = check_edge_case_dict(df, new_inputstream, outblob)
-    skill_list = result["course_skills"][0]
+    skill_list = result["course_skills"].tolist()
 
     assert skill_list[0] == 'html'
 

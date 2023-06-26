@@ -30,16 +30,16 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
     new_skills_dict = skills_dict.copy()
 
     new_df = df.copy(deep=True)
-    course_skills = new_df["course_skills"][0]
+    course_skills = new_df["course_skills"].tolist()
 
     # dict checker
     for i in range(len(course_skills)):
         skill = handle_known_suffixes(course_skills[i])
-        new_df["course_skills"][0][i] = new_df["course_skills"][0][i].lower()
+        course_skills[i] = course_skills[i].lower()
 
         try:
             key = next(key for key, value in skills_dict.items() if skill in value)
-            new_df["course_skills"][0][i] = key
+            course_skills[i] = key
         except StopIteration:
             new_skills_dict[skill] = [skill]
 
@@ -47,6 +47,11 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
     if set(new_skills_dict.keys()) - set(skills_dict.keys()):
         output = json.dumps(new_skills_dict)
         outBlob.set(output.encode('utf-8'))
+
+    if len(course_skills) == len(new_df):
+        new_df["course_skills"] = course_skills
+
+    print(new_df)
 
     return new_df
 
