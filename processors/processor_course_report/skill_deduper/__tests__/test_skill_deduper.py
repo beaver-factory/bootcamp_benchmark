@@ -13,11 +13,13 @@ dirpath = 'processor_course_report/skill_deduper/__tests__/skills_dict.json'
 def create_json():
     """Checks if test jsons are created, deletes if so, then generates fresh ones"""
 
+    test_dict = {'Express': ['express', 'expressjs', 'express.js'], 'CSS': ['css', 'css3.0'], 'HTML': ['html', 'html5'], 'React': ['react', 'react.js', 'reactjs']}
+
     if os.path.isfile(dirpath):
         os.remove(dirpath)
 
     with open(f'{dirpath}', 'w') as file:
-        file.write(json.dumps({'Express': ['express', 'expressjs', 'express.js'], 'CSS': ['css', 'css3.0'], 'HTML': ['html', 'html5'], 'React': ['react', 'react.js', 'reactjs']}))
+        file.write(json.dumps(test_dict))
 
     yield
 
