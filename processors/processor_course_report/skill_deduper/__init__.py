@@ -32,11 +32,11 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
 
     new_df = df.copy(deep=True)
     course_skills = new_df["course_skills"].tolist()
+    check_skills = [skill.lower() for skill in course_skills]
 
     # dict checker
     for index in range(len(course_skills)):
-        skill = handle_known_suffixes(course_skills[index])
-        course_skills[index] = course_skills[index].lower()
+        skill = handle_known_suffixes(check_skills[index])
 
         for key, value in skills_dict.items():
             if skill in value:

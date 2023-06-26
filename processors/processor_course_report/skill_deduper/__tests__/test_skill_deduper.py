@@ -19,7 +19,7 @@ def test_check_edge_case_dict_does_nothing_if_all_valid(outblob):
     result = check_edge_case_dict(df, new_inputstream, outblob)
     skill_list = result["course_skills"].tolist()
 
-    assert skill_list[0] == 'html'
+    assert skill_list[0] == 'HTML'
     assert outblob.set.call_count == 0
 
 
@@ -33,7 +33,7 @@ def test_check_edge_case_dict_replaces_values(outblob):
     result = check_edge_case_dict(df, new_inputstream, outblob)
     skill_list = result["course_skills"].tolist()
 
-    assert skill_list[0] == 'html'
+    assert skill_list[0] == 'HTML'
 
 
 @patch('azure.functions.Out')
@@ -57,11 +57,11 @@ def test_check_edge_case_dict_outputs_new_blob_only_if_difference(outblob):
     skill_list = result["course_skills"].tolist()
 
     assert outblob.set.call_count == 1
-    assert skill_list[0] == 'html'
+    assert skill_list[0] == 'HTML'
 
 
 @patch('azure.functions.Out')
-def test_check_edge_case_dict_outputs_lowercase_df(outblob):
+def test_check_edge_case_dict_outputs_same_case_df(outblob):
     new_inputstream = generate_inputstream(dirpath)
     skills = ['HTML']
     data = [{"course_skills": skill} for skill in skills]
@@ -70,7 +70,7 @@ def test_check_edge_case_dict_outputs_lowercase_df(outblob):
     result = check_edge_case_dict(df, new_inputstream, outblob)
     skill_list = result["course_skills"].tolist()
 
-    assert skill_list[0] == 'html'
+    assert skill_list[0] != 'html'
 
 
 def test_handle_known_suffixes_removes_js():
