@@ -73,6 +73,23 @@ def test_check_edge_case_dict_outputs_same_case_df(outblob):
     assert skill_list[0] != 'html'
 
 
+@patch('azure.functions.Out')
+def test_check_edge_case_dict_outputs_full_df(outblob):
+    new_inputstream = generate_inputstream(dirpath)
+    skills = ['HTML', 'React']
+    data = [{"provider_name": "Northcoders", "course_skills": skill} for skill in skills]
+    df = pd.DataFrame(data)
+
+    result = check_edge_case_dict(df, new_inputstream, outblob)
+    prov_list = result["provider_name"].tolist()
+    skill_list = result["course_skills"].tolist()
+
+    assert prov_list[0] == 'Northcoders'
+    assert len(prov_list) == 2
+    assert skill_list[1] == 'React'
+    assert len(skill_list) == 2
+
+
 def test_handle_known_suffixes_removes_js():
     result_js = handle_known_suffixes('js')
     result_dot_js = handle_known_suffixes('node.js')
