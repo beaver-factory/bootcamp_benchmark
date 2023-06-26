@@ -1,8 +1,11 @@
 from ..app import (process_course_data, process_skills_data)
+from processor_utils import generate_inputstream
 import pytest
+from unittest.mock import patch
 import pandas as pd
 import json
 import copy
+import os
 
 
 expected_data_structure = [
@@ -52,16 +55,39 @@ locations = {
     "uk_locations": ['York']
 }
 
+dirpath = 'processor_course_report/__tests__/skills_dict.json'
 
-def test_raises_exception_on_incorrect_shape_at_first_level():
+
+@pytest.fixture(scope="session", autouse=True)
+def create_json():
+    """Checks if test jsons are created, deletes if so, then generates fresh ones"""
+
+    test_dict = {'Express': ['express', 'expressjs', 'express.js'], 'CSS': ['css', 'css3.0'], 'HTML': ['html', 'html5'], 'React': ['react', 'react.js', 'reactjs']}
+
+    if os.path.isfile(dirpath):
+        os.remove(dirpath)
+
+    with open(f'{dirpath}', 'w') as file:
+        file.write(json.dumps(test_dict))
+
+    yield
+
+    os.remove(dirpath)
+
+
+@patch('azure.functions.Out')
+def test_raises_exception_on_incorrect_shape_at_first_level(outBlob):
+    inBlob = generate_inputstream(dirpath)
     test_dataframe = pd.DataFrame([{'test': 'string'}])
     with pytest.raises(KeyError) as excinfo:
-        process_course_data(test_dataframe, locations["uk_locations"])
+        process_course_data(test_dataframe, locations["uk_locations"], inBlob, outBlob)
 
     assert 'provider_courses' in str(excinfo.value)
 
 
-def test_raises_exception_on_incorrect_shape_at_nest():
+@patch('azure.functions.Out')
+def test_raises_exception_on_incorrect_shape_at_nest(outBlob):
+    inBlob = generate_inputstream(dirpath)
     error_structure = copy.deepcopy(expected_data_structure)
     del error_structure[0]['provider_courses'][0]['course_skills']
     del error_structure[0]['provider_courses'][1]['course_skills']
@@ -69,20 +95,24 @@ def test_raises_exception_on_incorrect_shape_at_nest():
     df = pd.read_json(json.dumps(error_structure))
 
     with pytest.raises(KeyError) as excinfo:
-        process_course_data(df, locations["uk_locations"])
+        process_course_data(df, locations["uk_locations"], inBlob, outBlob)
 
     assert 'course_skills' in str(excinfo.value)
 
 
-def test_returns_pandas_dataframe():
+@patch('azure.functions.Out')
+def test_returns_pandas_dataframe(outBlob):
+    inBlob = generate_inputstream(dirpath)
     result = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"])
+        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
     assert isinstance(result, pd.DataFrame)
 
 
-def test_dataframe_contains_correct_columns():
+@patch('azure.functions.Out')
+def test_dataframe_contains_correct_columns(outBlob):
+    inBlob = generate_inputstream(dirpath)
     result = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"])
+        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
     expected = [
         'provider_name',
         'course_name',
@@ -98,9 +128,11 @@ def test_dataframe_contains_correct_columns():
     assert result.shape[1] == 8
 
 
-def test_dataframe_contains_correct_number_of_rows():
+@patch('azure.functions.Out')
+def test_dataframe_contains_correct_number_of_rows(outBlob):
+    inBlob = generate_inputstream(dirpath)
     result = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"])
+        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
     print(result)
     assert result.shape[0] == 4
 
@@ -120,7 +152,9 @@ def test_process_skills_data_returns_datafrom():
     assert isinstance(result, pd.DataFrame)
 
 
-def test_process_skills_data_removes_duplicate_skills():
+@patch('azure.functions.Out')
+def test_process_skills_data_removes_duplicate_skills(outBlob):
+    inBlob = generate_inputstream(dirpath)
     result = process_skills_data(pd.read_json(
         json.dumps(expected_data_structure)))
     expected = ['test skill 1', 'test skill 2', 'test skill 3']
@@ -128,7 +162,7 @@ def test_process_skills_data_removes_duplicate_skills():
     assert result['course_skills'].values.tolist() == expected
 
     course_data_frame = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"])
+        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
 
     assert course_data_frame['course_skills'].unique().tolist() == expected
 
