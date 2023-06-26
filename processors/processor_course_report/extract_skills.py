@@ -1,7 +1,6 @@
-import pandas as pd
 import spacy
 from spacy.matcher import Matcher
-
+import json
 
 def extract_skills(description):
     """
@@ -15,107 +14,27 @@ def extract_skills(description):
 
     if type(description) != str:
         raise Exception("Input must be str")
-    
-    existing_skills = [
-        "CSS",
-        "HTML",
-        "JavaScript",
-        "Ruby",
-        "Express.js",
-        "Front End",
-        "Git",
-        "Node.js",
-        "Rails",
-        "React.js",
-        "SQL",
-        "C#",
-        "Design",
-        "MongoDB",
-        "User Experience Design",
-        "Algorithms",
-        "Data Structures",
-        "PHP",
-        "GitHub",
-        "Agile",
-        "iOS",
-        "jQuery",
-        "Swift",
-        "Xcode",
-        "AngularJS",
-        "MySQL",
-        "Quality Assurance Testing",
-        "Scrum",
-        "Java",
-        "Cloud Computing",
-        "Linux",
-        "REST",
-        "Django",
-        "Python",
-        "Data Engineering",
-        "DevOps",
-        "Data Visualization",
-        "Data Science",
-        "Data Analytics",
-        "Artificial Intelligence",
-        "MVC",
-        "Product Management",
-        "Machine Learning",
-        "R",
-        "Sinatra",
-        "Mobile Security",
-        "Business Intelligence",
-        "Excel",
-        "Growth Hacking",
-        "Digital Marketing",
-        "CompTIA Network+",
-        "CompTIA Security+",
-        "Cryptography",
-        "Ethical Hacking",
-        "Network Security",
-        "Penetration Testing",
-        "SIEM Administration",
-        "Virtualization",
-        "Mobile",
-        "Wordpress",
-        "Spark",
-        "Networking",
-        "ChatGPT",
-        "Generative AI",
-        "SEO",
-        "Content Marketing",
-        "Email Marketing",
-        "Social Media Marketing",
-        "NaN",
-        "SEM",
-        "Hadoop",
-        ".NET",
-        "Web3",
-        "Solidity",
-        "Blockchain",
-        "Sales"
-    ]
-
-    supplemental_skills = [
-        "Ruby on Rails",
-        "Angular",
-        "React",
-        "Express",
-        "Tableau",
-        "PowerBI",
-        "Heroku",
-        "NodeJS",
-        "Adobe Suite",
-    ]
-
-    base_skills = list(set(existing_skills + supplemental_skills))
 
     nlp = spacy.load("en_core_web_md")
 
     doc = nlp(description)
 
     matcher = Matcher(nlp.vocab)
-    patterns = [[{"LOWER": word.lower()} for word in skill.split()] for skill in base_skills]
-    matcher.add("SKILL", patterns, greedy="LONGEST")
+    with open('./processor_course_report/skill_deduper/skills_dict.json', 'r') as f:
+        skill_dict = json.load(f)
+
+    skills_list = []
+
+    for skill in skill_dict:
+        skills_list.extend(skill_dict[skill])
+
+    pattern_list = [
+        [
+            {"LOWER": word.lower()} for word in skill.split()
+        ] for skill in skills_list
+    ]
+    
+    matcher.add("SKILL", pattern_list, greedy="LONGEST")
     matches = matcher(doc)
     matches.sort(key = lambda x: x[1])
 
