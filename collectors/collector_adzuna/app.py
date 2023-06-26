@@ -48,6 +48,10 @@ def collector_adzuna(inBlob: InputStream) -> str:
 
         request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&{keyword_query}&location0=UK&category=it-jobs&content-type=application/json&title_only=junior"
 
+        logging.info('keyword = ', keyword)
+        logging.info('keyword_query = ', keyword_query)
+        logging.info('request_url = ', request_url)
+
         response = requests.get(request_url)
 
         if response.status_code >= 400:
