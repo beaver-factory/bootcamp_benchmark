@@ -1,10 +1,8 @@
 from processor_course_report.skill_deduper import check_edge_case_dict, handle_known_suffixes
 from processor_utils import generate_inputstream
 import pandas as pd
-from dotenv import load_dotenv
 from unittest.mock import patch
 
-load_dotenv()
 
 dirpath = 'processor_course_report/skill_deduper/skills_dict.json'
 
