@@ -1,9 +1,6 @@
 from pandas import DataFrame
-from dotenv import load_dotenv
 from azure.functions import InputStream, Out
 import json
-
-load_dotenv()
 
 
 def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]) -> DataFrame:
