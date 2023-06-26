@@ -10,7 +10,7 @@
       "dataType": "string"
     },
     {
-      "name": "inBlob",
+      "name": "inBlob2",
       "type": "blob",
       "direction": "in",
       "path": "%BlobContainer3%/skills_dict_base.json",
