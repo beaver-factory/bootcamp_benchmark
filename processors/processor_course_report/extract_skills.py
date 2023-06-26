@@ -21,7 +21,7 @@ def extract_skills(description):
     doc = nlp(description)
 
     matcher = Matcher(nlp.vocab)
-    with open('./processor_course_report/skill_deduper/skills_dict.json', 'r') as f:
+    with open('./processor_course_report/example_data/skills_dict.json', 'r') as f:
         skill_dict = json.load(f)
 
     skills_list = []
