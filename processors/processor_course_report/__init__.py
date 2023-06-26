@@ -5,16 +5,20 @@ import json
 import logging
 
 
-def main(inBlob: InputStream, outBlob: Out[bytes], outBlob2: Out[bytes], outBlob3: Out[bytes]):
+def main(inBlob: InputStream, inBlob2: InputStream, outBlob: Out[bytes], outBlob2: Out[bytes], outBlob3: Out[bytes], outBlob4: Out[bytes]):
     """Main function for processor_course_report
 
     :param inBlob: Azure input blob
+    :type inBlob: InputStream
+    :param inBlob2: Azure input blob
     :type inBlob: InputStream
     :param outBlob: Azure output blob
     :type outBlob: Out[bytes]
     :param outBlob2: Azure output blob
     :type outBlob2: Out[bytes]
     :param outBlob3: Azure output blob
+    :type outBlob3: Out[bytes]
+    :param outBlob4: Azure output blob
     :type outBlob3: Out[bytes]
     :raises Exception: Empty blob alert
     :raises Exception: Json empty alert
