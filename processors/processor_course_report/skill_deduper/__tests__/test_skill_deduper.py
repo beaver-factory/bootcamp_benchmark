@@ -2,9 +2,26 @@ from processor_course_report.skill_deduper import check_edge_case_dict, handle_k
 from processor_utils import generate_inputstream
 import pandas as pd
 from unittest.mock import patch
+import os
+import pytest
+import json
+
+dirpath = 'processor_course_report/skill_deduper/__tests__/skills_dict.json'
 
 
-dirpath = 'processor_course_report/skill_deduper/skills_dict.json'
+@pytest.fixture(scope="session", autouse=True)
+def create_json():
+    """Checks if test jsons are created, deletes if so, then generates fresh ones"""
+
+    if os.path.isfile(dirpath):
+        os.remove(dirpath)
+
+    with open(f'{dirpath}', 'w') as file:
+        file.write(json.dumps({'Express': ['express', 'expressjs', 'express.js'], 'CSS': ['css', 'css3.0'], 'HTML': ['html', 'html5'], 'React': ['react', 'react.js', 'reactjs']}))
+
+    yield
+
+    os.remove(dirpath)
 
 
 @patch('azure.functions.Out')
@@ -106,3 +123,7 @@ def test_handle_known_suffixes_removes_net():
     assert result_js == '.net'
     assert result_dot_net == 'tech'
     assert result_technet == 'technet'
+
+
+def generate_skills_dict():
+    """Creates a json of skills for a test dictionary"""
