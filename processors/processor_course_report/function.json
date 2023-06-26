@@ -2,7 +2,7 @@
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "name": "inBlob",
+      "name": "inCourseReport",
       "type": "blobTrigger",
       "direction": "in",
       "path": "%BlobContainer1%/course_report_raw_{timestamp}.json",
@@ -10,39 +10,39 @@
       "dataType": "string"
     },
     {
-      "name": "inBlob2",
+      "name": "inSkillsDict",
       "type": "blob",
       "direction": "in",
-      "path": "%BlobContainer3%/skills_dict_base.json",
+      "path": "%BlobContainer3%/skills_dict.json",
       "connection": "AzureWebJobsStorage",
       "dataType": "binary"
     },
     {
-      "name": "outBlob",
+      "name": "outCourseReport",
       "type": "blob",
       "direction": "out",
       "path": "%BlobContainer2%/course_report_courses_{DateTime}.csv",
       "connection": "AzureWebJobsStorage"
     },
     {
-      "name": "outBlob2",
+      "name": "outHistoricSkills",
       "type": "blob",
       "direction": "out",
       "path": "%BlobContainer2%/course_report_skills_{DateTime}.csv",
       "connection": "AzureWebJobsStorage"
     },
     {
-      "name": "outBlob3",
+      "name": "outLatestSkills",
       "type": "blob",
       "direction": "out",
       "path": "%BlobContainer2%/latest_course_report_skills.csv",
       "connection": "AzureWebJobsStorage"
     },
     {
-      "name": "outBlob4",
+      "name": "outSkillsDict",
       "type": "blob",
       "direction": "out",
-      "path": "%BlobContainer3%/skills_dict_base.json",
+      "path": "%BlobContainer3%/skills_dict.json",
       "connection": "AzureWebJobsStorage"
     }
   ]

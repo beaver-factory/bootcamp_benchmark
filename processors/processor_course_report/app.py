@@ -3,17 +3,17 @@ import logging
 from processors.processor_course_report.skill_deduper import check_edge_case_dict
 
 
-def process_course_data(unprocessed_dataframe, locations, inBlob2, outBlob4):
+def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkillsDict):
     """Processes a dataframe of course data, cleaning it and arranging it for db insertion.
 
     :param unprocessed_dataframe: A pandas DataFrame of data structure found in template_data_structure.json
     :type unprocessed_dataframe: DataFrame
     :param locations: list of GB locations
     :type locations: list
-    :param inBlob2: Azure input blob
-    :type inBlob2: InputStream
-    :param outBlob4: Azure output blob
-    :type outBlob4: Out[bytes]
+    :param inSkillsDict: Azure input blob
+    :type inSkillsDict: InputStream
+    :param outSkillsDict: Azure output blob
+    :type outSkillsDict: Out[bytes]
     :return: a pandas DataFrame containing processed course data
     :rtype: DataFrame
     """
@@ -54,7 +54,9 @@ def process_course_data(unprocessed_dataframe, locations, inBlob2, outBlob4):
 
     exploded_locations_filtered.loc[:, ('course_country',)] = 'UK'
 
-    deduplicated_skills = check_edge_case_dict(exploded_locations_filtered, inBlob2, outBlob4)
+    # deduplicate skills
+
+    deduplicated_skills = check_edge_case_dict(exploded_locations_filtered, inSkillsDict, outSkillsDict)
 
     return deduplicated_skills
 
