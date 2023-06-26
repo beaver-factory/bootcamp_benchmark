@@ -10,6 +10,14 @@
       "dataType": "string"
     },
     {
+      "name": "inBlob",
+      "type": "blob",
+      "direction": "in",
+      "path": "%BlobContainer3%/skills_dict_base.json",
+      "connection": "AzureWebJobsStorage",
+      "dataType": "binary"
+    },
+    {
       "name": "outBlob",
       "type": "blob",
       "direction": "out",
@@ -28,6 +36,13 @@
       "type": "blob",
       "direction": "out",
       "path": "%BlobContainer2%/latest_course_report_skills.csv",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "outBlob4",
+      "type": "blob",
+      "direction": "out",
+      "path": "%BlobContainer3%/skills_dict_base.json",
       "connection": "AzureWebJobsStorage"
     }
   ]
