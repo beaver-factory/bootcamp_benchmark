@@ -46,7 +46,7 @@ def collector_adzuna(inBlob: InputStream) -> str:
 
         keyword_query = create_keyword_query(keyword, keyword_variants)
 
-        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&{keyword_query}&location0=UK&category=it-jobs&content-type=application/json"
+        request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&{keyword_query}&location0=UK&category=it-jobs&content-type=application/json&title_only=junior"
 
         response = requests.get(request_url)
 
