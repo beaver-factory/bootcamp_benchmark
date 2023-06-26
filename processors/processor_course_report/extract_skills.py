@@ -20,7 +20,7 @@ def extract_skills(description):
     doc = nlp(description)
 
     matcher = Matcher(nlp.vocab)
-    with open('./processor_course_report/skill_deduper/skills_dict.json', 'r') as f:
+    with open('../processor_course_report/skill_deduper/skills_dict.json', 'r') as f:
         skill_dict = json.load(f)
 
     skills_list = []
@@ -28,12 +28,18 @@ def extract_skills(description):
     for skill in skill_dict:
         skills_list.extend(skill_dict[skill])
 
-    pattern_list = [
-        [
-            {"LOWER": word.lower()} for word in skill.split()
-        ] for skill in skills_list
-    ]
-    
+    pattern_list = []
+    proper_nouns = []
+    nouns = []
+
+    for skill in skills_list:
+        tokens = skill.split()
+        proper_nouns.append([{"LOWER": token, "POS": "PROPN"} for token in tokens])
+        nouns.append([{"LOWER": token, "POS": "NOUN"} for token in tokens])
+
+    pattern_list.extend(proper_nouns)
+    pattern_list.extend(nouns)
+
     matcher.add("SKILL", pattern_list, greedy="LONGEST")
     matches = matcher(doc)
     matches.sort(key = lambda x: x[1])
