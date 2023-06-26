@@ -60,38 +60,38 @@ def load_course_report_into_db(inBlob: InputStream):
     close_connection(cur, conn)
 
 
-def load_course_skills_into_db(inBlob: InputStream):
-    """
-    Connects to the PSQL server, creates course_skills table, inserts data.
+# def load_course_skills_into_db(inBlob: InputStream):
+#     """
+#     Connects to the PSQL server, creates course_skills table, inserts data.
 
-        :param inBlob: Azure input stream from blob trigger
-        :type inBlob: InputStream
-    """
+#         :param inBlob: Azure input stream from blob trigger
+#         :type inBlob: InputStream
+#     """
 
-    df = pd.read_csv(BytesIO(inBlob.read()))
-    df.pop(df.columns[0])
+#     df = pd.read_csv(BytesIO(inBlob.read()))
+#     df.pop(df.columns[0])
 
-    column_headers = ['course_skills']
-    handle_loader_errors(column_headers, df)
+#     column_headers = ['course_skills']
+#     handle_loader_errors(column_headers, df)
 
-    conn, cur = establish_connection()
-    table_name = 'course_skills'
+#     conn, cur = establish_connection()
+#     table_name = 'course_skills'
 
-    cur.execute(f'DROP TABLE IF EXISTS {table_name}')
+#     cur.execute(f'DROP TABLE IF EXISTS {table_name}')
 
-    cur.execute(f'''
-            CREATE TABLE {table_name} (
-                ID SERIAL PRIMARY KEY,
-                skill VARCHAR(50)
-            );
-            ''')
+#     cur.execute(f'''
+#             CREATE TABLE {table_name} (
+#                 ID SERIAL PRIMARY KEY,
+#                 skill VARCHAR(50)
+#             );
+#             ''')
 
-    logging.info(f'Successfully created {table_name} table')
+#     logging.info(f'Successfully created {table_name} table')
 
-    args_str = generate_insertion_string(df, cur, 1)
+#     args_str = generate_insertion_string(df, cur, 1)
 
-    cur.execute(f"""INSERT INTO {table_name} (skill) VALUES """ + args_str)
+#     cur.execute(f"""INSERT INTO {table_name} (skill) VALUES """ + args_str)
 
-    logging.info(f'Successfully inserted values into {table_name} table')
+#     logging.info(f'Successfully inserted values into {table_name} table')
 
-    close_connection(cur, conn)
+#     close_connection(cur, conn)
