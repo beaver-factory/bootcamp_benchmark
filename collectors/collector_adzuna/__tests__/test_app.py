@@ -38,7 +38,7 @@ def generate_inputstream(path):
 @patch('collector_adzuna.app.get_secret_value', return_value='test')
 def test_one_request_is_made_to_API_with_correctly_formatted_result(mock, create_csv):
     with requests_mock.Mocker() as m:
-        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1',
+        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?title_only=junior&location0=UK&category=it-jobs&content-type=application/json',
               json={"count": 227})
 
         test_input_stream = generate_inputstream(
@@ -53,9 +53,9 @@ def test_one_request_is_made_to_API_with_correctly_formatted_result(mock, create
 @patch('collector_adzuna.app.get_secret_value', return_value='test')
 def test_multiple_requests_made_to_API_with_correctly_formatted_result(mock):
     with requests_mock.Mocker() as m:
-        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=HTML',
+        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=HTML&title_only=junior&location0=UK&category=it-jobs&content-type=application/json',
               json={"count": 227})
-        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=CSS',
+        m.get('http://api.adzuna.com/v1/api/jobs/gb/search/1?what=CSS&title_only=junior&location0=UK&category=it-jobs&content-type=application/json',
               json={"count": 4608})
 
         test_input_stream = generate_inputstream(
