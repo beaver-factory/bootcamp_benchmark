@@ -1,4 +1,7 @@
+import pandas as pd
 import spacy
+from spacy.matcher import Matcher
+
 
 def extract_skills(description):
     """
@@ -96,23 +99,26 @@ def extract_skills(description):
         "Ruby on Rails",
         "Angular",
         "React",
-        "Express"
+        "Express",
+        "Tableau",
+        "PowerBI",
+        "Heroku",
+        "NodeJS",
+        "Adobe Suite",
     ]
 
-    base_skills = existing_skills + supplemental_skills
-
-    patterns = [
-        {"label": "SKILL", "pattern": skill} for skill in base_skills
-    ]
+    base_skills = list(set(existing_skills + supplemental_skills))
 
     nlp = spacy.load("en_core_web_md")
-    ruler = nlp.add_pipe("entity_ruler", before='ner')
-    ruler.add_patterns(patterns)
 
     doc = nlp(description)
 
-    skills = [ent.text for ent in doc.ents if ent.label_ == 'SKILL']
+    matcher = Matcher(nlp.vocab)
+    patterns = [[{"LOWER": word.lower()} for word in skill.split()] for skill in base_skills]
+    matcher.add("SKILL", patterns, greedy="LONGEST")
+    matches = matcher(doc)
+    matches.sort(key = lambda x: x[1])
 
-    print(skills)
+    skills = [doc[match[1]:match[2]].text for match in matches]
 
     return skills
