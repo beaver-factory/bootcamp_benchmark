@@ -3,7 +3,7 @@ from spacy.matcher import Matcher
 import json
 
 
-def extract_skills(description):
+def extract_skills(description, inSkillsDict):
     """
     Runs an openAI API query to return a list of digital skills from a given course description
 
@@ -21,13 +21,11 @@ def extract_skills(description):
     doc = nlp(description)
 
     matcher = Matcher(nlp.vocab)
-    with open('./processor_course_report/example_data/skills_dict.json', 'r') as f:
-        skill_dict = json.load(f)
 
     skills_list = []
 
-    for skill in skill_dict:
-        skills_list.extend(skill_dict[skill])
+    for skill in inSkillsDict:
+        skills_list.extend(inSkillsDict[skill])
 
     pattern_list = [
         [
