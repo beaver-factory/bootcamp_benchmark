@@ -110,5 +110,3 @@ def test_ignores_skills_when_negative():
     assert len(result3) == 0
     assert len(result4) == 0
     assert len(result5) == 1 and result5[0] == 'Python'
-
-
