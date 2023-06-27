@@ -5,7 +5,7 @@ import json
 import logging
 
 
-def main(inCourseReport: InputStream, inSkillsDict: InputStream, outCourseReport: Out[bytes], outHistoricSkills: Out[bytes], outLatestSkills: Out[bytes], outSkillsDict: Out[bytes]):
+def main(inCourseReport: InputStream, inSkillsDict: InputStream, outCourseReport: Out[bytes], outSkillsDict: Out[bytes]):
     """Main function for processor_course_report
 
     :param inCourseReport: Azure input blob
@@ -14,10 +14,6 @@ def main(inCourseReport: InputStream, inSkillsDict: InputStream, outCourseReport
     :type inSkillsDict: InputStream
     :param outCourseReport: Azure output blob
     :type outCourseReport: Out[bytes]
-    :param outHistoricSkills: Azure output blob
-    :type outHistoricSkills: Out[bytes]
-    :param outLatestSkills: Azure output blob
-    :type outLatestSkills: Out[bytes]
     :param outSkillsDict: Azure output blob
     :type outSkillsDict: Out[bytes]
     :raises Exception: Empty blob alert
@@ -42,9 +38,3 @@ def main(inCourseReport: InputStream, inSkillsDict: InputStream, outCourseReport
     logging.info('Successfully processed course data')
     bootcamps_csv = bootcamps_df.to_csv()
     outCourseReport.set(bootcamps_csv.encode('utf-8'))
-
-    # skills_df = process_skills_data(bootcamps_df)
-    # logging.info('Successfully processed skills data')
-    # skills_csv = skills_df.to_csv()
-    # outHistoricSkills.set(skills_csv.encode('utf-8'))
-    # outLatestSkills.set(skills_csv.encode('utf-8'))
