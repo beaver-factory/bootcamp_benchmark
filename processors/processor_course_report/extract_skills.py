@@ -1,6 +1,5 @@
 import spacy
 from spacy.matcher import Matcher
-import json
 
 
 def extract_skills(description, inSkillsDict):
@@ -35,7 +34,7 @@ def extract_skills(description, inSkillsDict):
 
     matcher.add("SKILL", pattern_list, greedy="LONGEST")
     matches = matcher(doc)
-    matches.sort(key = lambda x: x[1])
+    matches.sort(key=lambda x: x[1])
 
     skills = [doc[match[1]:match[2]].text for match in matches]
 

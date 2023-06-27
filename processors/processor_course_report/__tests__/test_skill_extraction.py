@@ -1,6 +1,5 @@
 from ..extract_skills import extract_skills
 from processor_utils import generate_inputstream
-from unittest.mock import patch
 import os
 import json
 import pytest
