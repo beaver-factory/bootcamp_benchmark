@@ -59,8 +59,6 @@ def create_json():
 
 
 def create_table():
-    """Creates a table for use in testing"""
-
     conn, cur = establish_connection()
     table_name = 'skills'
     df = pd.DataFrame([{"skills": "Angular"}])
@@ -84,8 +82,9 @@ def test_skills_table_exists():
     create_table()
 
     result = db_results("select exists(select * from information_schema.tables where table_name='skills')")
+    is_table_created = result[0][0]
 
-    assert result[0][0]
+    assert is_table_created == True
 
 
 def test_creates_skills_table_and_inserts_skills_when_table_does_not_exist():
@@ -94,16 +93,17 @@ def test_creates_skills_table_and_inserts_skills_when_table_does_not_exist():
     load_course_skills_into_db(blob)
 
     result_check_table = db_results("select exists(select * from information_schema.tables where table_name='skills')")
+    is_table_created = result_check_table[0][0]
+
     result_check_skills = db_results("select * from skills")
-
     skills_to_check = [x[1] for x in result_check_skills]
-
     expected_skills = ['Angular', 'Express', 'CSS', 'HTML', 'React']
 
-    assert result_check_table[0][0]
+    is_list_inserted = all(element in skills_to_check for element in expected_skills)
 
+    assert is_table_created == True
     assert len(skills_to_check) == 5
-    assert all(element in skills_to_check for element in expected_skills)
+    assert is_list_inserted == True
 
 
 def test_inserts_new_skill():
