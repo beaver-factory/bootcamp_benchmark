@@ -14,7 +14,7 @@ test_input4 = "The course is designed for everyone, whether a complete novice, a
 
 test_input5 = "On our Data Science course, you will learn the fundamentals of this discipline, including Python, how to make dashboards using PowerBI, database management and PSQL. We do not cover JavaScript, Front End nor how to make a website using HTML."
 
-dirpath = "processor_course_report/__tests__/skills_dict.json"
+dirpath = "processor_course_report/__tests__/extraction_skills_dict.json"
 
 
 @pytest.fixture(scope="session", autouse=True)
