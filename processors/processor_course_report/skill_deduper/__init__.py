@@ -41,7 +41,12 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
                 course_skills[index] = key
                 break
         else:
-            new_skills_dict[skill] = [skill]
+            actual_skill = str(course_skills[index])
+
+            if skill == actual_skill.lower():
+                new_skills_dict[actual_skill] = [skill]
+            else:
+                new_skills_dict[skill] = [skill]
 
     # handle output
     if set(new_skills_dict.keys()) - set(skills_dict.keys()):
