@@ -1,7 +1,6 @@
 from pandas import DataFrame
 from azure.functions import InputStream, Out
 import json
-import logging
 
 
 def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]) -> DataFrame:
