@@ -47,6 +47,7 @@ jobs:
         run: make dock
 
       - name: test
+        needs: dock
         run: make unit_test
         env:
           PSQL_CONNECTIONSTRING: "host='localhost' user='db_admin' password='password123' dbname='test_db'"
