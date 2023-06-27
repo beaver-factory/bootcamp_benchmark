@@ -1,0 +1,12 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "inSkillsDict",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "%BlobContainer3%/skills_dict.json",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
