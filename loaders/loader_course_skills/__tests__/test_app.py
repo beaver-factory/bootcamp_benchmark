@@ -44,7 +44,7 @@ def create_json():
     with open(f'{dirpath}', 'w') as file:
         file.write(json.dumps(test_dict))
 
-    test_dict2 = {'Express': ['express', 'expressjs', 'express.js'], 'CSS': ['css', 'css3.0'], 'HTML': ['html', 'html5'], 'React': ['react', 'react.js', 'reactjs'], 'Angular': ['angular'], "Vue": ["vue", "vue.js"]}
+    test_dict2 = {'Express': ['express', 'expressjs', 'express.js'], 'CSS': ['css', 'css3.0'], 'HTML': ['html', 'html5'], 'React': ['react', 'react.js', 'reactjs'], "Vue": ["vue", "vue.js"]}
 
     if os.path.isfile(dirpath2):
         os.remove(dirpath2)
@@ -106,12 +106,18 @@ def test_creates_skills_table_and_inserts_skills_when_table_does_not_exist():
     assert is_list_inserted is True
 
 
-def test_inserts_new_skill():
+def test_inserts_new_skills_without_overwriting_older():
     create_table()
-    blob = generate_inputstream(dirpath2)
+
+    blob = generate_inputstream(dirpath)
+    blob2 = generate_inputstream(dirpath2)
 
     load_course_skills_into_db(blob)
+    result = db_results('select * from skills')
 
+    assert len(result) == 5
+
+    load_course_skills_into_db(blob2)
     result = db_results('select * from skills')
 
     assert len(result) == 6
