@@ -11,7 +11,7 @@ import shutil
 load_dotenv()
 
 # bug fix to prevent pytest from crashing
-os.environ["no_proxy"] = "*"
+# os.environ["no_proxy"] = "*"
 
 # globals
 

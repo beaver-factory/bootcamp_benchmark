@@ -11,7 +11,7 @@ import pandas as pd
 load_dotenv()
 
 # bug fix to prevent pytest from crashing
-os.environ["no_proxy"] = "*"
+# os.environ["no_proxy"] = "*"
 
 dirpath = 'loader_course_skills/__tests__/skills_dict.json'
 dirpath2 = 'loader_course_skills/__tests__/skills_dict2.json'
