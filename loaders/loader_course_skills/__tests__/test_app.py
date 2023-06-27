@@ -84,7 +84,7 @@ def test_skills_table_exists():
     result = db_results("select exists(select * from information_schema.tables where table_name='skills')")
     is_table_created = result[0][0]
 
-    assert is_table_created == True
+    assert is_table_created is True
 
 
 def test_creates_skills_table_and_inserts_skills_when_table_does_not_exist():
@@ -101,9 +101,9 @@ def test_creates_skills_table_and_inserts_skills_when_table_does_not_exist():
 
     is_list_inserted = all(element in skills_to_check for element in expected_skills)
 
-    assert is_table_created == True
+    assert is_table_created is True
     assert len(skills_to_check) == 5
-    assert is_list_inserted == True
+    assert is_list_inserted is True
 
 
 def test_inserts_new_skill():
