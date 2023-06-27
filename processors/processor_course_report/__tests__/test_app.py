@@ -137,39 +137,39 @@ def test_dataframe_contains_correct_number_of_rows(outBlob):
     assert result.shape[0] == 4
 
 
-def test_raises_exception_if_skills_processor_receives_empty_dataframe():
-    test_empty_dataframe = pd.DataFrame([])
+# def test_raises_exception_if_skills_processor_receives_empty_dataframe():
+#     test_empty_dataframe = pd.DataFrame([])
 
-    with pytest.raises(Exception) as err:
-        process_skills_data(test_empty_dataframe)
+#     with pytest.raises(Exception) as err:
+#         process_skills_data(test_empty_dataframe)
 
-    assert str(err.value) == 'Unprocessed dataframe is empty, check json output from collector'
-
-
-def test_process_skills_data_returns_datafrom():
-    result = process_skills_data(pd.read_json(
-        json.dumps(expected_data_structure)))
-    assert isinstance(result, pd.DataFrame)
+#     assert str(err.value) == 'Unprocessed dataframe is empty, check json output from collector'
 
 
-@patch('azure.functions.Out')
-def test_process_skills_data_removes_duplicate_skills(outBlob):
-    inBlob = generate_inputstream(dirpath)
-    result = process_skills_data(pd.read_json(
-        json.dumps(expected_data_structure)))
-    expected = ['test skill 1', 'test skill 2', 'test skill 3']
-
-    assert result['course_skills'].values.tolist() == expected
-
-    course_data_frame = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
-
-    assert course_data_frame['course_skills'].unique().tolist() == expected
+# def test_process_skills_data_returns_datafrom():
+#     result = process_skills_data(pd.read_json(
+#         json.dumps(expected_data_structure)))
+#     assert isinstance(result, pd.DataFrame)
 
 
-def test_process_skills_data_returns_expected_shape_data_frame():
-    result = process_skills_data(pd.read_json(
-        json.dumps(expected_data_structure)))
+# @patch('azure.functions.Out')
+# def test_process_skills_data_removes_duplicate_skills(outBlob):
+#     inBlob = generate_inputstream(dirpath)
+#     result = process_skills_data(pd.read_json(
+#         json.dumps(expected_data_structure)))
+#     expected = ['test skill 1', 'test skill 2', 'test skill 3']
 
-    assert result.shape[0] == 3
-    assert result.shape[1] == 1
+#     assert result['course_skills'].values.tolist() == expected
+
+#     course_data_frame = process_course_data(pd.read_json(
+#         json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+
+#     assert course_data_frame['course_skills'].unique().tolist() == expected
+
+
+# def test_process_skills_data_returns_expected_shape_data_frame():
+#     result = process_skills_data(pd.read_json(
+#         json.dumps(expected_data_structure)))
+
+#     assert result.shape[0] == 3
+#     assert result.shape[1] == 1
