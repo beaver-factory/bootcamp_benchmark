@@ -5,21 +5,25 @@ import json
 import logging
 
 
-def main(inBlob: InputStream, outBlob: Out[bytes], outBlob2: Out[bytes], outBlob3: Out[bytes]):
+def main(inCourseReport: InputStream, inSkillsDict: InputStream, outCourseReport: Out[bytes], outHistoricSkills: Out[bytes], outLatestSkills: Out[bytes], outSkillsDict: Out[bytes]):
     """Main function for processor_course_report
 
-    :param inBlob: Azure input blob
-    :type inBlob: InputStream
-    :param outBlob: Azure output blob
-    :type outBlob: Out[bytes]
-    :param outBlob2: Azure output blob
-    :type outBlob2: Out[bytes]
-    :param outBlob3: Azure output blob
-    :type outBlob3: Out[bytes]
+    :param inCourseReport: Azure input blob
+    :type inCourseReport: InputStream
+    :param inSkillsDict: Azure input blob
+    :type inSkillsDict: InputStream
+    :param outCourseReport: Azure output blob
+    :type outCourseReport: Out[bytes]
+    :param outHistoricSkills: Azure output blob
+    :type outHistoricSkills: Out[bytes]
+    :param outLatestSkills: Azure output blob
+    :type outLatestSkills: Out[bytes]
+    :param outSkillsDict: Azure output blob
+    :type outSkillsDict: Out[bytes]
     :raises Exception: Empty blob alert
     :raises Exception: Json empty alert
     """
-    input_json = inBlob.read().decode('utf-8')
+    input_json = inCourseReport.read().decode('utf-8')
 
     if input_json == '':
         raise Exception('Blob is empty, check json output from collector')
@@ -34,13 +38,13 @@ def main(inBlob: InputStream, outBlob: Out[bytes], outBlob2: Out[bytes], outBlob
     input = json.dumps(input_obj)
     input_df = pd.read_json(input)
 
-    bootcamps_df = process_course_data(input_df, locations["uk_locations"])
+    bootcamps_df = process_course_data(input_df, locations["uk_locations"], inSkillsDict, outSkillsDict)
     logging.info('Successfully processed course data')
     bootcamps_csv = bootcamps_df.to_csv()
-    outBlob.set(bootcamps_csv.encode('utf-8'))
+    outCourseReport.set(bootcamps_csv.encode('utf-8'))
 
-    skills_df = process_skills_data(input_df)
+    skills_df = process_skills_data(bootcamps_df)
     logging.info('Successfully processed skills data')
     skills_csv = skills_df.to_csv()
-    outBlob2.set(skills_csv.encode('utf-8'))
-    outBlob3.set(skills_csv.encode('utf-8'))
+    outHistoricSkills.set(skills_csv.encode('utf-8'))
+    outLatestSkills.set(skills_csv.encode('utf-8'))

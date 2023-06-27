@@ -125,7 +125,3 @@ def test_handle_known_suffixes_removes_net():
     assert result_js == '.net'
     assert result_dot_net == 'tech'
     assert result_technet == 'technet'
-
-
-def generate_skills_dict():
-    """Creates a json of skills for a test dictionary"""
