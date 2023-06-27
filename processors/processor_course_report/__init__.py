@@ -43,8 +43,8 @@ def main(inCourseReport: InputStream, inSkillsDict: InputStream, outCourseReport
     bootcamps_csv = bootcamps_df.to_csv()
     outCourseReport.set(bootcamps_csv.encode('utf-8'))
 
-    skills_df = process_skills_data(bootcamps_df)
-    logging.info('Successfully processed skills data')
-    skills_csv = skills_df.to_csv()
-    outHistoricSkills.set(skills_csv.encode('utf-8'))
-    outLatestSkills.set(skills_csv.encode('utf-8'))
+    # skills_df = process_skills_data(bootcamps_df)
+    # logging.info('Successfully processed skills data')
+    # skills_csv = skills_df.to_csv()
+    # outHistoricSkills.set(skills_csv.encode('utf-8'))
+    # outLatestSkills.set(skills_csv.encode('utf-8'))

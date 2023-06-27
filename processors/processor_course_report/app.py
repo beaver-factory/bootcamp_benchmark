@@ -61,24 +61,24 @@ def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkill
     return deduplicated_skills
 
 
-def process_skills_data(unprocessed_dataframe):
-    """Returns a processed DataFrame.
+# def process_skills_data(unprocessed_dataframe):
+#     """Returns a processed DataFrame.
 
-    :param unprocessed_dataframe: A pandas DataFrame of data structure found in template_data_structure.json
-    :type unprocessed_dataframe: DataFrame
-    :raises Exception: Empty dataframe alert
-    :return: A pandas DataFrame containing processed skills data
-    :rtype: DataFrame
-    """
+#     :param unprocessed_dataframe: A pandas DataFrame of data structure found in template_data_structure.json
+#     :type unprocessed_dataframe: DataFrame
+#     :raises Exception: Empty dataframe alert
+#     :return: A pandas DataFrame containing processed skills data
+#     :rtype: DataFrame
+#     """
 
-    if unprocessed_dataframe.empty:
-        raise Exception('Unprocessed dataframe is empty, check json output from collector')
+#     if unprocessed_dataframe.empty:
+#         raise Exception('Unprocessed dataframe is empty, check json output from collector')
 
-    exploded_courses = unprocessed_dataframe.explode(
-        'provider_courses').reset_index()
+#     exploded_courses = unprocessed_dataframe.explode(
+#         'provider_courses').reset_index()
 
-    normalised_courses = pd.json_normalize(exploded_courses.provider_courses)
+#     normalised_courses = pd.json_normalize(exploded_courses.provider_courses)
 
-    skills_df = normalised_courses['course_skills'].explode('course_skills').drop_duplicates().reset_index().drop('index', axis=1)
+#     skills_df = normalised_courses['course_skills'].explode('course_skills').drop_duplicates().reset_index().drop('index', axis=1)
 
-    return skills_df
+#     return skills_df
