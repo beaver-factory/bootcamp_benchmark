@@ -32,7 +32,7 @@ def extract_skills(description, inSkillsDict):
         ] for skill in skills_list
     ]
 
-    matcher.add("SKILL", pattern_list, greedy="LONGEST")
+    matcher.add("SKILL", pattern_list)
     matches = matcher(doc)
     matches.sort(key=lambda x: x[1])
 
