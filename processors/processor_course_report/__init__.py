@@ -1,6 +1,6 @@
 from azure.functions import InputStream, Out
 import pandas as pd
-from .app import process_course_data, process_skills_data
+from .app import process_course_data
 import json
 import logging
 
