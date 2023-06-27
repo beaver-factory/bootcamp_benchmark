@@ -19,6 +19,20 @@ def extract_skills(description, inSkillsDict):
 
     doc = nlp(description)
 
+    filtered_tokens = []
+
+    for token in doc:
+        children = [child for child in token.head.children]
+        if len(children) == 0:
+            filtered_tokens.append(token.text)
+        for i, child in enumerate(children):
+            if child.dep_ == 'neg':
+                break
+            if i == len(children) - 1:
+                filtered_tokens.append(token.text)
+
+    filtered_doc = spacy.tokens.Doc(nlp.vocab, filtered_tokens)
+
     matcher = Matcher(nlp.vocab)
 
     skills_list = []
@@ -32,10 +46,10 @@ def extract_skills(description, inSkillsDict):
         ] for skill in skills_list
     ]
 
-    matcher.add("SKILL", pattern_list)
-    matches = matcher(doc)
-    matches.sort(key=lambda x: x[1])
+    matcher.add("SKILL", pattern_list, greedy="LONGEST")
+    matches = matcher(filtered_doc)
+    matches.sort(key = lambda x: x[1])
 
-    skills = [doc[match[1]:match[2]].text for match in matches]
+    skills = [filtered_doc[match[1]:match[2]].text for match in matches]
 
     return skills
