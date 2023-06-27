@@ -27,15 +27,11 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
 
     skills_dict = json.loads(input_json)
     new_skills_dict = skills_dict.copy()
-    logging.info(new_skills_dict)
 
     new_df = df.copy(deep=True)
-    logging.info(new_df)
-
     course_skills = new_df["course_skills"].tolist()
-    logging.info(course_skills)
 
-    check_skills = [skill.lower() for skill in course_skills]
+    check_skills = [str(skill).lower() for skill in course_skills]
 
     # dict checker
     for index in range(len(course_skills)):
