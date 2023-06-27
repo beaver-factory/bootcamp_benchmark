@@ -5,23 +5,33 @@ import json
 import requests
 from azure.functions import InputStream
 import logging
+import urllib.parse
 
 
-def collector_adzuna(inBlob: InputStream) -> str:
+def collector_adzuna(inLatestSkills: InputStream, inSkillsDict: InputStream) -> str:
     """Makes calls to Adzuna API to find the number of jobs listed for each skill.
 
-    :param inBlob: takes a csv file of a list of skills from the most recent Course Report scrape: latest_course_report_skills.csv
-    :type inBlob: InputStream
+    :param inLatestSkills: takes a csv file of a list of skills from the most recent Course Report scrape: latest_course_report_skills.csv
+    :type inLatestSkills: InputStream
     :raises Exception: Empty skill list alert
     :return: A json object string featuring keys of each skill and a count of the number of job ads on Adzuna featuring that skill
     :rtype: str
     """
 
-    skills_csv_string = inBlob.read().decode('utf-8')
+    # check inputs
+    skills_csv_string = inLatestSkills.read().decode('utf-8')
 
     if len(skills_csv_string) == 0:
         raise Exception('List of skills is empty, CSV may be empty')
 
+    input_json = inSkillsDict.read().decode('utf-8')
+
+    if input_json == "" or input_json == {}:
+        raise Exception('inSkillsDict is empty, check skills_dict.json exists')
+
+    skills_dict = json.loads(input_json)
+
+    # format skills into list
     unformatted_skills_list = skills_csv_string.split("\n")
 
     list_of_keywords = []
@@ -42,9 +52,8 @@ def collector_adzuna(inBlob: InputStream) -> str:
     skill_count = {}
 
     for keyword in list_of_keywords:
-        keyword_variants = create_keyword_variants(keyword)
 
-        keyword_query = create_keyword_query(keyword, keyword_variants)
+        keyword_query = create_keyword_query(keyword, skills_dict)
 
         request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&{keyword_query}&location0=UK&category=it-jobs&content-type=application/json&title_only=junior"
 
@@ -88,51 +97,35 @@ def get_secret_value(secret_name: str):
     return secret_value
 
 
-def create_keyword_variants(keyword: str) -> str:
-    """Takes a keyword and adds possible variants to include in an API search
+def create_keyword_query(keyword: str, skills_dict: dict) -> str:
+    """Takes a keyword and returns synonyms if applicable with the relevant query string for the adzuna API
 
     :param keyword: skill keyword
     :type keyword: str
-    :return: skill keyword with possible variants separated by a space
-    :rtype: str
-    """
-    processed_keywords = keyword
-
-    # JavaScript skill processing
-    if ".js" in keyword:
-        processed_keywords += f" {keyword.split('.')[0]}"
-    elif keyword[-2:] == "JS":
-        processed_keywords += f" {keyword[:-2]}"
-
-    return processed_keywords
-
-
-def create_keyword_query(keyword: str, variant_keywords: str) -> str:
-    """Takes the original keyword and the keyword with variants and returns the correct query for an API call
-
-    :param keyword: original keyword
-    :type keyword: str
-    :param variant_keywords: keywords with variants
-    :type variant_keywords: str
-    :return: correct search query for the type of keyword given
+    :param skills_dict: skills dictionary
+    :type skills_dict: dictionary
+    :return: query value featuring skill and synonyms
     :rtype: str
     """
 
-    print(keyword)
-    print(variant_keywords)
-
-    search_param = "what="
-
-    if keyword != variant_keywords:
-        # If multiple variants have been added to the search, results should check for each version independently
-        search_param = "what_or="
-    elif len(keyword.split(" ")) > 1:
-        # If skill has multiple words, results must include all words
-        search_param = "what_phrase="
-
-    if '#' in variant_keywords:
-        variant_keywords = variant_keywords.replace('#', '%23')
-
-    keyword_query = search_param + variant_keywords
-
-    return keyword_query
+    for key in skills_dict:
+        if keyword.lower() == key.lower() or keyword.lower() in skills_dict[key]:
+            synonyms = skills_dict[key]
+            if len(synonyms) == 1:
+                if ' ' not in synonyms[0]:
+                    # where key == value (no synonyms) and single word skill
+                    return 'what=' + urllib.parse.quote(synonyms[0])
+                else:
+                    # where key == value (no synonyms but multi-word skill)
+                    return 'what_phrase=' + urllib.parse.quote(synonyms[0])
+            elif len(synonyms) > 1:
+                chars = []
+                for synonym in synonyms:
+                    for char in synonym:
+                        chars.append(char)
+                if ' ' in chars:
+                    # where multiple synyonyms and one contains a space, default to just searching using key
+                    return f'what={key.lower()}'
+                else:
+                    # where multiple synonyms and no spaces, search for all synonyms
+                    return 'what_or=' + urllib.parse.quote((" ").join(skills_dict[key]))
