@@ -8,7 +8,7 @@ import json
 
 def load_course_skills_into_db(inBlob: InputStream):
     """
-    Connects to the PSQL server, creates course_skills table, inserts data.
+    Connects to the PSQL server, creates skills table, inserts data if not already in table.
 
         :param inBlob: Azure input stream from blob trigger
         :type inBlob: InputStream
