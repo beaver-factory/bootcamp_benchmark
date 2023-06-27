@@ -1,6 +1,5 @@
 import pandas as pd
 from azure.functions import InputStream
-from io import BytesIO
 import logging
 from loader_utils import db_results, establish_connection, close_connection, generate_insertion_string
 import json
