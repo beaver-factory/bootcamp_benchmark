@@ -1,4 +1,4 @@
-from ..app import (process_course_data, process_skills_data)
+from ..app import process_course_data
 from processor_utils import generate_inputstream
 import pytest
 from unittest.mock import patch
