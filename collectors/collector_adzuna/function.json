@@ -8,14 +8,6 @@
       "schedule": "0 30 7 * * 1-5"
     },
     {
-      "name": "inLatestSkills",
-      "type": "blob",
-      "direction": "in",
-      "path": "%BlobContainer2%/latest_course_report_skills.csv",
-      "connection": "AzureWebJobsStorage",
-      "dataType": "binary"
-    },
-    {
       "name": "inSkillsDict",
       "type": "blob",
       "direction": "in",
