@@ -4,6 +4,7 @@ import os
 from typing import Tuple, List
 from pandas import DataFrame
 from unittest.mock import patch, Mock
+from dotenv import load_dotenv
 
 
 def handle_loader_errors(column_headers: List[str], df: DataFrame):
@@ -36,6 +37,8 @@ def establish_connection() -> Tuple[psycopg2.extensions.connection, psycopg2.ext
     """
 
     # either ARM template connectionstring for production or .env for testing'
+    load_dotenv()
+
     conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
 
     cur = conn.cursor()
