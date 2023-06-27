@@ -116,7 +116,7 @@ def create_keyword_query(keyword: str, skills_dict: dict) -> str:
                     # where key == value (no synonyms) and single word skill
                     return 'what=' + urllib.parse.quote(synonyms[0])
                 else:
-                    # where key == value (no synonyms but multi-word skill)
+                    # where key == value (no synonyms) but multi-word skill
                     return 'what_phrase=' + urllib.parse.quote(synonyms[0])
             elif len(synonyms) > 1:
                 chars = []
@@ -125,7 +125,7 @@ def create_keyword_query(keyword: str, skills_dict: dict) -> str:
                         chars.append(char)
                 if ' ' in chars:
                     # where multiple synyonyms and one contains a space, default to just searching using key
-                    return f'what={key.lower()}'
+                    return 'what=' + urllib.parse.quote(synonyms[0])
                 else:
-                    # where multiple synonyms and no spaces, search for all synonyms
-                    return 'what_or=' + urllib.parse.quote((" ").join(skills_dict[key]))
+                    # where multiple synonyms and no spaces, include all synonyms in query
+                    return 'what_or=' + urllib.parse.quote((" ").join(synonyms))
