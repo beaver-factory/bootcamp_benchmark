@@ -1,6 +1,6 @@
 import pandas as pd
 import logging
-from processors.processor_course_report.skill_deduper import check_edge_case_dict
+from processor_course_report.skill_deduper import check_edge_case_dict
 
 
 def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkillsDict):
