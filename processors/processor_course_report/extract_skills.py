@@ -16,7 +16,7 @@ def extract_skills(description, inSkillsDict):
         raise Exception("Input must be str")
 
     nlp = spacy.load("en_core_web_md")
-    nlp.add_pipe("negex", after="ner", config={"ent_types":["SKILL"]})
+    nlp.add_pipe("negex", after="ner", config={"ent_types": ["SKILL"]})
     ruler = nlp.add_pipe("entity_ruler", before="ner")
 
     patterns = []
@@ -31,15 +31,26 @@ def extract_skills(description, inSkillsDict):
         pattern = [{"LOWER": word.lower()} for word in words]
         full_patterns.append(pattern)
 
-    final_patterns = [{"label": "SKILL",  "pattern": pattern} for pattern in full_patterns]
+    final_patterns = [{"label": "SKILL", "pattern": pattern} for pattern in full_patterns]
 
     ruler.add_patterns(final_patterns)
 
     doc = nlp(description)
 
+    words_to_remove = ["Unlike"]
+
+    filtered_tokens = []
+
+    for sent in doc.sents:
+        if not any(word in sent.text for word in words_to_remove):
+            for token in sent:
+                filtered_tokens.append(token.text)
+
+    filtered_doc = spacy.tokens.Doc(nlp.vocab, filtered_tokens)
+
     result = []
 
-    for ent in doc.ents:
+    for ent in filtered_doc.ents:
         if ent.label_ == "SKILL" and ent._.negex == False:
             result.append(ent.text)
 
