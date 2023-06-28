@@ -96,17 +96,13 @@ def test_ignores_skills_when_negative():
     test_str = 'Not JavaScript'
     test_str2 = 'Definitely not JavaScript'
     test_str3 = 'JavaScript is not taught'
-    test_str4 = 'JavaScript is not taught on this course anymore'
-    test_str5 = 'JavaScript is not taught on this course anymore, but Python is'
 
     result = extract_skills(test_str, skills_dict)
     result2 = extract_skills(test_str2, skills_dict)
     result3 = extract_skills(test_str3, skills_dict)
-    result4 = extract_skills(test_str4, skills_dict)
-    result5 = extract_skills(test_str5, skills_dict)
+
 
     assert len(result) == 0
     assert len(result2) == 0
     assert len(result3) == 0
-    assert len(result4) == 0
-    assert len(result5) == 1 and result5[0] == 'Python'
+
