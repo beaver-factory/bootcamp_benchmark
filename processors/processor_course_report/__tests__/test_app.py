@@ -22,7 +22,7 @@ expected_data_structure = [
             },
             {
                 "course_name": "test",
-                "course_skills": ["test skill 1", "test skill 2", "test skill 3"],
+                "course_skills": ["test skill 1", "test skill 2", "test skill 3", None],
                 "course_locations": "Manchester, York",
                 "course_description": "test"
             }
@@ -133,5 +133,15 @@ def test_dataframe_contains_correct_number_of_rows(outBlob):
     inBlob = generate_inputstream(dirpath)
     result = process_course_data(pd.read_json(
         json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
-    print(result)
     assert result.shape[0] == 4
+
+
+@patch('azure.functions.Out')
+def test_dataframe_removes_rows_with_no_skills(outBlob):
+    inBlob = generate_inputstream(dirpath)
+    result = process_course_data(pd.read_json(
+        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+
+    is_any_nulls = result['course_skills'].isnull().values.any()
+
+    assert is_any_nulls is not True
