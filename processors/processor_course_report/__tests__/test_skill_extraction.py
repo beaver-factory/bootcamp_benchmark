@@ -21,7 +21,7 @@ dirpath = "processor_course_report/__tests__/skills_dict.json"
 def create_json():
     """Checks if test jsons are created, deletes if so, then generates fresh ones"""
 
-    test_dict = {"JavaScript": ["Javascript"], "Angular": ["Angular"], "Ruby on Rails": ["Ruby on Rails"], "React": ["react", "react.js", "reactjs"], "Python": ["Python"], "Django": ["Django"], "Express": ["Express"], "Node.js": ["Node.js"], "SQL": ["SQL"], "Excel": ["Excel"], "PowerBI": ["PowerBI"], "Tableau": ["Tableau"]}
+    test_dict = {"JavaScript": ["Javascript"], "Angular": ["Angular"], "Ruby on Rails": ["Ruby on Rails"], "React": ["react", "react.js", "reactjs"], "Python": ["Python"], "Django": ["Django"], "Express": ["Express"], "Node.js": ["Node.js"], "SQL": ["SQL"], "Excel": ["Excel"], "PowerBI": ["PowerBI"], "Tableau": ["Tableau"], "CSS": ["CSS"], "HTML": ["HTML"], "Bootstrap": ["Bootstrap"]}
 
     if os.path.isfile(dirpath):
         os.remove(dirpath)
@@ -96,7 +96,7 @@ def test_ignores_skills_when_negative():
 
     test_str = 'Not JavaScript'
     test_str2 = 'Definitely not JavaScript'
-    test_str3 = 'JavaScript is not taught on this course. Unlike Python is.'
+    test_str3 = 'We don\'t teach JavaScript on this course.'
 
     result = extract_skills(test_str, skills_dict)
     result2 = extract_skills(test_str2, skills_dict)
@@ -105,3 +105,49 @@ def test_ignores_skills_when_negative():
     assert len(result) == 0
     assert len(result2) == 0
     assert len(result3) == 0
+
+
+def test_ignores_unlike():
+    new_inputstream = generate_inputstream(dirpath)
+
+    skills_stream = new_inputstream.read().decode("utf-8")
+
+    skills_dict = json.loads(skills_stream)
+
+    result = extract_skills(test_input2, skills_dict)
+
+    expected = []
+
+    assert result == expected
+
+
+def test_extracts_from_full_description():
+    test_input = 'Students will create two websites (a 1-page website and a 5-page website) over the course of 12 weeks. Students will learn to code in HTML, CSS and Javascript. Students will experience the following: \r\n\r\n-Discover FTP (File Transfer Process) website servers\r\n-Develop link building skills\r\n-Learn the Bootstrap framework for responsive design\r\n-Learn how to font with Awesome icons\r\n-Learn how to use Photoshop\r\n-Learn how to implement contact forms.'
+
+    new_inputstream = generate_inputstream(dirpath)
+
+    skills_stream = new_inputstream.read().decode("utf-8")
+
+    skills_dict = json.loads(skills_stream)
+
+    result = extract_skills(test_input, skills_dict)
+
+    expected = ['HTML', 'CSS', 'Javascript', 'Bootstrap']
+
+    assert sorted(result) == sorted(expected)
+
+
+def test_ignores_negated_skills_in_full_description():
+    test_input = 'Students will create two websites (a 1-page website and a 5-page website) over the course of 12 weeks. Students will learn to code in HTML, CSS and Javascript. Students will experience the following: \r\n\r\n-Discover FTP (File Transfer Process) website servers\r\n-Develop link building skills\r\n-Learn the Bootstrap framework for responsive design\r\n-Learn how to font with Awesome icons\r\n-Learn how to use Photoshop\r\n-Learn how to implement contact forms. We do not teach Python, React, or Ruby on Rails'
+
+    new_inputstream = generate_inputstream(dirpath)
+
+    skills_stream = new_inputstream.read().decode("utf-8")
+
+    skills_dict = json.loads(skills_stream)
+
+    result = extract_skills(test_input, skills_dict)
+
+    expected = ['HTML', 'CSS', 'Javascript', 'Bootstrap']
+
+    assert sorted(result) == sorted(expected)

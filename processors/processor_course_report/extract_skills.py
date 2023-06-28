@@ -1,5 +1,5 @@
 import spacy
-from negspacy.negation import Negex
+from negspacy.negation import Negex  # noqa:F401
 
 
 def extract_skills(description, inSkillsDict):
@@ -39,19 +39,18 @@ def extract_skills(description, inSkillsDict):
 
     words_to_remove = ["Unlike"]
 
-    filtered_tokens = []
+    filtered_sents = []
 
     for sent in doc.sents:
         if not any(word in sent.text for word in words_to_remove):
-            for token in sent:
-                filtered_tokens.append(token.text)
+            filtered_sents.append(sent.text)
 
-    filtered_doc = spacy.tokens.Doc(nlp.vocab, filtered_tokens)
+    filtered_doc = nlp(" ".join(filtered_sents))
 
     result = []
 
     for ent in filtered_doc.ents:
-        if ent.label_ == "SKILL" and ent._.negex == False:
+        if ent.label_ == "SKILL" and ent._.negex is False:
             result.append(ent.text)
 
     return result
