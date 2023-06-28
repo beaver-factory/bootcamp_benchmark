@@ -8,6 +8,13 @@ on:
       - "loaders/**"
       - ".github/workflows/deploy_loaders_stag.yaml"
 
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "loaders/**"
+      - ".github/workflows/deploy_loaders_stag.yaml"
+
 env:
   FUNCTION_APP_NAME: bb-loaders-stag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
@@ -63,6 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: TestAndLint
     name: Staging Functions Deployment
+    if: github.event_name == 'push'
 
     steps:
       - name: checkout code
