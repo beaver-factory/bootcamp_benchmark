@@ -44,8 +44,6 @@ def process_course_report_skills(df):
 
     logging.info('Successfully exploded course skills array into rows')
 
-    exploded_skills.dropna(subset=['course_skills'], inplace=True)
-
     return exploded_skills
 
 
