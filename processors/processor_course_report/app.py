@@ -35,8 +35,6 @@ def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkill
 
     df_with_deduped_skills = check_edge_case_dict(df_with_locations, inSkillsDict, outSkillsDict)
 
-    df_with_deduped_skills.dropna(subset=['course_skills'], inplace=True)
-
     return df_with_deduped_skills
 
 
@@ -45,6 +43,8 @@ def process_course_report_skills(df):
         'course_skills').reset_index().drop(['index', 'level_0'], axis=1)
 
     logging.info('Successfully exploded course skills array into rows')
+
+    exploded_skills.dropna(subset=['course_skills'], inplace=True)
 
     return exploded_skills
 
