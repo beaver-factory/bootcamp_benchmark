@@ -36,6 +36,7 @@ def establish_connection() -> Tuple[psycopg2.extensions.connection, psycopg2.ext
     """
 
     # either ARM template connectionstring for production or .env for testing'
+
     conn = psycopg2.connect(os.environ["PSQL_CONNECTIONSTRING"])
 
     cur = conn.cursor()

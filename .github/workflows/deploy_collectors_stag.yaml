@@ -5,14 +5,20 @@ on:
     branches:
       - main
     paths:
-      - 'collectors/**'
-      - '.github/workflows/deploy_collectors_stag.yaml'
+      - "collectors/**"
+      - ".github/workflows/deploy_collectors_stag.yaml"
 
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "collectors/**"
+      - ".github/workflows/deploy_collectors_stag.yaml"
 
 env:
   FUNCTION_APP_NAME: bb-collectors-stag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
-  AZURE_FUNCTION_APP_PACKAGE_PATH: './collectors'
+  AZURE_FUNCTION_APP_PACKAGE_PATH: "./collectors"
   AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS_2 }}
   KEY_VAULT_NAME: bootcampbkeyvaultstag2
 
@@ -39,9 +45,6 @@ jobs:
         shell: bash
         run: pip install -r requirements.txt
 
-      # - name: prune dependencies
-      #   run: make prune
-
       - name: lint
         run: make lint
 
@@ -54,6 +57,7 @@ jobs:
   AddAdzunaSecretsToKeyVault:
     runs-on: ubuntu-latest
     name: Add Adzuna Secrets to Key Vault
+    if: github.event_name == 'push'
 
     steps:
       - name: checkout code
@@ -74,13 +78,13 @@ jobs:
           az keyvault secret set \
           --name adzunaAppId \
           --vault-name ${{ env.KEY_VAULT_NAME }} \
-          --value ${{secrets.ADZUNA_APP_ID}} 
-      
+          --value ${{secrets.ADZUNA_APP_ID}}
 
   StagingCollectorFunctionsDeployment:
     runs-on: ubuntu-latest
     needs: TestAndLint
     name: Staging Functions Deployment
+    if: github.event_name == 'push'
 
     steps:
       - name: checkout code
@@ -118,4 +122,3 @@ jobs:
           publish-profile: ${{ steps.profilevar.outputs.publish_profile }}
           scm-do-build-during-deployment: true
           enable-oryx-build: false
-        

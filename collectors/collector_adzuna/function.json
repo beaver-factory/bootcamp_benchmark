@@ -8,15 +8,15 @@
       "schedule": "0 30 7 * * 1-5"
     },
     {
-      "name": "inBlob",
+      "name": "inSkillsDict",
       "type": "blob",
       "direction": "in",
-      "path": "%BlobContainer2%/latest_course_report_skills.csv",
+      "path": "%BlobContainer3%/skills_dict.json",
       "connection": "AzureWebJobsStorage",
       "dataType": "binary"
     },
     {
-      "name": "outBlob",
+      "name": "outAdzunaJobCounts",
       "type": "blob",
       "direction": "out",
       "path": "%BlobContainer1%/adzuna_raw_{DateTime}.json",

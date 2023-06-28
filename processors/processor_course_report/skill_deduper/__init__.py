@@ -28,8 +28,11 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
     new_skills_dict = skills_dict.copy()
 
     new_df = df.copy(deep=True)
+    new_df.dropna(subset=['course_skills'], inplace=True)
+
     course_skills = new_df["course_skills"].tolist()
-    check_skills = [skill.lower() for skill in course_skills]
+
+    check_skills = [str(skill).lower() for skill in course_skills]
 
     # dict checker
     for index in range(len(course_skills)):
@@ -40,7 +43,12 @@ def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]
                 course_skills[index] = key
                 break
         else:
-            new_skills_dict[skill] = [skill]
+            actual_skill = str(course_skills[index])
+
+            if skill == actual_skill.lower():
+                new_skills_dict[actual_skill] = [skill]
+            else:
+                new_skills_dict[skill] = [skill]
 
     # handle output
     if set(new_skills_dict.keys()) - set(skills_dict.keys()):

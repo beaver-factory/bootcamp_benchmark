@@ -8,6 +8,13 @@ on:
       - "loaders/**"
       - ".github/workflows/deploy_loaders_stag.yaml"
 
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "loaders/**"
+      - ".github/workflows/deploy_loaders_stag.yaml"
+
 env:
   FUNCTION_APP_NAME: bb-loaders-stag2
   RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
@@ -23,6 +30,17 @@ jobs:
     runs-on: ubuntu-latest
     name: Test and Lint
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_PASSWORD: password123
+          POSTGRES_USER: db_admin
+          POSTGRES_HOST_AUTH_METHOD: password
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
       - name: checkout code
         uses: actions/checkout@v3
@@ -37,14 +55,8 @@ jobs:
         shell: bash
         run: pip install -r requirements.txt
 
-      # - name: prune dependencies
-      #   run: make prune
-
       - name: lint
         run: make lint
-
-      - name: dock
-        run: make dock
 
       - name: test
         run: make unit_test
@@ -58,6 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: TestAndLint
     name: Staging Functions Deployment
+    if: github.event_name == 'push'
 
     steps:
       - name: checkout code
