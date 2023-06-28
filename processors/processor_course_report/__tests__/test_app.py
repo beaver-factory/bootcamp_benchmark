@@ -22,7 +22,7 @@ expected_data_structure = [
             },
             {
                 "course_name": "test",
-                "course_skills": ["test skill 1", "test skill 2", "test skill 3", None],
+                "course_skills": ["test skill 1", "test skill 2", "test skill 3"],
                 "course_locations": "Manchester, York",
                 "course_description": "test"
             }
@@ -49,6 +49,7 @@ expected_data_structure = [
             "timestamp": ""
         }
     }
+
 ]
 
 locations = {
@@ -138,6 +139,25 @@ def test_dataframe_contains_correct_number_of_rows(outBlob):
 
 @patch('azure.functions.Out')
 def test_dataframe_removes_rows_with_no_skills(outBlob):
+    expected_data_structure.append(
+        {
+            "provider_name": "test2",
+            "provider_locations": ["test2"],
+            "provider_tracks": ["test2"],
+            "provider_courses": [
+                {
+                    "course_name": "test2",
+                    "course_skills": [],
+                    "course_locations": "Birmingham, Online",
+                    "course_description": "test2"
+                }
+            ],
+            "meta": {
+                "target_url": "",
+                "timestamp": ""
+            }
+        })
+
     inBlob = generate_inputstream(dirpath)
     result = process_course_data(pd.read_json(
         json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
