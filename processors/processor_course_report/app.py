@@ -1,4 +1,6 @@
 import pandas as pd
+from pandas import DataFrame
+from typing import List
 import logging
 from processor_course_report.extract_skills import extract_skills
 from processor_course_report.skill_deduper import check_edge_case_dict
@@ -43,16 +45,17 @@ def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkill
     return df_with_deduped_skills
 
 
-def process_course_report_skills(df):
-    exploded_skills = df.explode(
-        'course_skills').reset_index().drop(['index', 'level_0'], axis=1)
+def process_course_report_courses(exploded_df: DataFrame, normalised_df: DataFrame) -> DataFrame:
+    """Combines initial dataframe with normalised dataframe and removes unwanted columns
 
-    logging.info('Successfully exploded course skills array into rows')
+    :param exploded_df: initial df
+    :type exploded_df: DataFrame
+    :param normalised_df: normalised provider_courses df
+    :type normalised_df: DataFrame
+    :return: concatenated dataframe
+    :rtype: DataFrame
+    """
 
-    return exploded_skills
-
-
-def process_course_report_courses(exploded_df, normalised_df):
     concat_dataframe_with_courses = pd.concat([exploded_df, normalised_df], axis=1).drop([
         'provider_courses', 'provider_locations', 'provider_tracks'], axis=1)
 
@@ -61,7 +64,32 @@ def process_course_report_courses(exploded_df, normalised_df):
     return concat_dataframe_with_courses
 
 
-def process_course_report_metadata(df):
+def process_course_report_skills(df: DataFrame) -> DataFrame:
+    """Explodes skills to be on separate rows, returning new dataframe
+
+    :param df: pandas dataframe
+    :type df: DataFrame
+    :return: new dataframe with skills exploded
+    :rtype: DataFrame
+    """
+
+    exploded_skills = df.explode(
+        'course_skills').reset_index().drop(['index', 'level_0'], axis=1)
+
+    logging.info('Successfully exploded course skills array into rows')
+
+    return exploded_skills
+
+
+def process_course_report_metadata(df: DataFrame) -> DataFrame:
+    """Normalises and concatenates metadata to the dataframe
+
+    :param df: pandas dataframe
+    :type df: DataFrame
+    :return: new dataframe with concatenated metadata
+    :rtype: DataFrame
+    """
+
     normalised_meta = pd.json_normalize(df.meta)
 
     concat_dataframe_with_meta = pd.concat(
@@ -72,7 +100,16 @@ def process_course_report_metadata(df):
     return concat_dataframe_with_meta
 
 
-def process_course_report_locations(df, locations):
+def process_course_report_locations(df: DataFrame, locations: List[str]) -> DataFrame:
+    """Explodes course_locations then filters for UK + online locations
+
+    :param df: pandas dataframe
+    :type df: DataFrame
+    :param locations: list of valid UK locations
+    :type locations: List[str]
+    :return: new dataframe with exploded and filtered locations
+    :rtype: DataFrame
+    """
     df['course_locations'] = df['course_locations'].map(lambda x: x.split(', '))
 
     exploded_locations = df.explode('course_locations')
