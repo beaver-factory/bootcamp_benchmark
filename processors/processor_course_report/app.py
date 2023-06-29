@@ -1,6 +1,7 @@
 import pandas as pd
 from pandas import DataFrame
 from typing import List
+from azure.functions import InputStream
 import logging
 from processor_course_report.extract_skills import extract_skills
 from processor_course_report.skill_deduper import check_edge_case_dict
@@ -125,7 +126,17 @@ def process_course_report_locations(df: DataFrame, locations: List[str]) -> Data
     return exploded_locations_filtered
 
 
-def process_course_descriptions(normalised_courses, inSkillsDict):
+def process_course_descriptions(normalised_courses: DataFrame, inSkillsDict: InputStream) -> DataFrame:
+    """Extracts key skills from description and drops description
+
+    :param normalised_courses: pandas dataframe
+    :type normalised_courses: DataFrame
+    :param inSkillsDict: Dictionary of skills
+    :type inSkillsDict: InputStream
+    :return: new dataframe with description dropped
+    :rtype: DataFrame
+    """
+
     skills_dict = json.loads(inSkillsDict.read().decode('utf-8'))
 
     def consolidate_desc_into_skills(row):

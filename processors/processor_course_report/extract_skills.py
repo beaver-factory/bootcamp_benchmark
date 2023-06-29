@@ -4,18 +4,15 @@ from typing import List, Dict
 
 
 def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
-    """Runs description through spaCy NLP model to return a list of digital skills from a given course description
+    """Extracts skills from description string
 
-
-    Args:
-        description (str): Course description from which to extract skills
-        inSkillsDict (Dict): Dictionary of skill root words each with a List of synonyms as values.
-
-    Raises:
-        Exception: Checks that description passed in is of type str
-
-    Returns:
-        List[str]: List of skills that have been extracted
+    :param description: course description
+    :type description: str
+    :param inSkillsDict: dictionary of skills
+    :type inSkillsDict: Dict
+    :raises Exception: checks if description is not string
+    :return: list of skills
+    :rtype: List[str]
     """
 
     if type(description) != str:
