@@ -16,8 +16,7 @@ def load_course_report_into_db(inBlob: InputStream):
     df = pd.read_csv(BytesIO(inBlob.read()))
     df.pop(df.columns[0])
 
-    column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations',
-                      'course_description', 'target_url', 'timestamp', 'course_country']
+    column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations', 'target_url', 'timestamp', 'course_country']
 
     handle_loader_errors(column_headers, df)
 
@@ -33,7 +32,6 @@ def load_course_report_into_db(inBlob: InputStream):
                 course_name VARCHAR(100),
                 skill VARCHAR(50),
                 course_location VARCHAR(50),
-                description TEXT,
                 collection_url TEXT,
                 collection_date DATE,
                 course_country VARCHAR(10)
@@ -49,7 +47,6 @@ def load_course_report_into_db(inBlob: InputStream):
                  course_name,
                  skill,
                  course_location,
-                 description,
                  collection_url,
                  collection_date,
                  course_country
