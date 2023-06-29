@@ -30,13 +30,13 @@ def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
 
     words_list = [word.split() for word in patterns]
 
-    skills_to_label_regardless_of_pos = ["agile", "rUbY on rails"]
+    skills_to_label_regardless_of_pos = ["agile"]
 
     formatted_skills = [skill.lower().split() for skill in skills_to_label_regardless_of_pos]
 
     for words in words_list:
         pattern = []
-        if words in formatted_skills:
+        if words in formatted_skills or len(words) > 1:
             pattern = [{"LOWER": word.lower()} for word in words]
         else:
             pattern = [{"LOWER": word.lower(), "POS": {"IN": ["PROPN", "NOUN"]}} for word in words]
