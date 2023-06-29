@@ -16,45 +16,21 @@ test_input5 = "On our Data Science course, you will learn the fundamentals of th
 
 dirpath = "processor_course_report/__tests__/extraction_skills_dict.json"
 
+test_dict = {"JavaScript": ["Javascript"], "Angular": ["Angular"], "Ruby on Rails": ["Ruby on Rails"], "React": ["react", "react.js", "reactjs"], "Python": ["Python"], "Django": ["Django"], "Express": ["Express"], "Node.js": ["Node.js"], "SQL": ["SQL"], "Excel": ["Excel"], "PowerBI": ["PowerBI"], "Tableau": ["Tableau"], "CSS": ["CSS"], "HTML": ["HTML"], "Bootstrap": ["Bootstrap"]}
 
-@pytest.fixture(scope="session", autouse=True)
-def create_json():
-    """Checks if test jsons are created, deletes if so, then generates fresh ones"""
-
-    test_dict = {"JavaScript": ["Javascript"], "Angular": ["Angular"], "Ruby on Rails": ["Ruby on Rails"], "React": ["react", "react.js", "reactjs"], "Python": ["Python"], "Django": ["Django"], "Express": ["Express"], "Node.js": ["Node.js"], "SQL": ["SQL"], "Excel": ["Excel"], "PowerBI": ["PowerBI"], "Tableau": ["Tableau"], "CSS": ["CSS"], "HTML": ["HTML"], "Bootstrap": ["Bootstrap"]}
-
-    if os.path.isfile(dirpath):
-        os.remove(dirpath)
-
-    with open(f"{dirpath}", "w") as file:
-        file.write(json.dumps(test_dict))
-
-    yield
-
-    os.remove(dirpath)
 
 
 def test_returns_correct_typing():
-    new_inputstream = generate_inputstream(dirpath)
 
-    skills_stream = new_inputstream.read().decode("utf-8")
-
-    skills_dict = json.loads(skills_stream)
-
-    result = extract_skills(test_input, skills_dict)
+    result = extract_skills(test_input, test_dict)
 
     for skill in result:
         assert type(skill) is str
 
 
 def test_returns_expected_list_of_skills():
-    new_inputstream = generate_inputstream(dirpath)
 
-    skills_stream = new_inputstream.read().decode("utf-8")
-
-    skills_dict = json.loads(skills_stream)
-
-    result = extract_skills(test_input, skills_dict)
+    result = extract_skills(test_input, test_dict)
 
     expected = ["JavaScript", "Angular", "React", "Ruby on Rails", "Python", "Django", "Express", "Node.js"]
 
@@ -62,45 +38,31 @@ def test_returns_expected_list_of_skills():
 
 
 def test_returns_correct_skills():
-    new_inputstream = generate_inputstream(dirpath)
 
-    skills_stream = new_inputstream.read().decode("utf-8")
+    result = extract_skills(test_input3, test_dict)
 
-    skills_dict = json.loads(skills_stream)
-
-    result = extract_skills(test_input3, skills_dict)
     expected = ["SQL", "Excel", "PowerBI", "Tableau", "Python"]
 
     assert sorted(result) == sorted(expected)
 
 
 def test_raises_exception_on_incorrect_input_type():
-    new_inputstream = generate_inputstream(dirpath)
-
-    skills_stream = new_inputstream.read().decode("utf-8")
-
-    skills_dict = json.loads(skills_stream)
 
     with pytest.raises(Exception) as e:
-        extract_skills(123, skills_dict)
+        extract_skills(123, test_dict)
 
     assert str(e.value) == "Input must be str"
 
 
 def test_ignores_skills_when_negative():
-    new_inputstream = generate_inputstream(dirpath)
-
-    skills_stream = new_inputstream.read().decode("utf-8")
-
-    skills_dict = json.loads(skills_stream)
 
     test_str = 'Not JavaScript'
     test_str2 = 'Definitely not JavaScript'
     test_str3 = 'We don\'t teach JavaScript on this course.'
 
-    result = extract_skills(test_str, skills_dict)
-    result2 = extract_skills(test_str2, skills_dict)
-    result3 = extract_skills(test_str3, skills_dict)
+    result = extract_skills(test_str, test_dict)
+    result2 = extract_skills(test_str2, test_dict)
+    result3 = extract_skills(test_str3, test_dict)
 
     assert len(result) == 0
     assert len(result2) == 0
@@ -108,13 +70,8 @@ def test_ignores_skills_when_negative():
 
 
 def test_ignores_unlike():
-    new_inputstream = generate_inputstream(dirpath)
 
-    skills_stream = new_inputstream.read().decode("utf-8")
-
-    skills_dict = json.loads(skills_stream)
-
-    result = extract_skills(test_input2, skills_dict)
+    result = extract_skills(test_input2, test_dict)
 
     expected = []
 
@@ -124,13 +81,7 @@ def test_ignores_unlike():
 def test_extracts_from_full_description():
     test_input = 'Students will create two websites (a 1-page website and a 5-page website) over the course of 12 weeks. Students will learn to code in HTML, CSS and Javascript. Students will experience the following: \r\n\r\n-Discover FTP (File Transfer Process) website servers\r\n-Develop link building skills\r\n-Learn the Bootstrap framework for responsive design\r\n-Learn how to font with Awesome icons\r\n-Learn how to use Photoshop\r\n-Learn how to implement contact forms.'
 
-    new_inputstream = generate_inputstream(dirpath)
-
-    skills_stream = new_inputstream.read().decode("utf-8")
-
-    skills_dict = json.loads(skills_stream)
-
-    result = extract_skills(test_input, skills_dict)
+    result = extract_skills(test_input, test_dict)
 
     expected = ['HTML', 'CSS', 'Javascript', 'Bootstrap']
 
@@ -140,13 +91,7 @@ def test_extracts_from_full_description():
 def test_ignores_negated_skills_in_full_description():
     test_input = 'Students will create two websites (a 1-page website and a 5-page website) over the course of 12 weeks. Students will learn to code in HTML, CSS and Javascript. Students will experience the following: \r\n\r\n-Discover FTP (File Transfer Process) website servers\r\n-Develop link building skills\r\n-Learn the Bootstrap framework for responsive design\r\n-Learn how to font with Awesome icons\r\n-Learn how to use Photoshop\r\n-Learn how to implement contact forms. We do not teach Python, React, or Ruby on Rails'
 
-    new_inputstream = generate_inputstream(dirpath)
-
-    skills_stream = new_inputstream.read().decode("utf-8")
-
-    skills_dict = json.loads(skills_stream)
-
-    result = extract_skills(test_input, skills_dict)
+    result = extract_skills(test_input, test_dict)
 
     expected = ['HTML', 'CSS', 'Javascript', 'Bootstrap']
 
