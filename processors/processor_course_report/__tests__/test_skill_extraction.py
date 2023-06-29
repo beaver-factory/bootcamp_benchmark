@@ -1,7 +1,4 @@
 from ..extract_skills import extract_skills
-from processor_utils import generate_inputstream
-import os
-import json
 import pytest
 
 test_input = "As a Software Engineer graduate you will be ready to start a career in a variety of coding roles. Throughout this bootcamp you will learn to: create front-end web application with modern JavaScript frameworks such as Angular or React, develop full-stack applications with in-demand technologies such as Ruby on Rails, Python with Django, and Express with Node.js, and integrate third-party application programming interfaces (APIs) in an application."
@@ -17,7 +14,6 @@ test_input5 = "On our Data Science course, you will learn the fundamentals of th
 dirpath = "processor_course_report/__tests__/extraction_skills_dict.json"
 
 test_dict = {"JavaScript": ["Javascript"], "Angular": ["Angular"], "Ruby on Rails": ["Ruby on Rails"], "React": ["react", "react.js", "reactjs"], "Python": ["Python"], "Django": ["Django"], "Express": ["Express"], "Node.js": ["Node.js"], "SQL": ["SQL"], "Excel": ["Excel"], "PowerBI": ["PowerBI"], "Tableau": ["Tableau"], "CSS": ["CSS"], "HTML": ["HTML"], "Bootstrap": ["Bootstrap"]}
-
 
 
 def test_returns_correct_typing():
