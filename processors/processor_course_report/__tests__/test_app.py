@@ -169,7 +169,8 @@ def test_dataframe_removes_rows_with_no_skills(outBlob):
 @patch('azure.functions.Out')
 def test_skills_column_gains_skills_from_description(outBlob):
     inBlob = generate_inputstream(dirpath)
+    
     result = process_course_data(pd.read_json(
         json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
 
-    assert (result['course_skills'].eq('CSS')).any()
+    assert 'CSS' in result['course_skills'].values
