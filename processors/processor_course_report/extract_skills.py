@@ -4,7 +4,7 @@ from negspacy.negation import Negex  # noqa:F401
 
 def extract_skills(description, inSkillsDict):
     """
-    Runs an openAI API query to return a list of digital skills from a given course description
+    Runs description through spaCy NLP model to return a list of digital skills from a given course description
 
     :param description: a string detailing what a bootcamp course offers
     :type description: string
