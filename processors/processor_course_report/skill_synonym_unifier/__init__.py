@@ -3,8 +3,8 @@ from azure.functions import InputStream, Out
 import json
 
 
-def check_edge_case_dict(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]) -> DataFrame:
-    """Checks a course report dataframe with skills for duplicates and alters it according to a dictionary.
+def process_skill_synonyms(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]) -> DataFrame:
+    """Checks a course report dataframe with skills for synonyms and alters it according to a dictionary.
 
     :param df: a pandas dataframe
     :type df: DataFrame
