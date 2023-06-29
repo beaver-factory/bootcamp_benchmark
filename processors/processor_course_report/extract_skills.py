@@ -37,7 +37,7 @@ def extract_skills(description, inSkillsDict):
 
     doc = nlp(description)
 
-    words_to_remove = ["Unlike"]
+    words_to_remove = ["Unlike", "unlike"]
 
     filtered_sents = []
 
