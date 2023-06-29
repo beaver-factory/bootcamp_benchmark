@@ -25,7 +25,7 @@ def create_csv():
         shutil.rmtree(dirpath)
 
     column_headers = ['provider_name', 'course_name', 'course_skills', 'course_locations',
-                      'course_description', 'target_url', 'timestamp', 'course_country']
+                      'target_url', 'timestamp', 'course_country']
 
     generate_csv(column_headers)
 
@@ -69,7 +69,7 @@ def test_db_correct_lengths():
     results = db_results(query)
 
     assert len(results) == 3
-    assert len(results[0]) == 9
+    assert len(results[0]) == 8
 
 
 def test_rows_are_different():
