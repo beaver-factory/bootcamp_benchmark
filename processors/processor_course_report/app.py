@@ -1,6 +1,8 @@
 import pandas as pd
 import logging
+from processor_course_report.extract_skills import extract_skills
 from processor_course_report.skill_deduper import check_edge_case_dict
+import json
 
 
 def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkillsDict):
@@ -27,7 +29,10 @@ def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkill
     # combine different aspects of the data into the dataframe
     df_with_courses = process_course_report_courses(exploded_courses, normalised_courses)
 
-    df_with_skills = process_course_report_skills(df_with_courses)
+    # extract skills from description
+    extracted_skills = process_course_descriptions(df_with_courses, inSkillsDict)
+
+    df_with_skills = process_course_report_skills(extracted_skills)
 
     df_with_meta = process_course_report_metadata(df_with_skills)
 
@@ -81,3 +86,22 @@ def process_course_report_locations(df, locations):
     exploded_locations_filtered.loc[:, ('course_country',)] = 'UK'
 
     return exploded_locations_filtered
+
+
+def process_course_descriptions(normalised_courses, inSkillsDict):
+    skills_dict = json.loads(inSkillsDict.read().decode('utf-8'))
+
+    def consolidate_desc_into_skills(row):
+        extracted_skills = extract_skills(str(row['course_description']), skills_dict)
+
+        existing_skills = row['course_skills']
+
+        row['course_skills'] = list(set(existing_skills + extracted_skills))
+
+        return row
+
+    normalised_courses.apply(lambda x: consolidate_desc_into_skills(x), axis=1)
+
+    desc_removed = normalised_courses.drop('course_description', axis=1)
+
+    return desc_removed
