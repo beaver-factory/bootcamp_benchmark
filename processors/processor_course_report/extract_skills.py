@@ -1,41 +1,62 @@
 import spacy
-from spacy.matcher import Matcher
+from negspacy.negation import Negex  # noqa:F401
+from typing import List, Dict
 
 
-def extract_skills(description, inSkillsDict):
-    """
-    Runs an openAI API query to return a list of digital skills from a given course description
+def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
+    """Runs description through spaCy NLP model to return a list of digital skills from a given course description
 
-    :param description: a string detailing what a bootcamp course offers
-    :type description: string
-    :return: list of digital skills included in the course description
-    :rtype: list
+
+    Args:
+        description (str): Course description from which to extract skills
+        inSkillsDict (Dict): Dictionary of skill root words each with a List of synonyms as values.
+
+    Raises:
+        Exception: Checks that description passed in is of type str
+
+    Returns:
+        List[str]: List of skills that have been extracted
     """
 
     if type(description) != str:
         raise Exception("Input must be str")
 
     nlp = spacy.load("en_core_web_md")
+    nlp.add_pipe("negex", after="ner", config={"ent_types": ["SKILL"]})
+    ruler = nlp.add_pipe("entity_ruler", before="ner")
+
+    patterns = []
+    full_patterns = []
+
+    for skill in inSkillsDict:
+        patterns.extend(inSkillsDict[skill])
+
+    words_list = [word.split() for word in patterns]
+
+    for words in words_list:
+        pattern = [{"LOWER": word.lower()} for word in words]
+        full_patterns.append(pattern)
+
+    final_patterns = [{"label": "SKILL", "pattern": pattern} for pattern in full_patterns]
+
+    ruler.add_patterns(final_patterns)
 
     doc = nlp(description)
 
-    matcher = Matcher(nlp.vocab)
+    words_to_remove = ["Unlike", "unlike"]
 
-    skills_list = []
+    filtered_sents = []
 
-    for skill in inSkillsDict:
-        skills_list.extend(inSkillsDict[skill])
+    for sent in doc.sents:
+        if not any(word in sent.text for word in words_to_remove):
+            filtered_sents.append(sent.text)
 
-    pattern_list = [
-        [
-            {"LOWER": word.lower()} for word in skill.split()
-        ] for skill in skills_list
-    ]
+    filtered_doc = nlp(" ".join(filtered_sents))
 
-    matcher.add("SKILL", pattern_list)
-    matches = matcher(doc)
-    matches.sort(key=lambda x: x[1])
+    result = []
 
-    skills = [doc[match[1]:match[2]].text for match in matches]
+    for ent in filtered_doc.ents:
+        if ent.label_ == "SKILL" and ent._.negex is False:
+            result.append(ent.text)
 
-    return skills
+    return result
