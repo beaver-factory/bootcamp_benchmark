@@ -34,7 +34,7 @@ def collector_adzuna(inSkillsDict: InputStream) -> str:
 
     for keyword in skills_dict:
 
-        keyword_query = create_keyword_query(skills_dict[keyword])
+        keyword_query = create_keyword_query(keyword, skills_dict[keyword])
 
         request_url = f"http://api.adzuna.com/v1/api/jobs/gb/search/1?app_id={app_id_secret}&app_key={app_key_secret}&{keyword_query}&location0=UK&category=it-jobs&content-type=application/json&title_only=junior"
 
@@ -53,6 +53,9 @@ def collector_adzuna(inSkillsDict: InputStream) -> str:
             job_count = response_json['count']
 
             skill_count[keyword] = job_count
+
+    if len(skill_count.keys()) != len(skills_dict.keys()):
+        raise Exception('Number of API responses does not match number of keys in skills_dict')
 
     return json.dumps(skill_count)
 
@@ -78,30 +81,33 @@ def get_secret_value(secret_name: str):
     return secret_value
 
 
-def create_keyword_query(synonyms: list) -> str:
+def create_keyword_query(keyword: str, synonyms: list) -> str:
     """Takes a keyword and returns synonyms if applicable with the relevant query string for the adzuna API
 
+    :param keyword: key used in skills_dict for each skill
+    :type keyword: str
     :param synonyms: list of synyoms taken from skills_dict
     :type synonyms: list
     :return: query value featuring skill and synonyms
     :rtype: str
     """
+    keyword = keyword.replace('-', ' ')
+    for synonym in synonyms:
+        synonym = synonym.replace('-', ' ')
 
-    if len(synonyms) == 1:
-        if ' ' not in synonyms[0]:
-            # where key == value (no synonyms) and single word skill
-            return 'what=' + urllib.parse.quote(synonyms[0])
-        else:
-            # where key == value (no synonyms) but multi-word skill
-            return 'what_phrase=' + urllib.parse.quote(synonyms[0])
-    elif len(synonyms) > 1:
-        chars = []
-        for synonym in synonyms:
-            for char in synonym:
-                chars.append(char)
-        if ' ' in chars:
-            # where multiple synyonyms and one contains a space, default to just searching using key
-            return 'what=' + urllib.parse.quote(synonyms[0])
-        else:
-            # where multiple synonyms and no spaces, include all synonyms in query
-            return 'what_or=' + urllib.parse.quote((" ").join(synonyms))
+    if ' ' in keyword:
+        return 'what_phrase=' + urllib.parse.quote(keyword)
+    else:
+        if len(synonyms) == 1:
+            return 'what=' + urllib.parse.quote(keyword)
+        elif len(synonyms) > 1:
+            chars = []
+            for synonym in synonyms:
+                for char in synonym:
+                    chars.append(char)
+            if ' ' in chars:
+                # where multiple synyonyms and one contains a space, default to just searching using key
+                return 'what=' + urllib.parse.quote(keyword)
+            else:
+                # where multiple synonyms and no spaces, include all synonyms in query
+                return 'what_or=' + urllib.parse.quote((" ").join(synonyms))
