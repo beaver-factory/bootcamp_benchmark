@@ -119,14 +119,13 @@ def test_dataframe_contains_correct_columns(outBlob):
         'course_name',
         'course_skills',
         'course_locations',
-        'course_description',
         'target_url',
         'timestamp',
         'course_country'
     ]
 
     assert all(column in result.columns.values for column in expected)
-    assert result.shape[1] == 8
+    assert result.shape[1] == 7
 
 
 @patch('azure.functions.Out')
