@@ -1,15 +1,21 @@
 import spacy
 from negspacy.negation import Negex  # noqa:F401
+from typing import List, Dict
 
 
-def extract_skills(description, inSkillsDict):
-    """
-    Runs description through spaCy NLP model to return a list of digital skills from a given course description
+def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
+    """Runs description through spaCy NLP model to return a list of digital skills from a given course description
 
-    :param description: a string detailing what a bootcamp course offers
-    :type description: string
-    :return: list of digital skills included in the course description
-    :rtype: list
+
+    Args:
+        description (str): Course description from which to extract skills
+        inSkillsDict (Dict): Dictionary of skill root words each with a List of synonyms as values.
+
+    Raises:
+        Exception: Checks that description passed in is of type str
+
+    Returns:
+        List[str]: List of skills that have been extracted
     """
 
     if type(description) != str:
