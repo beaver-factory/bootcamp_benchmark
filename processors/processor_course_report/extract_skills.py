@@ -34,7 +34,7 @@ def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
     words_list = [word.split() for word in patterns]
 
     for words in words_list:
-        pattern = [{"LOWER": word.lower()} for word in words]
+        pattern = generate_pattern(words)
         full_patterns.append(pattern)
 
     final_patterns = [{"label": "SKILL", "pattern": pattern} for pattern in full_patterns]
@@ -60,3 +60,25 @@ def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
             result.append(ent.text)
 
     return result
+
+def generate_pattern(words: List[str]) -> List[Dict]:
+    """Generates spacy entity pattern
+
+    :param words: List of individual skills
+    :type words: List[str]
+    :return: Spacy entity ruler patterns
+    :rtype: List[Dict]
+    """
+    pattern = []
+
+    for word in words:
+        if '-' in word: 
+            tokens = word.split('-')
+            token_patterns = [{'LOWER': token.lower()} for token in tokens]
+            token_patterns.insert(1,{'IS_PUNCT': True})
+            pattern.extend(token_patterns)
+            continue
+
+        pattern.append({"LOWER": word.lower()})
+
+    return pattern
