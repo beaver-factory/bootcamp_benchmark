@@ -177,7 +177,7 @@ def test_create_keyword_query_replaces_hypen_with_space():
     assert result == expected
 
 
-def test_create_keyword_query_replaces_hypen_with_space():
+def test_create_keyword_query_replaces_hypen_with_space_problem_solving():
     keyword = 'Problem-Solving'
     synonyms = test_dict[keyword]
     result = create_keyword_query(keyword, synonyms)
