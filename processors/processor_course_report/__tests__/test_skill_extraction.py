@@ -93,6 +93,7 @@ def test_ignores_negated_skills_in_full_description():
 
     assert sorted(result) == sorted(expected)
 
+
 def test_detects_hyphenation():
     test_input = 'Students will create two websites (a 1-page website and a 5-page website) over the course of 12 weeks. Students will learn to code in HTML, CSS and Javascript. Students will experience the following: \r\n\r\n-Discover FTP (File Transfer Process) website servers\r\n-Develop link building skills\r\n-Learn the Bootstrap framework for responsive design\r\n-Learn how to font with Awesome icons\r\n-Learn how to use Photoshop\r\n-Learn how to implement contact forms. We do not teach Python, React, or Ruby on Rails. We teach Object-oriented programming'
 

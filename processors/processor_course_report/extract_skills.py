@@ -61,6 +61,7 @@ def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
 
     return result
 
+
 def generate_pattern(words: List[str]) -> List[Dict]:
     """Generates spacy entity pattern
 
@@ -72,10 +73,10 @@ def generate_pattern(words: List[str]) -> List[Dict]:
     pattern = []
 
     for word in words:
-        if '-' in word: 
+        if '-' in word:
             tokens = word.split('-')
             token_patterns = [{'LOWER': token.lower()} for token in tokens]
-            token_patterns.insert(1,{'IS_PUNCT': True})
+            token_patterns.insert(1, {'IS_PUNCT': True})
             pattern.extend(token_patterns)
             continue
 
