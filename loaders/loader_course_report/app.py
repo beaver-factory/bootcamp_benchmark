@@ -40,7 +40,7 @@ def load_course_report_into_db(inBlob: InputStream):
 
     logging.info(f'Successfully created {table_name} table')
 
-    args_str = generate_insertion_string(df, cur, 8)
+    args_str = generate_insertion_string(df, cur, 7)
 
     cur.execute(f"""INSERT INTO {table_name} (
                  provider_name,
