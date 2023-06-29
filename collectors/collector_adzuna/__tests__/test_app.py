@@ -9,7 +9,12 @@ import shutil
 dirpath = 'collector_adzuna/__tests__/json'
 
 
-test_dict = {'Express': ['express', 'expressjs', 'express.js'], 'CSS': ['css', 'css3.0'], 'HTML': ['html', 'html5'], 'React': ['react', 'react.js', 'reactjs'], 'Java': ['java'], 'Asana': ['asana'], 'Data Engineering': ['data engineering'], 'GCP': ['gcp', 'google cloud', 'google cloud platform'], 'C#': ['c#'], "AWS": ["amazon web services", "aws"], "Quality Assurance": ["qa", "quality assurance", "software testing"], "scikit-learn": ["scikit-learn", "sklearn"]}
+test_dict = {'Express': ['express', 'expressjs', 'express.js'], 'CSS': ['css', 'css3.0'], 'HTML': ['html', 'html5'], 'React': ['react', 'react.js', 'reactjs'], 'Java': ['java'], 'Asana': ['asana'], 'Data Engineering': ['data engineering'], 'GCP': ['gcp', 'google cloud', 'google cloud platform'], 'C#': ['c#'], "AWS": ["amazon web services", "aws"], "Quality Assurance": ["qa", "quality assurance", "software testing"], "scikit-learn": ["scikit-learn", "sklearn"], "Problem-Solving": [
+    "analytical thinking",
+    "critical thinking",
+    "problem-solving",
+    "troubleshooting"
+]}
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -168,6 +173,15 @@ def test_create_keyword_query_replaces_hypen_with_space():
     synonyms = test_dict[keyword]
     result = create_keyword_query(keyword, synonyms)
     expected = 'what_phrase=scikit%20learn'
+
+    assert result == expected
+
+
+def test_create_keyword_query_replaces_hypen_with_space():
+    keyword = 'Problem-Solving'
+    synonyms = test_dict[keyword]
+    result = create_keyword_query(keyword, synonyms)
+    expected = 'what_phrase=Problem%20Solving'
 
     assert result == expected
 
