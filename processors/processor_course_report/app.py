@@ -100,8 +100,8 @@ def process_course_descriptions(normalised_courses, inSkillsDict):
 
         return row
 
-    normalised_courses.apply(lambda x: consolidate_desc_into_skills(x), axis=1)
+    consolidated_skills = normalised_courses.apply(lambda x: consolidate_desc_into_skills(x), axis=1)
 
-    desc_removed = normalised_courses.drop('course_description', axis=1)
+    desc_removed = consolidated_skills.drop('course_description', axis=1)
 
     return desc_removed
