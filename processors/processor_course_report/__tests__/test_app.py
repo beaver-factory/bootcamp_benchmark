@@ -17,8 +17,8 @@ expected_data_structure = [
             {
                 "course_name": "test",
                 "course_skills": ["test skill 1"],
-                "course_locations": "test",
-                "course_description": "test"
+                "course_locations": "York",
+                "course_description": "test css"
             },
             {
                 "course_name": "test",
@@ -133,7 +133,7 @@ def test_dataframe_contains_correct_number_of_rows(outBlob):
     inBlob = generate_inputstream(dirpath)
     result = process_course_data(pd.read_json(
         json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
-    assert result.shape[0] == 4
+    assert result.shape[0] == 6
 
 
 @patch('azure.functions.Out')
@@ -164,3 +164,12 @@ def test_dataframe_removes_rows_with_no_skills(outBlob):
     is_any_nulls = result['course_skills'].isnull().values.any()
 
     assert is_any_nulls is not True
+
+
+@patch('azure.functions.Out')
+def test_skills_column_gains_skills_from_description(outBlob):
+    inBlob = generate_inputstream(dirpath)
+    result = process_course_data(pd.read_json(
+        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+
+    assert (result['course_skills'].eq('CSS')).any()
