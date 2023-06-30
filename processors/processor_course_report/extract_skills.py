@@ -30,10 +30,6 @@ def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
 
     words_list = [word.split() for word in patterns]
 
-    skills_to_label_regardless_of_pos = ["agile"]
-
-    formatted_skills = [skill.lower().split() for skill in skills_to_label_regardless_of_pos]
-
     for words in words_list:
         pattern = generate_pattern(words)
         full_patterns.append(pattern)
@@ -76,7 +72,7 @@ def generate_pattern(words: List[str]) -> List[Dict]:
 
     pattern = []
 
-    for word in words:  
+    for word in words:
         if '-' in word:
             tokens = word.split('-')
             token_patterns = [{'LOWER': token.lower()} for token in tokens]
