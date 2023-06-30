@@ -4,18 +4,15 @@ from typing import List, Dict
 
 
 def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
-    """Runs description through spaCy NLP model to return a list of digital skills from a given course description
+    """Extracts skills from description string
 
-
-    Args:
-        description (str): Course description from which to extract skills
-        inSkillsDict (Dict): Dictionary of skill root words each with a List of synonyms as values.
-
-    Raises:
-        Exception: Checks that description passed in is of type str
-
-    Returns:
-        List[str]: List of skills that have been extracted
+    :param description: course description
+    :type description: str
+    :param inSkillsDict: dictionary of skills
+    :type inSkillsDict: Dict
+    :raises Exception: checks if description is not string
+    :return: list of skills
+    :rtype: List[str]
     """
 
     if type(description) != str:
@@ -32,6 +29,10 @@ def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
         patterns.extend(inSkillsDict[skill])
 
     words_list = [word.split() for word in patterns]
+
+    skills_to_label_regardless_of_pos = ["agile"]
+
+    formatted_skills = [skill.lower().split() for skill in skills_to_label_regardless_of_pos]
 
     for words in words_list:
         pattern = generate_pattern(words)
@@ -70,16 +71,20 @@ def generate_pattern(words: List[str]) -> List[Dict]:
     :return: Spacy entity ruler patterns
     :rtype: List[Dict]
     """
+    skills_to_label_regardless_of_pos = ["agile"]
+    formatted_skills = [skill.lower().split() for skill in skills_to_label_regardless_of_pos]
+
     pattern = []
 
-    for word in words:
+    for word in words:  
         if '-' in word:
             tokens = word.split('-')
             token_patterns = [{'LOWER': token.lower()} for token in tokens]
             token_patterns.insert(1, {'IS_PUNCT': True})
             pattern.extend(token_patterns)
-            continue
-
-        pattern.append({"LOWER": word.lower()})
+        elif words in formatted_skills or len(words) > 1:
+            pattern.append({"LOWER": word.lower()})
+        else:
+            pattern.append({"LOWER": word.lower(), "POS": {"IN": ["PROPN", "NOUN"]}})
 
     return pattern
