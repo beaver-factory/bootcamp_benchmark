@@ -1,16 +1,16 @@
 from pandas import DataFrame
-from azure.functions import InputStream, Out
+from azure.functions import Out
+from typing import Dict
 import json
-import logging
 
 
-def process_skill_synonyms(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]) -> DataFrame:
+def process_skill_synonyms(df: DataFrame, skills_dict: Dict, outBlob: Out[bytes]) -> DataFrame:
     """Checks a course report dataframe with skills for synonyms and alters it according to a dictionary.
 
     :param df: a pandas dataframe
     :type df: DataFrame
-    :param inBlob: an azure inputstream
-    :type inBlob: InputStream
+    :param skills_dict: a skills dictionary
+    :type skills_dict: InputStream
     :param outBlob: an azure output blob
     :type outBlob: Out[bytes]
     :raises Exception: empty dict blob warning (checking for existence of dictionary)
@@ -20,13 +20,6 @@ def process_skill_synonyms(df: DataFrame, inBlob: InputStream, outBlob: Out[byte
     """
 
     # handle input
-    input_json = inBlob.read().decode('utf-8')
-    logging.info(input_json)
-
-    if input_json == "" or input_json == "{}":
-        raise Exception('inBlob is empty, check skills_dict.json exists')
-
-    skills_dict = json.loads(input_json)
 
     new_skills_dict = skills_dict.copy()
 

@@ -79,9 +79,11 @@ def create_json():
 @patch('azure.functions.Out')
 def test_raises_exception_on_incorrect_shape_at_first_level(outBlob):
     inBlob = generate_inputstream(dirpath)
+    skills_dict = json.loads(inBlob.read().decode('utf-8'))
+
     test_dataframe = pd.DataFrame([{'test': 'string'}])
     with pytest.raises(KeyError) as excinfo:
-        process_course_data(test_dataframe, locations["uk_locations"], inBlob, outBlob)
+        process_course_data(test_dataframe, locations["uk_locations"], skills_dict, outBlob)
 
     assert 'provider_courses' in str(excinfo.value)
 
@@ -89,6 +91,8 @@ def test_raises_exception_on_incorrect_shape_at_first_level(outBlob):
 @patch('azure.functions.Out')
 def test_raises_exception_on_incorrect_shape_at_nest(outBlob):
     inBlob = generate_inputstream(dirpath)
+    skills_dict = json.loads(inBlob.read().decode('utf-8'))
+
     error_structure = copy.deepcopy(expected_data_structure)
     del error_structure[0]['provider_courses'][0]['course_skills']
     del error_structure[0]['provider_courses'][1]['course_skills']
@@ -96,7 +100,7 @@ def test_raises_exception_on_incorrect_shape_at_nest(outBlob):
     df = pd.read_json(json.dumps(error_structure))
 
     with pytest.raises(KeyError) as excinfo:
-        process_course_data(df, locations["uk_locations"], inBlob, outBlob)
+        process_course_data(df, locations["uk_locations"], skills_dict, outBlob)
 
     assert 'course_skills' in str(excinfo.value)
 
@@ -104,16 +108,20 @@ def test_raises_exception_on_incorrect_shape_at_nest(outBlob):
 @patch('azure.functions.Out')
 def test_returns_pandas_dataframe(outBlob):
     inBlob = generate_inputstream(dirpath)
+    skills_dict = json.loads(inBlob.read().decode('utf-8'))
+
     result = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+        json.dumps(expected_data_structure)), locations["uk_locations"], skills_dict, outBlob)
     assert isinstance(result, pd.DataFrame)
 
 
 @patch('azure.functions.Out')
 def test_dataframe_contains_correct_columns(outBlob):
     inBlob = generate_inputstream(dirpath)
+    skills_dict = json.loads(inBlob.read().decode('utf-8'))
+
     result = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+        json.dumps(expected_data_structure)), locations["uk_locations"], skills_dict, outBlob)
     expected = [
         'provider_name',
         'course_name',
@@ -131,8 +139,10 @@ def test_dataframe_contains_correct_columns(outBlob):
 @patch('azure.functions.Out')
 def test_dataframe_contains_correct_number_of_rows(outBlob):
     inBlob = generate_inputstream(dirpath)
+    skills_dict = json.loads(inBlob.read().decode('utf-8'))
+
     result = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+        json.dumps(expected_data_structure)), locations["uk_locations"], skills_dict, outBlob)
     assert result.shape[0] == 5
 
 
@@ -158,8 +168,10 @@ def test_dataframe_removes_rows_with_no_skills(outBlob):
         })
 
     inBlob = generate_inputstream(dirpath)
+    skills_dict = json.loads(inBlob.read().decode('utf-8'))
+
     result = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+        json.dumps(expected_data_structure)), locations["uk_locations"], skills_dict, outBlob)
 
     is_any_nulls = result['course_skills'].isnull().values.any()
 
@@ -169,9 +181,10 @@ def test_dataframe_removes_rows_with_no_skills(outBlob):
 @patch('azure.functions.Out')
 def test_skills_column_gains_skills_from_description(outBlob):
     inBlob = generate_inputstream(dirpath)
+    skills_dict = json.loads(inBlob.read().decode('utf-8'))
 
     result = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+        json.dumps(expected_data_structure)), locations["uk_locations"], skills_dict, outBlob)
 
     assert 'CSS' in result['course_skills'].values
 
@@ -179,9 +192,10 @@ def test_skills_column_gains_skills_from_description(outBlob):
 @patch('azure.functions.Out')
 def test_no_duplicate_rows(outBlob):
     inBlob = generate_inputstream(dirpath)
+    skills_dict = json.loads(inBlob.read().decode('utf-8'))
 
     result = process_course_data(pd.read_json(
-        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+        json.dumps(expected_data_structure)), locations["uk_locations"], skills_dict, outBlob)
 
     duplicate_check = result.duplicated().tolist()
 

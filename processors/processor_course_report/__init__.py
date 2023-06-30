@@ -29,12 +29,17 @@ def main(inCourseReport: InputStream, inSkillsDict: InputStream, outCourseReport
     if len(input_obj) == 0:
         raise Exception('Unprocessed json is empty, check json output from collector')
 
+    skills_dict = json.loads(inSkillsDict.read().decode('utf-8'))
+
+    if input_json == "":
+        raise Exception('inBlob is empty, check skills_dict.json exists')
+
     locations = input_obj.pop(0)
 
     input = json.dumps(input_obj)
     input_df = pd.read_json(input)
 
-    bootcamps_df = process_course_data(input_df, locations["uk_locations"], inSkillsDict, outSkillsDict)
+    bootcamps_df = process_course_data(input_df, locations["uk_locations"], skills_dict, outSkillsDict)
     logging.info('Successfully processed course data')
     bootcamps_csv = bootcamps_df.to_csv()
     outCourseReport.set(bootcamps_csv.encode('utf-8'))

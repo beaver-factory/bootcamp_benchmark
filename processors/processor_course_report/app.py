@@ -1,23 +1,23 @@
 import pandas as pd
 from pandas import DataFrame
 from typing import List
-from azure.functions import InputStream
+from azure.functions import Out
 import logging
 from processor_course_report.extract_skills import extract_skills
 from processor_course_report.skill_synonym_unifier import process_skill_synonyms
-import json
+from typing import Dict
 
 
-def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkillsDict):
+def process_course_data(unprocessed_dataframe: DataFrame, locations: List[str], skills_dict: Dict, outSkillsDict: Out[bytes]) -> DataFrame:
     """Processes a dataframe of course data, cleaning it and arranging it for db insertion.
 
     :param unprocessed_dataframe: A pandas DataFrame of data structure found in template_data_structure.json
     :type unprocessed_dataframe: DataFrame
     :param locations: list of GB locations
-    :type locations: list
-    :param inSkillsDict: Azure input blob
-    :type inSkillsDict: InputStream
-    :param outSkillsDict: Azure output blob
+    :type locations: List[str]
+    :param skills_dict: skills dictionary
+    :type skills_dict: Dict
+    :param outSkillsDict:  Azure output blob
     :type outSkillsDict: Out[bytes]
     :return: a pandas DataFrame containing processed course data
     :rtype: DataFrame
@@ -33,7 +33,7 @@ def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkill
     df_with_courses = process_course_report_courses(exploded_courses, normalised_courses)
 
     # extract skills from description
-    extracted_skills = process_course_descriptions(df_with_courses, inSkillsDict)
+    extracted_skills = process_course_descriptions(df_with_courses, skills_dict)
 
     df_with_skills = process_course_report_skills(extracted_skills)
 
@@ -41,7 +41,7 @@ def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkill
 
     df_with_locations = process_course_report_locations(df_with_meta, locations)
 
-    df_with_deduped_skills = process_skill_synonyms(df_with_locations, inSkillsDict, outSkillsDict)
+    df_with_deduped_skills = process_skill_synonyms(df_with_locations, skills_dict, outSkillsDict)
 
     return df_with_deduped_skills.drop_duplicates()
 
@@ -126,7 +126,7 @@ def process_course_report_locations(df: DataFrame, locations: List[str]) -> Data
     return exploded_locations_filtered
 
 
-def process_course_descriptions(normalised_courses: DataFrame, inSkillsDict: InputStream) -> DataFrame:
+def process_course_descriptions(normalised_courses: DataFrame, skills_dict: Dict) -> DataFrame:
     """Extracts key skills from description and drops description
 
     :param normalised_courses: pandas dataframe
@@ -136,10 +136,6 @@ def process_course_descriptions(normalised_courses: DataFrame, inSkillsDict: Inp
     :return: new dataframe with description dropped
     :rtype: DataFrame
     """
-
-    skills_dict = json.loads(inSkillsDict.read().decode('utf-8'))
-    inSkillsDict.seek(0)  # Reset the pointer to the beginning of the stream
-    logging.info(skills_dict)
 
     def consolidate_desc_into_skills(row):
         extracted_skills = extract_skills(str(row['course_description']), skills_dict)

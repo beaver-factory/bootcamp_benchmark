@@ -29,11 +29,13 @@ def create_json():
 @patch('azure.functions.Out')
 def test_process_skill_synonyms_does_nothing_if_all_valid(outblob):
     new_inputstream = generate_inputstream(dirpath)
+    skills_dict = json.loads(new_inputstream.read().decode('utf-8'))
+
     skills = ['html', 'react', 'express']
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = process_skill_synonyms(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, skills_dict, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert skill_list[0] == 'HTML'
@@ -43,11 +45,13 @@ def test_process_skill_synonyms_does_nothing_if_all_valid(outblob):
 @patch('azure.functions.Out')
 def test_process_skill_synonyms_replaces_values(outblob):
     new_inputstream = generate_inputstream(dirpath)
+    skills_dict = json.loads(new_inputstream.read().decode('utf-8'))
+
     skills = ['html5']
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = process_skill_synonyms(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, skills_dict, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert skill_list[0] == 'HTML'
@@ -56,11 +60,13 @@ def test_process_skill_synonyms_replaces_values(outblob):
 @patch('azure.functions.Out')
 def test_process_skill_synonyms_outputs_new_blob_only_if_difference(outblob):
     new_inputstream = generate_inputstream(dirpath)
+    skills_dict = json.loads(new_inputstream.read().decode('utf-8'))
+
     skills = ['test1', 'test2']
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = process_skill_synonyms(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, skills_dict, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert outblob.set.call_count == 1
@@ -70,7 +76,7 @@ def test_process_skill_synonyms_outputs_new_blob_only_if_difference(outblob):
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = process_skill_synonyms(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, skills_dict, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert outblob.set.call_count == 1
@@ -80,11 +86,13 @@ def test_process_skill_synonyms_outputs_new_blob_only_if_difference(outblob):
 @patch('azure.functions.Out')
 def test_process_skill_synonyms_outputs_same_case_df(outblob):
     new_inputstream = generate_inputstream(dirpath)
+    skills_dict = json.loads(new_inputstream.read().decode('utf-8'))
+
     skills = ['HTML']
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = process_skill_synonyms(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, skills_dict, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert skill_list[0] != 'html'
@@ -93,11 +101,13 @@ def test_process_skill_synonyms_outputs_same_case_df(outblob):
 @patch('azure.functions.Out')
 def test_process_skill_synonyms_outputs_full_df(outblob):
     new_inputstream = generate_inputstream(dirpath)
+    skills_dict = json.loads(new_inputstream.read().decode('utf-8'))
+
     skills = ['HTML', 'React']
     data = [{"provider_name": "Northcoders", "course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = process_skill_synonyms(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, skills_dict, outblob)
     prov_list = result["provider_name"].tolist()
     skill_list = result["course_skills"].tolist()
 
