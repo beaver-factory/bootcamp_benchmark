@@ -138,6 +138,7 @@ def process_course_descriptions(normalised_courses: DataFrame, inSkillsDict: Inp
     """
 
     skills_dict = json.loads(inSkillsDict.read().decode('utf-8'))
+    inSkillsDict.seek(0)  # Reset the pointer to the beginning of the stream
     logging.info(skills_dict)
 
     def consolidate_desc_into_skills(row):
