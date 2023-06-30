@@ -138,6 +138,7 @@ def process_course_descriptions(normalised_courses: DataFrame, inSkillsDict: Inp
     """
 
     skills_dict = json.loads(inSkillsDict.read().decode('utf-8'))
+    logging.info(skills_dict)
 
     def consolidate_desc_into_skills(row):
         extracted_skills = extract_skills(str(row['course_description']), skills_dict)

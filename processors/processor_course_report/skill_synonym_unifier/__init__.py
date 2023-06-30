@@ -1,6 +1,7 @@
 from pandas import DataFrame
 from azure.functions import InputStream, Out
 import json
+import logging
 
 
 def process_skill_synonyms(df: DataFrame, inBlob: InputStream, outBlob: Out[bytes]) -> DataFrame:
@@ -20,11 +21,13 @@ def process_skill_synonyms(df: DataFrame, inBlob: InputStream, outBlob: Out[byte
 
     # handle input
     input_json = inBlob.read().decode('utf-8')
+    logging.info(input_json)
 
     if input_json == "" or input_json == "{}":
         raise Exception('inBlob is empty, check skills_dict.json exists')
 
     skills_dict = json.loads(input_json)
+
     new_skills_dict = skills_dict.copy()
 
     new_df = df.copy(deep=True)

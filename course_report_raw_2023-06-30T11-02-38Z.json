@@ -1,0 +1,68 @@
+[
+  {
+    "uk_locations": [
+      "Bath",
+      "Birmingham",
+      "Bristol",
+      "Buckinghamshire",
+      "Cambridge",
+      "Edinburgh",
+      "Glasgow",
+      "Leeds",
+      "Liverpool",
+      "London",
+      "Manchester",
+      "Sheffield",
+      "Wales",
+      "West Yorkshire"
+    ]
+  },
+  {
+    "provider_name": "Command Shift",
+    "provider_locations": [
+      "Birmingham",
+      "Bristol",
+      "Cambridge",
+      "Dublin",
+      "Edinburgh",
+      "Glasgow",
+      "Leeds",
+      "London",
+      "Manchester",
+      "Online",
+      "Wales"
+    ],
+    "provider_tracks": ["Full Stack Developer", "Front End Developer"],
+    "provider_courses": [
+      {
+        "course_name": "BOOTCAMP",
+        "course_skills": [
+          "MVC",
+          "Mobile",
+          "SQL",
+          "MySQL",
+          "GitHub",
+          "Front End",
+          "Data Structures",
+          "Algorithms",
+          "CSS",
+          "Express.js",
+          "HTML",
+          "Node.js",
+          "React.js",
+          "Agile",
+          "DevOps",
+          "Git",
+          "JavaScript",
+          "REST"
+        ],
+        "course_locations": "Online",
+        "course_description": "Gain a comprehensive understanding of how to build software in our 28-week immersive part-time bootcamp, and gain the skills you need to become a Junior Software Engineer.\r\n\r\nOur renowned BOOTCAMP course covers all aspects of software development. You'll learn about the tools you\u2019ll need to get started, before moving on to gain an in-depth understanding of the most popular programming language used in the industry: JavaScript.\r\n\r\nYou'll then build backend services (or APIs) that can store, manipulate and provide data, which you'll later use when building interactive frontend applications which are able to consume this data to create interactive experiences for users."
+      }
+    ],
+    "meta": {
+      "target_url": "https://www.coursereport.com/schools/command-shift",
+      "timestamp": "2023-06-30 11:02:34.876267"
+    }
+  }
+]
