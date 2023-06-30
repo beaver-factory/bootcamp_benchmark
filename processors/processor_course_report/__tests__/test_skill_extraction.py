@@ -13,7 +13,7 @@ test_input5 = "On our Data Science course, you will learn the fundamentals of th
 
 dirpath = "processor_course_report/__tests__/extraction_skills_dict.json"
 
-test_dict = {"JavaScript": ["javascript"], "Angular": ["angular"], "Ruby on Rails": ["ruby on rails"], "React": ["react", "react.js", "reactjs"], "Python": ["python"], "Django": ["django"], "Express": ["express"], "Node.js": ["node.js"], "SQL": ["sql"], "Excel": ["excel"], "Power BI": ["power bi", "powerbi"], "Tableau": ["tableau"], "CSS": ["css"], "HTML": ["html"], "Bootstrap": ["bootstrap"], "Agile": ["agile methodology", "agile principles", "agile"]}
+test_dict = {"JavaScript": ["javascript"], "Angular": ["angular"], "Ruby on Rails": ["ruby on rails"], "React": ["react", "react.js", "reactjs"], "Python": ["python"], "Django": ["django"], "Express": ["express"], "Node.js": ["node.js"], "SQL": ["sql"], "Excel": ["excel"], "Power BI": ["power bi", "powerbi"], "Tableau": ["tableau"], "CSS": ["css"], "HTML": ["html"], "Bootstrap": ["bootstrap"], "Agile": ["agile methodology", "agile principles", "agile"], "Object-oriented programming": ["object-oriented programming"]}
 
 
 def test_returns_correct_typing():
@@ -116,3 +116,13 @@ def test_agile_is_always_extracted_as_a_skill():
     result = extract_skills(test_input, test_dict)
 
     assert result == ["agile"]
+
+
+def test_detects_hyphenation():
+    test_input = 'Students will create two websites (a 1-page website and a 5-page website) over the course of 12 weeks. Students will learn to code in HTML, CSS and Javascript. Students will experience the following: \r\n\r\n-Discover FTP (File Transfer Process) website servers\r\n-Develop link building skills\r\n-Learn the Bootstrap framework for responsive design\r\n-Learn how to font with Awesome icons\r\n-Learn how to use Photoshop\r\n-Learn how to implement contact forms. We do not teach Python, React, or Ruby on Rails. We teach Object-oriented programming'
+
+    result = extract_skills(test_input, test_dict)
+
+    expected = ['HTML', 'CSS', 'Javascript', 'Bootstrap', 'Object-oriented programming']
+
+    assert sorted(result) == sorted(expected)

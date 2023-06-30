@@ -30,17 +30,8 @@ def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
 
     words_list = [word.split() for word in patterns]
 
-    skills_to_label_regardless_of_pos = ["agile"]
-
-    formatted_skills = [skill.lower().split() for skill in skills_to_label_regardless_of_pos]
-
     for words in words_list:
-        pattern = []
-        if words in formatted_skills or len(words) > 1:
-            pattern = [{"LOWER": word.lower()} for word in words]
-        else:
-            pattern = [{"LOWER": word.lower(), "POS": {"IN": ["PROPN", "NOUN"]}} for word in words]
-
+        pattern = generate_pattern(words)
         full_patterns.append(pattern)
 
     final_patterns = [{"label": "SKILL", "pattern": pattern} for pattern in full_patterns]
@@ -66,3 +57,30 @@ def extract_skills(description: str, inSkillsDict: Dict) -> List[str]:
             result.append(ent.text)
 
     return result
+
+
+def generate_pattern(words: List[str]) -> List[Dict]:
+    """Generates spacy entity pattern
+
+    :param words: List of individual skills
+    :type words: List[str]
+    :return: Spacy entity ruler patterns
+    :rtype: List[Dict]
+    """
+    skills_to_label_regardless_of_pos = ["agile"]
+    formatted_skills = [skill.lower().split() for skill in skills_to_label_regardless_of_pos]
+
+    pattern = []
+
+    for word in words:
+        if '-' in word:
+            tokens = word.split('-')
+            token_patterns = [{'LOWER': token.lower()} for token in tokens]
+            token_patterns.insert(1, {'IS_PUNCT': True})
+            pattern.extend(token_patterns)
+        elif words in formatted_skills or len(words) > 1:
+            pattern.append({"LOWER": word.lower()})
+        else:
+            pattern.append({"LOWER": word.lower(), "POS": {"IN": ["PROPN", "NOUN"]}})
+
+    return pattern
