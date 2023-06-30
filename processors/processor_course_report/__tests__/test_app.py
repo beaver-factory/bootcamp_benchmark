@@ -133,7 +133,7 @@ def test_dataframe_contains_correct_number_of_rows(outBlob):
     inBlob = generate_inputstream(dirpath)
     result = process_course_data(pd.read_json(
         json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
-    assert result.shape[0] == 6
+    assert result.shape[0] == 5
 
 
 @patch('azure.functions.Out')
@@ -174,3 +174,15 @@ def test_skills_column_gains_skills_from_description(outBlob):
         json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
 
     assert 'CSS' in result['course_skills'].values
+
+
+@patch('azure.functions.Out')
+def test_no_duplicate_rows(outBlob):
+    inBlob = generate_inputstream(dirpath)
+
+    result = process_course_data(pd.read_json(
+        json.dumps(expected_data_structure)), locations["uk_locations"], inBlob, outBlob)
+
+    duplicate_check = result.duplicated().tolist()
+
+    assert True not in duplicate_check

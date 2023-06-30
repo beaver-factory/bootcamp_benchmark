@@ -1,4 +1,4 @@
-from processor_course_report.skill_deduper import check_edge_case_dict, handle_known_suffixes
+from processor_course_report.skill_synonym_unifier import process_skill_synonyms, handle_known_suffixes
 from processor_utils import generate_inputstream
 import pandas as pd
 from unittest.mock import patch
@@ -6,7 +6,7 @@ import os
 import pytest
 import json
 
-dirpath = 'processor_course_report/skill_deduper/__tests__/skills_dict.json'
+dirpath = 'processor_course_report/skill_synonym_unifier/__tests__/skills_dict.json'
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -27,13 +27,13 @@ def create_json():
 
 
 @patch('azure.functions.Out')
-def test_check_edge_case_dict_does_nothing_if_all_valid(outblob):
+def test_process_skill_synonyms_does_nothing_if_all_valid(outblob):
     new_inputstream = generate_inputstream(dirpath)
     skills = ['html', 'react', 'express']
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = check_edge_case_dict(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, new_inputstream, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert skill_list[0] == 'HTML'
@@ -41,26 +41,26 @@ def test_check_edge_case_dict_does_nothing_if_all_valid(outblob):
 
 
 @patch('azure.functions.Out')
-def test_check_edge_case_dict_replaces_values(outblob):
+def test_process_skill_synonyms_replaces_values(outblob):
     new_inputstream = generate_inputstream(dirpath)
     skills = ['html5']
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = check_edge_case_dict(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, new_inputstream, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert skill_list[0] == 'HTML'
 
 
 @patch('azure.functions.Out')
-def test_check_edge_case_dict_outputs_new_blob_only_if_difference(outblob):
+def test_process_skill_synonyms_outputs_new_blob_only_if_difference(outblob):
     new_inputstream = generate_inputstream(dirpath)
     skills = ['test1', 'test2']
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = check_edge_case_dict(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, new_inputstream, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert outblob.set.call_count == 1
@@ -70,7 +70,7 @@ def test_check_edge_case_dict_outputs_new_blob_only_if_difference(outblob):
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = check_edge_case_dict(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, new_inputstream, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert outblob.set.call_count == 1
@@ -78,26 +78,26 @@ def test_check_edge_case_dict_outputs_new_blob_only_if_difference(outblob):
 
 
 @patch('azure.functions.Out')
-def test_check_edge_case_dict_outputs_same_case_df(outblob):
+def test_process_skill_synonyms_outputs_same_case_df(outblob):
     new_inputstream = generate_inputstream(dirpath)
     skills = ['HTML']
     data = [{"course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = check_edge_case_dict(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, new_inputstream, outblob)
     skill_list = result["course_skills"].tolist()
 
     assert skill_list[0] != 'html'
 
 
 @patch('azure.functions.Out')
-def test_check_edge_case_dict_outputs_full_df(outblob):
+def test_process_skill_synonyms_outputs_full_df(outblob):
     new_inputstream = generate_inputstream(dirpath)
     skills = ['HTML', 'React']
     data = [{"provider_name": "Northcoders", "course_skills": skill} for skill in skills]
     df = pd.DataFrame(data)
 
-    result = check_edge_case_dict(df, new_inputstream, outblob)
+    result = process_skill_synonyms(df, new_inputstream, outblob)
     prov_list = result["provider_name"].tolist()
     skill_list = result["course_skills"].tolist()
 

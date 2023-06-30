@@ -4,7 +4,7 @@ from typing import List
 from azure.functions import InputStream
 import logging
 from processor_course_report.extract_skills import extract_skills
-from processor_course_report.skill_deduper import check_edge_case_dict
+from processor_course_report.skill_synonym_unifier import process_skill_synonyms
 import json
 
 
@@ -41,9 +41,9 @@ def process_course_data(unprocessed_dataframe, locations, inSkillsDict, outSkill
 
     df_with_locations = process_course_report_locations(df_with_meta, locations)
 
-    df_with_deduped_skills = check_edge_case_dict(df_with_locations, inSkillsDict, outSkillsDict)
+    df_with_deduped_skills = process_skill_synonyms(df_with_locations, inSkillsDict, outSkillsDict)
 
-    return df_with_deduped_skills
+    return df_with_deduped_skills.drop_duplicates()
 
 
 def process_course_report_courses(exploded_df: DataFrame, normalised_df: DataFrame) -> DataFrame:
