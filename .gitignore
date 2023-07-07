@@ -18,3 +18,5 @@ local.settings.json
 
 .DS_Store
 .idea
+
+example_extraction.csv

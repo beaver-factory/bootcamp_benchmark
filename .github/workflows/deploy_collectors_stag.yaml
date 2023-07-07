@@ -5,22 +5,22 @@ on:
     branches:
       - main
     paths:
-      - "collectors/**"
-      - ".github/workflows/deploy_collectors_stag.yaml"
+      - 'collectors/**'
+      - '.github/workflows/deploy_collectors_stag.yaml'
 
   pull_request:
     branches:
       - main
     paths:
-      - "collectors/**"
-      - ".github/workflows/deploy_collectors_stag.yaml"
+      - 'collectors/**'
+      - '.github/workflows/deploy_collectors_stag.yaml'
 
 env:
-  FUNCTION_APP_NAME: bb-collectors-stag2
-  RESOURCE_GROUP_NAME: alexBootcampBenchmarkStaging
-  AZURE_FUNCTION_APP_PACKAGE_PATH: "./collectors"
+  FUNCTION_APP_NAME: bb-collectors-stag3
+  RESOURCE_GROUP_NAME: TFBootcampBenchmarkStaging
+  AZURE_FUNCTION_APP_PACKAGE_PATH: './collectors'
   AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS_2 }}
-  KEY_VAULT_NAME: bootcampbkeyvaultstag2
+  KEY_VAULT_NAME: bootcampbkeyvaultstag3
 
 defaults:
   run:
@@ -39,7 +39,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
-          cache: "pip"
+          cache: 'pip'
 
       - name: install dependencies
         shell: bash
@@ -94,7 +94,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.8
-          cache: "pip"
+          cache: 'pip'
 
       - name: install python dependencies
         shell: bash
